@@ -23,3 +23,9 @@
 1. Добавьте несколько правил, которые считаете нужными, для него. Например, `eslint-config-airbnb-base`
 1. Проверьте его работу, форматируя код в вид, который не соответствует правилам
 1. Добавьте [lint-staged](https://www.npmjs.com/package/lint-staged) для того, чтобы код автоматически форматировался перед git коммитом
+
+datepickers:
+
+https://github.com/gpbl/react-day-picker
+https://github.com/ant-design/ant-design/
+https://github.com/hypeserver/react-date-range
