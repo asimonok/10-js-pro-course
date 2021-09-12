@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "folse-lesson-32": "^0.2.0"
+    "folse-lesson-32": "^0.2.0-beta.0"
   },
   "devDependencies": {
     "eslint": "^7.2.0",
