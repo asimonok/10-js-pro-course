@@ -1,0 +1,12 @@
+{
+  "name": "folse-lesson-32",
+  "version": "0.2.0-beta.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
