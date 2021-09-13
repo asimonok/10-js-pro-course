@@ -4,12 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "Lint": "eslint .",
+    "Lint:fix": "npx prettier --write .",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "lesson-32-parkhamovich-katya": "^1.0.1-beta"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "2.4.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
