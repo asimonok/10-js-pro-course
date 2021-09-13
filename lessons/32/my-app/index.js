@@ -1,4 +1,6 @@
 // import functions from your package
-const { smartSearch } = require('[NAME_OF_YOUR_PACKAGE]')
+const { smartSearch, smartIndex } = require('tms-lesson32')
+
 
 console.log(smartSearch(['Smith', 'John'], 'John'))
+console.log(smartIndex('Smith', 'th'))

@@ -1,6 +1,6 @@
 {
-  "name": "tms-lesson32",
-  "version": "1.1.0-beta.2",
+  "name": "my-app",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "tms-lesson32": "^1.1.0-beta.2"
+  }
 }
