@@ -25,12 +25,11 @@
 
 ## Задание. Выбрать JavaScript библиотеку для календаря.
 ### Список библиотек-кандидатов:
-smalot/bootstrap-datetimepicker
-react-native-datetimepicker/datetimepicker
-uxsolutions/bootstrap-datepicker
-Hacker0x01/react-datepicker
-t1m0n/air-datepicker
+1. smalot/bootstrap-datetimepicker
+1. react-native-datetimepicker/datetimepicker
+1. uxsolutions/bootstrap-datepicker
+1. Hacker0x01/react-datepicker
+1. t1m0n/air-datepicker
 
 ### Наиболее подходящая библиотека:
-t1m0n/air-datepicker
-Т.к. она соответствует требованиям, имеет лицензию MIT License, популярная (имеет 1,9k Stars на github.com).
+t1m0n/air-datepicker, т.к. она соответствует требованиям, имеет лицензию MIT License, популярная (имеет 1,9k Stars на github.com).
