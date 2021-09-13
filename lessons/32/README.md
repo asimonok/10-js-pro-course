@@ -22,3 +22,15 @@
 1. Добавьте [lint-staged](https://www.npmjs.com/package/lint-staged) для того, чтобы код автоматически форматировался перед git коммитом
 
 
+
+## Задание. Выбрать JavaScript библиотеку для календаря.
+###Список библиотек-кандидатов:
+smalot/bootstrap-datetimepicker
+react-native-datetimepicker/datetimepicker
+uxsolutions/bootstrap-datepicker
+Hacker0x01/react-datepicker
+t1m0n/air-datepicker
+
+###Наиболее подходящая библиотека:
+t1m0n/air-datepicker
+Т.к. она соответствует требованиям, имеет лицензию MIT License, популярная (имеет 1,9k Stars на github.com).
