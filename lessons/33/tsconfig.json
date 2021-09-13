@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "noImplicitAny": true,
+      "removeComments": true,
+      "outFile":"index.js",
+
+    },
+    "include": ["index.ts"],
+    "exclude": ["node_modules"],    
+  }
