@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tms-lesson32": "^1.1.0-beta.2"
+    "tms-lesson32": "^1.1.0"
   }
 }
