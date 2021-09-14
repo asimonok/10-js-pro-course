@@ -49,7 +49,7 @@ function calc(a: number, b: number): number {
       break;
     }
     default: {
-      console.log("Error");
+      break;
     }
   }
   // return eval(calced);

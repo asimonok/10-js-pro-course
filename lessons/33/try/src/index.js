@@ -41,7 +41,7 @@ function calc(a, b) {
             break;
         }
         default: {
-            console.log("Error");
+            break;
         }
     }
     return calced;
