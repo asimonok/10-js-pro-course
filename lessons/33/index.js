@@ -20,7 +20,7 @@ buttonEl.addEventListener('click', function () {
     var selectVal = selectEl.value;
     var result = 0;
     if (isNaN(inputVal1) || isNaN(inputVal2)) {
-        console.log('Wrong values');
+        console.log('Please, enter the values');
         return;
     }
     switch (selectVal) {
@@ -39,9 +39,6 @@ buttonEl.addEventListener('click', function () {
         case Operations.MUL: {
             result = calcMult(inputVal1, inputVal2);
             break;
-        }
-        default: {
-            console.log('Unable to conduct operation');
         }
     }
     console.log(result);
