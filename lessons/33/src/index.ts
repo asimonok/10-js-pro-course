@@ -5,7 +5,7 @@ const inputEl2 = document.querySelector('.value2') as HTMLInputElement;
 const buttonEl = document.querySelector('.btn') as HTMLButtonElement;
 const selectEl = document.querySelector('.operation') as HTMLSelectElement;
 
-enum Operations {
+enum Operation {
   SUM = '+',
   SUB = '-',
   DIV = '/',
@@ -23,25 +23,20 @@ buttonEl.addEventListener('click', () => {
   const selectVal: string = selectEl.value;
   let result: number = 0;
 
-  if (isNaN(inputVal1) || isNaN(inputVal2)) {
-    console.log('Please, enter the values');
-    return;
-  }
-
   switch (selectVal) {
-    case Operations.SUM: {
+    case Operation.SUM: {
       result = calcSum(inputVal1, inputVal2);
       break;
     }
-    case Operations.SUB: {
+    case Operation.SUB: {
       result = calcSub(inputVal1, inputVal2);
       break;
     }
-    case Operations.DIV: {
+    case Operation.DIV: {
       result = calcDiv(inputVal1, inputVal2);
       break;
     }
-    case Operations.MUL: {
+    case Operation.MUL: {
       result = calcMult(inputVal1, inputVal2);
       break;
     }
