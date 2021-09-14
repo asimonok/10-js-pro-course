@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "lint:fix": "npx prettier --write ."
+    "lint:fix": "npx prettier --write .",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +23,9 @@
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "prettier": "2.4.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }
