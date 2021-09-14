@@ -5,10 +5,10 @@ var buttonEl = document.querySelector('.btn');
 var selectEl = document.querySelector('.operation');
 var Operation;
 (function (Operation) {
-    Operation["SUM"] = "+";
-    Operation["SUB"] = "-";
-    Operation["DIV"] = "/";
-    Operation["MUL"] = "*";
+    Operation["sum"] = "+";
+    Operation["sub"] = "-";
+    Operation["div"] = "/";
+    Operation["mul"] = "*";
 })(Operation || (Operation = {}));
 var calcSum = function (a, b) { return a + b; };
 var calcSub = function (a, b) { return a - b; };
@@ -20,19 +20,19 @@ buttonEl.addEventListener('click', function () {
     var selectVal = selectEl.value;
     var result = 0;
     switch (selectVal) {
-        case Operation.SUM: {
+        case Operation.sum: {
             result = calcSum(inputVal1, inputVal2);
             break;
         }
-        case Operation.SUB: {
+        case Operation.sub: {
             result = calcSub(inputVal1, inputVal2);
             break;
         }
-        case Operation.DIV: {
+        case Operation.div: {
             result = calcDiv(inputVal1, inputVal2);
             break;
         }
-        case Operation.MUL: {
+        case Operation.mul: {
             result = calcMult(inputVal1, inputVal2);
             break;
         }

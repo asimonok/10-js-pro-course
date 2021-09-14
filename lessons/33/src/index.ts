@@ -6,10 +6,10 @@ const buttonEl = document.querySelector('.btn') as HTMLButtonElement;
 const selectEl = document.querySelector('.operation') as HTMLSelectElement;
 
 enum Operation {
-  SUM = '+',
-  SUB = '-',
-  DIV = '/',
-  MUL = '*',
+  sum = '+',
+  sub = '-',
+  div = '/',
+  mul = '*',
 }
 
 const calcSum = (a: number, b: number): number => a + b;
@@ -24,19 +24,19 @@ buttonEl.addEventListener('click', () => {
   let result: number = 0;
 
   switch (selectVal) {
-    case Operation.SUM: {
+    case Operation.sum: {
       result = calcSum(inputVal1, inputVal2);
       break;
     }
-    case Operation.SUB: {
+    case Operation.sub: {
       result = calcSub(inputVal1, inputVal2);
       break;
     }
-    case Operation.DIV: {
+    case Operation.div: {
       result = calcDiv(inputVal1, inputVal2);
       break;
     }
-    case Operation.MUL: {
+    case Operation.mul: {
       result = calcMult(inputVal1, inputVal2);
       break;
     }
