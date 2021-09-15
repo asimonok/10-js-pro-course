@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "outDir": "out",
+    "sourceMap": false,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
