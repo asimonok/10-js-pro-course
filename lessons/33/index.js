@@ -2,6 +2,13 @@ var input1 = document.querySelector('.first');
 var input2 = document.querySelector('.second');
 var select = document.querySelector('#operators');
 var btnEl = document.querySelector('.calc');
+var Operators;
+(function (Operators) {
+    Operators["Minus"] = "minus";
+    Operators["Plus"] = "plus";
+    Operators["Devide"] = "devide";
+    Operators["Multiply"] = "multiply";
+})(Operators || (Operators = {}));
 btnEl.addEventListener('click', function () {
     var val1 = input1.value;
     var val2 = input2.value;
@@ -12,13 +19,13 @@ btnEl.addEventListener('click', function () {
 var calculate = function (operator, val1, val2) {
     if (val2 === void 0) { val2 = 1; }
     switch (operator) {
-        case 'minus':
+        case Operators.Minus:
             return val1 - val2;
-        case 'plus':
+        case Operators.Plus:
             return val1 + val2;
-        case 'devide':
+        case Operators.Devide:
             return val1 / val2;
-        case 'multiply':
+        case Operators.Multiply:
             return val1 * val2;
         default:
             return;

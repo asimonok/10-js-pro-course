@@ -4,11 +4,11 @@ const input2 = document.querySelector('.second') as HTMLInputElement;
 const select = document.querySelector('#operators') as HTMLSelectElement;
 const btnEl = document.querySelector('.calc') ;
 
-enum Operator{
-    'minus',
-    'plus',
-    'devide',
-    'multiply'
+enum Operators{
+    Minus = 'minus',
+    Plus = 'plus',
+    Devide = 'devide',
+    Multiply = 'multiply'
 }
 
 btnEl.addEventListener('click', () => {
@@ -23,13 +23,13 @@ btnEl.addEventListener('click', () => {
 
 const calculate = (operator: string, val1:number, val2: number = 1): any => {
     switch(operator) {
-        case 'minus':
+        case Operators.Minus:
             return val1 - val2;
-        case 'plus':
+        case Operators.Plus:
             return val1 + val2;
-        case 'devide':
+        case Operators.Devide:
             return val1 / val2;
-        case 'multiply':
+        case Operators.Multiply:
             return val1 * val2;
         default: 
             return;    
