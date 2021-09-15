@@ -1,7 +1,7 @@
 const value1 = document.querySelector(".first") as HTMLInputElement;
 const value2 = document.querySelector(".second") as HTMLInputElement;
 const selectEl = document.querySelector(".operator") as HTMLSelectElement;
-const button = document.querySelector(".button");
+const button = document.querySelector(".btn");
 const resultEl = document.querySelector(".result");
 
 enum Operation {

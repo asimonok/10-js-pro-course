@@ -1,7 +1,7 @@
 var value1 = document.querySelector(".first");
 var value2 = document.querySelector(".second");
 var selectEl = document.querySelector(".operator");
-var button = document.querySelector(".button");
+var button = document.querySelector(".btn");
 var resultEl = document.querySelector(".result");
 var Operation;
 (function (Operation) {
