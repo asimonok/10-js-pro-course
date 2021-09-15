@@ -11,7 +11,7 @@
 
 - https://github.com/clauderic/react-infinite-calendar
   3.8к stars on GitHub, Used by 1.6k, 415 forks, MIT-Lisence, latest release – 10 May 2017, 131 closed pull requests.
-  _The most sutable in my oppinion._
+  _The most suitable in my opinion._
 
 - https://github.com/fullcalendar/fullcalendar
   14.2к stars on GitHub, Used by 33.4k, 3.2k forks, MIT-Lisence, latest release – 28 July this year, 5342 closed pull requests.
