@@ -10,7 +10,15 @@
 
 ### Публикация своего пакета
 
+Публикация не получается, выдает ошибку 
+npm notice
+npm ERR! code E403
+npm ERR! 403 403 Forbidden - PUT https://registry.npmjs.org/bukley-my-pack - Forbidden
+npm ERR! 403 In most cases, you or one of your dependencies are requesting       
+npm ERR! 403 a package version that is forbidden by your security policy.        
 
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Ира\AppData\Roaming\npm-cache\_logs\2021-09-15T08_44_57_029Z-debug.log
 
 ### Использование в приложении
 

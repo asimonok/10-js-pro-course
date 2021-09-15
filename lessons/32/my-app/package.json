@@ -1,0 +1,21 @@
+{
+  "name": "bukley-my-pack",
+  "version": "2.0.0",
+  "description": "Буклей Ирина",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IrinaBukley23"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
