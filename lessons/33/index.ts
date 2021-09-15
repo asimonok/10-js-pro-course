@@ -1,34 +1,42 @@
 
-const input1 = document.querySelector('.first');
-const input2 = document.querySelector('.second');
-const select = document.querySelector('#operators');
-const btnEl = document.querySelector('.calc');
+const input1 = document.querySelector('.first') as HTMLInputElement;
+const input2 = document.querySelector('.second') as HTMLInputElement;
+const select = document.querySelector('#operators') as HTMLSelectElement;
+const btnEl = document.querySelector('.calc') ;
 
+btnEl.addEventListener('click', () => {
+    const val1 = input1.value;
+    const val2 = input2.value;
+    const operator:string = select.value;
 
+    let res = calculate(operator, parseFloat(val1), parseFloat(val2));
 
+    printCalc(res);
+})
 
-btnEl.addEventListener('click', (options) => {
-    console.log('ok');
-    debugger;
-    let vel1 = input1.value;
-    let vel2 = input2.value;
-    let operator = select.value;
-
+const calculate = (operator: string, val1:number, val2: number = 1): any => {
     switch(operator) {
         case 'minus':
-            console.log(vel1 - vel2);
-            break;
+            return val1 - val2;
         case 'plus':
-            console.log(vel1 + vel2);
-            break;    
+            return val1 + val2;
         case 'devide':
-            console.log(vel1 / vel2);
-            break;    
+            return val1 / val2;
         case 'multiply':
-            console.log(vel1 * vel2);
-            break;    
+            return val1 * val2;
+        default: 
+            return;    
     }
-})
+}
+
+const printCalc = (result: number): void => {
+    console.log(result);
+}
+
+
+
+
+
 
 
 
