@@ -1,7 +1,7 @@
 // :)
 const smartSearch = (array, value) => array.includes(value);
 
-const randomSearch = (a, b) => Math.random() * (a + b);
+const randomSearch = (a, b) => (a + b);
 
 module.exports = {
   smartSearch,
