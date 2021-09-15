@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outFile": "index.js",
+    "sourceMap": false
+  },
+  "include": ["src/**/*", "index.js"],
+  "exclude": ["node_modules"]
+}
