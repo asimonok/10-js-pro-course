@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Секундомер зарплаты</h1>
+        <div class="wrapper">
+            <div class="item">
+                <label for="currency">Валюта, в которой вы получаете зарплату</label>
+                <select name="" id="currency">
+                    <option value="rubl"><span class="current-carrency">руб.</span></option>
+                    <option value="euro">&#8364;</option>
+                    <option value="dollar">&#36;</option>
+                    <option value="pound">&#163;</option>
+                </select>
+            </div>
+            <div class="item">
+                <label for="month">Зарплата в месяц</label>
+                <input type="number" id="month"><span class="current-carrency">руб.</span>
+            </div> 
+            <div class="item">
+                <label for="vacation">Оплачиваемый отпуск</label>
+                <input type="number" id="vacation"><span >дней</span>
+            </div>
+            <div class="item">
+                <label for="working-week">Рабочая неделя</label>
+                <select name="" id="working-week">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <label for="working-time">по</label>
+                <select name="" id="working-time">
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                </select>
+                часов
+            </div> 
+    
+            <div class="result">
+                <h2> &#9759; Результаты расчёта &#9759;</h2>
+                <div class="result-item">В год я зарабатываю:<span id="in-year">0</span> <span class="current-carrency">руб.</span>  </div>
+                <div class="result-item">В отпуске я зарабатываю:<span id="in-vacation">0</span> <span class="current-carrency">руб.</span>  </div>
+                <div class="result-item">В неделю я зарабатываю:<span id="in-week">0</span> <span class="current-carrency">руб.</span>  </div>
+                <div class="result-item">В день я зарабатываю:<span id="in-day">0</span> <span class="current-carrency">руб.</span>  </div>
+                <div class="result-item">В час я зарабатываю:<span id="in-hour">0</span> <span class="current-carrency">руб.</span>  </div>
+                <div class="result-item">В минуту я зарабатываю:<span id="in-minute">0</span> <span class="current-carrency">руб.</span>  </div>
+                <div class="result-item">Прямо сейчас я заработал::<span id="in-second">0</span> <span class="current-carrency">руб.</span>  </div>
+    
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
