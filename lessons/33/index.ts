@@ -4,6 +4,13 @@ const input2 = document.querySelector('.second') as HTMLInputElement;
 const select = document.querySelector('#operators') as HTMLSelectElement;
 const btnEl = document.querySelector('.calc') ;
 
+enum Operator{
+    'minus',
+    'plus',
+    'devide',
+    'multiply'
+}
+
 btnEl.addEventListener('click', () => {
     const val1 = input1.value;
     const val2 = input2.value;
