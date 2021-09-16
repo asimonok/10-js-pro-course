@@ -1,0 +1,12 @@
+{
+  "name": "calculator-folse",
+  "version": "0.0.0",
+  "description": "calculator for learning on typescript by folse",
+  "main": "index.js",
+  "scripts": {
+    "test": "test me",
+    "tsc": "tsc --watch"
+  },
+  "author": "folse",
+  "license": "ISC"
+}
