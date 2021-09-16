@@ -23,11 +23,11 @@
       </div>
       <div class="salary-month">
         <p>Зарплата в месяц</p>
-        <input type="text" /> руб
+        <input class="input-salary" type="number" /> руб
       </div>
       <div class="vacation">
         <p>Оплачиваемый отпуск</p>
-        <input type="text" /> дней
+        <input class="input-vacation" type="number" /> дней
       </div>
       <div>
         <p>
@@ -41,14 +41,15 @@
       <div class="result-title"><h2>Результаты расчёта</h2></div>
       <div>
         <ul class="results">
-          <li class="salary-in-year">В год я зарабатываю:</li>
-          <li class="salary-in-vacation">В отпуске я зарабатываю:</li>
-          <li class="salary-in-week">В неделю я зарабатываю:</li>
-          <li class="salary-in-day">В день я зарабатываю:</li>
-          <li class="salary-in-hour">В час я зарабатываю:</li>
-          <li class="salary-in-minute">В минуту я зарабатываю:</li>
-          <li class="salary-rn">Прямо сейчас я заработал:</li>
+          <li class="salary-in-year">В год я зарабатываю: <span class="salary-in-year-value"></span></li>
+          <li class="salary-in-vacation">В отпуске я зарабатываю: <span class="salary-in-vacation-value"></span></li>
+          <li class="salary-in-week">В неделю я зарабатываю: <span class="salary-in-week-value"></span></li>
+          <li class="salary-in-day">В день я зарабатываю: <span class="salary-in-day-value"></span></li>
+          <li class="salary-in-hour">В час я зарабатываю: <span class="salary-in-hour-value"></span></li>
+          <li class="salary-in-minute">В минуту я зарабатываю: <span class="salary-in-minute-value"></span></li>
+          <li class="salary-rn">Прямо сейчас я заработал: <span class="salary-rn-value"></span></li>
         </ul>
+        <button class="button">press me</button>
       </div>
     </div>
 
