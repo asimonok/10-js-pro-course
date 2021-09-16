@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="title">Секундомер зарплаты</h1>
+    <div class="content">
+      <p>
+        Валюта, в которой вы получаете зарплату
+        <select class="currency">
+          <option>руб.</option>
+          <option>$</option>
+          <option>€</option>
+          <option>грн.</option>
+        </select>
+      </p>
+      <div class="content__salary">
+        <label for="salary" class="content__salary_title"
+          >Зарплата в месяц</label
+        >
+        <input type="number" name="salary" class="content__salary_input" />
+        <span>руб.</span>
+      </div>
+      <div class="content__vacation">
+        <label for="vacation" class="content__vacation_title"
+          >Оплачиваемый отпуск</label
+        >
+        <input type="number" name="salary" class="content__vacation_input" />
+        <span>дней</span>
+      </div>
+      <p>
+        Рабочая неделя
+        <select class="days">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+        </select>
+        <span>дней</span>
+        по
+        <select class="hours">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+          <option>13</option>
+          <option>14</option>
+          <option>15</option>
+          <option>16</option>
+          <option>17</option>
+          <option>18</option>
+          <option>19</option>
+          <option>20</option>
+          <option>21</option>
+          <option>22</option>
+          <option>23</option>
+          <option>24</option>
+        </select>
+      </p>
+      <div class="content__calc">
+        <h2 class="content__calc_title">
+          <i class="fas fa-envelope-open-text"></i>Результаты расчёта
+        </h2>
+        <ul class="content__calc_result-list">
+          <li class="content__calc_result-item">
+            В год я зарабатываю: <span></span>
+          </li>
+          <li class="content__calc_result-item">
+            В отпуске я зарабатываю: <span></span>
+          </li>
+          <li class="content__calc_result-item">
+            В неделю я зарабатываю: <span></span>
+          </li>
+          <li class="content__calc_result-item">
+            В день я зарабатываю: <span></span>
+          </li>
+          <li class="content__calc_result-item">
+            В час я зарабатываю: <span></span>
+          </li>
+          <li class="content__calc_result-item">
+            В минуту я зарабатываю: <span></span>
+          </li>
+          <li class="content__calc_result-item">
+            Прямо сейчас я заработала: <span></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
