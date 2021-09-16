@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    list-style: none;
+
+}
+.calculator{
+    padding: 30px 20px;
+}
+.calculator-title{
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+.calculator-content{
+    border: 1px #d8d8d8 solid;
+    padding: 20px;
+}
+.calculator-content__currency{
+    margin-bottom: 25px;
+}
+.calculator-content__salary{
+    margin-bottom: 30px;
+}
+.calculator-content__salary label{
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+.calculator-content__salary input{
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.results-title{
+    margin-bottom: 20px;
+}
+.results__list-item{
+    margin-bottom: 10px;
+}
