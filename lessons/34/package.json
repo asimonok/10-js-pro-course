@@ -1,0 +1,17 @@
+{
+  "name": "34",
+  "version": "1.0.0",
+  "description": "1. Используя typescript создайте приложение - Секундомер зарплаты\r 1. Обновление сумм должно происходить автоматически (более подробно на скриншоте и по ссылке)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
+}
