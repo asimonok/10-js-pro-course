@@ -6,9 +6,35 @@ body {
 html {
   display: table;
   margin: auto;
+  color: #1a2b49;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
-  display: table-cell;
+  /* display: table-cell; */
   vertical-align: middle;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input-salary {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+.input-vacation {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+select {
+  /* width: 100%; */
+  padding: 10px;
+  border-radius: 10px;
+}
+input:focus {
+  border: 3px solid #555;
 }

@@ -31,7 +31,12 @@ function calcSalaryYear(): number {
 function calcSalaryVacation(): number {
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
   const inputVacationElValue: number = parseFloat((inputVacationEl as HTMLInputElement).value);
-  return Math.round((inputSalaryElValue / 30) * inputVacationElValue);
+  if (inputVacationElValue) {
+    return Math.round((inputSalaryElValue / 30) * inputVacationElValue);
+  } else {
+    return 0;
+  }
+  //   return Math.round((inputSalaryElValue / 30) * inputVacationElValue);
 }
 
 function calcSalaryWeek(): number {
@@ -58,10 +63,8 @@ function calcSalaryRn(): string {
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
   return (inputSalaryElValue / 720 / 60 / 60).toFixed(2);
 }
-// const select = (document.getElementById("currency") as HTMLOptionElement).value;
+
 function printResults(): void {
-  //   let salaryYearElValue: string = salaryYearEl.innerHTML;
-  //   const select = (document.getElementById("currency") as HTMLOptionElement).value;
   let select = selectEl.value;
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
   if (inputSalaryElValue) {
@@ -72,28 +75,26 @@ function printResults(): void {
     salaryHourEl.innerHTML = calcSalaryHour() + " " + select;
     salaryMinuteEl.innerHTML = calcSalaryMinute() + " " + select;
   } else {
-    salaryYearEl.innerHTML = " " + select;
-    salaryVacationEl.innerHTML = " " + select;
-    salaryWeekEl.innerHTML = " " + select;
-    salaryDayEl.innerHTML = " " + select;
-    salaryHourEl.innerHTML = " " + select;
-    salaryMinuteEl.innerHTML = " " + select;
+    salaryYearEl.innerHTML = " 0 " + select;
+    salaryVacationEl.innerHTML = " 0 " + select;
+    salaryWeekEl.innerHTML = " 0 " + select;
+    salaryDayEl.innerHTML = " 0 " + select;
+    salaryHourEl.innerHTML = " 0 " + select;
+    salaryMinuteEl.innerHTML = " 0 " + select;
   }
 }
-
-// console.log(setInterval(calcSalaryYear, 1000));
-// var myVar = setInterval(function () {
-//   printResults();
-// }, 1000);
 
 //test button
 const buttonEl = document.querySelector(".button");
 buttonEl.addEventListener("click", () => {
+  const inputVacationElValue: number = parseFloat((inputVacationEl as HTMLInputElement).value);
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
   console.log(inputSalaryElValue);
   console.log(inputSalaryEl);
+  console.log(inputVacationElValue);
   printResults();
 });
+
 setInterval(function () {
   printResults();
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
@@ -101,7 +102,7 @@ setInterval(function () {
   if (inputSalaryElValue) {
     salaryRnEl.innerHTML = calcSalaryRn() + calcSalaryRn() + " " + select;
   } else {
-    salaryRnEl.innerHTML = " " + select;
+    salaryRnEl.innerHTML = " 0 " + select;
   }
   //   salaryRnEl.innerHTML = calcSalaryRn() + calcSalaryRn() + " " + select;
 }, 1000);
