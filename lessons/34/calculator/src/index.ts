@@ -15,15 +15,48 @@ const salaryRnEl = document.querySelector(".salary-rn-value");
 
 function calcSalaryYear(): number {
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
-  return inputSalaryElValue * 12;
+  return Math.round(inputSalaryElValue * 12);
+}
+function calcSalaryVacation(): number {
+  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
+  const inputVacationElValue: number = parseFloat((inputVacationEl as HTMLInputElement).value);
+  return Math.round((inputSalaryElValue / 30) * inputVacationElValue);
 }
 
-// setInterval(calcSalaryYear, 1000);
-// console.log(calcSalaryYear());
+function calcSalaryWeek(): number {
+  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
+  return Math.round((inputSalaryElValue / 30) * 7);
+}
 
+function calcSalaryDay(): number {
+  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
+  return Math.round(inputSalaryElValue / 30);
+}
+
+function calcSalaryHour(): number {
+  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
+  return Math.round(inputSalaryElValue / 720);
+}
+
+function calcSalaryMinute(): number {
+  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
+  return Math.round(inputSalaryElValue / 720 / 60);
+}
+// эту функцию каждую секунду
+function calcSalaryRn(): number {
+  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
+  return inputSalaryElValue / 720 / 60 / 60;
+}
+// const select = (document.getElementById("currency") as HTMLOptionElement).value;
 function printResults(): void {
   //   let salaryYearElValue: string = salaryYearEl.innerHTML;
-  salaryYearEl.innerHTML = calcSalaryYear() + "";
+  //   const select = (document.getElementById("currency") as HTMLOptionElement).value;
+  salaryYearEl.innerHTML = calcSalaryYear() + " " + select;
+  salaryVacationEl.innerHTML = calcSalaryVacation() + " " + select;
+  salaryWeekEl.innerHTML = calcSalaryWeek() + " " + select;
+  salaryDayEl.innerHTML = calcSalaryDay() + " " + select;
+  salaryHourEl.innerHTML = calcSalaryHour() + " " + select;
+  salaryMinuteEl.innerHTML = calcSalaryMinute() + " " + select;
 }
 
 // console.log(setInterval(calcSalaryYear, 1000));
@@ -36,3 +69,7 @@ buttonEl.addEventListener("click", () => {
   console.log(calcSalaryYear());
   printResults();
 });
+setInterval(function () {
+  printResults();
+  salaryRnEl.innerHTML = calcSalaryRn() + calcSalaryRn() + " " + select;
+}, 1000);
