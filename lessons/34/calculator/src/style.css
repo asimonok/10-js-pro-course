@@ -36,5 +36,8 @@ select {
   border-radius: 10px;
 }
 input:focus {
-  border: 3px solid #555;
+  border: 1px whitesmoke #555;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }

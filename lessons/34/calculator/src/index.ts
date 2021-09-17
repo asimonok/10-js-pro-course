@@ -5,8 +5,8 @@ const selectEl = document.getElementById("currency") as HTMLSelectElement;
 // const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
 // const inputVacationElValue: number = parseFloat((inputVacationEl as HTMLInputElement).value);
 
-const workDaysEl = document.getElementById("work-days");
-const workHours = document.getElementById("work-hours");
+const workDaysEl = document.getElementById("work-days") as HTMLSelectElement;
+const workHours = document.getElementById("work-hours") as HTMLSelectElement;
 for (let i: number = 1; i <= 7; i++) {
   let newOption = new Option(i + "");
   workDaysEl.append(newOption);
@@ -40,12 +40,12 @@ function calcSalaryVacation(): number {
 
 function calcSalaryWeek(): number {
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
-  return Math.round((inputSalaryElValue / 30) * 7);
+  return Math.round((inputSalaryElValue / 30) * parseFloat(workDaysEl.value));
 }
 
 function calcSalaryDay(): number {
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
-  return Math.round(inputSalaryElValue / 30);
+  return Math.round((inputSalaryElValue / 30 / 24) * parseFloat(workHours.value));
 }
 
 function calcSalaryHour(): number {
