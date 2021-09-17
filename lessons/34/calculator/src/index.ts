@@ -1,9 +1,20 @@
 const inputSalaryEl = document.querySelector(".input-salary");
 const inputVacationEl = document.querySelector(".input-vacation");
 
-const select = (document.getElementById("currency") as HTMLSelectElement).value;
+const selectEl = document.getElementById("currency") as HTMLSelectElement;
 // const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
 // const inputVacationElValue: number = parseFloat((inputVacationEl as HTMLInputElement).value);
+
+const workDaysEl = document.getElementById("work-days");
+const workHours = document.getElementById("work-hours");
+for (let i: number = 1; i <= 7; i++) {
+  let newOption = new Option(i + "");
+  workDaysEl.append(newOption);
+}
+for (let i: number = 1; i <= 24; i++) {
+  let newOption = new Option(i + "");
+  workHours.append(newOption);
+}
 
 const salaryYearEl = document.querySelector(".salary-in-year-value");
 const salaryVacationEl = document.querySelector(".salary-in-vacation-value");
@@ -38,25 +49,36 @@ function calcSalaryHour(): number {
   return Math.round(inputSalaryElValue / 720);
 }
 
-function calcSalaryMinute(): number {
+function calcSalaryMinute(): string {
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
-  return Math.round(inputSalaryElValue / 720 / 60);
+  return (inputSalaryElValue / 720 / 60).toFixed(2);
 }
 // эту функцию каждую секунду
-function calcSalaryRn(): number {
+function calcSalaryRn(): string {
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
-  return inputSalaryElValue / 720 / 60 / 60;
+  return (inputSalaryElValue / 720 / 60 / 60).toFixed(2);
 }
 // const select = (document.getElementById("currency") as HTMLOptionElement).value;
 function printResults(): void {
   //   let salaryYearElValue: string = salaryYearEl.innerHTML;
   //   const select = (document.getElementById("currency") as HTMLOptionElement).value;
-  salaryYearEl.innerHTML = calcSalaryYear() + " " + select;
-  salaryVacationEl.innerHTML = calcSalaryVacation() + " " + select;
-  salaryWeekEl.innerHTML = calcSalaryWeek() + " " + select;
-  salaryDayEl.innerHTML = calcSalaryDay() + " " + select;
-  salaryHourEl.innerHTML = calcSalaryHour() + " " + select;
-  salaryMinuteEl.innerHTML = calcSalaryMinute() + " " + select;
+  let select = selectEl.value;
+  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
+  if (inputSalaryElValue) {
+    salaryYearEl.innerHTML = calcSalaryYear() + " " + select;
+    salaryVacationEl.innerHTML = calcSalaryVacation() + " " + select;
+    salaryWeekEl.innerHTML = calcSalaryWeek() + " " + select;
+    salaryDayEl.innerHTML = calcSalaryDay() + " " + select;
+    salaryHourEl.innerHTML = calcSalaryHour() + " " + select;
+    salaryMinuteEl.innerHTML = calcSalaryMinute() + " " + select;
+  } else {
+    salaryYearEl.innerHTML = " " + select;
+    salaryVacationEl.innerHTML = " " + select;
+    salaryWeekEl.innerHTML = " " + select;
+    salaryDayEl.innerHTML = " " + select;
+    salaryHourEl.innerHTML = " " + select;
+    salaryMinuteEl.innerHTML = " " + select;
+  }
 }
 
 // console.log(setInterval(calcSalaryYear, 1000));
@@ -64,12 +86,22 @@ function printResults(): void {
 //   printResults();
 // }, 1000);
 
+//test button
 const buttonEl = document.querySelector(".button");
 buttonEl.addEventListener("click", () => {
-  console.log(calcSalaryYear());
+  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
+  console.log(inputSalaryElValue);
+  console.log(inputSalaryEl);
   printResults();
 });
 setInterval(function () {
   printResults();
-  salaryRnEl.innerHTML = calcSalaryRn() + calcSalaryRn() + " " + select;
+  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
+  let select = selectEl.value;
+  if (inputSalaryElValue) {
+    salaryRnEl.innerHTML = calcSalaryRn() + calcSalaryRn() + " " + select;
+  } else {
+    salaryRnEl.innerHTML = " " + select;
+  }
+  //   salaryRnEl.innerHTML = calcSalaryRn() + calcSalaryRn() + " " + select;
 }, 1000);
