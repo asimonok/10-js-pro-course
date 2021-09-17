@@ -1,12 +1,12 @@
-let currencyEl = document.querySelector('#currency');
+let currencyEl = document.querySelector('#currency') as HTMLSelectElement;
 let currentCarrencyEls = document.querySelectorAll('.current-carrency');
-let monthSalaryEl = document.querySelector('#month');
-let vacationDurationEl = document.querySelector('#vacation');
-let workingDayEl = document.querySelector('#working-week');
-let workinTimeEl = document.querySelector('#working-time');
+let monthSalaryEl = document.querySelector('#month') as HTMLInputElement;
+let vacationDurationEl = document.querySelector('#vacation') as HTMLInputElement;
+let workingDayEl = document.querySelector('#working-week') as HTMLSelectElement;
+let workinTimeEl = document.querySelector('#working-time') as HTMLSelectElement;
 
 //output elements
-let outputSpans = document.querySelectorAll('.result-item span.out');
+let outputSpans: NodeListOf<Element> = document.querySelectorAll('.result-item span.out');
 let yearSalaryEl = document.querySelector('#in-year');
 let vacationSalaryEl = document.querySelector('#in-vacation');
 let weekSalaryEl = document.querySelector('#in-week');
@@ -37,10 +37,9 @@ const updateCurrencyText = () => {
 }
 currencyEl.addEventListener('change', updateCurrencyText);
 
-
-const countSalary = ( time ) => {
-  let inDay = +monthSalaryEl.value / (workingDayEl.value * 4);
-  let inHour = inDay / workinTimeEl.value;
+const countSalary = ( time: string ): number => {
+  let inDay: number = +monthSalaryEl.value / (+workingDayEl.value * 4);
+  let inHour: number = inDay / +workinTimeEl.value;
  
   if (time === 'in-year') {
    return +monthSalaryEl.value * 12;
@@ -67,7 +66,7 @@ const countSalary = ( time ) => {
 
 //rende all fields
 const rendeDate = () => {
-  outputSpans.forEach(item => item.textContent = countSalary(item.id))
+  outputSpans.forEach(item => item.textContent = countSalary(item.id).toString())
 }
 
 // count immediately after render DOM
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', rendeDate);
 //update data in case of any input changed
 //get all inputs than can be changed;
 let counts = document.querySelectorAll('[data-count]');
-counts.forEach(item => item.addEventListener('change', rendeDate));
+counts.forEach(item => item.addEventListener('input', rendeDate));
 
 
 //update data for seconds every second
@@ -89,8 +88,6 @@ monthSalaryEl.addEventListener('change', () => {
   
 setInterval( () => {
   seconds += inSecond;
-  // console.log(seconds.toFixed(3));
-  // console.log('inSecond: ', inSecond);
   secondSalaryEl.textContent = seconds.toFixed(3);
 }, 1000);
 
