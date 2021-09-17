@@ -36,7 +36,6 @@ function calcSalaryVacation(): number {
   } else {
     return 0;
   }
-  //   return Math.round((inputSalaryElValue / 30) * inputVacationElValue);
 }
 
 function calcSalaryWeek(): number {
@@ -59,9 +58,9 @@ function calcSalaryMinute(): string {
   return (inputSalaryElValue / 720 / 60).toFixed(2);
 }
 // эту функцию каждую секунду
-function calcSalaryRn(): string {
+function calcSalaryRn(): number {
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
-  return (inputSalaryElValue / 720 / 60 / 60).toFixed(2);
+  return inputSalaryElValue / 720 / 60 / 60;
 }
 
 function printResults(): void {
@@ -95,14 +94,15 @@ buttonEl.addEventListener("click", () => {
   printResults();
 });
 
+let rn: number = 1;
 setInterval(function () {
   printResults();
   const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
   let select = selectEl.value;
   if (inputSalaryElValue) {
-    salaryRnEl.innerHTML = calcSalaryRn() + calcSalaryRn() + " " + select;
+    salaryRnEl.innerHTML = (calcSalaryRn() * rn).toFixed(6) + " " + select;
+    rn++;
   } else {
     salaryRnEl.innerHTML = " 0 " + select;
   }
-  //   salaryRnEl.innerHTML = calcSalaryRn() + calcSalaryRn() + " " + select;
 }, 1000);
