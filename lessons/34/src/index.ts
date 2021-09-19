@@ -28,10 +28,7 @@ const salaryPerHour = document.getElementById('salary__hour');
 const salaryPerMinut = document.getElementById('salary__minut');
 const salaryNow = document.getElementById('salary__second');
 
-//console.log(currencyValues);
-
 // choose currency
-
 enum Currencies {
   BYN = 'BYN',
   RUB = '₽',
