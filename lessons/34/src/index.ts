@@ -77,16 +77,6 @@ const calcSalary = () => {
       60;
     salaryPerMinut.textContent = result.toFixed(2);
   }
-  if (salaryNow) {
-    let resultPerSecond: number = 0;
-    let sumSalaryPerSecond: number = 0;
-    //update per second
-    setInterval(() => {
-      resultPerSecond = parseFloat(inputSalary.value) / 30 / 24 / 60 / 60;
-      sumSalaryPerSecond += resultPerSecond;
-      salaryNow.textContent = sumSalaryPerSecond.toFixed(2);
-    }, 1000);
-  }
   if (salaryPerVacation) {
     result =
       (parseFloat(inputSalary.value) / 4 / parseFloat(selectDays.value)) *
@@ -103,5 +93,20 @@ for (let element of allSelectEls as any) {
   element.addEventListener('change', calcSalary);
 }
 
+// salary per second
+const calcSalaryPerSecond = () => {
+  let resultPerSecond: number = 0;
+  let sumSalaryPerSecond: number = 0;
+  //update per second
+  setInterval(() => {
+    resultPerSecond = parseFloat(inputSalary.value) / 30 / 24 / 60 / 60;
+    sumSalaryPerSecond += resultPerSecond;
+    salaryNow.textContent = sumSalaryPerSecond.toFixed(2);
+  }, 1000);
+};
+
+inputSalary.addEventListener('change', calcSalary);
+
 // show fields after page reload
 document.addEventListener('DOMContentLoaded', calcSalary);
+document.addEventListener('DOMContentLoaded', calcSalaryPerSecond);
