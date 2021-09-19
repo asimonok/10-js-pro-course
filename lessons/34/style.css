@@ -15,9 +15,7 @@ body {
   line-height: 1.5rem;
   padding: 1rem 2rem;
 }
-.currency,
-.days,
-.hours {
+.select {
   border: none;
   color: #4c4edd;
   font-size: 1rem;
@@ -32,8 +30,7 @@ body {
   font-weight: 600;
   margin-bottom: 1rem;
 }
-.content__salary_input,
-.content__vacation_input {
+.input {
   border: 1px solid #e8e9ec;
   color: #6d7688;
   font-family: 'Open Sans', sans-serif;

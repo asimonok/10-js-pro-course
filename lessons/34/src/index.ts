@@ -18,15 +18,15 @@ const selectHours = document.getElementById(
 const allSelectEls = document.querySelectorAll('.select');
 
 //output values
-const currencyValues: NodeListOf<Element> =
-  document.querySelectorAll('.currency-value');
-const salaryPerYearValue = document.getElementById('salary__year');
-const salaryPerVacationValue = document.getElementById('salary__vacation');
-const salaryPerWeekValue = document.getElementById('salary__week');
-const salaryPerDayValue = document.getElementById('salary__day');
-const salaryPerHourValue = document.getElementById('salary__hour');
-const salaryPerMinutValue = document.getElementById('salary__minut');
-const salaryPerSecondValue = document.getElementById('salary__second');
+const currencyEls: NodeListOf<Element> =
+  document.querySelectorAll('.currency-element');
+const salaryPerYear = document.getElementById('salary__year');
+const salaryPerVacation = document.getElementById('salary__vacation');
+const salaryPerWeek = document.getElementById('salary__week');
+const salaryPerDay = document.getElementById('salary__day');
+const salaryPerHour = document.getElementById('salary__hour');
+const salaryPerMinut = document.getElementById('salary__minut');
+const salaryNow = document.getElementById('salary__second');
 
 //console.log(currencyValues);
 
@@ -41,7 +41,7 @@ enum Currencies {
 
 const updateCurrency = () => {
   const currency: string = selectCurrency.value;
-  for (let item of currencyValues as any) {
+  for (let item of currencyEls as any) {
     item.textContent = currency;
   }
 };
@@ -51,59 +51,50 @@ selectCurrency.addEventListener('change', updateCurrency);
 //calculate salary
 const calcSalary = () => {
   let result: number = 0;
-  if (salaryPerYearValue) {
-    result = (parseFloat(inputSalary.value) || 50000) * 12;
-    salaryPerYearValue.textContent = result.toString();
+  if (salaryPerYear) {
+    result = parseFloat(inputSalary.value) * 12;
+    salaryPerYear.textContent = result.toString();
   }
-  if (salaryPerWeekValue) {
-    result = Math.round((parseFloat(inputSalary.value) || 50000) / 4);
-    salaryPerWeekValue.textContent = result.toString();
+  if (salaryPerWeek) {
+    result = parseFloat(inputSalary.value) / 4;
+    salaryPerWeek.textContent = result.toFixed(2);
   }
-  if (salaryPerDayValue) {
-    result = Math.round(
-      (parseFloat(inputSalary.value) || 50000) /
-        4 /
-        parseFloat(selectDays.value)
-    );
-    salaryPerDayValue.textContent = result.toString();
+  if (salaryPerDay) {
+    result = parseFloat(inputSalary.value) / 4 / parseFloat(selectDays.value);
+    salaryPerDay.textContent = result.toFixed(2);
   }
-  if (salaryPerHourValue) {
-    result = Math.round(
-      (parseFloat(inputSalary.value) || 50000) /
-        4 /
-        parseFloat(selectDays.value) /
-        parseFloat(selectHours.value)
-    );
-    salaryPerHourValue.textContent = result.toString();
-  }
-  if (salaryPerMinutValue) {
-    result = Math.round(
-      (parseFloat(inputSalary.value) || 50000) /
-        4 /
-        parseFloat(selectDays.value) /
-        parseFloat(selectHours.value) /
-        60
-    );
-    salaryPerMinutValue.textContent = result.toString();
-  }
-  if (salaryPerSecondValue) {
-    result = Math.round(
-      (parseFloat(inputSalary.value) || 50000) /
-        4 /
-        parseFloat(selectDays.value) /
-        parseFloat(selectHours.value) /
-        60 /
-        60
-    );
-    salaryPerSecondValue.textContent = result.toString();
-  }
-  if (salaryPerVacationValue) {
+  if (salaryPerHour) {
     result =
-      ((parseFloat(inputSalary.value) || 50000) /
-        4 /
-        parseFloat(selectDays.value)) *
-      (parseFloat(inputVacation.value) || 28);
-    salaryPerVacationValue.textContent = result.toString();
+      parseFloat(inputSalary.value) /
+      4 /
+      parseFloat(selectDays.value) /
+      parseFloat(selectHours.value);
+    salaryPerHour.textContent = result.toFixed(2);
+  }
+  if (salaryPerMinut) {
+    result =
+      parseFloat(inputSalary.value) /
+      4 /
+      parseFloat(selectDays.value) /
+      parseFloat(selectHours.value) /
+      60;
+    salaryPerMinut.textContent = result.toFixed(2);
+  }
+  if (salaryNow) {
+    let resultPerSecond: number = 0;
+    let sumSalaryPerSecond: number = 0;
+    //update per second
+    setInterval(() => {
+      resultPerSecond = parseFloat(inputSalary.value) / 30 / 24 / 60 / 60;
+      sumSalaryPerSecond += resultPerSecond;
+      salaryNow.textContent = sumSalaryPerSecond.toFixed(2);
+    }, 1000);
+  }
+  if (salaryPerVacation) {
+    result =
+      (parseFloat(inputSalary.value) / 4 / parseFloat(selectDays.value)) *
+      parseFloat(inputVacation.value);
+    salaryPerVacation.textContent = result.toString();
   }
 };
 
@@ -117,5 +108,3 @@ for (let element of allSelectEls as any) {
 
 // show fields after page reload
 document.addEventListener('DOMContentLoaded', calcSalary);
-
-// update salary per second
