@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+section {
+  width: 100%;
+  padding: 30px 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.title {
+  margin-bottom: 35px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.salary-stopwatch {
+  padding: 35px 30px 25px;
+  width: 100%;
+  border: 1px solid rgb(197, 195, 195);
+}
+
+.text {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.text-bold {
+  margin-right: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+select {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  border: none;
+  color: rgb(90, 90, 206);
+  cursor: pointer;
+}
+
+input {
+  margin-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(105, 101, 101);
+  border: 1px solid rgb(197, 195, 195);
+}
+
+.currency-result {
+  margin-left: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.salary {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.salary-text {
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.vacation-text {
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.workweek {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.calculation {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+i {
+  margin-right: 10px;
+}
+
+.sub-title {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.calculation-results_box {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.salary-result_year {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.salary-result_vacation {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.salary-result_week {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.salary-result_day {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.salary-result_hour {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.salary-result_minute {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
+
+.salary-result_now {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(53, 52, 52);
+}
