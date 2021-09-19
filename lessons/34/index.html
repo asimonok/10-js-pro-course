@@ -21,66 +21,79 @@
     <div class="content">
       <p>
         Валюта, в которой вы получаете зарплату
-        <select class="currency">
-          <option>руб.</option>
-          <option>$</option>
-          <option>€</option>
-          <option>грн.</option>
+        <select class="select" id="select__currency">
+          <option value="BYN">BYN</option>
+          <option value="₽">₽</option>
+          <option value="$">$</option>
+          <option value="€">€</option>
         </select>
       </p>
       <div class="content__salary">
         <label for="salary" class="content__salary_title"
           >Зарплата в месяц</label
         >
-        <input type="number" name="salary" class="content__salary_input" />
-        <span>руб.</span>
+        <input
+          type="number"
+          name="salary"
+          class="input"
+          id="input__salary"
+          placeholder="50000"
+        />
+        <span class="currency-value"></span>
       </div>
       <div class="content__vacation">
         <label for="vacation" class="content__vacation_title"
           >Оплачиваемый отпуск</label
         >
-        <input type="number" name="salary" class="content__vacation_input" />
+        <input
+          type="number"
+          name="vacation"
+          class="input"
+          id="input__vacation"
+          placeholder="28"
+        />
         <span>дней</span>
       </div>
       <p>
         Рабочая неделя
-        <select class="days">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
+        <select class="select" id="select__days">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
         </select>
         <span>дней</span>
         по
-        <select class="hours">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-          <option>16</option>
-          <option>17</option>
-          <option>18</option>
-          <option>19</option>
-          <option>20</option>
-          <option>21</option>
-          <option>22</option>
-          <option>23</option>
-          <option>24</option>
+        <select class="select" id="select__hours">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
         </select>
+        <span>часов</span>
       </p>
       <div class="content__calc">
         <h2 class="content__calc_title">
@@ -88,25 +101,32 @@
         </h2>
         <ul class="content__calc_result-list">
           <li class="content__calc_result-item">
-            В год я зарабатываю: <span></span>
+            В год я зарабатываю: <span id="salary__year"></span
+            ><span class="currency-value">BYN</span>
           </li>
           <li class="content__calc_result-item">
-            В отпуске я зарабатываю: <span></span>
+            В отпуске я зарабатываю: <span id="salary__vacation"></span
+            ><span class="currency-value">BYN</span>
           </li>
           <li class="content__calc_result-item">
-            В неделю я зарабатываю: <span></span>
+            В неделю я зарабатываю: <span id="salary__week"></span
+            ><span class="currency-value">BYN</span>
           </li>
           <li class="content__calc_result-item">
-            В день я зарабатываю: <span></span>
+            В день я зарабатываю: <span id="salary__day"></span
+            ><span class="currency-value">BYN</span>
           </li>
           <li class="content__calc_result-item">
-            В час я зарабатываю: <span></span>
+            В час я зарабатываю: <span id="salary__hour"></span
+            ><span class="currency-value">BYN</span>
           </li>
           <li class="content__calc_result-item">
-            В минуту я зарабатываю: <span></span>
+            В минуту я зарабатываю: <span id="salary__minut"></span
+            ><span class="currency-value">BYN</span>
           </li>
           <li class="content__calc_result-item">
-            Прямо сейчас я заработала: <span></span>
+            Прямо сейчас я заработала: <span id="salary__second"></span
+            ><span class="currency-value">BYN</span>
           </li>
         </ul>
       </div>
