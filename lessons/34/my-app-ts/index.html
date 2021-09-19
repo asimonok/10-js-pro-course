@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Salary stopwatch</title>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Секундомер зарплаты</h1>
+        <div class="salary-stopwatch">
+          <div class="currency">
+            <span class="text">Валюта, в которой вы получаете зарплату</span>
+            <select class="currency-select">
+              <option selected value="rub">руб.</option>
+              <option value="dollar">$</option>
+              <option value="euro">€</option>
+              <option value="grn">грн.</option>
+            </select>
+          </div>
+
+          <div class="salary-box">
+            <div class="salary-text">
+              <span class="text-bold">Зарплата в месяц</span>
+            </div>
+            <div class="salary">
+              <input type="number" name="salary-input" value="50000" />
+              <div class="currency-result"></div>
+            </div>
+          </div>
+
+          <div class="vacation">
+            <div class="vacation-text">
+              <span class="text-bold">Оплачиваемый отпуск</span>
+            </div>
+            <input type="number" name="vacation-input" value="28" />
+            <span class="text">дней</span>
+          </div>
+
+          <div class="workweek">
+            <span class="text">Рабочая неделя</span>
+            <select class="workweek-select_days">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option selected value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+            <span class="text">дней по</span>
+            <select class="workweek-select_hours">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option selected value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+            </select>
+            <span class="text">часов</span>
+          </div>
+
+          <div class="calculation">
+            <i class="fas fa-envelope-open-text"></i>
+            <h2 class="sub-title">Результаты расчёта</h2>
+          </div>
+
+          <div class="calculation-results_row">
+            <div class="calculation-results_box">
+              <span class="text-bold">В год я зарабатываю:</span>
+              <div class="salary-result_year">0</div>
+              <div class="currency-result"></div>
+            </div>
+
+            <div class="calculation-results_box">
+              <span class="text-bold">В отпуске я зарабатываю:</span>
+              <div class="salary-result_vacation">0</div>
+              <div class="currency-result"></div>
+            </div>
+
+            <div class="calculation-results_box">
+              <span class="text-bold">В неделю я зарабатываю:</span>
+              <div class="salary-result_week">0</div>
+              <div class="currency-result"></div>
+            </div>
+
+            <div class="calculation-results_box">
+              <span class="text-bold">В день я зарабатываю:</span>
+              <div class="salary-result_day">0</div>
+              <div class="currency-result"></div>
+            </div>
+
+            <div class="calculation-results_box">
+              <span class="text-bold">В час я зарабатываю:</span>
+              <div class="salary-result_hour">0</div>
+              <div class="currency-result"></div>
+            </div>
+
+            <div class="calculation-results_box">
+              <span class="text-bold">В минуту я зарабатываю:</span>
+              <div class="salary-result_minute">0</div>
+              <div class="currency-result"></div>
+            </div>
+
+            <div class="calculation-results_box">
+              <span class="text-bold">Прямо сейчас я заработал:</span>
+              <div class="salary-result_now">0</div>
+              <div class="currency-result"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="./index.js" defer></script>
+  </body>
+</html>
