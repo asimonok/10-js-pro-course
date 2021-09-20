@@ -53,19 +53,19 @@ const calculate = (): void => {
   }
   if (currencyResultVacationEl) {
     result = (salaryInputValue / 29.7) * vacationInputValue;
-    currencyResultVacationEl.textContent = result.toFixed(2);
+    currencyResultVacationEl.textContent = result.toFixed(0);
   }
   if (currencyResultWeekEl) {
     result = salaryInputValue / 4;
-    currencyResultWeekEl.textContent = result.toFixed(2);
+    currencyResultWeekEl.textContent = result.toFixed(0);
   }
   if (currencyResultDayEl) {
     result = salaryInputValue / 4 / selectDaysValue;
-    currencyResultDayEl.textContent = result.toFixed(2);
+    currencyResultDayEl.textContent = result.toFixed(0);
   }
   if (currencyResultHourEl) {
     result = salaryInputValue / 4 / selectDaysValue / selectHoursValue;
-    currencyResultHourEl.textContent = result.toFixed(2);
+    currencyResultHourEl.textContent = result.toFixed(0);
   }
   if (currencyResultMinuteEl) {
     result = salaryInputValue / 4 / selectDaysValue / selectHoursValue / 60;
