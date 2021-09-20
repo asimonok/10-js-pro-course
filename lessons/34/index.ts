@@ -48,7 +48,7 @@ const countSum = (period: string): number => {
         return Math.round( dayEarned );
     }
     if(period === 'hour') {
-        return Math.round( hourEarned );
+        return +( hourEarned ).toFixed(2);
     }
     if(period === 'minute') {
         return +( hourEarned / 60 ).toFixed(2);
@@ -65,7 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // update rusults when started data was changed
 document
-    .querySelectorAll('[data-start]')
+    .querySelectorAll('.start')
     .forEach(elem => elem.addEventListener('input', () => {
         resultSumEl.forEach(elem => elem.textContent = countSum(elem.id).toString());
-    } ))
+    } ));
+    
+// update poin "now" every second
+    let nowUp = +countSum('now');
+    setInterval( () => {
+        nowUp += +countSum('now');
+        nowSumEl.textContent = nowUp.toFixed(3);
+    }, 1000 );
