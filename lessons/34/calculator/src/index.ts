@@ -2,8 +2,7 @@ const inputSalaryEl = document.querySelector(".input-salary");
 const inputVacationEl = document.querySelector(".input-vacation");
 
 const selectEl = document.getElementById("currency") as HTMLSelectElement;
-// const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
-// const inputVacationElValue: number = parseFloat((inputVacationEl as HTMLInputElement).value);
+const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
 
 const workDaysEl = document.getElementById("work-days") as HTMLSelectElement;
 const workHours = document.getElementById("work-hours") as HTMLSelectElement;
@@ -82,17 +81,6 @@ function printResults(): void {
     salaryMinuteEl.innerHTML = " 0 " + select;
   }
 }
-
-//test button
-const buttonEl = document.querySelector(".button");
-buttonEl.addEventListener("click", () => {
-  const inputVacationElValue: number = parseFloat((inputVacationEl as HTMLInputElement).value);
-  const inputSalaryElValue: number = parseFloat((inputSalaryEl as HTMLInputElement).value);
-  console.log(inputSalaryElValue);
-  console.log(inputSalaryEl);
-  console.log(inputVacationElValue);
-  printResults();
-});
 
 let rn: number = 1;
 setInterval(function () {
