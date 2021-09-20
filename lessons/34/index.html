@@ -11,31 +11,70 @@
     <section class="calculator">
         <h1 class="calculator-title">Секундомер зарплаты</h1>
         <div class="calculator-content">
-            <p class="calculator-content__currency">Валюта, в которой вы получаете зарплату <span></span></p>
+            <div class="item">
+                <label for="currency">Валюта, в которой вы получаете зарплату</label>
+                <select name="" id="currency">
+                    <option value="rubl"><span class="current-carrency">руб.</span></option>
+                    <option value="euro">&#8364;</option>
+                    <option value="dollar">&#36;</option>
+                    <option value="pound">&#163;</option>
+                </select>
+            </div>
             <div class="calculator-content__salary">
                 <label for="">Зарплата в месяц</label>
-                <input type="number" value="5000">
+                <input class="salary-sum" type="number" value="5000">
                 <span></span>
             </div>
             <div class="calculator-content__salary">
                 <label for="">Оплачиваемый отпуск</label>
                 <input type="number" value="28">
                 <span>дней</span>
-                <p class="week">Рабочая неделя <span></span> дней по <span></span> часов</p>
             </div>
+            <div class="item">
+                <label for="working-week">Рабочая неделя</label>
+                <select name="" id="working-week" data-count="count">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <label for="working-time">дней по</label>
+                <select name="" id="working-time" data-count="count">
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8" selected>8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                </select>
+                часов
+            </div> 
             <div class="results">
-                <h2 class="results-title">Результаты расчета</h2>
+                <h2 class="results-title"> 	&#128233; Результаты расчета</h2>
                 <ul class="results__list">
-                    <li class="results__list-item">В год я зарабатываю:</li>
-                    <li class="results__list-item">В отпуске я зарабатываю:</li>
-                    <li class="results__list-item">В неделю я зарабатываю:</li>
-                    <li class="results__list-item">В день я зарабатываю:</li>
-                    <li class="results__list-item">В час я зарабатываю:</li>
-                    <li class="results__list-item">В минуту я зарабатываю:</li>
-                    <li class="results__list-item">Прямо сейчас я зарабатал:</li>
+                    <li class="results__list-item">В год я зарабатываю: <span class="result-sum" id="year">0</span> <span class="current-carrency">руб.</span></li>
+                    <li class="results__list-item">В отпуске я зарабатываю: <span class="result-sum" id="vacation">0</span> <span class="current-carrency">руб.</span></li>
+                    <li class="results__list-item">В неделю я зарабатываю: <span class="result-sum" id="week">0</span> <span class="current-carrency">руб.</span></li>
+                    <li class="results__list-item">В день я зарабатываю: <span class="result-sum" id="day">0</span> <span class="current-carrency">руб.</span></li>
+                    <li class="results__list-item">В час я зарабатываю: <span class="result-sum" id="hour">0</span> <span class="current-carrency">руб.</span>  </li>
+                    <li class="results__list-item">В минуту я зарабатываю: <span class="result-sum" id="minute">0</span> <span class="current-carrency">руб.</span> </li>
+                    <li class="results__list-item">Прямо сейчас я зарабатал: <span class="result-sum" id="now">0</span> <span class="current-carrency">руб.</span> </li>
                 </ul>
             </div>    
         </div>
     </section>
+
+    <script src="index.js"></script>
 </body>
 </html>

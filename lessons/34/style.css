@@ -5,6 +5,9 @@
     list-style: none;
 
 }
+.item{
+    margin-bottom: 30px;
+}
 .calculator{
     padding: 30px 20px;
 }
