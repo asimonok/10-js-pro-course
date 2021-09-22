@@ -1,0 +1,70 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  list-style: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.calc {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.calc__salary {
+  margin-bottom: 10px;
+}
+
+html {
+  display: table;
+  margin: auto;
+  color: #1a2b49;
+}
+
+body {
+  vertical-align: middle;
+  min-width: 320px;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.input-salary {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+.input-salary:focus {
+  outline: none;
+}
+
+.input-vacation {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+.input-vacation:focus {
+  outline: none;
+}
+
+select {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+input:focus {
+  border: 1px whitesmoke #555;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}

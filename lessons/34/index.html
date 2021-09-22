@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <title>Секундомер зарплаты</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+
+  <body>
+    <main class="calc">
+      <h1 class="calc__title">Секундомер зарплаты</h1>
+      <div class="calc__content">
+        <div class="calc__currency">
+          <label class="calc__currency-descr" for="currency">
+            Валюта, в которой вы получаете зарплату
+            <select name="" id="currency" class="select">
+              <option value="₽">₽</option>
+              <option value="$">$</option>
+              <option value="€">€</option>
+              <option value="₴">₴</option>
+            </select>
+          </label>
+        </div>
+        <div class="calc__salary salary-month">
+          <label for="">Зарплата в месяц</label>
+          <input class="input-salary" type="number" value="5000" />
+          <span></span>
+        </div>
+        <div class="calc__salary salary-vacation">
+          <label for="">Оплачиваемый отпуск</label>
+          <input class="input-vacation" type="number" value="28" />
+          <span>дней</span>
+        </div>
+        <div class="calc__worktime">
+          <label for="workweek">Рабочая неделя</label>
+          <select name="" id="workweek" class="workweek select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5" selected>5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+          <label for="work-time">дней по</label>
+          <select name="" id="work-time" class="work-time select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8" selected>8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+          </select>
+          <span>часов</span>
+        </div>
+        <div class="calc__result">
+          <div class="calc__result-title">
+            <h2>Результаты расчёта</h2>
+          </div>
+          <div class="calc__result-list">
+            <ul class="result-list">
+              <li class="result-list__item">
+                В год я зарабатываю: 
+                <span class="year-salary" id="year-salary"></span>
+              </li>
+              <li class="result-list__item">
+                В отпуске я зарабатываю: 
+                <span class="vacation-salary" id="vacation-salary"></span>
+              </li>
+              <li class="result-list__item">
+                В неделю я зарабатываю: 
+                <span class="week-salary" id="week-salary"></span>
+              </li>
+              <li class="result-list__item">
+                В день я зарабатываю: 
+                <span class="day-salary" id="day-salary"></span>
+              </li>
+              <li class="result-list__item">
+                В час я зарабатываю: 
+                <span class="hour-salary" id="hour-salary"></span>
+              </li>
+              <li class="result-list__item">
+                В минуту я зарабатываю: 
+                <span class="minute-salary" id="minute-salary"></span>
+              </li>
+              <li class="result-list__item">
+                Прямо сейчас я заработал: 
+                <span class="rn-salary" id="rn-salary"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <script src="index.js"></script>
+  </body>
+</html>
