@@ -79,8 +79,8 @@ const Header = ({ siteName }: State) =>
   createComponent(`
   <header class="header">
     <span class="logo">${siteName}</span>
-    <a data-href="/index" onClick="onNavigateToPage(event)">Home</a>
-    <a data-href="/contacts">Contacts</a>
+    <button data-href="/index" onClick="onNavigateToPage(event)">Home</button>
+    <button data-href="/contacts" onClick="onNavigateToPage(event)">Contacts</button>
   </header>
 `);
 
@@ -102,3 +102,20 @@ const Main = (params: State) =>
     <img src="cat.jpeg" />
   </main>
 `);
+
+const render = (rootElement: HTMLElement, model: State): void => {
+  rootElement.innerHTML = "";
+
+  rootElement.appendChild(Header(model));
+  rootElement.appendChild(Main(model));
+};
+
+render(document.querySelector("#app") as HTMLBodyElement, model.state);
+
+// window.addEventListener("popstate", event) => {
+//     model.update({pathname: window.location.pathname});
+// };
+
+const unsubscribe = model.subscribe((state) => {
+  render(document.querySelector("#app") as HTMLBodyElement, state);
+});
