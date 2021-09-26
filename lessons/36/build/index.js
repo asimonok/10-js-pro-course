@@ -38,8 +38,8 @@ window.onNavigateToPage = onNavigateToPage;
 const Header = (params) => createComponent(`
   <header class="header">
     <span class="logo">${params.siteName}</span>
-    <button data-href="/index" onClick="onNavigateToPage(event)">Home</button>
-    <button data-href="/contacts" onClick="onNavigateToPage(event)">Contacts</button>
+    <a data-href="/index" onClick="onNavigateToPage(event)">Home</a>
+    <a data-href="/contacts" onClick="onNavigateToPage(event)">Contacts</a>
   </header>
 `);
 const onChangeName = (event) => {
@@ -51,7 +51,7 @@ const onChangeName = (event) => {
 window.onChangeName = onChangeName;
 const Main = (params) => createComponent(`
   <main class="content">
-    <input class="site-name" placeholder="Site name" value="${params.siteName}" onchange="onChangeName(event)" />
+    <input class="site-name" placeholder="Site name" value="${params.siteName}" onChange="onChangeName(event)" />
     <h1>My app</h1>
     <p>Some text</p>
     <img src="cat.jpeg" />

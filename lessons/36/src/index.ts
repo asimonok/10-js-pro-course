@@ -20,7 +20,6 @@
 
 interface State {
   siteName: string;
-  //   pathname: string;
 }
 
 declare interface Window {
@@ -58,7 +57,6 @@ class Model {
 
 const model = new Model({
   siteName: "",
-  //   pathname: window.location.pathname,
 });
 
 const createComponent = (stringHtml: string): ChildNode => {
@@ -70,13 +68,11 @@ const createComponent = (stringHtml: string): ChildNode => {
 
 const onNavigateToPage = (event: Event) => {
   if (event.target) {
-    const dataset = (event.target as HTMLButtonElement).dataset as {
+    const dataset = (event.target as HTMLElement).dataset as {
       href: string;
     };
     window.history.pushState(null, dataset.href, dataset.href);
     console.log(dataset);
-
-    //     model.update({ pathname: window.location.pathname });
   }
 };
 
@@ -86,8 +82,8 @@ const Header = (params: State) =>
   createComponent(`
   <header class="header">
     <span class="logo">${params.siteName}</span>
-    <button data-href="/index" onClick="onNavigateToPage(event)">Home</button>
-    <button data-href="/contacts" onClick="onNavigateToPage(event)">Contacts</button>
+    <a data-href="/index" onClick="onNavigateToPage(event)">Home</a>
+    <a data-href="/contacts" onClick="onNavigateToPage(event)">Contacts</a>
   </header>
 `);
 
@@ -103,7 +99,7 @@ window.onChangeName = onChangeName;
 const Main = (params: State) =>
   createComponent(`
   <main class="content">
-    <input class="site-name" placeholder="Site name" value="${params.siteName}" onchange="onChangeName(event)" />
+    <input class="site-name" placeholder="Site name" value="${params.siteName}" onChange="onChangeName(event)" />
     <h1>My app</h1>
     <p>Some text</p>
     <img src="cat.jpeg" />
@@ -120,12 +116,8 @@ const render = (rootElement: HTMLElement, model: State): void => {
 render(document.querySelector("#app") as HTMLBodyElement, model.state);
 
 window.addEventListener("popstate", (event) => {
-  //   model.update({ pathname: window.location.pathname });
   console.log("change history", document.location.pathname);
 });
-
-// window.history.pushState(null, 'index', '/index');
-// window.history.pushState(null, 'contacts', '/contacts');
 
 const unsubscribe = model.subscribe((state) => {
   render(document.querySelector("#app") as HTMLBodyElement, state);
