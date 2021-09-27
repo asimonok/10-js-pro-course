@@ -1,9 +1,11 @@
 interface State {
   siteName: string;
+  pathName: string;
 }
 
 declare interface Window {
   onChangeName: (event: Event) => void;
+  onNavigateToPage: (event: Event) => void;
 }
 
 class Model {
@@ -34,7 +36,7 @@ class Model {
   }
 }
 
-const model = new Model({ siteName: "App" });
+const model = new Model({ siteName: "App", pathName: window.location.pathname });
 
 // function for creating html components
 const createComponent = (stringHtml: string): ChildNode => {
@@ -42,14 +44,34 @@ const createComponent = (stringHtml: string): ChildNode => {
   return bodyElement.firstChild as ChildNode;
 };
 
+const onNavigateToPage = (event: Event) => {
+  if (event.target) {
+    const dataset = (event.target as HTMLButtonElement).dataset as { href: string };
+    window.history.pushState(null, dataset.href, dataset.href);
+    model.update({ pathName: window.location.pathname });
+  }
+};
+
+window.onNavigateToPage = onNavigateToPage;
+
 // create header component
 const header = ({ siteName }: State) =>
   createComponent(`
     <header class="header">
         <span class="logo">${siteName}</span>
-        <a href="/build/index.html">Home</a>
-        <a href="/contacts">Contacts</a>
+        <a href="/home" onclick="onNavigateToPage(event)">Home</a>
+        <a href="/contacts" onclick="onNavigateToPage(event)">Contacts</a>
     </header>
+`);
+
+const Contacts = (params: State) =>
+  createComponent(`
+    <h1> Contacts </h1>
+`);
+
+const Home = (params: State) =>
+  createComponent(`
+    <h1> Home </h1>
 `);
 
 // const model: State = {
@@ -60,7 +82,7 @@ const header = ({ siteName }: State) =>
 const main = ({ siteName }: State) =>
   createComponent(`
     <main class="content">
-        <input class="site-name" placeholder="Site name" onchange="onChangeName(event)" />
+        <input value="${siteName}" placeholder="Site name" onchange="onChangeName(event)" />
         <h1>${siteName}</h1>
         <p>Some text</p>
         <img src="cat.jpeg" />
@@ -83,6 +105,12 @@ const render = (rootElement: HTMLElement, model: State): void => {
 
   rootElement.appendChild(header(model));
   rootElement.appendChild(main(model));
+  if (model.pathName === "/home") {
+    rootElement.appendChild(Home(model));
+  }
+  if (model.pathName === "/contacts") {
+    rootElement.appendChild(Contacts(model));
+  }
 };
 
 // call reander fun on app div
@@ -102,3 +130,10 @@ const subscribeRender = model.subscribe((state) => {
 //     }
 //   });
 // }
+
+window.addEventListener("popstate", (event: PopStateEvent) => {
+  model.update({ pathName: window.location.pathname });
+});
+
+// window.history.pushState(null, "Page 1", "/page1");
+// window.history.pushState(null, "Page 2", "/page2");
