@@ -5,7 +5,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "esModuleInterop": true,
-    "outFile": "build/index.js",
+    "outFile": "index.js",
     "sourceMap": false,
     "strict": true,
     "lib": ["dom", "es6"]
