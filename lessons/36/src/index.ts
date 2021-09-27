@@ -1,13 +1,16 @@
+// create state
 interface State {
   siteName: string;
   pathName: string;
 }
 
+// declare new functions for window
 declare interface Window {
   onChangeName: (event: Event) => void;
   onNavigateToPage: (event: Event) => void;
 }
 
+// main model
 class Model {
   state: State;
   subscribers: Array<(state: State) => void>;
@@ -36,6 +39,7 @@ class Model {
   }
 }
 
+// use class Model and create model
 const model = new Model({ siteName: "App", pathName: window.location.pathname });
 
 // function for creating html components
@@ -44,6 +48,7 @@ const createComponent = (stringHtml: string): ChildNode => {
   return bodyElement.firstChild as ChildNode;
 };
 
+// navigation through links
 const onNavigateToPage = (event: Event) => {
   if (event.target) {
     const dataset = (event.target as HTMLButtonElement).dataset as { href: string };
@@ -64,19 +69,17 @@ const header = ({ siteName }: State) =>
     </header>
 `);
 
+// create contacts component
 const Contacts = (params: State) =>
   createComponent(`
     <h1> Contacts </h1>
 `);
 
+// create Home component
 const Home = (params: State) =>
   createComponent(`
     <h1> Home </h1>
 `);
-
-// const model: State = {
-//   siteName: "App",
-// };
 
 // create main component
 const main = ({ siteName }: State) =>
@@ -89,11 +92,11 @@ const main = ({ siteName }: State) =>
     </main>
 `);
 
+// function for input as changed
 const onChangeName = (event: Event) => {
   if (event.target) {
     const value = (event.target as HTMLInputElement).value;
     model.update({ siteName: value });
-    console.log(model.state);
   }
 };
 
@@ -116,24 +119,12 @@ const render = (rootElement: HTMLElement, model: State): void => {
 // call reander fun on app div
 render(document.querySelector("#app") as HTMLBodyElement, model.state);
 
+// sub render for model change
 const subscribeRender = model.subscribe((state) => {
   render(document.querySelector("#app") as HTMLBodyElement, state);
 });
 
-// const siteNameElement = document.querySelector<HTMLInputElement>(".site-name");
-// const logoElement = document.querySelector(".logo");
-
-// if (siteNameElement) {
-//   siteNameElement.addEventListener("input", (event) => {
-//     if (event.target && logoElement) {
-//       logoElement.textContent = (event.target as HTMLInputElement).value;
-//     }
-//   });
-// }
-
+// update model when browser change history
 window.addEventListener("popstate", (event: PopStateEvent) => {
   model.update({ pathName: window.location.pathname });
 });
-
-// window.history.pushState(null, "Page 1", "/page1");
-// window.history.pushState(null, "Page 2", "/page2");
