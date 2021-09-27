@@ -20,6 +20,7 @@ class Model {
 }
 const model = new Model({
     siteName: "",
+    pathname: window.location.pathname,
 });
 const createComponent = (stringHtml) => {
     const bodyElement = new DOMParser()
@@ -31,7 +32,7 @@ const onNavigateToPage = (event) => {
     if (event.target) {
         const dataset = event.target.dataset;
         window.history.pushState(null, dataset.href, dataset.href);
-        console.log(dataset);
+        model.update({ pathname: window.location.pathname });
     }
 };
 window.onNavigateToPage = onNavigateToPage;
@@ -57,14 +58,29 @@ const Main = (params) => createComponent(`
     <img src="cat.jpeg" />
   </main>
 `);
+const Contacts = (params) => createComponent(`
+  <main class="contacts">
+    <h1>Contacts</h1>
+    <p>Some info about site</p>
+    <img src="cat-computer.jpeg" />
+  </main>
+  `);
 const render = (rootElement, model) => {
     rootElement.innerHTML = "";
     rootElement.appendChild(Header(model));
-    rootElement.appendChild(Main(model));
+    if (model.pathname === "/index") {
+        rootElement.appendChild(Main(model));
+    }
+    else if (model.pathname === "/contacts") {
+        rootElement.appendChild(Contacts(model));
+    }
+    else {
+        rootElement.appendChild(Main(model));
+    }
 };
 render(document.querySelector("#app"), model.state);
 window.addEventListener("popstate", (event) => {
-    console.log("change history", document.location.pathname);
+    model.update({ pathname: window.location.pathname });
 });
 const unsubscribe = model.subscribe((state) => {
     render(document.querySelector("#app"), state);

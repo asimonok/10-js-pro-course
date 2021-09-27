@@ -20,6 +20,7 @@
 
 interface State {
   siteName: string;
+  pathname: string;
 }
 
 declare interface Window {
@@ -57,6 +58,7 @@ class Model {
 
 const model = new Model({
   siteName: "",
+  pathname: window.location.pathname,
 });
 
 const createComponent = (stringHtml: string): ChildNode => {
@@ -72,7 +74,7 @@ const onNavigateToPage = (event: Event) => {
       href: string;
     };
     window.history.pushState(null, dataset.href, dataset.href);
-    console.log(dataset);
+    model.update({ pathname: window.location.pathname });
   }
 };
 
@@ -106,17 +108,33 @@ const Main = (params: State) =>
   </main>
 `);
 
+const Contacts = (params: State) =>
+  createComponent(`
+  <main class="contacts">
+    <h1>Contacts</h1>
+    <p>Some info about site</p>
+    <img src="cat-computer.jpeg" />
+  </main>
+  `);
+
 const render = (rootElement: HTMLElement, model: State): void => {
   rootElement.innerHTML = "";
 
   rootElement.appendChild(Header(model));
-  rootElement.appendChild(Main(model));
+
+  if (model.pathname === "/index") {
+    rootElement.appendChild(Main(model));
+  } else if (model.pathname === "/contacts") {
+    rootElement.appendChild(Contacts(model));
+  } else {
+    rootElement.appendChild(Main(model));
+  }
 };
 
 render(document.querySelector("#app") as HTMLBodyElement, model.state);
 
 window.addEventListener("popstate", (event) => {
-  console.log("change history", document.location.pathname);
+  model.update({ pathname: window.location.pathname });
 });
 
 const unsubscribe = model.subscribe((state) => {
