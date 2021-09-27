@@ -1,13 +1,13 @@
-const siteNameElement = document.querySelector<HTMLInputElement>('.site-name');
-const logoElement = document.querySelector('.logo');
+// const siteNameElement = document.querySelector<HTMLInputElement>('.site-name');
+// const logoElement = document.querySelector('.logo');
 
-if (siteNameElement) {
-  siteNameElement.addEventListener('input', (event) => {
-    if (event.target && logoElement) {
-      logoElement.textContent = (event.target as HTMLInputElement).value;
-    }
-  });
-}
+// if (siteNameElement) {
+//   siteNameElement.addEventListener('input', (event) => {
+//     if (event.target && logoElement) {
+//       logoElement.textContent = (event.target as HTMLInputElement).value;
+//     }
+//   });
+// }
 
 const createComponent = (stringHtml: string): ChildNode => {
   const bodyElement = new DOMParser()
