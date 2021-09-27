@@ -40,18 +40,26 @@ class Model {
 }
 
 // use class Model and create model
-const model = new Model({ siteName: "App", pathName: window.location.pathname });
+const model = new Model({
+  siteName: "App",
+  pathName: window.location.pathname,
+});
 
 // function for creating html components
 const createComponent = (stringHtml: string): ChildNode => {
-  const bodyElement = new DOMParser().parseFromString(stringHtml, "text/html").querySelector("body") as HTMLBodyElement;
+  const bodyElement = new DOMParser()
+    .parseFromString(stringHtml, "text/html")
+    .querySelector("body") as HTMLBodyElement;
   return bodyElement.firstChild as ChildNode;
 };
 
 // navigation through links
 const onNavigateToPage = (event: Event) => {
   if (event.target) {
-    const dataset = (event.target as HTMLButtonElement).dataset as { href: string };
+    event.preventDefault;
+    const dataset = (event.target as HTMLButtonElement).dataset as {
+      href: string;
+    };
     window.history.pushState(null, dataset.href, dataset.href);
     model.update({ pathName: window.location.pathname });
   }
@@ -64,21 +72,31 @@ const header = ({ siteName }: State) =>
   createComponent(`
     <header class="header">
         <span class="logo">${siteName}</span>
-        <a href="/home" onclick="onNavigateToPage(event)">Home</a>
-        <a href="/contacts" onclick="onNavigateToPage(event)">Contacts</a>
+        <a data-href="/home" onclick="onNavigateToPage(event)">Home</a>
+        <a data-href="/contacts" onclick="onNavigateToPage(event)">Contacts</a>
     </header>
 `);
 
 // create contacts component
 const Contacts = (params: State) =>
   createComponent(`
+   
+   
+    <div>
     <h1> Contacts </h1>
+    <img src="cat-computer.jpeg" />
+    </div>
 `);
 
 // create Home component
 const Home = (params: State) =>
   createComponent(`
-    <h1> Home </h1>
+  <div>
+  <h1> Home </h1>
+  <img src="cat.jpeg" />
+  </div>
+    
+
 `);
 
 // create main component
@@ -88,7 +106,6 @@ const main = ({ siteName }: State) =>
         <input value="${siteName}" placeholder="Site name" onchange="onChangeName(event)" />
         <h1>${siteName}</h1>
         <p>Some text</p>
-        <img src="cat.jpeg" />
     </main>
 `);
 

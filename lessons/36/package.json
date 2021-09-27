@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "tsc --watch",
-    "server":  "serve"
+    "server": "serve"
   },
   "keywords": [],
   "author": "",
