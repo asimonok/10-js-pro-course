@@ -1,12 +1,12 @@
 {
   "name": "36",
   "version": "1.0.0",
-  "description": "",
+  "description": "- Перепишите многостраничное приложение в одностраничное, используя MV* паттерны \r - HTML должен генерироваться с помощью Javascript\r - Используйте декларативный стиль описания шаблонов\r ```\r createComponent(`\r   <header>\r     Hello world\r   </header>\r `)\r ```\r - Используйте typescript\r - Переход между страницами должен быть без перезагрузки страницы и история переходов должна сохраняться в Browser history.\r - При обновлении страницы, пользователь должен видеть правильное состояние: `/index -> home view`, `/contacts -> contacts view`",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "start": "tsc --watch",
-    "server":  "serve"
+    "server": "serve"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,6 @@
   "devDependencies": {
     "serve": "^12.0.1",
     "typescript": "^4.4.3"
-  }
+  },
+  "dependencies": {}
 }
