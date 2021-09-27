@@ -70,6 +70,7 @@ interface State {
   window.onChangeName = changeName;
   
   const onNavigateToPage = (event: Event) => {
+    event.preventDefault();
     if (event.target) {
       const dataset = (event.target as HTMLButtonElement).dataset as {
         href: string;
@@ -100,7 +101,7 @@ interface State {
     </main>
   `);
   
-  const ContactsPage = (params: State) =>
+  const Contacts = (params: State) =>
     createComponent(`
     <main class="contacts">
       <h1>Contacts</h1>
@@ -116,7 +117,7 @@ interface State {
       rootElement.appendChild(Main(model));
     }
     if (model.pathname === '/contacts') {
-      rootElement.appendChild(ContactsPage(model));
+      rootElement.appendChild(Contacts(model));
     }
   };
   
