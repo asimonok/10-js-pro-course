@@ -1,13 +1,13 @@
-// const siteNameElement = document.querySelector<HTMLInputElement>('.site-name');
-// const logoElement = document.querySelector('.logo');
+const siteNameElement = document.querySelector<HTMLInputElement>('.site-name');
+const logoElement = document.querySelector('.logo');
 
-// if (siteNameElement) {
-//   siteNameElement.addEventListener('input', (event) => {
-//     if (event.target && logoElement) {
-//       logoElement.textContent = (event.target as HTMLInputElement).value;
-//     }
-//   });
-// }
+if (siteNameElement) {
+  siteNameElement.addEventListener('input', (event) => {
+    if (event.target && logoElement) {
+      logoElement.textContent = (event.target as HTMLInputElement).value;
+    }
+  });
+}
 
 const createComponent = (stringHtml: string): ChildNode => {
   const bodyElement = new DOMParser()
@@ -70,7 +70,7 @@ interface State {
   window.onChangeName = changeName;
   
   const onNavigateToPage = (event: Event) => {
-    event.preventDefault();
+  //  event.preventDefault();
     if (event.target) {
       const dataset = (event.target as HTMLButtonElement).dataset as {
         href: string;
