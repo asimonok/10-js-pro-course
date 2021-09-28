@@ -21,29 +21,32 @@ function App() {
   return (
     <div className="my-app">
       <Header />
-      <div className="App-content">
-        <div className="content__item left-item">
+      <div className="content">
+        <div className="content__item green-item">
           <CardTitle text="Save more with Goodplans." />
           <CardParagraph
             text="Choose a plan and get onboard in minutes. Then get $100 credits for
             your next payment."
           />
-          <div className="left-item__img">
-            <img src={img} alt={'woman'} className="img" />
-          </div>
+          <span className="arrow">&#8594;</span>
+          <img src={img} alt={'woman'} className="green-item__img" />
         </div>
-        <div className="content__item center-item">
-          <CardTitle text="Day Pass" />
-          <CardParagraph text="What You'll Get." />
-          <CardList items={listItems1} />
-          <CardParagraph text="$20/day" />
+        <div className="content__item">
+          <div>
+            <CardTitle text="Day Pass" />
+            <CardParagraph text="What You'll Get." />
+            <CardList items={listItems1} />
+            <CardParagraph text="$20/day" />
+          </div>
           <Button name="Day Pass" text="Choose" />
         </div>
-        <div className="content__item right-item">
-          <CardTitle text="Monthly Pass" />
-          <CardParagraph text="What You'll Get." />
-          <CardList items={listItems2} />
-          <CardParagraph text="$380/mounth" />
+        <div className="content__item">
+          <div>
+            <CardTitle text="Monthly Pass" />
+            <CardParagraph text="What You'll Get." />
+            <CardList items={listItems2} />
+            <CardParagraph text="$380/mounth" />
+          </div>
           <Button name="Monthly Pass" text="Choose" />
         </div>
       </div>

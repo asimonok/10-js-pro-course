@@ -1,24 +1,28 @@
-.App-content {
+.content {
   display: flex;
   justify-content: space-around;
 }
 
 .content__item {
   width: 25%;
-  padding: 20px 20px 0px;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.left-item {
+.green-item {
   background-color: #3f7441;
   color: #fff;
+  padding-bottom: 0;
 }
 
-.left-item__span {
-  font-weight: 400;
+.arrow {
+  cursor: pointer;
 }
 
-.img {
+.green-item__img {
   width: 100%;
 }

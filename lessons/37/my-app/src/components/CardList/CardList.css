@@ -1,0 +1,12 @@
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.list-icon {
+  width: 15px;
+  margin-right: 10px;
+}
