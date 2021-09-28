@@ -11,33 +11,43 @@ code {
 }
 .cards {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   border-radius: 8px;
 }
 .card-1 {
+  margin: 40px;
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 400px;
+  padding: 30px;
   /* height: 700px; */
   border-radius: 8px;
 }
 .card-2 {
+  margin: 40px;
   display: flex;
   flex-direction: column;
-  width: 350px;
+  justify-content: space-around;
+  width: 400px;
+  padding: 30px;
   /* height: 700px; */
-  background-color: wheat;
+  background-color: white;
   border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .card-3 {
+  margin: 40px;
   display: flex;
   flex-direction: column;
-
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding: 30px;
   /* justify-content: center; */
   /* align-content: space-around; */
-  width: 350px;
+  width: 400px;
   /* height: 700px; */
-  background-color: grey;
+  background-color: white;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
 }
 .button {
@@ -51,4 +61,22 @@ code {
 
 .text-color {
   color: rgba(175, 175, 175, 0.712);
+}
+.dotted {
+  border: 1px dotted black;
+  border-style: none none dotted;
+  color: #fff;
+  background-color: #fff;
+}
+h1 {
+  font-size: 2em;
+  margin-top: 0px;
+  /* color: #fff; */
+}
+h2 {
+  font-size: 1.5em;
+}
+header {
+  font-size: 3em;
+  text-align: center;
 }

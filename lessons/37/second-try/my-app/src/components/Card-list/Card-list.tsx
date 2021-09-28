@@ -1,15 +1,20 @@
 import React from "react";
 
 interface CardListProps {
-  list: [];
+  lists: any[];
 }
 
-export const CardList: React.FC<CardListProps> = (props) => {
+export const CardList: React.FC<CardListProps> = ({ lists }) => {
   return (
     <ul>
-      <li>
-        <i className="material-icons"></i>
-      </li>
+      {lists.map((list) => {
+        return (
+          <li>
+            <i className="material-icons ">check_circle</i>
+            <span> {list}</span>
+          </li>
+        );
+      })}
     </ul>
   );
 };
