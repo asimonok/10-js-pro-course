@@ -7,6 +7,7 @@ const CardList = () => {
         <ul>
             <CardListItem description="8 hours"/>
             <CardListItem description="10 hours"/>
+            <CardListItem description="10 hours"/>
         </ul>
     )
 }

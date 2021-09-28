@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import './Button.css';
+
 
 interface MyButton {
     label: string;
 }
 
 const Button = ({label}: MyButton) => {
+    
+    const handleClick = (event: MouseEvent) => {
+        let cardItemTitle = event.currentTarget.parentNode?.firstChild;
+
+        console.log('You choose: ', cardItemTitle?.textContent);
+    }
     return (
-        <button>{label}</button>
+        <button onClick={handleClick}>{label}</button>
     ) 
 }
 

@@ -1,10 +1,16 @@
-.item-icon {
-    width: 30px;
-    height: 30px;
-    /* background: url('../../img/check.svg'); */
-    background-color: yellow;
-    /* background-image: url('../../img/check.svg'); */
-}
+
 .item-text {
-    background-color: red;
+    position: relative;
+    padding-left: 30px;
+    text-align: left;
 }
+
+.item-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height:20px;
+    background: url('../../img/check.svg') center/cover no-repeat;
+}
+

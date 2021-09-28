@@ -1,5 +1,6 @@
 .card-item {
     width: 33%;
+    padding: 10px 15px;
     border-radius: 20px;
     box-shadow: 10px 5px 10px rgb(214, 211, 211);
 }
