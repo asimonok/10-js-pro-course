@@ -70,12 +70,10 @@ interface State {
   window.onChangeName = changeName;
   
   const onNavigateToPage = (event: Event) => {
-  //  event.preventDefault();
+    event.preventDefault();
     if (event.target) {
-      const dataset = (event.target as HTMLButtonElement).dataset as {
-        href: string;
-      };
-      window.history.pushState(null, dataset.href, dataset.href);
+      const href = (event.target as HTMLButtonElement).getAttribute('href') || '';
+      window.history.pushState(null, href, href);
       model.update({ pathname: window.location.pathname });
     }
   };
