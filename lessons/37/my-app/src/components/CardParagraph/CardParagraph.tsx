@@ -2,6 +2,7 @@ import './CardParagraph.css';
 
 interface CardParagraphProps {
   text: string;
+  price?: number;
 }
 
 function CardParagraph(props: CardParagraphProps) {

@@ -6,6 +6,7 @@ import CardParagraph from './components/CardParagraph/CardParagraph';
 import CardList from './components/CardList/CardList';
 import Button from './components/Button/Button';
 import img from './img-removebg-preview.png';
+import smile from './smile-wink.png';
 
 function App() {
   const listItems1 = [
@@ -33,7 +34,10 @@ function App() {
         </div>
         <div className="content__item">
           <div>
-            <CardTitle text="Day Pass" />
+            <div className="plan-name">
+              <img src={smile} alt={'smile'} className="smile" />
+              <CardTitle text="Day Pass" />
+            </div>
             <CardParagraph text="What You'll Get." />
             <CardList items={listItems1} />
             <CardParagraph text="$20/day" />
@@ -42,7 +46,10 @@ function App() {
         </div>
         <div className="content__item">
           <div>
-            <CardTitle text="Monthly Pass" />
+            <div className="plan-name">
+              <img src={smile} alt={'smile'} className="smile" />
+              <CardTitle text="Monthly Pass" />
+            </div>
             <CardParagraph text="What You'll Get." />
             <CardList items={listItems2} />
             <CardParagraph text="$380/mounth" />

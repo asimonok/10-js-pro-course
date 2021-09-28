@@ -1,9 +1,12 @@
 ul {
   padding: 0;
+  border-bottom: 1px dashed rgb(182, 181, 181);
 }
 
 li {
   list-style: none;
+  margin-bottom: 15px;
+  color: rgb(80, 79, 79);
 }
 
 .list-icon {
