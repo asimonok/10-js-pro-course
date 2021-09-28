@@ -1,0 +1,10 @@
+.item-icon {
+    width: 30px;
+    height: 30px;
+    /* background: url('../../img/check.svg'); */
+    background-color: yellow;
+    /* background-image: url('../../img/check.svg'); */
+}
+.item-text {
+    background-color: red;
+}

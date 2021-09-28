@@ -1,0 +1,13 @@
+.card-title {
+    text-align: center;
+}
+
+.card-title.green {
+    color: #ffffff;
+
+}
+.card-offer {
+    margin-top: 20px;
+    color: #afb2b8;
+    text-align: center;
+}
