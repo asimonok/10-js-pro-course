@@ -7,6 +7,7 @@
 
 .content__item {
   width: 300px;
+  min-height: 450px;
   margin: 0px 15px;
   padding: 30px;
   border-radius: 15px;
@@ -37,4 +38,9 @@
 
 .green-item__img {
   width: 100%;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 800;
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
-import CardTitle from './components/CardTitle/CardTitle';
-import CardParagraph from './components/CardParagraph/CardParagraph';
-import CardList from './components/CardList/CardList';
-import Button from './components/Button/Button';
+import Header from './components/Header';
+import CardTitle from './components/CardTitle';
+import CardParagraph from './components/CardParagraph';
+import CardList from './components/CardList';
+import Button from './components/Button';
 import img from './img-removebg-preview.png';
 import smile from './smile-wink.png';
 
@@ -40,7 +40,8 @@ function App() {
             </div>
             <CardParagraph text="What You'll Get." />
             <CardList items={listItems1} />
-            <CardParagraph text="$20/day" />
+            <span className="price">$20</span>
+            <span className="period">/day</span>
           </div>
           <Button name="Day Pass" text="Choose" />
         </div>
@@ -52,7 +53,8 @@ function App() {
             </div>
             <CardParagraph text="What You'll Get." />
             <CardList items={listItems2} />
-            <CardParagraph text="$380/mounth" />
+            <span className="price">$380</span>
+            <span className="period">/month</span>
           </div>
           <Button name="Monthly Pass" text="Choose" />
         </div>
