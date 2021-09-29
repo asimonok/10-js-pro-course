@@ -1,0 +1,21 @@
+.green-card {
+    width: 30%;
+    margin: 0 15px;
+    padding: 40px;
+    box-shadow: 5px 5px 10px gray;
+    border-radius: 10px;
+    background: url(./green-card.jpg) no-repeat;
+    background-size: 100% 100%;
+    color: #ffffff;
+}
+.green-card__title {
+    font-weight: 300;
+    padding-bottom: 25px;
+}
+.green-card__subtitle {
+    font-weight: 700;
+}
+.green-card__descr span {
+    height: 30px;
+    width: 30px;
+}
