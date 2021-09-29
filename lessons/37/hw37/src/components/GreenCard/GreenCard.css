@@ -1,12 +1,8 @@
 .card-item.green.greencard{
-    padding-bottom: 215px;
     background-image: url('../../img/bg-green.png');
     background-position: bottom left;
     background-size: contain;
     background-repeat: no-repeat;
-
-
-    
 }
 h2,.greencard__header {
     color: #ffffff;

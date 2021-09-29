@@ -1,8 +1,10 @@
 .card-item {
+    position: relative;
     width: 33%;
+    height: 450px;
     padding: 10px 25px;
     border-radius: 20px;
-    box-shadow: 10px 5px 10px rgb(214, 211, 211);
+    box-shadow: 10px 5px 25px rgb(214, 211, 211);
 }
 
 .card-item.green {

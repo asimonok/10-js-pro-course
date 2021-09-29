@@ -3,9 +3,9 @@ import './CardListItem.css';
 
 const CardListItem = ({description}:any ):any => {
     return (
-        <p className="item-text"> <span className="item-icon"></span>
+        <li className="item-text"> <span className="item-icon"></span>
         {description}
-        </p>
+        </li>
     )
 }
 
