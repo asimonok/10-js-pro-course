@@ -8,7 +8,7 @@ const Card = (props) => {
     return (
         <div className="card">
             <div>
-            <h2>&#128293; {props.name}</h2>
+            <h2 className="cardTitle">&#128293; {props.name}</h2>
             <p>What you'll get</p>
             <List />
             <hr/>
