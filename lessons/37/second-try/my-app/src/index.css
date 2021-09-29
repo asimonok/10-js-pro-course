@@ -9,10 +9,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+.App {
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* height: 90%; */
+  width: 80%;
+}
 .cards {
   display: flex;
   justify-content: center;
   border-radius: 8px;
+  padding-bottom: 30px;
 }
 .card-1 {
   margin: 40px;
@@ -20,14 +28,14 @@ code {
   flex-direction: column;
   width: 400px;
   padding: 30px;
-  /* height: 700px; */
+  height: 600px;
   border-radius: 8px;
 }
 .card-2 {
   margin: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-between; */
   width: 400px;
   padding: 30px;
   /* height: 700px; */
@@ -40,7 +48,7 @@ code {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: space-around;
+  /* justify-content: space-between; */
   padding: 30px;
   /* justify-content: center; */
   /* align-content: space-around; */
@@ -51,12 +59,14 @@ code {
   border-radius: 8px;
 }
 .button {
+  margin-top: 150px;
   margin-left: 20px;
   margin-right: 20px;
   color: white;
   /* width: 300px; */
   height: 50px;
   border-radius: 8px;
+  border-style: none none none;
 }
 
 .text-color {
@@ -71,12 +81,16 @@ code {
 h1 {
   font-size: 2em;
   margin-top: 0px;
+  margin-bottom: 30px;
   /* color: #fff; */
 }
 h2 {
   font-size: 1.5em;
+  margin: 0px;
 }
 header {
+  margin-bottom: 1px;
+  padding-top: 20px;
   font-size: 3em;
   text-align: center;
 }
