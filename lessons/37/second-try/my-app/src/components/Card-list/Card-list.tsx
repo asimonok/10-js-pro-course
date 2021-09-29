@@ -9,7 +9,7 @@ export const CardList: React.FC<CardListProps> = ({ lists }) => {
     <ul>
       {lists.map((list) => {
         return (
-          <li>
+          <li key={list}>
             <i className="material-icons ">check_circle</i>
             <span> {list}</span>
           </li>

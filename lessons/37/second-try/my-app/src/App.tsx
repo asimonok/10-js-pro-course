@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "./components/Header/Header";
-import { Button } from ".//components/Button/button";
+import { Button } from "./components/Button/Button";
 import { CardTitle } from "./components/Card-title/Card-title";
 import { CardH2 } from "./components/Card-h2/Card-h2";
 import { CardList } from "./components/Card-list/Card-list";
@@ -33,7 +33,7 @@ const App: React.FC = () => {
           <CardList lists={lists} />
           <div className="dotted"></div>
           <Price price="$20" date="/day" />
-          <Button />
+          <Button click={true} />
         </div>
         <div className="card-3">
           <CardTitle text=" Monthly Pass" icon={true} />
@@ -41,7 +41,7 @@ const App: React.FC = () => {
           <CardList lists={lists2} />
           <div className="dotted"></div>
           <Price price="$380" date="/month" />
-          <Button />
+          <Button click={false} />
         </div>
       </div>
     </div>
