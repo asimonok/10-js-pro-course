@@ -1,7 +1,11 @@
 import React from 'react';
 import './GreenCard.css';
 
-const GreenCard = ({title}: any) => {
+interface MyGreenCard {
+    title: string
+}
+
+const GreenCard = ({title}: MyGreenCard) => {
     return (
         <div className="card-item green greencard">
             <h2 className="greencard__header">

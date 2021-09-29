@@ -13,6 +13,16 @@
     left: 0;
     width: 20px;
     height:20px;
-    background: url('../../img/check.svg') center/cover no-repeat;
+    display: block;
+    background-color: black;
+    /* background-image: url('../../img/check.svg') center/cover no-repeat; */
+    mask-image: url('../../img/check.svg');
+    mask-size: cover;
+    transition: 0.4s ease all;
 }
+.item-icon:hover {
+    background-color: #2E6334;
+
+}
+
 

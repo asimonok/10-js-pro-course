@@ -5,22 +5,16 @@ import CardList from '../CardList';
 import Button from '../Button';
 import Price from '../Price';
 
-// const Card = (): React.ReactNode => {
-const Card = ({title, classBg, price, period, data} :any): any => {
+interface MyCard {
+    title: string,
+    classBg?: string,
+    price?: string,
+    period?: string,
+    data?: string[],
+}
+const Card = ({title, classBg, price, period, data}: any) => {
     const cardItem = "card-item";
-
-    // const dayPass = [
-    //     ['8 hour usage of our coworking spase'],
-    //     ['Access to All our rooms'],
-    //   ]
-    //   const monthlyPass = [
-    //     ['8 hour usage of our coworking spase'],
-    //     ['Access to All our rooms'],
-    //     ['Dedicated Desk'],
-    //     ['Free Business Address'],
-    //     ['Free Lunch 1x a day'],
-    //   ]
-    
+   
     return (<div className={classBg ? `card-item ${classBg}` : cardItem}>
         <CardHeader title={title} className={classBg}/>
         <CardList data={data}/>
@@ -29,5 +23,25 @@ const Card = ({title, classBg, price, period, data} :any): any => {
         </div>
     )
 } 
+
+
+// const Card = ({data}:any) => {
+//     let elements = data.map( (item: any) => {
+//         const cardItem = "card-item";
+//         return ( 
+//             <div className={item.classBg ? `card-item ${item.classBg}` : cardItem}>
+//                 <CardHeader title={item.title} className={item.classBg}/>
+//                 <CardList data={item.data}/>
+//                 <Price price={item.price} period={item.period}/>
+//                 <Button label="Choose"/>
+//             </div>
+//          )
+//     } )
+//     return (
+//         <>
+//             {elements}
+//         </>
+//     )
+// } 
 
 export default Card;

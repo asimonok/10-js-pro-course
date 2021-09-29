@@ -1,7 +1,11 @@
 import React from 'react';
 import './CardListItem.css';
 
-const CardListItem = ({description}:any ):any => {
+interface MyDescription {
+    description: string;
+}
+
+const CardListItem = ({description}: MyDescription ) => {
     return (
         <li className="item-text"> <span className="item-icon"></span>
         {description}

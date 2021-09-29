@@ -6,7 +6,6 @@ interface MyPrice {
     period: string;
 }
 
-
 const Price = ({price, period}: MyPrice) => {
     return (
         <div className='price'>

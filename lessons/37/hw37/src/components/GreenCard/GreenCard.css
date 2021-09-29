@@ -4,10 +4,9 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
-h2,.greencard__header {
+h2.greencard__header {
     color: #ffffff;
     padding: 0;
-    margin: 0;
 }
 h3, .greencard__subheader {
     padding: 0;
