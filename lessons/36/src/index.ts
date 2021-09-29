@@ -110,6 +110,11 @@ const Contacts = ({siteName}: State) => createComponent(
    `
 );
 
+window.addEventListener('popstate', (event: PopStateEvent ) => {
+    console.log('change history', document.location.pathname);
+    model.update({pathname: window.location.pathname});
+}); 
+
 const render = (rootElement: HTMLElement, model: State): void => {
     rootElement.innerHTML = ''; //clear root first
     rootElement.appendChild(Header(model));  

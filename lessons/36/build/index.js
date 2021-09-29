@@ -63,6 +63,10 @@ const Contacts = ({ siteName }) => createComponent(`<main class="contacts">
         <img src="cat-computer.jpeg" />
     </main>
    `);
+window.addEventListener('popstate', (event) => {
+    console.log('change history', document.location.pathname);
+    model.update({ pathname: window.location.pathname });
+});
 const render = (rootElement, model) => {
     rootElement.innerHTML = '';
     rootElement.appendChild(Header(model));
