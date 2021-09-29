@@ -57,10 +57,6 @@ declare interface Window {
 //     // }
 // };
 
-
-  
-  
-  
   // instead of controller make simple function
   const onChangeName = (event: Event) => {
       if(event.target) {
@@ -121,7 +117,6 @@ const render = (rootElement: HTMLElement, model: State): void => {
     rootElement.appendChild(Main(model));
 
 }
-
 render(
     document.querySelector('#app') as HTMLElement, 
     model.state
