@@ -9,14 +9,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
-.list{
-    list-style: none;
-    padding: 0;
-}
-.list li{
-    padding: 5px;
-    font-size: 18px;
-}
+
 .price {
     font-size: 30px;
     font-weight: 700;
