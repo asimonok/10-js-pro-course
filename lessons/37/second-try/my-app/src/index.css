@@ -73,10 +73,12 @@ code {
   color: rgba(175, 175, 175, 0.712);
 }
 .dotted {
-  border: 1px dotted black;
-  border-style: none none dotted;
+  border: none;
+  border-top: 1px dashed rgb(0, 0, 0);
   color: #fff;
   background-color: #fff;
+  height: 1px;
+  width: 100%;
 }
 h1 {
   font-size: 2em;
@@ -93,4 +95,10 @@ header {
   padding-top: 20px;
   font-size: 3em;
   text-align: center;
+}
+.weak {
+  font-weight: normal;
+}
+.iconsWhite {
+  color: white;
 }

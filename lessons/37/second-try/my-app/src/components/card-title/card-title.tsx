@@ -10,9 +10,13 @@ export const CardTitle: React.FC<CardTitleProps> = (props) => {
     return (
       <h1>
         <i className="material-icons ">face </i>
-        {props.text}
+        <strong>{props.text}</strong>
       </h1>
     );
   }
-  return <h1>{props.text}</h1>;
+  return (
+    <h1 className="weak" style={{ color: "white" }}>
+      {props.text}
+    </h1>
+  );
 };
