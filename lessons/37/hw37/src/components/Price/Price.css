@@ -1,4 +1,21 @@
+.price {
+    margin-top: 50px;
+    position: relative;
+
+}
+p {
+    text-align: left;
+}
 .item-price {
     font-size: 25px;
     font-weight: bold;
+}
+.item-price:before {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    content: '';
+    width: 100%;
+    border: 1px dashed #afb2b8;
+
 }

@@ -9,8 +9,10 @@ interface MyPrice {
 
 const Price = ({price, period}: MyPrice) => {
     return (
-        <div>
-           <span className="item-price">$ {price}</span> / {period}
+        <div className='price'>
+           <p>
+                <span className="item-price">$ {price}</span> / {period}
+           </p>
         </div>
     )
 }

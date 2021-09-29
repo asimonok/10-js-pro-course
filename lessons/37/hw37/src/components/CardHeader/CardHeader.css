@@ -1,13 +1,26 @@
 .card-title {
-    text-align: center;
+    position: relative;
+    padding-left: 40px;
+    text-align: left;
+}
+.card-title:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-image: url(../../img/list-icon.svg);
 }
 
 .card-title.green {
     color: #ffffff;
-
+}
+.card-title.green:before {
+    display: none;
 }
 .card-offer {
     margin-top: 20px;
     color: #afb2b8;
-    text-align: center;
+    text-align: left;
 }
