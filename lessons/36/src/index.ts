@@ -12,7 +12,6 @@ class Model {
             ...this.state,
             ...updatedState,
         } 
-        
         this.subscribers.forEach( (callback) => {
             callback(this.state);
         })
@@ -27,10 +26,14 @@ class Model {
     }
 }
 
-const model = new Model({siteName: 'My app'})
+const model = new Model({
+    siteName: 'My app',
+    pathname: window.location.pathname,
+})
 
 interface State {
     siteName: string;
+    pathname: string,
 }
 
 const createComponent = (stringHtml: string): ChildNode => {
@@ -38,27 +41,56 @@ const createComponent = (stringHtml: string): ChildNode => {
         return bodyElement.firstChild as ChildNode;
 }
 
-const Header = ({siteName}: State) => createComponent( 
-    `<header class="header">
-    <span class="logo">${siteName}</span>
-    <a href="/index">Home</a>
-    <a href="/contacts">Contacts</a>
-    </header>`
-)
-
-// instead of controller make simple function
-const onChangeName = (event: Event) => {
-    if(event.target) {
-        const value = (event.target as HTMLInputElement).value;
-        model.update({siteName: value})
-        console.log(value);
-        console.log(model.state);
-    }
-};
 declare interface Window {
     onChangeName: (event: Event) => void;
+    onNavigateToPage: (event: Event) => void;
 }
-window.onChangeName = onChangeName;
+
+
+// const onNavigateToPage = (event: Event) => {
+//     console.log(event);
+//     // if(event.target) {
+//     //     const dataset = (event.target as HTMLButtonElement).dataset as { href: string};
+//     //     console.log(dataset);
+//     //     window.history.pushState(null, dataset.href, dataset.href);
+//     //     // model.update({pathname: window.location.pathname });
+//     // }
+// };
+
+
+  
+  
+  
+  // instead of controller make simple function
+  const onChangeName = (event: Event) => {
+      if(event.target) {
+          const value = (event.target as HTMLInputElement).value;
+          model.update({siteName: value})
+        }
+    };
+
+    window.onChangeName = onChangeName;
+    
+    const onNavigateToPage = (event: Event) => {
+        event.preventDefault();
+        console.log('clicked')
+        if (event.target) {
+          const href = (event.target as HTMLButtonElement).getAttribute('href') || '';
+          window.history.pushState(null, href, href);
+          model.update({ pathname: window.location.pathname });
+        }
+    };
+    
+    
+    window.onNavigateToPage = onNavigateToPage;
+
+const Header = ({ siteName }: State) => createComponent(`
+    <header class="header">
+      <span class="logo">${siteName}</span>
+      <a href="/home" onclick="onNavigateToPage(event)">Home</a>
+      <a href="/contacts" onclick="onNavigateToPage(event)">Contacts</a>
+    </header>
+  `);
 
 const Main = ({siteName}: State) => createComponent( 
     `<main class="content">
@@ -69,13 +101,20 @@ const Main = ({siteName}: State) => createComponent(
     </main>
    `
 );
-
-
+const Contacts = ({siteName}: State) => createComponent( 
+    `<main class="contacts">
+        <h1>Contacts</h1>
+            <p>Some info about site</p>
+        <img src="cat-computer.jpeg" />
+    </main>
+   `
+);
 
 const render = (rootElement: HTMLElement, model: State): void => {
     rootElement.innerHTML = ''; //clear root first
     rootElement.appendChild(Header(model));  
     rootElement.appendChild(Main(model));
+
 }
 
 render(
@@ -84,16 +123,21 @@ render(
 );
 
 
-model.update({siteName: '1we'});
-model.update({siteName: '235'});
 
 
-const unsubscribe = model.subscribe( (state: State) => {
-    render(
-        document.querySelector('#app') as HTMLElement, 
-        state
-    );
-});
+
+
+
+
+
+// model.update({siteName: '1we'});
+// model.update({siteName: '235'});
+// const unsubscribe = model.subscribe( (state: State) => {
+//     render(
+//         document.querySelector('#app') as HTMLElement, 
+//         state
+//     );
+// });
 
 
 

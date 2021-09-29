@@ -18,30 +18,49 @@ class Model {
         };
     }
 }
-const model = new Model({ siteName: 'My app' });
+const model = new Model({
+    siteName: 'My app',
+    pathname: window.location.pathname,
+});
 const createComponent = (stringHtml) => {
     const bodyElement = new DOMParser().parseFromString(stringHtml, 'text/html').querySelector('body');
     return bodyElement.firstChild;
 };
-const Header = ({ siteName }) => createComponent(`<header class="header">
-    <span class="logo">${siteName}</span>
-    <a href="/index">Home</a>
-    <a href="/contacts">Contacts</a>
-    </header>`);
 const onChangeName = (event) => {
     if (event.target) {
         const value = event.target.value;
         model.update({ siteName: value });
-        console.log(value);
-        console.log(model.state);
     }
 };
 window.onChangeName = onChangeName;
+const onNavigateToPage = (event) => {
+    event.preventDefault();
+    console.log('clicked');
+    if (event.target) {
+        const href = event.target.getAttribute('href') || '';
+        window.history.pushState(null, href, href);
+        model.update({ pathname: window.location.pathname });
+    }
+};
+window.onNavigateToPage = onNavigateToPage;
+const Header = ({ siteName }) => createComponent(`
+    <header class="header">
+      <span class="logo">${siteName}</span>
+      <a href="/home" onclick="onNavigateToPage(event)">Home</a>
+      <a href="/contacts" onclick="onNavigateToPage(event)">Contacts</a>
+    </header>
+  `);
 const Main = ({ siteName }) => createComponent(`<main class="content">
     <input class="site-name" placeholder="Site name" onchange="onChangeName(event)" />
     <h1>My app</h1>
     <p>Some text</p>
     <img src="cat.jpeg" />
+    </main>
+   `);
+const Contacts = ({ siteName }) => createComponent(`<main class="contacts">
+        <h1>Contacts</h1>
+            <p>Some info about site</p>
+        <img src="cat-computer.jpeg" />
     </main>
    `);
 const render = (rootElement, model) => {
@@ -50,8 +69,3 @@ const render = (rootElement, model) => {
     rootElement.appendChild(Main(model));
 };
 render(document.querySelector('#app'), model.state);
-model.update({ siteName: '1we' });
-model.update({ siteName: '235' });
-const unsubscribe = model.subscribe((state) => {
-    render(document.querySelector('#app'), state);
-});
