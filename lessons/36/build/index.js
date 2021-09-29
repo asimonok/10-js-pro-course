@@ -36,6 +36,7 @@ window.onChangeName = onChangeName;
 const onNavigateToPage = (event) => {
     event.preventDefault();
     console.log('clicked');
+    console.log(event.target);
     if (event.target) {
         const href = event.target.getAttribute('href') || '';
         window.history.pushState(null, href, href);
@@ -63,13 +64,21 @@ const Contacts = ({ siteName }) => createComponent(`<main class="contacts">
         <img src="cat-computer.jpeg" />
     </main>
    `);
-window.addEventListener('popstate', (event) => {
-    console.log('change history', document.location.pathname);
-    model.update({ pathname: window.location.pathname });
-});
 const render = (rootElement, model) => {
     rootElement.innerHTML = '';
     rootElement.appendChild(Header(model));
-    rootElement.appendChild(Main(model));
+    console.log(model);
+    if (model.pathname === '/home') {
+        rootElement.appendChild(Main(model));
+    }
+    if (model.pathname === '/contacts') {
+        rootElement.appendChild(Contacts(model));
+    }
 };
 render(document.querySelector('#app'), model.state);
+window.addEventListener('popstate', (event) => {
+    model.update({ pathname: window.location.pathname });
+});
+const unsubscribe = model.subscribe((state) => {
+    render(document.querySelector('#app'), state);
+});

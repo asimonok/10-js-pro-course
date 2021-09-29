@@ -15,6 +15,7 @@ class Model {
         this.subscribers.forEach( (callback) => {
             callback(this.state);
         })
+        // this.pathname = window.location.pathname
     }
 
     subscribe (callback: (state: State) => void) {
@@ -46,18 +47,7 @@ declare interface Window {
     onNavigateToPage: (event: Event) => void;
 }
 
-
-// const onNavigateToPage = (event: Event) => {
-//     console.log(event);
-//     // if(event.target) {
-//     //     const dataset = (event.target as HTMLButtonElement).dataset as { href: string};
-//     //     console.log(dataset);
-//     //     window.history.pushState(null, dataset.href, dataset.href);
-//     //     // model.update({pathname: window.location.pathname });
-//     // }
-// };
-
-  // instead of controller make simple function
+// instead of controller make simple function
   const onChangeName = (event: Event) => {
       if(event.target) {
           const value = (event.target as HTMLInputElement).value;
@@ -70,14 +60,14 @@ declare interface Window {
     const onNavigateToPage = (event: Event) => {
         event.preventDefault();
         console.log('clicked')
+        console.log(event.target)
         if (event.target) {
           const href = (event.target as HTMLButtonElement).getAttribute('href') || '';
           window.history.pushState(null, href, href);
           model.update({ pathname: window.location.pathname });
         }
     };
-    
-    
+   
     window.onNavigateToPage = onNavigateToPage;
 
 const Header = ({ siteName }: State) => createComponent(`
@@ -105,16 +95,19 @@ const Contacts = ({siteName}: State) => createComponent(
     </main>
    `
 );
-
-window.addEventListener('popstate', (event: PopStateEvent ) => {
-    console.log('change history', document.location.pathname);
-    model.update({pathname: window.location.pathname});
-}); 
+ 
 
 const render = (rootElement: HTMLElement, model: State): void => {
     rootElement.innerHTML = ''; //clear root first
-    rootElement.appendChild(Header(model));  
-    rootElement.appendChild(Main(model));
+    rootElement.appendChild(Header(model));
+    console.log(model);
+
+    if (model.pathname === '/home')   {
+        rootElement.appendChild(Main(model));
+    }
+    if (model.pathname === '/contacts')   {
+        rootElement.appendChild(Contacts(model));
+    }
 
 }
 render(
@@ -122,6 +115,16 @@ render(
     model.state
 );
 
+window.addEventListener('popstate', (event: PopStateEvent ) => {
+    model.update({pathname: window.location.pathname});
+});
+
+const unsubscribe = model.subscribe( (state: State) => {
+    render(
+        document.querySelector('#app') as HTMLElement, 
+        state
+    );
+});
 
 
 
@@ -129,26 +132,4 @@ render(
 
 
 
-
-// model.update({siteName: '1we'});
-// model.update({siteName: '235'});
-// const unsubscribe = model.subscribe( (state: State) => {
-//     render(
-//         document.querySelector('#app') as HTMLElement, 
-//         state
-//     );
-// });
-
-
-
-
-// model.update({siteName: '1we'});
-// model.update({siteName: '235'});
-// // unsubscribe();
-// model.update({siteName: '1we'});
-
-
-// console.log('subscribers: ',model.subscribers);
-
-// console.log('subscribers: ',model.subscribers);
 
