@@ -1,7 +1,5 @@
-import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 import './EmojiContainer.css';
-import Input from '../Input';
 import EmojiRow from '../EmojiRow';
 
 interface Emoji {
