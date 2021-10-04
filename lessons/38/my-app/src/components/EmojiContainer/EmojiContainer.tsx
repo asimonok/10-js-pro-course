@@ -11,6 +11,7 @@ interface Emoji {
 interface State {
   emojiList: Array<Emoji>;
   filteredEmojiList: Array<Emoji>;
+  displayLimit: number;
 }
 
 interface Props {
@@ -23,6 +24,7 @@ class EmojiContainer extends Component<Props, State> {
     this.state = {
       emojiList: [],
       filteredEmojiList: [],
+      displayLimit: 15,
     };
   }
 
@@ -42,32 +44,41 @@ class EmojiContainer extends Component<Props, State> {
       .catch((e) => console.error(e));
   }
 
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     const { searchString } = this.props;
     if (searchString !== prevProps.searchString) {
       this.searchEmoji();
     }
   }
+
+  changeDisplayLimit = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    this.setState({ displayLimit: parseInt(event.target.value) });
+  };
+
   searchEmoji = () => {
     const { searchString } = this.props;
-    const { emojiList, filteredEmojiList } = this.state;
+    const { emojiList } = this.state;
 
-    const newFilteredList = emojiList.filter((emoji) => {
-      return (
-        emoji.title.toLowerCase().includes(searchString) ||
-        emoji.keywords.toLowerCase().includes(searchString)
-      );
-    });
+    const newFilteredList = emojiList
+      .filter((emoji) => {
+        return (
+          emoji.title.toLowerCase().includes(searchString) ||
+          emoji.keywords.toLowerCase().includes(searchString)
+        );
+      })
+      .slice(0, this.state.displayLimit);
     this.setState({ filteredEmojiList: newFilteredList });
   };
 
   render() {
     const { filteredEmojiList } = this.state;
     return (
-      <div className="emoji">
-        {filteredEmojiList.map((emoji: Emoji) => {
-          return <EmojiRow emoji={emoji} />;
-        })}
+      <div>
+        <ul className="emoji__list">
+          {filteredEmojiList.map((emoji: Emoji) => {
+            return <EmojiRow emoji={emoji} />;
+          })}
+        </ul>
       </div>
     );
   }

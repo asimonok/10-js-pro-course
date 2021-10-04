@@ -1,7 +1,4 @@
-.emoji__list {
-  list-style: none;
-  width: 400px;
-  text-align: left;
+.emoji__list-item {
   margin: 10px auto;
   border-bottom: 2px solid rgb(196, 197, 197);
   padding-bottom: 5px;

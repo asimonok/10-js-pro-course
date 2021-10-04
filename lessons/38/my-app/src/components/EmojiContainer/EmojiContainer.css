@@ -1,0 +1,16 @@
+.emoji__list {
+  list-style: none;
+  width: 400px;
+  text-align: left;
+  margin: 10px auto 30px;
+  padding: 0;
+  /* max-height: 350px;
+  overflow-y: scroll; */
+}
+
+.display-limit {
+  margin: 10px auto;
+  border: 2px solid #eee;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  width: 270px;
+}
