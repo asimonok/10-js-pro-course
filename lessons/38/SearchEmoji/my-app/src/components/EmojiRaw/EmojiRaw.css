@@ -1,0 +1,13 @@
+.emojiitem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.emojies {
+  margin-right: 0.8rem;
+}
+
+.emojititle {
+  font-size: 1.5rem;
+}
