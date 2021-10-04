@@ -29,7 +29,10 @@ class App extends React.Component {
   render() {
     return (
       <>
-        {/* <SearchSelect /> */}
+        <SearchSelect
+          searchNumber={this.state.resultNumber}
+          numberRes={(newNumber) => this.setState({ resultNumber: newNumber })}
+        />
         <SearchInput
           searchValue={this.state.searchValue}
           // searchValueChange={this.valueChangeHandler}

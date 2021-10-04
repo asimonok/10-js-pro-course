@@ -22,6 +22,7 @@ class SearchInput extends React.Component {
   render() {
     return (
       <>
+        <span> title, symbol or keyword </span>
         <input
           value={this.props.searchValue}
           onChange={(event) => {
