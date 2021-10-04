@@ -1,4 +1,5 @@
 import React from "react";
+import "./SearchInput.css";
 
 interface Props {
   searchValue: string;
@@ -22,7 +23,8 @@ class SearchInput extends React.Component {
   render() {
     return (
       <>
-        <span> title, symbol or keyword </span>
+        <p></p>
+        <span className="inputText"> Title, Symbol or Keyword </span>
         <input
           value={this.props.searchValue}
           onChange={(event) => {

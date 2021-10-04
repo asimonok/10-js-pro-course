@@ -1,5 +1,6 @@
 import React from "react";
 import EmojiRow from "../EmojiRow";
+import "./EmojiContainer.css";
 
 interface Props {
   searchValue: string;
@@ -31,7 +32,8 @@ class EmojiContainer extends React.Component {
     const filteredemoji = emojiList.filter(
       (emoji) =>
         emoji.title.includes(searchValue) ||
-        emoji.keywords.includes(searchValue)
+        emoji.keywords.includes(searchValue) ||
+        emoji.symbol.includes(searchValue)
     );
     return filteredemoji.slice(0, this.props.resultNumber);
   }
@@ -58,7 +60,7 @@ class EmojiContainer extends React.Component {
     );
     return (
       <>
-        <ul>
+        <ul className="row">
           {filteredList.map((el) => {
             return (
               <li key={el.title}>

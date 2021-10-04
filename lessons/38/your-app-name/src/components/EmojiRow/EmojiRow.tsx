@@ -20,9 +20,8 @@ class EmojiRow extends React.Component {
   render() {
     return (
       <>
-        <div>
-          {this.props.emoji.symbol}
-          {this.props.emoji.title}
+        <div className="element">
+          {this.props.emoji.symbol} <span> </span> {this.props.emoji.title}
         </div>
       </>
     );

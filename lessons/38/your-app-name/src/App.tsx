@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import EmojiContainer from "./components/EmojiContainer";
 import SearchInput from "./components/SearchInput";
-import SearchSelect from "./components/SearchSelect";
+import SearchNumber from "./components/SearchNumber";
 
 interface Props {}
 interface State {
@@ -18,7 +18,7 @@ class App extends React.Component {
 
     this.state = {
       searchValue: "",
-      resultNumber: 5,
+      resultNumber: 100,
     };
   }
 
@@ -29,17 +29,22 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <SearchSelect
-          searchNumber={this.state.resultNumber}
-          numberRes={(newNumber) => this.setState({ resultNumber: newNumber })}
-        />
-        <SearchInput
-          searchValue={this.state.searchValue}
-          // searchValueChange={this.valueChangeHandler}
-          searchValueChange={(newValue) =>
-            this.setState({ searchValue: newValue })
-          }
-        />
+        <div className="search">
+          <SearchNumber
+            searchNumber={this.state.resultNumber}
+            numberRes={(newNumber) =>
+              this.setState({ resultNumber: newNumber })
+            }
+          />
+          <SearchInput
+            searchValue={this.state.searchValue}
+            // searchValueChange={this.valueChangeHandler}
+            searchValueChange={(newValue) =>
+              this.setState({ searchValue: newValue })
+            }
+          />
+        </div>
+
         <EmojiContainer
           searchValue={this.state.searchValue}
           resultNumber={this.state.resultNumber}
