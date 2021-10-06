@@ -23,11 +23,11 @@ class EmojiContainer extends React.Component<any, any> {
             emojiList: [],
             emojiFiltered:[],
             increase: false,
-            searchingWord: '',
+            searchingWord: 'Smile',
         }
     }
 
-    //in time of mounting make fetch request
+    //in time of mounting DOM make fetch request
     componentDidMount() {
         const emojiList = fetch('https://raw.githubusercontent.com/asimonok/10-js-pro-course/lesson/38/lessons/38/emojiList.json');
         emojiList.then( data => data.json())
@@ -65,7 +65,7 @@ class EmojiContainer extends React.Component<any, any> {
         console.log( arr[1000].title);
         // console.log( arr[1000].title.includes('Bell'));
         console.log( arr[1000].keywords);
-        let filteredArr = arr.filter( (item:any) => item.title.includes('Smile'));
+        let filteredArr = arr.filter( (item:any) => item.title.includes(this.state.searchingWord) );
         console.log('filteredArr: ',filteredArr);
         this.setState( {
             emojiFiltered: filteredArr
@@ -76,22 +76,16 @@ class EmojiContainer extends React.Component<any, any> {
         const{emojiList, emojiFiltered, searchingWord, increase} = this.state;
         return (
             <>
-            {/* <div>{emojiList[0].symbol}</div>
-            <div>{emojiList[0].keywords}</div> */}
             <br></br>
             <input type='text' onChange={this.handleOnChange} />
             <br></br>
             <div><i>searching word</i>: {searchingWord}</div>
             <br></br>
-            <button onClick={this.handleClick}>{increase? 'Increase is true': 'Increase is false'}</button>
-            
+            {/* <button onClick={this.handleClick}>{increase? 'Increase is true': 'Increase is false'}</button> */}
+ 
 
-            <button onClick={(e) => this.filterEmoji(e)}>Choose emoji</button>
-            {/* <div>Filtered emoji: {emojiFiltered}</div> */}
+            <button onClick={this.filterEmoji}>Choose emoji</button>
             <div>Filtered emoji: { emojiFiltered.map( (item:any, i:number) => <li key={i}>{item.symbol}</li>) }</div>
-
-
-
             </>
 
         )

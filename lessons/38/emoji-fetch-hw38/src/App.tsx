@@ -9,8 +9,8 @@ import Clock from './components/Clock'
 function App() {
   return (
     <div className="App">
-        <Input/>
-        <EmojiRow/>  
+        {/* <Input/> */}
+        {/* <EmojiRow/>   */}
         <Clock/>
         <EmojiContainer/>
     </div>
