@@ -72,8 +72,9 @@ class EmojiContainer extends Component<Props, State> {
     const { filteredEmojiList } = this.state;
     return (
       <div>
+        <label htmlFor="display-limit">Choose display limit </label>
         <select
-          id="display-limit"
+          className="display-limit"
           name="display-limit"
           onChange={this.changeDisplayLimit}
         >
