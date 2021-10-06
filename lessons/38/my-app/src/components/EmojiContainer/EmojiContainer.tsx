@@ -59,14 +59,12 @@ class EmojiContainer extends Component<Props, State> {
     const { searchString } = this.props;
     const { emojiList } = this.state;
 
-    const newFilteredList = emojiList
-      .filter((emoji) => {
-        return (
-          emoji.title.toLowerCase().includes(searchString) ||
-          emoji.keywords.toLowerCase().includes(searchString)
-        );
-      })
-      .slice(0, this.state.displayLimit);
+    const newFilteredList = emojiList.filter((emoji) => {
+      return (
+        emoji.title.toLowerCase().includes(searchString) ||
+        emoji.keywords.toLowerCase().includes(searchString)
+      );
+    });
     this.setState({ filteredEmojiList: newFilteredList });
   };
 
@@ -74,10 +72,23 @@ class EmojiContainer extends Component<Props, State> {
     const { filteredEmojiList } = this.state;
     return (
       <div>
+        <select
+          id="display-limit"
+          name="display-limit"
+          onChange={this.changeDisplayLimit}
+        >
+          <option value="10">10</option>
+          <option value="15" selected>
+            15
+          </option>
+          <option value="20">20</option>
+        </select>
         <ul className="emoji__list">
-          {filteredEmojiList.map((emoji: Emoji) => {
-            return <EmojiRow emoji={emoji} />;
-          })}
+          {filteredEmojiList
+            .map((emoji: Emoji) => {
+              return <EmojiRow emoji={emoji} />;
+            })
+            .slice(0, this.state.displayLimit)}
         </ul>
       </div>
     );
