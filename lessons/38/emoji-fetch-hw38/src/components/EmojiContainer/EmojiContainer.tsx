@@ -1,19 +1,19 @@
 import React from 'react';
 import './EmojiContainer.css';
+import EmojiRow from '../EmojiRow'
 
-// interface Emoji {
-//     title: string;
-//     symbol: string;
-//     keywords: string;
-// }
+interface Emoji {
+    title: string;
+    symbol: string;
+    keywords: string;
+}
   
-// interface State {
-// emojiList: Array<Emoji>;
-// filteredEmojiList: Array<Emoji>;
-// increase: boolean,
-// searchingWord: string,
-
-// }
+interface State {
+emojiList: Array<Emoji>;
+filteredEmojiList: Array<Emoji>;
+increase: boolean,
+searchingWord: string,
+}
 
 
 class EmojiContainer extends React.Component<any, any> {
@@ -59,7 +59,8 @@ class EmojiContainer extends React.Component<any, any> {
             <br></br>
             <div><i>there are</i> {emojiFiltered.length} emoji</div>
             <br></br>
-            <div>Filtered emoji: { emojiFiltered.slice(0,15).map( (item:any, i:number) => <li key={i}>{item.symbol}</li>) }</div>
+
+            <ul>{ emojiFiltered.slice(0,15).map( (item:any, i:number) => <EmojiRow key={i} item={item}/>) }</ul>
             </>
         )
     }

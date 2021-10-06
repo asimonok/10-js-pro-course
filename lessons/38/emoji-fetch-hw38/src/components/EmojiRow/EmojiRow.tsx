@@ -1,13 +1,23 @@
 import React from 'react';
+import './EmojiRow.css';
 
-const EmojiRow = () => {
+interface MyEmoji {
+    title: string;
+    symbol: string;
+    keywords: string;
+  }
+  
+  interface Props {
+    item: MyEmoji;
+  }
+
+function EmojiRow (props: Props) {
+    const {item} = props;
         return (
-            <div>
-                <li>emodi1</li>
-                <li>emodi2</li>
-            </div>
-        )
-    }
-
+            <li className='list-item'>
+               {item.symbol} {item.title}
+            </li>
+        )    
+ }
 
 export default EmojiRow;

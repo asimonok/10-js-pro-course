@@ -1,0 +1,11 @@
+.list-item {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    border-bottom: 1px solid grey;
+    text-align-last: left;
+    padding: 8px;
+}
+.list-item:first-child {
+    background-color: rgb(235, 226, 226);
+}
