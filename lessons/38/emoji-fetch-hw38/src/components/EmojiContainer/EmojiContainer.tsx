@@ -55,7 +55,7 @@ class EmojiContainer extends React.Component<any, any> {
         return (
             <>
             <br></br>
-            <input type='text' onChange={this.filterEmoji} />
+            <input type='text' placeholder="Enter emoji name" onChange={this.filterEmoji} />
             <br></br>
             <div><i>there are</i> {emojiFiltered.length} emoji</div>
             <br></br>
