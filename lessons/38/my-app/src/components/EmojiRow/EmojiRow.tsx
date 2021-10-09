@@ -16,7 +16,10 @@ class EmojiRow extends Component<Props> {
     const { emoji } = this.props;
     return (
       <li className="emoji__list-item">
-        {emoji.symbol} {emoji.title}
+        <span>
+          {emoji.symbol} {emoji.title}
+        </span>
+        <span className="copy">Click to copy emoji</span>
       </li>
     );
   }
