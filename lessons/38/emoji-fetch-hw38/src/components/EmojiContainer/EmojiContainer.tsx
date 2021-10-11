@@ -9,14 +9,13 @@ interface Emoji {
 }
   
 interface State {
-emojiList: Array<Emoji>;
-filteredEmojiList: Array<Emoji>;
-increase: boolean,
-searchingWord: string,
+    emojiList: Array<Emoji>;
+    emojiFiltered: Array<Emoji>;
+    searchingWord: string,
 }
 
 
-class EmojiContainer extends React.Component<any, any> {
+class EmojiContainer extends React.Component<any, State> {
     constructor(props:any) {
         super(props);
         this.state = {
@@ -60,7 +59,7 @@ class EmojiContainer extends React.Component<any, any> {
             <div><i>there are</i> {emojiFiltered.length} emoji</div>
             <br></br>
 
-            <ul>{ emojiFiltered.slice(0,15).map( (item:any, i:number) => <EmojiRow key={i} item={item}/>) }</ul>
+            <ul>{ emojiFiltered.slice(0,10).map( (item:any, i:number) => <EmojiRow key={i} item={item}/>) }</ul>
             </>
         )
     }
