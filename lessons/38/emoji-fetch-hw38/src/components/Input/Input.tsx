@@ -1,10 +1,22 @@
 import React from 'react' 
 
+interface Props {
+    onChange: (searchingWord: string) => void
+}
 
-const Input = () => {
-    return (
-            <input placeholder="Enter emoji title"></input>
+class Input extends React.Component<Props> {
+
+    handleChange =(event: React.ChangeEvent<HTMLInputElement>) => {
+        this.props.onChange(event.target.value)
+
+    }
+    render() {
+
+        return (
+            <input placeholder="Enter emoji title" onChange={this.handleChange}></input>
     )
+    }
+    
 }
 
 export default Input;
