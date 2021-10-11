@@ -22,9 +22,9 @@ class App extends React.Component {
     };
   }
 
-  valueChangeHandler = (newValue: string): void => {
-    this.setState({ searchValue: newValue });
-  };
+  // valueChangeHandler = (newValue: string): void => {
+  //   this.setState({ searchValue: newValue });
+  // };
 
   render() {
     return (

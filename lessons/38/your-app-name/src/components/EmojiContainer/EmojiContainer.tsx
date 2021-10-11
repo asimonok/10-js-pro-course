@@ -48,7 +48,8 @@ class EmojiContainer extends React.Component {
       //   .then((emojiList: Emoji[]): Emoji[] => {
       .then((emojiList: Emoji[]): any => {
         this.setState({ emojiList });
-      });
+      })
+      .catch((error) => console.log(error));
   }
 
   //   let filteredList = this.filterEmojis(this.props.searchValue, this.state.emojiList)
