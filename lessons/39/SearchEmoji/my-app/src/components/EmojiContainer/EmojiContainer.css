@@ -1,0 +1,18 @@
+#searchlimit {
+  border: 2px solid rgba(84, 174, 255, 0.8);
+  font-size: 0.8rem;
+  padding: 5px;
+  margin-bottom: 1rem;
+}
+
+.emoji {
+  font-size: 1rem;
+  text-align: left;
+  vertical-align: center;
+  padding: 1rem 0;
+  border-top: 2px solid rgba(234, 238, 242, 0.8);
+}
+
+.emoji:last-child {
+  border-bottom: 2px solid rgba(234, 238, 242, 0.8);
+}

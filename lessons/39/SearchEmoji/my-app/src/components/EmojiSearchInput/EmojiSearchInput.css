@@ -1,0 +1,10 @@
+#header-search {
+  border: 2px solid rgba(84, 174, 255, 0.8);
+  font-size: 2rem;
+  padding: 5px;
+  margin-bottom: 1rem;
+}
+
+#header-search:active {
+  border: 2px solid rgba(84, 174, 255, 0.8);
+}
