@@ -17,18 +17,9 @@ interface Emoji {
 
 // class EmojiContainer extends React.Component {
 const EmojiContainer: React.FC<Props> = (props: Props) => {
-  // props: Props;
-  // state: State;
+  const emojiList: Emoji[] = [];
+  const [state, setState] = useState(emojiList);
 
-  // // constructor(props: Props) {
-  //   super(props);
-
-  //   this.props = props;
-  //   this.state = {
-  //     emojiList: [],
-  //   };
-  // }
-  const [state, setState] = useState({ emojiList: [] });
   function filterEmojis(searchValue: string, emojiList: Emoji[]): Emoji[] {
     const filteredemoji = emojiList.filter(
       (emoji) =>
@@ -43,39 +34,18 @@ const EmojiContainer: React.FC<Props> = (props: Props) => {
     fetch(
       "https://raw.githubusercontent.com/FolseV/js-pro-course/lessons/38/lessons/38/emojiList.json"
     )
-      // .then((res): Promise<Emoji[]> => {
-      .then((res) => {
+      .then((res): Promise<Emoji[]> => {
+        // .then((res) => {
         return res.json();
       })
       // .then((emojiList: Emoji[]): Emoji[] => {
-      .then((emojiList) => {
-        setState({ emojiList });
+      .then((emojiList: Emoji[]) => {
+        return setState(emojiList);
       })
       .catch((error) => console.log(error));
   });
-  /*
-  CopmonentDidMount() {
-    fetch(
-      "https://raw.githubusercontent.com/FolseV/js-pro-course/lessons/38/lessons/38/emojiList.json"
-    )
-      .then((res): Promise<Emoji[]> => {
-        return res.json();
-      })
-      // .then((emojiList: Emoji[]): Emoji[] => {
-      .then((emojiList) => {
-        this.setState({ emojiList });
-      })
-      .catch((error) => console.log(error));
-  }
-*/
-  // let filteredList = this.filterEmojis(this.props.searchValue, this.state.emojiList)
 
-  // render() {
-  // const filteredList = this.filterEmojis(
-  //   this.props.searchValue,
-  //   this.state.emojiList
-  // );
-  const filteredList = filterEmojis(props.searchValue, state.emojiList);
+  const filteredList = filterEmojis(props.searchValue, state);
   return (
     <>
       <ul className="row">
