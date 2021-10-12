@@ -1,0 +1,20 @@
+.emoji__list-item {
+  margin: 0px auto;
+  border-bottom: 2px solid rgb(196, 197, 197);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.emoji__list-item:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+.emoji__list-item:hover .copy {
+  color: rgb(139, 139, 139);
+  cursor: pointer;
+}
+
+.copy {
+  color: rgb(252, 252, 252);
+}
