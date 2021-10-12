@@ -7,13 +7,19 @@ interface IProps {
 }
 
 const EmojiRow: React.FC<IProps> = (props) => {
+  const handleCopyEmoji = () => {
+    window.navigator.clipboard.writeText(props.emoji.symbol);
+  };
+
   const { emoji } = props;
   return (
     <li className="emoji__list-item">
       <span>
         {emoji.symbol} {emoji.title}
       </span>
-      <span className="copy">Click to copy emoji</span>
+      <span className="copy" onClick={handleCopyEmoji}>
+        Click to copy emoji
+      </span>
     </li>
   );
 };

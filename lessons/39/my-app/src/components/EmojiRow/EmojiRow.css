@@ -15,6 +15,10 @@
   cursor: pointer;
 }
 
+.emoji__list-item:active .copy {
+  color: rgb(33, 216, 9);
+}
+
 .copy {
   color: rgb(252, 252, 252);
 }
