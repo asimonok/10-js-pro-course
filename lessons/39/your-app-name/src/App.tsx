@@ -29,13 +29,6 @@ const App = () => {
   //   };
   // }
 
-  // valueChangeHandler = (newValue: string): void => {
-  //   this.setState({ searchValue: newValue });
-  // };
-
-  // const resultNumberHandler = (newNumber: number):void => {
-  //   setState(() => resultNumber: newNumber)
-  // }
   const resultNumberHandler = (newNumber: number): void => {
     setResultNumber(newNumber);
   };
