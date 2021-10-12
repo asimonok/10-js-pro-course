@@ -55,8 +55,8 @@ const EmojiContainer: React.FC<IProps> = (props) => {
       </select>
       <ul className="emoji__list">
         {filteredEmojiList
-          .map((emoji: Emoji, index) => {
-            return <EmojiRow emoji={emoji} key={index} />;
+          .map((emoji: Emoji) => {
+            return <EmojiRow emoji={emoji} key={emoji.title} />;
           })
           .slice(0, displayLimit)}
       </ul>
