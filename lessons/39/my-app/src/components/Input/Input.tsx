@@ -1,25 +1,20 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import './Input.css';
 
 interface Props {
-    handleChange: (selectEl: string) => void;
-    number: number;
+    onChange: (selectEl: string) => void;
 }
 
-function Input () {
-    const [value, setValue] = useState('');
-    const [number, setNumber] = useState([5, 10, 15, 20]);
+function Input (props: Props) {
 
+    const [number, setNumber] = useState([5, 10, 15, 20]);
     const options = number.map ( (num, index) => {
         return <option key={index}> {num} </option>
     } )
 
-    function onChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setValue(event.target.value);
+    function onChange(event: ChangeEvent<HTMLInputElement>) {
+        props.onChange(event.target.value);
     }
-    // function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
-    //     setNumber(event.target.value);
-    // }
 
     return (
         <div className="wrapper">
@@ -32,7 +27,6 @@ function Input () {
             </form>
             <select 
                 className="num" 
-                //onChange={handleChange}
             >
             {options}
             </select>
