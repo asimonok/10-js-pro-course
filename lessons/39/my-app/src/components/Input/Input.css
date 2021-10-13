@@ -1,0 +1,18 @@
+.wrapper {
+    width: 600px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    padding: 10px;
+    border: 2px solid rgb(71, 48, 200);
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    width: 500px;
+  }
+
+.num {
+    height: 35px;
+  }
