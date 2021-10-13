@@ -15,8 +15,10 @@ interface State {
     searchingWord: string,
 }
 
+interface Props {}
 
-class EmojiContainer extends React.Component<any, State> {
+
+class EmojiContainer extends React.Component<Props, State> {
     constructor(props:any) {
         super(props);
         this.state = {
@@ -40,13 +42,17 @@ class EmojiContainer extends React.Component<any, State> {
     filterEmoji = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         let arr = this.state.emojiList;
-        this.setState( {
-            searchingWord: event.target.value
-        })
+        
         let filteredArr = arr.filter( (item) => item.title.includes(this.state.searchingWord) || item.keywords.includes(this.state.searchingWord)  );
 
         this.setState( {
             emojiFiltered: filteredArr
+        })
+    }
+
+    updateSearchingWord = () => {
+        this.setState( {
+            searchingWord: newSearchingWord
         })
     }
 
@@ -55,7 +61,11 @@ class EmojiContainer extends React.Component<any, State> {
         return (
             <>
             <br></br>
-            <input type='text' placeholder="Enter emoji name" onChange={this.filterEmoji} />
+
+            {/* <input type='text' placeholder="Enter emoji name" onChange={this.filterEmoji} /> */}
+
+            <Input handleChange={this.updateSearchingWord}/>
+
             <br></br>
             <div><i>there are</i> {emojiFiltered.length} emoji</div>
             <br></br>
