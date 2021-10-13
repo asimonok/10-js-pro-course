@@ -17,29 +17,28 @@ function Container (props: Props) {
   const [limitNum] = useState(15);
   const [emojiList, setEmojiList] = useState([]);
 
-  useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/asimonok/10-js-pro-course/lesson/38/lessons/38/emojiList.json"
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((list) => setEmojiList(list));
-  }, []);
-
   // useEffect(() => {
-  //       fetch(
-  //         "https://raw.githubusercontent.com/asimonok/10-js-pro-course/lesson/38/lessons/38/emojiList.json"
-  //       )
-  //         .then((response) => {
-  //           if (!response.ok) {
-  //             throw new Error(`Could not fetch this url, status: ${response.status}`);
-  //         }
-  //           return response.json();
-  //         })
-  //         .then((emojiList: ) => setEmojiList(emojiList);
-  //         });
-  //     }, []);
+  //   fetch(
+  //     "https://raw.githubusercontent.com/asimonok/10-js-pro-course/lesson/38/lessons/38/emojiList.json"
+  //   )
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((list) => setEmojiList(list));
+  // }, []);
+
+  useEffect(() => {
+        fetch(
+          "https://raw.githubusercontent.com/asimonok/10-js-pro-course/lesson/38/lessons/38/emojiList.json"
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Could not fetch this url, status: ${response.status}`);
+          }
+            return response.json();
+          })
+          .then( (list) => setEmojiList(list) );
+          }, []);
 
   const filteredList = emojiList.filter( (elem: Emoji) => {
     return elem.title.includes(props.search) || elem.keywords.includes(props.search) } ).slice(0, limitNum);
