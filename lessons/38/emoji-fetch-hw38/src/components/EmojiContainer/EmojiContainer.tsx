@@ -39,19 +39,25 @@ class EmojiContainer extends React.Component<Props, State> {
         })
     }
 
-    filterEmoji = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // filterEmoji = (event: React.ChangeEvent<HTMLInputElement>) => {
 
-        let arr = this.state.emojiList;
+    //     let arr = this.state.emojiList;
         
-        let filteredArr = arr.filter( (item) => item.title.includes(this.state.searchingWord) || item.keywords.includes(this.state.searchingWord)  );
+    //     let filteredArr = arr.filter( (item) => item.title.includes(this.state.searchingWord) || item.keywords.includes(this.state.searchingWord)  );
+
+    //     this.setState( {
+    //         emojiFiltered: filteredArr
+    //     })
+    // }
+
+    updateSearchingWord = (newSearchingWord: string) => {
+
+        let word = newSearchingWord
+        let arr = this.state.emojiList;
+        let filteredArr = arr.filter( (item) => item.title.includes(word) || item.keywords.includes(word)  );
 
         this.setState( {
-            emojiFiltered: filteredArr
-        })
-    }
-
-    updateSearchingWord = () => {
-        this.setState( {
+            emojiFiltered: filteredArr,
             searchingWord: newSearchingWord
         })
     }
@@ -62,9 +68,7 @@ class EmojiContainer extends React.Component<Props, State> {
             <>
             <br></br>
 
-            {/* <input type='text' placeholder="Enter emoji name" onChange={this.filterEmoji} /> */}
-
-            <Input handleChange={this.updateSearchingWord}/>
+            <Input searchingWord={this.state.searchingWord} onChange={this.updateSearchingWord} />
 
             <br></br>
             <div><i>there are</i> {emojiFiltered.length} emoji</div>
