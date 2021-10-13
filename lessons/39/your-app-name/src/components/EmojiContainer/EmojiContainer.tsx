@@ -5,6 +5,7 @@ import "./EmojiContainer.css";
 interface Props {
   searchValue: string;
   resultNumber: number;
+  // emojiList: Emoji[];
 }
 // interface State {
 //   emojiList: Emoji[];
@@ -43,7 +44,7 @@ const EmojiContainer: React.FC<Props> = (props: Props) => {
         return setState(emojiList);
       })
       .catch((error) => console.log(error));
-  });
+  }, []);
 
   const filteredList = filterEmojis(props.searchValue, state);
   return (
@@ -59,7 +60,6 @@ const EmojiContainer: React.FC<Props> = (props: Props) => {
       </ul>
     </>
   );
-  // }
 };
 
 export default EmojiContainer;
