@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import Input from './components/Input';
 import Container from './components/Container';
- 
-// interface Props {}
-
-// interface State {
-//   search: string;
-// }
 
 function App() {
 
