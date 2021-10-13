@@ -17,16 +17,6 @@ function Container (props: Props) {
   const [limitNum] = useState(15);
   const [emojiList, setEmojiList] = useState([]);
 
-  // useEffect(() => {
-  //   fetch(
-  //     "https://raw.githubusercontent.com/asimonok/10-js-pro-course/lesson/38/lessons/38/emojiList.json"
-  //   )
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((list) => setEmojiList(list));
-  // }, []);
-
   useEffect(() => {
         fetch(
           "https://raw.githubusercontent.com/asimonok/10-js-pro-course/lesson/38/lessons/38/emojiList.json"
