@@ -25,7 +25,7 @@ function Container (props: Props) {
         return response.json();
       })
       .then((list) => setEmojiList(list));
-  });
+  }, []);
 
   // useEffect(() => {
   //       fetch(
