@@ -1,13 +1,9 @@
 import React from 'react';
 import './EmojiRow.css';
+import {MyEmoji} from 'types/EmodjiTypes';
 
-interface MyEmoji {
-    title: string;
-    symbol: string;
-    keywords: string;
-  }
-  
-  interface Props {
+ 
+interface Props {
     item: MyEmoji;
   }
 

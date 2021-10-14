@@ -1,16 +1,11 @@
 import React from 'react';
 import './EmojiContainer.css';
 import EmojiRow from '../EmojiRow'
+import {MyEmoji} from 'types/EmodjiTypes'
 
-interface Emoji {
-    title: string;
-    symbol: string;
-    keywords: string;
-}
-  
 interface State {
-    emojiList: Array<Emoji>;
-    emojiFiltered: Array<Emoji>;
+    emojiList: Array<MyEmoji>;
+    emojiFiltered: Array<MyEmoji>;
 }
 
 interface Props {
@@ -46,7 +41,6 @@ class EmojiContainer extends React.Component<Props, State> {
                 emojiFiltered: filteredArr,
             })
         }
-
     }
         
     render() {
