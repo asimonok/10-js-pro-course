@@ -1,0 +1,28 @@
+.card {
+    width: 20%;
+    margin: 50px 15px;
+    padding: 10px 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+.card__title {
+    font-size: 16px;
+
+}
+.card__text {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.card__link {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    background-color: #d3d3d3;
+    text-decoration: none;
+}
