@@ -35,20 +35,22 @@ class EmojiContainer extends React.Component<Props, State> {
             });
         })
     }
+    componentDidUpdate(prevProps: Props) {
 
-    filterEmoji = () => {
-        const {searchingWord} = this.props 
-        let arr = this.state.emojiList;
-        let filteredArr = arr.filter( (item) => item.title.includes(searchingWord) || item.keywords.includes(searchingWord) );
+        if( prevProps.searchingWord !== this.props.searchingWord ){
+            const {searchingWord} = this.props 
+            let arr = this.state.emojiList;
+            let filteredArr = arr.filter( (item) => item.title.includes(searchingWord) || item.keywords.includes(searchingWord) );
+    
+            this.setState( {
+                emojiFiltered: filteredArr,
+            })
+        }
 
-        this.setState( {
-            emojiFiltered: filteredArr,
-        })
     }
         
     render() {
         const{emojiFiltered} = this.state;
-
         return (
             <>
             <br></br>

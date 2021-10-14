@@ -2,13 +2,13 @@ import React from 'react'
 
 interface Props {
     searchingWord: string,
-    onChange: (newSearchingWord: string) => void
+    handleChange: (newSearchingWord: string) => void
 }
 
 class Input extends React.Component<Props> {
 
     handleChange =(event: React.ChangeEvent<HTMLInputElement>) => {
-        return this.props.onChange(event.target.value)
+        return this.props.handleChange(event.target.value)
     }
     render() {
 

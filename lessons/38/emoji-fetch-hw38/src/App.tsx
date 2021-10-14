@@ -17,19 +17,18 @@ class App extends Component<Props, State> {
     }   
   }
 
-  updateSearchingWord = (newSearchingWord: string) => {
+  updateSearchingWord = (searchingWord: string) => {
     this.setState({
-      searchingWord: newSearchingWord,
+      searchingWord,
     })
   }
 
   render() {
-
     return (
       <div className="App">
         <Input 
           searchingWord={this.state.searchingWord} 
-          onChange={this.updateSearchingWord} 
+          handleChange={this.updateSearchingWord} 
         />
         <EmojiContainer searchingWord={this.state.searchingWord} />
       </div>
