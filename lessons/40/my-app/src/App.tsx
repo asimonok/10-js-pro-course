@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import ArticleContainer from './components/ArticleContainer';
 
-function App() {
-  return <div className="App"></div>;
-}
+const App: React.FC<{}> = (props) => {
+  /* const [searchString, setSearchString] = useState('');
+
+  const handleChange = (searchString: string) => {
+    setSearchString(searchString);
+  }; */
+
+  return (
+    <div className="App">
+      <ArticleContainer />
+    </div>
+  );
+};
 
 export default App;
