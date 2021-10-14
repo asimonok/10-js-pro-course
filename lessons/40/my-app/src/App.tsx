@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
 import ArticleContainer from './components/ArticleContainer';
+import Button from './components/Button';
 
 const App: React.FC<{}> = (props) => {
-  /* const [searchString, setSearchString] = useState('');
-
-  const handleChange = (searchString: string) => {
-    setSearchString(searchString);
-  }; */
+  const [displayLimit, setDisplayLimit] = useState(5);
 
   return (
     <div className="App">
-      <ArticleContainer />
+      <h1 className="title">My Site</h1>
+      <ArticleContainer displayLimit={displayLimit} />
+      <Button
+        text="Show more"
+        onClick={() => setDisplayLimit(displayLimit + 5)}
+      />
+      {/* <Button text="Change theme" /> */}
     </div>
   );
 };

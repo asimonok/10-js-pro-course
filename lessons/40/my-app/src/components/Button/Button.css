@@ -1,0 +1,10 @@
+.button {
+  background-color: rgb(56, 56, 56);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  display: block;
+  margin: 15px auto;
+  font-family: 'Open sans', sans-serif;
+}

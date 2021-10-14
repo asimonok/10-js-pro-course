@@ -1,0 +1,20 @@
+.article-card {
+  max-width: 18%;
+  margin: 0 5px 15px;
+  text-align: center;
+  color: rgb(63, 62, 62);
+  border: 2px solid rgb(212, 209, 209);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.article-card__content {
+  margin: 15px;
+}
+
+.article-card__author {
+  border-top: 1px solid rgb(212, 209, 209);
+  padding: 15px 0px;
+  background-color: rgb(245, 244, 244);
+}
