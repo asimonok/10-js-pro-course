@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Button.css';
 
 interface IProps {
@@ -7,12 +7,12 @@ interface IProps {
 }
 
 const Button: React.FC<IProps> = (props) => {
-  const showMore = () => {
+  const handleChange = () => {
     props.onClick();
   };
 
   return (
-    <button className="button" onClick={showMore}>
+    <button className="button" onClick={handleChange}>
       {props.text}
     </button>
   );

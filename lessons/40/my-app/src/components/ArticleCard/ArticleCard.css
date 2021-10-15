@@ -9,6 +9,10 @@
   justify-content: space-between;
 }
 
+.article-card.dark {
+  color: rgb(212, 209, 209);
+}
+
 .article-card__content {
   margin: 15px;
 }
@@ -17,6 +21,10 @@
   border-top: 1px solid rgb(212, 209, 209);
   padding: 15px 0px;
   background-color: rgb(245, 244, 244);
+}
+
+.article-card__author.dark {
+  background-color: rgb(34, 34, 34);
 }
 
 .author-name {

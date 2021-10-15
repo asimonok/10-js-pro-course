@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './ArticleCard.css';
 import { Article } from 'types/Article';
 import { Author } from 'types/Author';
 import Modal from '../Modal';
+import { ThemeContext } from '../ThemeContext/ThemeContext';
 
 interface IProps {
   article: Article;
@@ -11,6 +12,7 @@ interface IProps {
 const ArticleCard: React.FC<IProps> = (props) => {
   const [authors, setAuthors] = useState<Author[]>([]);
   const [modal, setModal] = useState(false);
+  const [theme] = useContext(ThemeContext);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -29,12 +31,16 @@ const ArticleCard: React.FC<IProps> = (props) => {
 
   return (
     <>
-      <div className="article-card">
+      <div className={`article-card ${theme === 'light' ? `light` : `dark`}`}>
         <div className="article-card__content">
           <h3 className="subtitle article-card__subtitle">{article.title}</h3>
           <p className="article-text">{article.body}</p>
         </div>
-        <div className="article-card__author">
+        <div
+          className={`article-card__author ${
+            theme === 'light' ? `light` : `dark`
+          }`}
+        >
           <span>Autor: </span>
           <span className="author-name" onClick={() => setModal(true)}>
             {author.map((author) => {
