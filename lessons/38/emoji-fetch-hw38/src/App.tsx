@@ -7,7 +7,7 @@ import Clock from './components/Clock'
 interface Props{}
 
 const App = (props: Props) => {
-  const [word, setWord] = useState('');
+  const [word, setWord] = useState('green');
 
   
    const updateSearchingWord = (searchingWord: string) => {
