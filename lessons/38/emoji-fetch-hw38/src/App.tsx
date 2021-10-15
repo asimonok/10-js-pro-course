@@ -1,40 +1,27 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import EmojiContainer from './components/EmojiContainer'
 import Input from './components/Input'
 
 interface Props{}
 
-interface State {
-  searchingWord: string
-}
+const App = (props: Props) => {
+  const [word, setWord] = useState('');
 
-class App extends Component<Props, State> {
-  constructor(props: Props){
-    super(props);
-    this.state={
-      searchingWord: '',
-    }   
-  }
+  
+   const updateSearchingWord = (searchingWord: string) => {
+      setWord(searchingWord)
+    }
 
-  updateSearchingWord = (searchingWord: string) => {
-    this.setState({
-      searchingWord,
-    })
-  }
-
-  render() {
     return (
       <div className="App">
-        <Input 
-          searchingWord={this.state.searchingWord} 
-          handleChange={this.updateSearchingWord} 
+        <Input
+          searchingWord={word} 
+          handleChange={updateSearchingWord} 
         />
-        <EmojiContainer searchingWord={this.state.searchingWord} />
+        <EmojiContainer searchingWord={word} />
       </div>
     )
-
-  }
 }
 
 export default App;
