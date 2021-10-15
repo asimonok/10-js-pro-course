@@ -18,9 +18,12 @@ const EmojiContainer: React.FunctionComponent<Props> = (props) => {
     })
    }, [])
 
-    const filterEmoji = useCallback((word: string, arr: MyEmoji[]): MyEmoji[] => {
+    // const filterEmoji = useCallback((word: string, arr: MyEmoji[]): MyEmoji[] => {
+    //     return arr.filter( (item) => item.title.includes(word) || item.keywords.includes(word) )
+    // }, [])
+    const filterEmoji = (word: string, arr: MyEmoji[]): MyEmoji[] => {
         return arr.filter( (item) => item.title.includes(word) || item.keywords.includes(word) )
-    }, [])
+    }
 
     const filteredList  = useMemo( ()  => filterEmoji (props.searchingWord, emoji), [props.searchingWord, emoji])
         
