@@ -55,6 +55,7 @@ const ArticleCard: React.FC<IProps> = (props) => {
             author={author}
             isOpened={modal}
             onModalClose={() => setModal(false)}
+            key={author.id}
           />
         );
       })}

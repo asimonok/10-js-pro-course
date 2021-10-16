@@ -5,10 +5,6 @@ import Button from './components/Button';
 import { ThemeContext } from './components/ThemeContext/ThemeContext';
 import Preloader from 'components/Preloader';
 
-/* interface IProps {
-  isFething: boolean;
-} */
-
 const App: React.FC<{}> = (props) => {
   const [displayLimit, setDisplayLimit] = useState(5);
   const [theme, setTheme] = useContext(ThemeContext);
