@@ -8,8 +8,13 @@ const App: React.FC<{}> = (props) => {
   const [displayLimit, setDisplayLimit] = useState(5);
   const [theme, setTheme] = useContext(ThemeContext);
 
+  if (theme === 'dark') {
+    document.body.style.background = 'black';
+  } else {
+    document.body.style.background = 'white';
+  }
   return (
-    <div className={`App ${theme === 'light' ? `light` : `dark`}`}>
+    <div className="App">
       <h1 className={`title ${theme === 'light' ? `light` : `dark`}`}>
         My Site {theme}
       </h1>
