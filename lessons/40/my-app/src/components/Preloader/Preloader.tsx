@@ -5,7 +5,9 @@ const Preloader: React.FC<{}> = (props) => {
   const [preloader, setPreloader] = useState('loading');
 
   document.body.onload = () => {
-    setPreloader('loaded');
+    setTimeout(() => {
+      setPreloader('loaded');
+    }, 2000);
   };
 
   return (
