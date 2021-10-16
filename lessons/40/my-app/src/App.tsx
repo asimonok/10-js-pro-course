@@ -3,6 +3,11 @@ import './App.css';
 import ArticleContainer from './components/ArticleContainer';
 import Button from './components/Button';
 import { ThemeContext } from './components/ThemeContext/ThemeContext';
+import Preloader from 'components/Preloader';
+
+/* interface IProps {
+  isFething: boolean;
+} */
 
 const App: React.FC<{}> = (props) => {
   const [displayLimit, setDisplayLimit] = useState(5);
@@ -13,8 +18,10 @@ const App: React.FC<{}> = (props) => {
   } else {
     document.body.style.background = 'white';
   }
+
   return (
     <div className="App">
+      <Preloader />
       <h1 className={`title ${theme === 'light' ? `light` : `dark`}`}>
         My Site {theme}
       </h1>
