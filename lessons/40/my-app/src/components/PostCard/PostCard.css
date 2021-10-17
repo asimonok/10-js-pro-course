@@ -1,8 +1,8 @@
 .postcard-component {
   margin: 25px;
-  width: 300px;
+  width: 305px;
   height: 680px;
-  border: 1px solid grey;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,7 +24,7 @@
   width: 100%;
   height: 80px;
   border: none;
-  border-top: 1px solid grey;
+  border-top: 1px solid black;
   font-size: 24px;
   cursor: pointer;
 }

@@ -2,10 +2,10 @@
   margin-top: 10px;
   width: 150px;
   height: 30px;
-  border: 1px solid rgb(85, 82, 82);
+  border: none;
   border-radius: 5%;
-  background-color: white;
+  background-color: rgb(85, 82, 82);
   font-size: 18px;
-  color: rgb(85, 82, 82);
+  color: white;
   cursor: pointer;
 }
