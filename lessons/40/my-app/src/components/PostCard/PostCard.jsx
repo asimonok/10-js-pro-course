@@ -21,7 +21,7 @@ const PostCard = ({ title, content, name, email, website, address, phone }) => {
           </button>
         </div>
       </div>
-      {/* <ModalWindow
+      <ModalWindow
         active={modalActive}
         setActive={setModalActive}
         name={name}
@@ -29,7 +29,7 @@ const PostCard = ({ title, content, name, email, website, address, phone }) => {
         website={website}
         address={address}
         phone={phone}
-      /> */}
+      />
     </>
   );
 };
