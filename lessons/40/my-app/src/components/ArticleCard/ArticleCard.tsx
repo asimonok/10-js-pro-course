@@ -1,18 +1,22 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { FC, useState, useEffect, useContext, useCallback } from 'react';
 import './ArticleCard.css';
 import { Article } from 'types/Article';
 import { Author } from 'types/Author';
 import Modal from '../Modal';
-import { ThemeContext } from '../ThemeContext/ThemeContext';
+import { ThemeContext } from '../ThemeContext';
+import { THEMES } from 'constants/THEMES';
 
 interface IProps {
   article: Article;
 }
 
-const ArticleCard: React.FC<IProps> = (props) => {
+const ArticleCard: FC<IProps> = (props) => {
   const [authors, setAuthors] = useState<Author[]>([]);
+  const [author, setAuthor] = useState<Author>();
   const [modal, setModal] = useState(false);
   const [theme] = useContext(ThemeContext);
+
+  const { article } = props;
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -23,42 +27,50 @@ const ArticleCard: React.FC<IProps> = (props) => {
       .catch((e) => console.error(e));
   }, []);
 
-  const { article } = props;
+  useEffect(() => {
+    setAuthor(
+      authors.find((author) => {
+        return author.id === article.userId;
+      })
+    );
+  }, [authors, article]);
 
-  const author = authors.filter((author) => {
-    return author.id === article.userId;
-  });
+  const toggleModal = useCallback(() => {
+    setModal(modal === false ? true : false);
+  }, [modal, setModal]);
 
   return (
     <>
-      <div className={`article-card ${theme === 'light' ? `light` : `dark`}`}>
+      <div
+        className={`article-card ${
+          theme === THEMES.LIGHT ? `` : `article-card--dark`
+        }`}
+      >
         <div className="article-card__content">
           <h3 className="subtitle article-card__subtitle">{article.title}</h3>
           <p className="article-text">{article.body}</p>
         </div>
         <div
           className={`article-card__author ${
-            theme === 'light' ? `light` : `dark`
+            theme === THEMES.LIGHT ? `` : `article-card__author--dark`
           }`}
         >
           <span>Autor: </span>
-          <span className="author-name" onClick={() => setModal(true)}>
-            {author.map((author) => {
-              return author.name;
-            })}
+          <span className="author-name" onClick={toggleModal}>
+            {author?.name}
           </span>
         </div>
       </div>
-      {author.map((author) => {
-        return (
-          <Modal
-            author={author}
-            isOpened={modal}
-            onModalClose={() => setModal(false)}
-            key={author.id}
-          />
-        );
-      })}
+      {author ? (
+        <Modal
+          author={author}
+          isOpened={modal}
+          onModalClose={toggleModal}
+          key={author?.id}
+        />
+      ) : (
+        []
+      )}
     </>
   );
 };

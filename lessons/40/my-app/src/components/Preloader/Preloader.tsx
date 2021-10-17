@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import './Preloader.css';
 
-const Preloader: React.FC<{}> = (props) => {
+const Preloader: FC<{}> = (props) => {
   const [preloader, setPreloader] = useState('loading');
 
   document.body.onload = () => {
@@ -11,7 +11,11 @@ const Preloader: React.FC<{}> = (props) => {
   };
 
   return (
-    <div className={`preloader ${preloader === 'loading' ? `` : `done`}`}></div>
+    <div
+      className={`preloader ${
+        preloader === 'loading' ? `` : `preloader--done`
+      }`}
+    ></div>
   );
 };
 

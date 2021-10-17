@@ -1,14 +1,17 @@
-import React, { useState, Dispatch } from 'react';
+import React, { FC, useState, Dispatch } from 'react';
+
+interface IProps {
+  children: React.ReactNode;
+}
 
 const ThemeContext = React.createContext<[string, Dispatch<string>]>([
   '',
   () => {},
 ]);
 
-const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+const ThemeProvider: FC<IProps> = (props) => {
   const [theme, setTheme] = useState('light');
+  const { children } = props;
 
   return (
     <ThemeContext.Provider value={[theme, setTheme]}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './Button.css';
 
 interface IProps {
@@ -6,14 +6,16 @@ interface IProps {
   onClick: () => void;
 }
 
-const Button: React.FC<IProps> = (props) => {
+const Button: FC<IProps> = (props) => {
+  const { text, onClick } = props;
+
   const handleChange = () => {
-    props.onClick();
+    onClick();
   };
 
   return (
     <button className="button" onClick={handleChange}>
-      {props.text}
+      {text}
     </button>
   );
 };
