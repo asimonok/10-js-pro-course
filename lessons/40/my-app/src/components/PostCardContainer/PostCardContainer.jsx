@@ -35,26 +35,22 @@ const PostCardContainer = () => {
 
   return (
     <div className="postcard-container_component">
-      {posts
-        .map((post) => {
-          return (
-            <PostCard
-              key={post.id}
-              title={post.title}
-              content={post.body}
-              {...authors[post.userId - 1]}
-            />
-          );
-        })
-        .slice(0, postsLimit)}
-
-      <button
-        variant="outline-success"
-        className="btn btn-outline-success"
-        onClick={setNewPostsLimits}
-        size="lg"
-      >
-        Show
+      <div className="postcard-row">
+        {posts
+          .map((post) => {
+            return (
+              <PostCard
+                key={post.id}
+                title={post.title}
+                content={post.body}
+                {...authors[post.userId - 1]}
+              />
+            );
+          })
+          .slice(0, postsLimit)}
+      </div>
+      <button className="postcard-container_button" onClick={setNewPostsLimits}>
+        Show more
       </button>
     </div>
   );

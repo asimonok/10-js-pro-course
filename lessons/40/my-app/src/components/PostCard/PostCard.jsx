@@ -14,10 +14,10 @@ const PostCard = ({ title, content, name, email, website, address, phone }) => {
         <div className="postcard-footer">
           <button
             type="button"
-            className="btn btn-link"
+            className="postcard-button"
             onClick={() => setModalActive(true)}
           >
-            Author: {name}
+            Author: <span className="text-blue">{name}</span>
           </button>
         </div>
       </div>

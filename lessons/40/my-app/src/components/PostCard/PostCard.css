@@ -1,0 +1,34 @@
+.postcard-component {
+  margin: 25px;
+  width: 300px;
+  height: 700px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.postcard-body {
+  margin: 20px 15px;
+}
+
+.postcard-title {
+  font-size: 30px;
+}
+
+.postcard-text {
+  font-size: 24px;
+}
+
+.postcard-button {
+  width: 100%;
+  height: 100px;
+  border: none;
+  border-top: 1px solid grey;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.text-blue {
+  color: blue;
+}
