@@ -1,0 +1,48 @@
+.usersList {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  /* background-color: aqua; */
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.card {
+  border: 0.5px solid rgb(223, 223, 223);
+  border-radius: 3px;
+  width: 300px;
+  /* height: 400px; */
+  margin-bottom: 20px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  /* padding: 20px 0px 0px 0px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-title {
+  padding: 10px;
+  margin: 0px;
+}
+.card-body {
+  padding: 0px 5px 0px 5px;
+  margin: 0px;
+}
+.card-author {
+  background-color: rgb(248, 247, 247);
+  padding-top: 30px;
+  text-align: center;
+  border-top: 1px solid rgb(223, 223, 223);
+  /* width: 298px; */
+  height: 60px;
+  margin-bottom: 0px;
+}
+a:visited {
+  color: rgb(53, 121, 246);
+}
