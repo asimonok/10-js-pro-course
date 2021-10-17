@@ -18,10 +18,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 };
 
 // create "global" variable
-export const VarContext = React.createContext<[number, Dispatch<any>]>([
-  5,
-  () => {},
-]);
+export const VarContext = React.createContext<
+  [number, React.Dispatch<React.SetStateAction<number>>]
+>([5, () => {}]);
 
 export const VarProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -31,5 +30,25 @@ export const VarProvider: React.FC<{ children: React.ReactNode }> = ({
     <VarContext.Provider value={[value, setValue]}>
       {children}
     </VarContext.Provider>
+  );
+};
+
+export let LoadingContext = React.createContext<
+  [boolean, React.Dispatch<React.SetStateAction<boolean>>]
+>([false, () => {}]);
+
+// export let LoadingContext = React.createContext<[boolean, Dispatch<boolean>]>([
+//   false,
+//   () => {},
+// ]);
+
+export let LoadingProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  let [loading, setLoading] = useState(false);
+  return (
+    <LoadingContext.Provider value={[loading, setLoading]}>
+      {children}
+    </LoadingContext.Provider>
   );
 };

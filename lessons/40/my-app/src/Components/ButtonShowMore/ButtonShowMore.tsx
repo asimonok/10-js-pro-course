@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
-import { VarContext } from "../../myContext";
+import React, { Dispatch, SetStateAction, useContext } from "react";
+import { LoadingContext, VarContext } from "../../myContext";
 import "./ButtonShowMore.css";
-interface Props {}
+interface Props {
+  //   loading: boolean;
+  //   setLoading: Dispatch<SetStateAction<boolean>>;
+}
 
 // this button should add +5 to global variable which changes filtered const in Row container
-const ButtonShowMore: React.FC = () => {
+const ButtonShowMore: React.FC<Props> = (props) => {
   const [value, setValue] = useContext(VarContext);
+  const [loading, setLoading] = useContext(LoadingContext);
 
   //   const showMoreHandler = useCallback(({ value }) => {
   //     const newValue = setValue((value: any) => value + 5);
@@ -26,6 +30,7 @@ const ButtonShowMore: React.FC = () => {
       <button onClick={() => setValue((prevValue: number) => (prevValue = 5))}>
         Reset
       </button>
+      <button onClick={() => setLoading(false)}> TEST </button>
     </>
   );
 };

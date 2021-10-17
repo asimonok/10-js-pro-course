@@ -1,10 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
-import { VarContext } from "../../myContext";
+import axios from "axios";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  Dispatch,
+  SetStateAction,
+  ContextType,
+} from "react";
+import { Spinner } from "react-bootstrap";
+import { LoadingContext, LoadingProvider, VarContext } from "../../myContext";
 import "./Row.css";
 
 interface Props {
+  //   loading: boolean;
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
+  //   setLoad: Dispatch<SetStateAction<boolean>>;
 }
 interface Users {
   userId: number;
@@ -20,18 +31,38 @@ const Row: React.FC<Props> = (props) => {
   const userList: Users[] = [];
   const [users, setUsers] = useState(userList);
   const [value, setValue] = useContext(VarContext);
+  const [loading, setLoading] = useContext(LoadingContext);
+
+  const loadFunction = async () => {
+    try {
+      //   setLoading(true);
+
+      axios
+        .get(`https://jsonplaceholder.typicode.com/posts`)
+        .then((res: any) => {
+          console.log(res);
+          setUsers(res.data);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     setValue(5); // change list number to 5 when loaded
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res): Promise<Users[]> => {
-        //   .then((res) => {
-        return res.json();
-      })
-      .then((userList) => {
-        return setUsers(userList);
-      })
-      .catch((error) => console.log(error));
+    loadFunction();
+    // props.setLoad(true);
+    // setLoading(true);
+
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    //   .then((res): Promise<Users[]> => {
+    //     //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((userList) => {
+    //     return setUsers(userList);
+    //   })
+    //   .catch((error) => console.log(error));
   }, []); // [] empty - load once when DOM loaded
 
   const filteredUsers = users.filter((user) => {
