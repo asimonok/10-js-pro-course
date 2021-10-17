@@ -26,15 +26,15 @@ li {
   flex-direction: column;
   justify-content: space-between;
 }
-.card-title {
+.card__title {
   padding: 10px;
   margin: 0px;
 }
-.card-body {
+.card__body {
   padding: 0px 5px 0px 5px;
   margin: 0px;
 }
-.card-author {
+.card__author {
   background-color: rgb(248, 247, 247);
   padding-top: 30px;
   text-align: center;
@@ -43,6 +43,13 @@ li {
   height: 60px;
   margin-bottom: 0px;
 }
-a:visited {
+
+.card__button {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  /* font-family: arial, sans-serif; */
   color: rgb(53, 121, 246);
+  /* text-decoration: underline; */
+  cursor: pointer;
 }

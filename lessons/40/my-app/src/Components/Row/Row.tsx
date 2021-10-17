@@ -44,11 +44,14 @@ const Row: React.FC<Props> = (props) => {
         {filteredUsers.map((el) => {
           return (
             <li className="card" key={el.id}>
-              <h2 className="card-title">{el.title}</h2>
-              <p className="card-body">{el.body}</p>
-              <p className="card-author">
+              <h2 className="card__title">{el.title}</h2>
+              <p className="card__body">{el.body}</p>
+              <p className="card__author">
                 Author:{" "}
-                <button onClick={() => props.setActive(true)}>
+                <button
+                  className="card__button"
+                  onClick={() => props.setActive(true)}
+                >
                   Vlad Folse
                 </button>
               </p>

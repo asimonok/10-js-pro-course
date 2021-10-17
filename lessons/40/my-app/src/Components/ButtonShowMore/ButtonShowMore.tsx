@@ -19,11 +19,11 @@ const ButtonShowMore: React.FC = () => {
     <>
       <button
         className="buttonShowMore"
-        onClick={() => setValue((prevValue: any) => prevValue + 5)}
+        onClick={() => setValue((prevValue: number) => prevValue + 5)}
       >
         Show More
       </button>
-      <button onClick={() => setValue((prevValue: any) => (prevValue = 5))}>
+      <button onClick={() => setValue((prevValue: number) => (prevValue = 5))}>
         Reset
       </button>
     </>
