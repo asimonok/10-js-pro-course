@@ -8,12 +8,16 @@ interface Props {
   email: string;
   phone: string;
   website: string;
-  //   address: string;
-  city: string;
-  street: string;
-  suite: string;
-  zipcode: string;
-  geo: string;
+  address: {
+    city: string;
+    street: string;
+    suite: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
 }
 
 const ModalWindow: React.FC<Props> = (props) => {
@@ -38,11 +42,9 @@ const ModalWindow: React.FC<Props> = (props) => {
           </div>
           <div className="modal-body">
             <p className="modal-address">
-              Address: {props.city}, {props.street}, {props.suite},{" "}
-              {props.zipcode}, {props.geo}
-              {/* Address: {address.city}, {address.street}, {address.suitee},{" "}
-              {address.zipcode}, {address.geo} */}
-              {/* Address: {props.address} */}
+              Address: {props.address.city}, {props.address.street},{" "}
+              {props.address.suite}, {props.address.zipcode},{" "}
+              {props.address.geo.lat}, {props.address.geo.lng}
             </p>
             <p className="modal-contacts">
               Email: {props.email}, phone: {props.phone}, web site:{" "}

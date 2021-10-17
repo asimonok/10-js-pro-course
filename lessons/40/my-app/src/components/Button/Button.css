@@ -1,0 +1,11 @@
+.theme-button {
+  margin-top: 10px;
+  width: 150px;
+  height: 30px;
+  border: 1px solid rgb(85, 82, 82);
+  border-radius: 5%;
+  background-color: white;
+  font-size: 18px;
+  color: rgb(85, 82, 82);
+  cursor: pointer;
+}

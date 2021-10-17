@@ -9,12 +9,16 @@ interface Props {
   email: string;
   phone: string;
   website: string;
-  //   address: string;
-  city: string;
-  street: string;
-  suite: string;
-  zipcode: string;
-  geo: string;
+  address: {
+    city: string;
+    street: string;
+    suite: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
 }
 
 const PostCard: React.FC<Props> = (props) => {
@@ -43,12 +47,7 @@ const PostCard: React.FC<Props> = (props) => {
         email={props.email}
         phone={props.phone}
         website={props.website}
-        // address={props.address}
-        city={props.city}
-        street={props.street}
-        suite={props.suite}
-        zipcode={props.zipcode}
-        geo={props.geo}
+        address={props.address}
       />
     </>
   );

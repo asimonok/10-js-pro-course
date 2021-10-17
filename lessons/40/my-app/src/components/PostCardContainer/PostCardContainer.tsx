@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./PostCardContainer.css";
 import PostCard from "../PostCard";
 import BeatLoader from "react-spinners/BeatLoader";
@@ -31,9 +31,9 @@ const PostCardContainer = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const setNewPostsLimits = () => {
-    setPostsLimit((postsLimit) => postsLimit + 5);
-  };
+  const setNewPostsLimits = useCallback(() => {
+    setPostsLimit(postsLimit + 5);
+  }, [postsLimit, setPostsLimit]);
 
   if (posts.length === 0 || authors.length === 0) {
     return <BeatLoader />;
