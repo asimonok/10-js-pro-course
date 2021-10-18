@@ -38,17 +38,13 @@ function App() {
   return (
     <>
       <VarProvider>
-        {loading1 ? (
+        {loading ? (
           <div className={theme === "dark" ? "App__dark" : "App__light"}>
+            {loading1 ? "true" : "false"}
             <ThemeButton />
-            <Row
-              active
-              setActive={setModalActive}
-              // loading
-              // setLoad={setLoading}
-            />
+            <Row active setActive={setModalActive} />
             <ButtonShowMore />
-            <Modal active={modalActive} setActive={toggleModal} />
+            <Modal active={modalActive} setActive={setModalActive} />
           </div>
         ) : (
           <div className="loading">
