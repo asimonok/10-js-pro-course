@@ -3,9 +3,6 @@ import './App.css';
 import Button from './components/Button'
 import {ThemeContext, ThemeProvider }from './components/ThemeProvider'
 import {ProgressBar} from './components/ProgresBar'
-import { isTemplateExpression } from 'typescript';
-import {Card, CardVariant} from './components/Card'
-import UserList from './components/UserList'
 import {User, Post} from 'types/types'
 import PostItem from './components/PostItem'
 
@@ -13,7 +10,6 @@ import PostItem from './components/PostItem'
 function App() {
   const [theme, setTheme]= useContext(ThemeContext);
   const [posts, setPosts] = useState<Post[]>([]);
-  // const [user, setUser] = useState<User>();
   const [users, setUsers] = useState<User[]>([]);
   const [numberOfPost, setNumberOfPost] = useState(5);
 
@@ -25,7 +21,6 @@ function App() {
     .then(json => {
       setPosts(json)})
     .catch((error) => console.log(error))
-    console.log('post', response)
   }, [])
 
   useEffect( ()=> {
@@ -34,17 +29,7 @@ function App() {
     .then(json => {
       setUsers(json)})
     .catch((error) => console.log(error))
-    console.log('user', response)
   }, [])
-
-
-  // const getUser = (id: number) => {
-  //   const response = fetch(`https://jsonplaceholder.typicode.com/${id}`)
-  //   response.then((response):Promise<User> => response.json())
-  //   .then(json => {
-  //     setUser(json)})
-  //   .catch((error) => console.log(error))
-  // }
 
 
   useEffect(() => {
@@ -56,7 +41,7 @@ function App() {
     () => {
       setNumberOfPost(numberOfPost => numberOfPost + 5)
     },
-    [numberOfPost],
+    [],
   );
   
   return (
@@ -66,12 +51,12 @@ function App() {
 
       <div className="CardRow">
         {posts.slice(0,numberOfPost).map((post, index) =>
-          <PostItem key={post.id} post={post} user={ users.filter(user => user.id === post.userId ? user.name: '')[0]}></PostItem>
+          <PostItem key={post.id} post={post} user={users.filter(user => user.id === post.userId ? user.name: '')[0]}></PostItem>
         )}
-
       </div>
+   
       <button onClick={handleNumberOfPost}>Show more</button>
-      
+            
     </ThemeProvider>
     
   );
