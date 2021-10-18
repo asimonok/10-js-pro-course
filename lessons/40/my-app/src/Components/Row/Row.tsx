@@ -1,13 +1,10 @@
-import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { ThemeContext, VarContext } from "../../myContext";
 import "./Row.css";
 
 interface Props {
-  //   loading: boolean;
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
-  //   setLoad: Dispatch<SetStateAction<boolean>>;
 }
 interface Users {
   userId: number;
@@ -61,19 +58,7 @@ const Row: React.FC<Props> = (props) => {
   useEffect(() => {
     setValue(5); // change list number to 5 when loaded
     loadFunction();
-    // props.setLoad(true);
-    // setLoading(true);
-
-    // fetch("https://jsonplaceholder.typicode.com/posts")
-    //   .then((res): Promise<Users[]> => {
-    //     //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((userList) => {
-    //     return setUsers(userList);
-    //   })
-    //   .catch((error) => console.log(error));
-  }, [setTheme]); // [] empty - load once when DOM loaded
+  }, [setTheme]);
 
   const filteredUsers = users.filter((user) => {
     return user.id <= value;
@@ -82,7 +67,6 @@ const Row: React.FC<Props> = (props) => {
   const findAuthorName = author.map((author) => {
     return author.name;
   });
-  console.log(findAuthorName);
 
   return (
     <>

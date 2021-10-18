@@ -4,10 +4,7 @@ interface Props {
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
-//TODO
-// title - Author name
-// close button - right corner or bottom right
-// body - adress and email with phone
+
 const Modal: React.FC<Props> = (props) => {
   return (
     <div
@@ -15,7 +12,7 @@ const Modal: React.FC<Props> = (props) => {
       onClick={() => props.setActive(false)}
     >
       <div
-        className={props.active ? "modal__content active" : "modal__content"}
+        className={props.active ? "modal__content active" : "modal__content "}
         onClick={(e) => e.stopPropagation}
       >
         <div className="modal__title">Vlad Folse</div>

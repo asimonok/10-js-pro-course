@@ -14,44 +14,20 @@ import {
   VarProvider,
 } from "./myContext";
 
-interface Users {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-interface AuthorType {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  address: {
-    city: string;
-    street: string;
-    suite: string;
-  };
-}
-
 function App() {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [theme, setTheme] = useContext(ThemeContext);
   // const [loading1, setLoading1] = useContext(LoadingContext);
   const [loading, setLoading] = useState(false);
-  const userList: Users[] = [];
-  const [users, setUsers] = useState(userList);
-  const authorList: AuthorType[] = [];
-  const [author, setAuthor] = useState(authorList);
 
   const loadFunction = async () => {
     try {
-      fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((res): Promise<Users[]> => {
-          return res.json();
-        })
-        .then((userList) => {
-          return setUsers(userList), setLoading(true);
-        })
-        .catch((error) => console.log(error));
+      const data = await axios
+        .get(`https://jsonplaceholder.typicode.com/posts`)
+        .then((res: any) => {
+          console.log(res);
+          setLoading(true);
+        });
     } catch (err) {
       console.log(err);
     }
@@ -60,6 +36,10 @@ function App() {
   useEffect(() => {
     loadFunction();
   }, []);
+
+  const toggleModal = () => {
+    setModalActive((wasModalActive) => !wasModalActive);
+  };
 
   return (
     <>
@@ -74,7 +54,7 @@ function App() {
               // setLoad={setLoading}
             />
             <ButtonShowMore />
-            <Modal active={modalActive} setActive={setModalActive} />
+            <Modal active={modalActive} setActive={toggleModal} />
           </div>
         ) : (
           <div className="loading">
@@ -87,16 +67,6 @@ function App() {
       </VarProvider>
     </>
   );
-  // )(
-  //   <>
-  //     {/* if ({ loading }) { */}
-  //     {/* return ( */}
-
-  //     {/* } else {
-  //   return <Spinner animation="grow" />;
-  // } */}
-  //   </>
-  // );
 }
 
 export default App;
