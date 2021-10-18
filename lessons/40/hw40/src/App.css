@@ -20,7 +20,18 @@ body .dark {
   align-items: stretch;
 }
 
+.show-more {
+  display: block;
+  margin: 0 auto;
+  background-color: #796e6e;
+}
 
-
+button.dark {
+  background-color: #8f8d8d;
+}
+button.light {
+  background-color: #333333;
+  color: #ffffff;
+}
 
 

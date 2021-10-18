@@ -55,7 +55,7 @@ function App() {
         )}
       </div>
    
-      <button onClick={handleNumberOfPost}>Show more</button>
+      <button className="show-more" onClick={handleNumberOfPost}>Show more</button>
             
     </ThemeProvider>
     

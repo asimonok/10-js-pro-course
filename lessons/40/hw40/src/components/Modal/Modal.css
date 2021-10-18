@@ -19,9 +19,11 @@
 }
 
 .modal-info {
+    padding: 3rem;
+    padding-bottom: 5rem;
     position: relative;
     width: 40%;
-    height: 30%;
+    height: auto;
     text-align: center;
     background-color: rgb(238, 228, 228);
 }
