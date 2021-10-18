@@ -8,24 +8,15 @@ import { THEMES } from 'constants/THEMES';
 
 interface IProps {
   article: Article;
+  authors: Author[];
 }
 
 const ArticleCard: FC<IProps> = (props) => {
-  const [authors, setAuthors] = useState<Author[]>([]);
   const [author, setAuthor] = useState<Author>();
   const [modal, setModal] = useState(false);
   const [theme] = useContext(ThemeContext);
 
-  const { article } = props;
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response): Promise<Author[]> => {
-        return response.json();
-      })
-      .then((data) => setAuthors(data))
-      .catch((e) => console.error(e));
-  }, []);
+  const { article, authors } = props;
 
   useEffect(() => {
     setAuthor(
