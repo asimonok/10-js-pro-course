@@ -2,14 +2,14 @@ import React, { Dispatch, useState } from "react";
 
 //create theme context
 export const ThemeContext = React.createContext<[string, Dispatch<string>]>([
-  "",
+  "light",
   () => {},
 ]);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   return (
     <ThemeContext.Provider value={[theme, setTheme]}>
       {children}

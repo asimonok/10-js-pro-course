@@ -5,6 +5,11 @@ import "./App.css";
 import ButtonShowMore from "./Components/ButtonShowMore";
 import Modal from "./Components/Modal";
 import Row from "./Components/Row";
+import ThemeButton from "./Components/ThemeButton";
+import {
+  ManageThemeContext,
+  ThemeManager,
+} from "./Components/ThemeManager/ThemeManager";
 import {
   LoadingContext,
   LoadingProvider,
@@ -13,16 +18,9 @@ import {
   VarProvider,
 } from "./myContext";
 
-// TODO
-//row with fetch from src
-//button to show more
-//loading bar
-//modal window
-//switch theme button
-
 function App() {
   const [modalActive, setModalActive] = useState<boolean>(false);
-  const [theme] = useContext(ThemeContext);
+  const [theme, setTheme] = useContext(ThemeContext);
   const [loading, setLoading] = useState(false);
   // const [loading, setLoading] = useContext(LoadingContext);
 
@@ -44,29 +42,32 @@ function App() {
   }, []);
 
   return (
-    <LoadingProvider>
-      {/* <ThemeProvider> */}
-      <VarProvider>
-        {loading ? (
-          <div className="App">
-            <Row
-              active
-              setActive={setModalActive}
-              // loading
-              // setLoad={setLoading}
-            />
-            <ButtonShowMore />
-            <Modal active={modalActive} setActive={setModalActive} />
-          </div>
-        ) : (
-          <Spinner animation="grow" />
-        )}
-        {loading ? "true" : "false"}
-        <button onClick={() => setLoading(true)}>check</button>
-        <button onClick={() => console.log(loading)}>check</button>
-      </VarProvider>
-      {/* </ThemeProvider> */}
-    </LoadingProvider>
+    <>
+      <ThemeManager>
+        <VarProvider>
+          {loading ? (
+            <div className={theme === "dark" ? "App__dark" : "App__light"}>
+              <ThemeButton />
+              <Row
+                active
+                setActive={setModalActive}
+                // loading
+                // setLoad={setLoading}
+              />
+              <ButtonShowMore />
+              <Modal active={modalActive} setActive={setModalActive} />
+            </div>
+          ) : (
+            <div className="loading">
+              <Spinner animation="grow" />
+            </div>
+          )}
+          {/* {loading ? "true" : "false"} */}
+          {/* <button onClick={() => setLoading(true)}>check</button> */}
+          {/* <button onClick={() => console.log(loading)}>check</button> */}
+        </VarProvider>
+      </ThemeManager>
+    </>
   );
   // )(
   //   <>

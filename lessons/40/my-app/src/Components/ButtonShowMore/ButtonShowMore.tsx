@@ -9,7 +9,7 @@ interface Props {
 // this button should add +5 to global variable which changes filtered const in Row container
 const ButtonShowMore: React.FC<Props> = (props) => {
   const [value, setValue] = useContext(VarContext);
-  const [loading, setLoading] = useContext(LoadingContext);
+  // const [loading, setLoading] = useContext(LoadingContext);
 
   //   const showMoreHandler = useCallback(({ value }) => {
   //     const newValue = setValue((value: any) => value + 5);
@@ -27,10 +27,13 @@ const ButtonShowMore: React.FC<Props> = (props) => {
       >
         Show More
       </button>
-      <button onClick={() => setValue((prevValue: number) => (prevValue = 5))}>
+      <button
+        className="buttonShowMore"
+        onClick={() => setValue((prevValue: number) => (prevValue = 5))}
+      >
         Reset
       </button>
-      <button onClick={() => setLoading(false)}> TEST </button>
+      {/* <button onClick={() => setLoading(false)}> TEST </button> */}
     </>
   );
 };

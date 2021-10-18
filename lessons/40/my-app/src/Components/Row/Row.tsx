@@ -1,14 +1,6 @@
 import axios from "axios";
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  Dispatch,
-  SetStateAction,
-  ContextType,
-} from "react";
-import { Spinner } from "react-bootstrap";
-import { LoadingContext, LoadingProvider, VarContext } from "../../myContext";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext, VarContext } from "../../myContext";
 import "./Row.css";
 
 interface Props {
@@ -31,7 +23,8 @@ const Row: React.FC<Props> = (props) => {
   const userList: Users[] = [];
   const [users, setUsers] = useState(userList);
   const [value, setValue] = useContext(VarContext);
-  const [loading, setLoading] = useContext(LoadingContext);
+  // const [loading, setLoading] = useContext(LoadingContext);
+  const [theme, setTheme] = useContext(ThemeContext);
 
   const loadFunction = async () => {
     try {
@@ -63,7 +56,7 @@ const Row: React.FC<Props> = (props) => {
     //     return setUsers(userList);
     //   })
     //   .catch((error) => console.log(error));
-  }, []); // [] empty - load once when DOM loaded
+  }, [setTheme]); // [] empty - load once when DOM loaded
 
   const filteredUsers = users.filter((user) => {
     return user.id <= value;
@@ -71,19 +64,40 @@ const Row: React.FC<Props> = (props) => {
   // make global prop for filtered numbers
   return (
     <>
-      <ul className="usersList">
+      <ul className={theme === "dark" ? "usersList__dark" : "usersList__light"}>
         {filteredUsers.map((el) => {
           return (
-            <li className="card" key={el.id}>
-              <h2 className="card__title">{el.title}</h2>
-              <p className="card__body">{el.body}</p>
-              <p className="card__author">
+            <li
+              className={theme === "dark" ? "card__dark" : "card__light"}
+              key={el.id}
+            >
+              <h2
+                className={
+                  theme === "dark" ? "card__title__dark" : "card__title__light"
+                }
+              >
+                {el.title}
+              </h2>
+              <p
+                className={
+                  theme === "dark" ? "card__body__dark" : "card__body__light"
+                }
+              >
+                {el.body}
+              </p>
+              <p
+                className={
+                  theme === "dark"
+                    ? "card__author__dark"
+                    : "card__author__light"
+                }
+              >
                 Author:{" "}
                 <button
                   className="card__button"
                   onClick={() => props.setActive(true)}
                 >
-                  Vlad Folse
+                  Vlad Folse {theme}
                 </button>
               </p>
             </li>
