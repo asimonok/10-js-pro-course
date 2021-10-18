@@ -34,4 +34,12 @@ button.light {
   color: #ffffff;
 }
 
+.loaded{
+  display: none;
+
+}
+.loading{
+  display: block;
+
+}
 

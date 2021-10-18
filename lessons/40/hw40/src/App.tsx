@@ -12,8 +12,15 @@ function App() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [numberOfPost, setNumberOfPost] = useState(5);
-
+  const [isloaded, setIsloaded] = useState(false);
+  
   const [completed, setCompleted] = useState(0);
+
+  useEffect( () => {
+    window.addEventListener("load", function(event) {
+      setIsloaded(true);
+    });
+  },[] )
 
   useEffect( ()=> {
     const response = fetch(`https://jsonplaceholder.typicode.com/posts`)
@@ -43,10 +50,15 @@ function App() {
     },
     [],
   );
-  
+
+
+
+    
   return (
     <ThemeProvider>
+      <div className={`${isloaded ? 'loaded' : 'loading'}`}> Loading...</div>
       <Button />
+      
       <ProgressBar bgcolor={"#00695c"} completed={completed}/>
 
       <div className="CardRow">
