@@ -4,7 +4,6 @@ import './PostItem.css'
 
 interface MyPostListProps {
     post: Post;
-    // getUser: (num: number) => void;
     user: User;
 }
 

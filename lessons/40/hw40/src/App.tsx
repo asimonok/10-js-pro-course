@@ -66,8 +66,9 @@ function App() {
 
       <div className="CardRow">
         {posts.slice(0,numberOfPost).map((post, index) =>
-          <PostItem key={post.id} post={post} user={users[index]}></PostItem>
+          <PostItem key={post.id} post={post} user={ users.filter(user => user.id === post.userId ? user.name: '')[0]}></PostItem>
         )}
+
       </div>
       <button onClick={handleNumberOfPost}>Show more</button>
       
@@ -77,3 +78,5 @@ function App() {
 }
 
 export default App;
+
+
