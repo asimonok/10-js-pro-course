@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { FC, useContext, useState, useCallback, useEffect } from 'react';
+//import Modal from '../Modal/Modal';
 import {Types} from '../../types/Types';
 import { ThemeContext } from '../../App';
 import './Card.css';
 
 type Props = {
     post: Types,
-    author: Author[]
+    authors: Author[];
 }
 
 type Author = {
@@ -20,12 +21,18 @@ type Author = {
     }
   }
 
-function Card (props: Props) {
+  const Card: FC<Props> = (props) =>  {
+    //const [author, setAuthor] = useState<Author>();
+    const [modal, setModal] = useState(false);
     const theme = useContext(ThemeContext);
 
     const getAuthor = () => {
-        return props.author.find(author => props.post.userId === author.id)?.name;
+        return props.authors.find(author => props.post.userId === author.id)?.name;
     }
+
+    const toggleModal = useCallback(() => {
+        setModal(modal === false ? true : false);
+      }, [modal, setModal]);
     
     return (
             <>
@@ -34,7 +41,7 @@ function Card (props: Props) {
                     <div className="card__text"> {props.post.body} </div>
                     <div className={`card__link card__${theme}`}>
                         Author:
-                        <a href="#" className="card__author"> {getAuthor()} </a>
+                        <a href="#" className="card__author" onClick={toggleModal}> {getAuthor()} </a>
                     </div>
                 </div>
             </>

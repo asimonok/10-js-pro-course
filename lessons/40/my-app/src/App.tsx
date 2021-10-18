@@ -6,18 +6,6 @@ import './App.css';
 
 type Theme = 'white' | 'black'; 
 
-// type Author = {
-//   id: number;
-//   name: string;
-//   email: string;
-//   phone: string;
-//   address: {
-//     city: string;
-//     street: string;
-//     suite: string;
-//   }
-// }
-
 function App() {
   const [posts, setPosts] = useState<Types[]>([]);
   const [rowNumber, setRowNumber] = useState(5);
@@ -49,7 +37,7 @@ function App() {
       } )
       .then( (authorData) => {
         setAuthor(authorData)
-        console.log(author);
+        console.log(authorData);
       }  )
       
   }, [] );
@@ -59,23 +47,19 @@ function App() {
   return (
   <ThemeContext.Provider value={theme}>
       <div className={`App App__${theme}`}>
-      <button 
-          className="theme" 
-          onClick={ () => setTheme(theme => 'white' ? 'black' : 'white') }> 
-          { changeTheme()} theme 
-        </button>
-     
-      {posts.length === 0 ? <Preloader/> :  <Container 
-          posts={posts}
-          author={author}
-          rowNumber={rowNumber}
-        />
-}
 
-      {/* <Preloader/> */}
-      <button className="btn" onClick={() =>  setRowNumber(prevState => prevState + 5)}>Show more</button>
-            
+        <input 
+            type="submit"
+            className="theme" 
+            onClick={ () => setTheme(theme => 'white' ? 'black' : 'white') }
+            value={`${changeTheme()} theme`}/> 
+      
+        {posts.length === 0 ? <Preloader/> : <Container posts={posts} author={author} rowNumber={rowNumber}/>}
+
+        <button className="btn" onClick={() =>  setRowNumber(prevState => prevState + 5)}>Show more</button>
+          
     </div>
+  
   </ThemeContext.Provider>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Types} from '../../types/Types';
 import Card from '../Card/Card';
+//import Modal from '../Modal/Modal';
 
 import './Container.css';
 
@@ -22,15 +23,23 @@ type Author = {
   }
 }
 
-function Container (props: Props){
+const Container = (props: Props) =>{
+    
     return (
+        <>
         <div className="container">
             {props.posts.slice(0, props.rowNumber).map( elem => {
                 return <Card
                     post={elem}
-                    author={props.author}/>            
+                    authors={props.author}
+                    />    
+                          
             } )}
         </div>
+        {/* <Modal  author={author}
+                active={modal}
+                onActive={toggleModal}/>     */}
+        </> 
     )
 }
 export default Container;

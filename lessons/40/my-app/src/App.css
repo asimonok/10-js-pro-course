@@ -1,5 +1,9 @@
 .App, .App__white {
   text-align: center;
+  width: 1170px;
+  height: 100%;
+  margin: auto;
+  position: relative;
 }
 
 .App__black{
@@ -12,6 +16,19 @@
   padding: 15px 35px;
   border-radius: 5px;
   font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.theme {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 10px;
   text-transform: uppercase;
   cursor: pointer;
 }
