@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { ThemeContext, VarContext } from "../../myContext";
+import { LoadingContext, ThemeContext, VarContext } from "../../myContext";
 import "./Row.css";
 
 interface Props {
@@ -31,6 +31,7 @@ const Row: React.FC<Props> = (props) => {
   const [author, setAuthor] = useState(authorList);
   const [value, setValue] = useContext(VarContext);
   const [theme, setTheme] = useContext(ThemeContext);
+  const [loading, setLoading] = useContext(LoadingContext);
 
   const loadFunction = async () => {
     try {
@@ -47,7 +48,7 @@ const Row: React.FC<Props> = (props) => {
           return res.json();
         })
         .then((authorList) => {
-          return setAuthor(authorList);
+          return setAuthor(authorList), setLoading(() => true);
         })
         .catch((error) => console.log(error));
     } catch (err) {

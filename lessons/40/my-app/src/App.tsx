@@ -1,23 +1,17 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
 import "./App.css";
 import ButtonShowMore from "./Components/ButtonShowMore";
 import Modal from "./Components/Modal";
 import Row from "./Components/Row";
 import ThemeButton from "./Components/ThemeButton";
 
-import {
-  LoadingContext,
-  LoadingProvider,
-  ThemeContext,
-  VarProvider,
-} from "./myContext";
+import { LoadingContext, ThemeContext, VarProvider } from "./myContext";
 
 function App() {
   const [modalActive, setModalActive] = useState<boolean>(false);
-  const [theme, setTheme] = useContext(ThemeContext);
-  // const [loading1, setLoading1] = useContext(LoadingContext);
+  const [theme] = useContext(ThemeContext);
+  const [loading1, setLoading1] = useContext(LoadingContext);
   const [loading, setLoading] = useState(false);
 
   const loadFunction = async () => {
@@ -44,7 +38,7 @@ function App() {
   return (
     <>
       <VarProvider>
-        {loading ? (
+        {loading1 ? (
           <div className={theme === "dark" ? "App__dark" : "App__light"}>
             <ThemeButton />
             <Row
@@ -58,7 +52,10 @@ function App() {
           </div>
         ) : (
           <div className="loading">
-            <Spinner animation="grow" />
+            <img
+              src="https://www.icegif.com/wp-content/uploads/loading-icegif-1.gif"
+              alt="loading..."
+            />
           </div>
         )}
         {/* {loading ? "true" : "false"} */}

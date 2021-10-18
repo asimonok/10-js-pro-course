@@ -20,7 +20,7 @@ const Modal: React.FC<Props> = (props) => {
           <p>Adress: Minsk,smth</p>
           <a href="#">Email: Folsefeeder@gmail.com</a>
           <p></p>
-          <a href="#">Phone: 80-25-953-92-10</a>
+          <a href="#">Phone: 90566-7771</a>
         </div>
         <button className="modal_button">Close</button>
       </div>

@@ -35,17 +35,12 @@ export const VarProvider: React.FC<{ children: React.ReactNode }> = ({
 
 export let LoadingContext = React.createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>]
->([false, () => {}]);
-
-// export let LoadingContext = React.createContext<[boolean, Dispatch<boolean>]>([
-//   false,
-//   () => {},
-// ]);
+>([true, () => {}]);
 
 export let LoadingProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  let [loading, setLoading] = useState(false);
+  let [loading, setLoading] = useState(true);
   return (
     <LoadingContext.Provider value={[loading, setLoading]}>
       {children}
