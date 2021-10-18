@@ -1,12 +1,19 @@
-.App {
+.App, .App__white {
   text-align: center;
 }
 
-.container {
-  width: 1170px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
+.App__black{
+  background-color: #535050;
+}
+
+.btn {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 15px 35px;
+  border-radius: 5px;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .App-logo {
