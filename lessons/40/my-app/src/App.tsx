@@ -1,4 +1,4 @@
-import axios, { Axios } from "axios";
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import "./App.css";
@@ -6,32 +6,52 @@ import ButtonShowMore from "./Components/ButtonShowMore";
 import Modal from "./Components/Modal";
 import Row from "./Components/Row";
 import ThemeButton from "./Components/ThemeButton";
-import {
-  ManageThemeContext,
-  ThemeManager,
-} from "./Components/ThemeManager/ThemeManager";
+
 import {
   LoadingContext,
   LoadingProvider,
   ThemeContext,
-  ThemeProvider,
   VarProvider,
 } from "./myContext";
+
+interface Users {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+interface AuthorType {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  address: {
+    city: string;
+    street: string;
+    suite: string;
+  };
+}
 
 function App() {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [theme, setTheme] = useContext(ThemeContext);
+  // const [loading1, setLoading1] = useContext(LoadingContext);
   const [loading, setLoading] = useState(false);
-  // const [loading, setLoading] = useContext(LoadingContext);
+  const userList: Users[] = [];
+  const [users, setUsers] = useState(userList);
+  const authorList: AuthorType[] = [];
+  const [author, setAuthor] = useState(authorList);
 
   const loadFunction = async () => {
     try {
-      const data = await axios
-        .get(`https://jsonplaceholder.typicode.com/posts`)
-        .then((res: any) => {
-          console.log(res);
-          setLoading(true);
-        });
+      fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((res): Promise<Users[]> => {
+          return res.json();
+        })
+        .then((userList) => {
+          return setUsers(userList), setLoading(true);
+        })
+        .catch((error) => console.log(error));
     } catch (err) {
       console.log(err);
     }
@@ -43,30 +63,28 @@ function App() {
 
   return (
     <>
-      <ThemeManager>
-        <VarProvider>
-          {loading ? (
-            <div className={theme === "dark" ? "App__dark" : "App__light"}>
-              <ThemeButton />
-              <Row
-                active
-                setActive={setModalActive}
-                // loading
-                // setLoad={setLoading}
-              />
-              <ButtonShowMore />
-              <Modal active={modalActive} setActive={setModalActive} />
-            </div>
-          ) : (
-            <div className="loading">
-              <Spinner animation="grow" />
-            </div>
-          )}
-          {/* {loading ? "true" : "false"} */}
-          {/* <button onClick={() => setLoading(true)}>check</button> */}
-          {/* <button onClick={() => console.log(loading)}>check</button> */}
-        </VarProvider>
-      </ThemeManager>
+      <VarProvider>
+        {loading ? (
+          <div className={theme === "dark" ? "App__dark" : "App__light"}>
+            <ThemeButton />
+            <Row
+              active
+              setActive={setModalActive}
+              // loading
+              // setLoad={setLoading}
+            />
+            <ButtonShowMore />
+            <Modal active={modalActive} setActive={setModalActive} />
+          </div>
+        ) : (
+          <div className="loading">
+            <Spinner animation="grow" />
+          </div>
+        )}
+        {/* {loading ? "true" : "false"} */}
+        {/* <button onClick={() => setLoading(true)}>check</button> */}
+        {/* <button onClick={() => console.log(loading)}>check</button> */}
+      </VarProvider>
     </>
   );
   // )(

@@ -15,27 +15,44 @@ interface Users {
   title: string;
   body: string;
 }
-// fetch from src
-//filter 5 elements
-//write filtered elements in const
-// map throw 5 elements and render them
+interface AuthorType {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  address: {
+    city: string;
+    street: string;
+    suite: string;
+  };
+}
+
 const Row: React.FC<Props> = (props) => {
   const userList: Users[] = [];
   const [users, setUsers] = useState(userList);
+  const authorList: AuthorType[] = [];
+  const [author, setAuthor] = useState(authorList);
   const [value, setValue] = useContext(VarContext);
-  // const [loading, setLoading] = useContext(LoadingContext);
   const [theme, setTheme] = useContext(ThemeContext);
 
   const loadFunction = async () => {
     try {
-      //   setLoading(true);
-
-      axios
-        .get(`https://jsonplaceholder.typicode.com/posts`)
-        .then((res: any) => {
-          console.log(res);
-          setUsers(res.data);
-        });
+      fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((res): Promise<Users[]> => {
+          return res.json();
+        })
+        .then((userList) => {
+          return setUsers(userList);
+        })
+        .catch((error) => console.log(error));
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((res): Promise<AuthorType[]> => {
+          return res.json();
+        })
+        .then((authorList) => {
+          return setAuthor(authorList);
+        })
+        .catch((error) => console.log(error));
     } catch (err) {
       console.log(err);
     }
@@ -61,7 +78,12 @@ const Row: React.FC<Props> = (props) => {
   const filteredUsers = users.filter((user) => {
     return user.id <= value;
   });
-  // make global prop for filtered numbers
+
+  const findAuthorName = author.map((author) => {
+    return author.name;
+  });
+  console.log(findAuthorName);
+
   return (
     <>
       <ul className={theme === "dark" ? "usersList__dark" : "usersList__light"}>
@@ -97,7 +119,8 @@ const Row: React.FC<Props> = (props) => {
                   className="card__button"
                   onClick={() => props.setActive(true)}
                 >
-                  Vlad Folse {theme}
+                  {findAuthorName[el.userId - 1]}
+                  {theme}
                 </button>
               </p>
             </li>

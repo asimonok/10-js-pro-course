@@ -4,13 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ThemeProvider } from "./myContext";
+import { LoadingProvider, ThemeProvider } from "./myContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <LoadingProvider>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </LoadingProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

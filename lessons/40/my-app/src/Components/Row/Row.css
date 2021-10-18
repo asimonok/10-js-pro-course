@@ -57,10 +57,12 @@ li {
 .card__body__light {
   padding: 0px 5px 0px 5px;
   margin: 0px;
+  margin-bottom: 20px;
 }
 .card__body__dark {
   padding: 0px 5px 0px 5px;
   margin: 0px;
+  margin-bottom: 20px;
   /* background-color: rgba(0, 0, 0, 0.6); */
   color: white;
 }
