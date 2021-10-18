@@ -12,7 +12,7 @@ interface Users {
   title: string;
   body: string;
 }
-interface AuthorType {
+interface Author {
   id: number;
   name: string;
   email: string;
@@ -27,7 +27,7 @@ interface AuthorType {
 const Row: React.FC<Props> = (props) => {
   const userList: Users[] = [];
   const [users, setUsers] = useState(userList);
-  const authorList: AuthorType[] = [];
+  const authorList: Author[] = [];
   const [author, setAuthor] = useState(authorList);
   const [value, setValue] = useContext(VarContext);
   const [theme, setTheme] = useContext(ThemeContext);
@@ -44,7 +44,7 @@ const Row: React.FC<Props> = (props) => {
         })
         .catch((error) => console.log(error));
       fetch("https://jsonplaceholder.typicode.com/users")
-        .then((res): Promise<AuthorType[]> => {
+        .then((res): Promise<Author[]> => {
           return res.json();
         })
         .then((authorList) => {
