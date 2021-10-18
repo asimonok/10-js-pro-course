@@ -1,0 +1,21 @@
+.item-list {
+  color: black;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+.item-list:last-child {
+  border-bottom: 2px dashed rgba(201, 199, 199, 1);
+  padding-bottom: 1.5rem;
+}
+
+.item-list {
+  margin-bottom: 1rem;
+  text-align: start;
+}
+
+#iconitemlist {
+  color: black;
+  font-size: 14px;
+  margin-right: 1rem;
+}

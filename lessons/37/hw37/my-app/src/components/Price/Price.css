@@ -1,0 +1,16 @@
+.price {
+  text-align: start;
+}
+
+.pricevalue {
+  font-family: "Times New Roman", Times, serif;
+  color: rgba(0, 0, 0, 1);
+  font-size: 1.88rem;
+}
+
+.priceperiod {
+  color: black;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+}

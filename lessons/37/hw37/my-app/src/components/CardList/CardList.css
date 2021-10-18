@@ -1,0 +1,12 @@
+.card-list {
+  color: black;
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px dashed rgba(201, 199, 199, 1);
+}
+
+.item-list {
+  margin-bottom: 1rem;
+  text-align: start;
+}
