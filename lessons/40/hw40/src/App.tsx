@@ -16,17 +16,21 @@ function App() {
   
   const [completed, setCompleted] = useState(0);
 
-  useEffect( () => {
-    window.addEventListener("load", function(event) {
-      setIsloaded(true);
-    });
-  },[] )
+  // useEffect( () => {
+  //   window.addEventListener("load", function(event) {
+  //     setIsloaded(true);
+      
+  //   });
+  // },[] )
 
   useEffect( ()=> {
     const response = fetch(`https://jsonplaceholder.typicode.com/posts`)
     response.then((response):Promise<Post[]> => response.json())
     .then(json => {
-      setPosts(json)})
+      setPosts(json)
+      setIsloaded(true);
+
+    })
     .catch((error) => console.log(error))
   }, [])
 
