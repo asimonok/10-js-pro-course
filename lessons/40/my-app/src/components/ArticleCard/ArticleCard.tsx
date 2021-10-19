@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useContext, useCallback } from 'react';
 import './ArticleCard.css';
 import { Article } from 'types/Article';
 import { Author } from 'types/Author';
-import Modal from '../Modal';
+import AuthorInfoModal from '../AuthorInfoModal';
 import { ThemeContext } from '../ThemeContext';
 import { THEMES } from 'constants/THEMES';
 
@@ -12,11 +12,14 @@ interface IProps {
 }
 
 const ArticleCard: FC<IProps> = (props) => {
-  const [author, setAuthor] = useState<Author>();
+  const { article, authors } = props;
   const [modal, setModal] = useState(false);
   const [theme] = useContext(ThemeContext);
+  const [author, setAuthor] = useState<Author>();
 
-  const { article, authors } = props;
+  const toggleModal = useCallback(() => {
+    setModal(modal === false ? true : false);
+  }, [modal, setModal]);
 
   useEffect(() => {
     setAuthor(
@@ -25,10 +28,6 @@ const ArticleCard: FC<IProps> = (props) => {
       })
     );
   }, [authors, article]);
-
-  const toggleModal = useCallback(() => {
-    setModal(modal === false ? true : false);
-  }, [modal, setModal]);
 
   return (
     <>
@@ -52,15 +51,13 @@ const ArticleCard: FC<IProps> = (props) => {
           </span>
         </div>
       </div>
-      {author ? (
-        <Modal
+      {author && (
+        <AuthorInfoModal
           author={author}
           isOpened={modal}
           onModalClose={toggleModal}
           key={author?.id}
         />
-      ) : (
-        []
       )}
     </>
   );

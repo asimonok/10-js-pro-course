@@ -3,7 +3,7 @@ import './App.css';
 import ArticleContainer from './components/ArticleContainer';
 import Button from './components/Button';
 import { ThemeContext } from './components/ThemeContext';
-import Preloader from 'components/Preloader';
+
 import { THEMES } from 'constants/THEMES';
 
 const App: FC<{}> = (props) => {
@@ -24,7 +24,6 @@ const App: FC<{}> = (props) => {
 
   return (
     <div className="App">
-      <Preloader />
       <h1 className={`title ${theme === THEMES.LIGHT ? `` : `title--dark`}`}>
         My Site {theme}
       </h1>

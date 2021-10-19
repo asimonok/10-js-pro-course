@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './Modal.css';
+import './AuthorInfoModal.css';
 import { Author } from 'types/Author';
 
 interface IProps {
@@ -8,7 +8,7 @@ interface IProps {
   onModalClose: () => void;
 }
 
-const Modal: FC<IProps> = (props) => {
+const AuthorInfoModal: FC<IProps> = (props) => {
   const { author, isOpened, onModalClose } = props;
 
   return (
@@ -36,4 +36,4 @@ const Modal: FC<IProps> = (props) => {
   );
 };
 
-export default Modal;
+export default AuthorInfoModal;

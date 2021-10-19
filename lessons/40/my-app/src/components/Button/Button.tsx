@@ -9,12 +9,8 @@ interface IProps {
 const Button: FC<IProps> = (props) => {
   const { text, onClick } = props;
 
-  const handleChange = () => {
-    onClick();
-  };
-
   return (
-    <button className="button" onClick={handleChange}>
+    <button className="button" onClick={onClick}>
       {text}
     </button>
   );
