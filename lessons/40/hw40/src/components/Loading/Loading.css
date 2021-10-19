@@ -1,0 +1,51 @@
+.main {
+    top: 10%;
+    left: 50%;
+    display: none;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.main.active {
+    display: flex;
+}
+
+.main div {
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+}
+  .one {
+    background-color: #00695c;  
+    animation-name: load-one;
+  }
+  
+  @keyframes load-one {
+    30% {
+       transform: translateY(-50%);
+    }
+  }
+ .two {
+    background-color: #3e6dec;
+    animation-name: load-two;
+  }
+  
+  @keyframes load-two {
+    50% {
+       transform: translateY(-50%);
+    }
+  }
+  
+  .three {
+    background-color: #c8f525;
+    animation-name: load-three;
+  }
+  
+  @keyframes load-three {
+    70% {
+       transform: translateY(-50%);
+    }
+  }
