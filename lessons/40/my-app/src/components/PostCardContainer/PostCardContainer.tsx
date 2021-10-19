@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import "./PostCardContainer.css";
+import styles from "./PostCardContainer.module.css";
 import PostCard from "../PostCard";
 import BeatLoader from "react-spinners/BeatLoader";
 
@@ -40,8 +40,8 @@ const PostCardContainer = () => {
   }
 
   return (
-    <div className="postcard-container_component">
-      <div className="postcard-row">
+    <div className={styles.component}>
+      <div className={styles.row}>
         {posts
           .map((post: Post) => {
             return (
@@ -55,7 +55,7 @@ const PostCardContainer = () => {
           })
           .slice(0, postsLimit)}
       </div>
-      <button className="postcard-container_button" onClick={setNewPostsLimits}>
+      <button className={styles.button} onClick={setNewPostsLimits}>
         Show more
       </button>
     </div>

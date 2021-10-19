@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import "./PostCard.css";
+import styles from "./PostCard.module.css";
 import ModalWindow from "../ModalWindow";
+// import classNames from "classames/bind";
+
+// const cx = classNames.bind(styles);
 
 interface Props {
   title: string;
@@ -21,18 +24,14 @@ const PostCard: React.FC<Props> = (props) => {
   const onClose = () => setModal(false);
   return (
     <>
-      <div className="postcard-component">
-        <div className="postcard-body">
-          <h4 className="postcard-title">{props.title}</h4>
-          <p className="postcard-text">{props.content}</p>
+      <div className={styles.component}>
+        <div className={styles.body}>
+          <h4 className={styles.title}>{props.title}</h4>
+          <p className={styles.text}>{props.content}</p>
         </div>
-        <div className="postcard-footer">
-          <button
-            type="button"
-            className="postcard-button"
-            onClick={() => setModal(true)}
-          >
-            Author: <span className="text-blue">{props.name}</span>
+        <div className={styles.footer}>
+          <button className={styles.button} onClick={() => setModal(true)}>
+            Author: <span className={styles.bluetext}>{props.name}</span>
           </button>
         </div>
       </div>
@@ -45,7 +44,7 @@ const PostCard: React.FC<Props> = (props) => {
               Address: {props.address.city}, {props.address.street},
               {props.address.suite}
             </p>
-            <p className="text-blue">
+            <p className={styles.bluetext}>
               Email: {props.email}, phone: {props.phone}, website:
               {props.website}
             </p>
@@ -58,56 +57,3 @@ const PostCard: React.FC<Props> = (props) => {
 };
 
 export default PostCard;
-
-// interface Props {
-//   title: string;
-//   content: string;
-//   name: string;
-//   email: string;
-//   phone: string;
-//   website: string;
-//   address: {
-//     city: string;
-//     street: string;
-//     suite: string;
-//     zipcode: string;
-//     geo: {
-//       lat: string;
-//       lng: string;
-//     };
-//   };
-// }
-
-// const PostCard: React.FC<Props> = (props) => {
-//   const [modalActive, setModalActive] = useState(false);
-//   return (
-//     <>
-//       <div className="postcard-component">
-//         <div className="postcard-body">
-//           <h4 className="postcard-title">{props.title}</h4>
-//           <p className="postcard-text">{props.content}</p>
-//         </div>
-//         <div className="postcard-footer">
-//           <button
-//             type="button"
-//             className="postcard-button"
-//             onClick={() => setModalActive(true)}
-//           >
-//             Author: <span className="text-blue">{props.name}</span>
-//           </button>
-//         </div>
-//       </div>
-//       <ModalWindow
-//         active={modalActive}
-//         setActive={setModalActive}
-//         name={props.name}
-//         email={props.email}
-//         phone={props.phone}
-//         website={props.website}
-//         address={props.address}
-//       />
-//     </>
-//   );
-// };
-
-// export default PostCard;

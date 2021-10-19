@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect } from "react";
-import "./ModalWindow.css";
+import styles from "./ModalWindow.module.css";
 
 interface ModalProps {
   visible: boolean;
@@ -30,23 +30,21 @@ const ModalWindow = ({
   if (!visible) return null;
 
   return (
-    <div className="modal" onClick={onClose}>
-      <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <h3 className="modal-title">{title}</h3>
-          <span className="modal-close" onClick={onClose}>
+    <div className={styles.modal} onClick={onClose}>
+      <div className={styles.dialog} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.header}>
+          <h3 className={styles.title}>{title}</h3>
+          <span className={styles.close} onClick={onClose}>
             &times;
           </span>
         </div>
-        <div className="modal-body">
-          <div className="modal-content">{content}</div>
+        <div className={styles.body}>
+          <div className={styles.content}>{content}</div>
         </div>
-        <div className="modal-footer">
-          {
-            <button className="modal-button" onClick={onClose}>
-              Close
-            </button>
-          }
+        <div className={styles.footer}>
+          <button className={styles.button} onClick={onClose}>
+            Close
+          </button>
         </div>
       </div>
     </div>

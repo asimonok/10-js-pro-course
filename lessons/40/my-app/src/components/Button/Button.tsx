@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../ThemeContext";
-import "./Button.css";
+import styles from "./Button.module.css";
 
 const Button = () => {
   const [theme, setTheme] = useContext(ThemeContext);
@@ -13,7 +13,7 @@ const Button = () => {
 
   return (
     <button
-      className="theme-button"
+      className={styles.button}
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       theme {theme}
