@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {User, Post} from 'types/types'
 import './PostItem.css'
 import Modal from '../Modal'
@@ -15,7 +15,7 @@ const PostItem: React.FC<MyPostListProps> = (props) => {
     const handleModal = () => {
         setModalState(modalState ? false : true)
     } 
-    
+
     return (
         <div className="post-item">
             <h2>{post.title}</h2>

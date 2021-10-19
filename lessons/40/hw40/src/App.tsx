@@ -14,44 +14,19 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
   const [numberOfPost, setNumberOfPost] = useState(5);
   const [isloaded, setIsloaded] = useState(false);
-  
-  const [completed, setCompleted] = useState(0);
 
-  // useEffect( ()=> {
-  //   const response = fetch(`https://jsonplaceholder.typicode.com/posts`)
-  //   response.then((response):Promise<Post[]> => response.json())
-  //   .then(json => {
-  //     setPosts(json)
-  //     setIsloaded(true);
-
-  //   })
-  //   .catch((error) => console.log(error))
-  // }, [])
-
-  // useEffect( ()=> {
-  //   const response = fetch(`https://jsonplaceholder.typicode.com/users`)
-  //   response.then((response):Promise<User[]> => response.json())
-  //   .then(json => {
-  //     setUsers(json)})
-  //   .catch((error) => console.log(error))
-  // }, [])
-
-
-    Promise.all<Promise<Post[]>, Promise<User[]> >([
-      fetch(`https://jsonplaceholder.typicode.com/posts`).then((response) => response.json()),
-      fetch(`https://jsonplaceholder.typicode.com/users`).then((response) => response.json())
+  useEffect(() => { 
+    Promise.all([
+      fetch(`https://jsonplaceholder.typicode.com/posts`)
+        .then((response):Promise<Post[]> => response.json()),
+      fetch(`https://jsonplaceholder.typicode.com/users`)
+        .then((response):Promise<User[]> => response.json()), 
     ]).then(([posts, users]) => {
-      console.log(posts);
+      setPosts(posts);
+      setUsers(users);
       setIsloaded(true);
-
-    })
-
-  // let foo: [Promise<Post[]>, Promise<User[]>] = [fetch(`https://jsonplaceholder.typicode.com/posts`).then((response):Promise<Post[]> => response.json()),
-  // fetch(`https://jsonplaceholder.typicode.com/users`).then((response):Promise<User[]> => response.json())]
-
-  // useEffect(() => {
-  //   setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 2000);
-  // }, []);
+    }).catch(error => console.log(error))
+  }, []);
 
 
   const handleNumberOfPost = useCallback(
@@ -60,26 +35,33 @@ function App() {
     },
     [setNumberOfPost],
   );
+  console.log('posts: ', posts);
+  console.log('users: ', users);
+  const userArr = users;
+  let firstuser = userArr.filter(user => user.id === 1);
+  console.log('firstUser: ', firstuser[0])
 
-
+  console.log('render app')
 
     
   return (
     <ThemeProvider>
-      <Loading isActive={isloaded}/>
-      {/* <div className={`${isloaded ? 'loaded' : 'loading'}`}> Loading...</div> */}
-      <Button />
       
-      <ProgressBar bgcolor="#00695c" completed={completed}/>
+      
+
+      {isloaded ? <>
+      <Button />
 
       <div className="CardRow">
-        {posts.slice(0,numberOfPost).map((post, index) =>
-          <PostItem key={post.id} post={post} user={users.filter(user => user.id === post.userId ? user.name: '')[0]}></PostItem>
+        {posts.slice(0,numberOfPost).map(post =>
+          <PostItem key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
         )}
       </div>
-   
+
       <button className="show-more" onClick={handleNumberOfPost}>Show more</button>
-            
+      </>
+      : <Loading isActive={isloaded}/> }
+   
     </ThemeProvider>
     
   );
