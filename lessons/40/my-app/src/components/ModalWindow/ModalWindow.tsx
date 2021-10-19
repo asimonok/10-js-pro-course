@@ -1,66 +1,52 @@
-import React from "react";
+import React, { ReactElement, useEffect } from "react";
 import "./ModalWindow.css";
 
-interface Props {
-  active: boolean;
-  setActive: React.Dispatch<React.SetStateAction<boolean>>;
-  name: string;
-  email: string;
-  phone: string;
-  website: string;
-  address: {
-    city: string;
-    street: string;
-    suite: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
+interface ModalProps {
+  visible: boolean;
+  title: string;
+  content: ReactElement | string;
+  onClose: () => void;
 }
 
-const ModalWindow: React.FC<Props> = (props) => {
+const ModalWindow = ({
+  visible = false,
+  title = "",
+  content = "",
+  onClose,
+}: ModalProps) => {
+  const onKeydown = ({ key }: KeyboardEvent) => {
+    switch (key) {
+      case "Escape":
+        onClose();
+        break;
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", onKeydown);
+    return () => document.removeEventListener("keydown", onKeydown);
+  });
+
+  if (!visible) return null;
+
   return (
-    <div
-      className={props.active ? "modal active" : "modal"}
-      onClick={() => props.setActive(false)}
-    >
-      <div className="modal-dialog" role="document">
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <div className="modal-header">
-            <h5 className="modal-title">{props.name}</h5>
-            <button
-              type="button"
-              className="button-close"
-              data-dismiss="modal"
-              aria-label="Close"
-              onClick={() => props.setActive(false)}
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="modal-body">
-            <p className="modal-address">
-              Address: {props.address.city}, {props.address.street},{" "}
-              {props.address.suite}, {props.address.zipcode},{" "}
-              {props.address.geo.lat}, {props.address.geo.lng}
-            </p>
-            <p className="modal-contacts">
-              Email: {props.email}, phone: {props.phone}, web site:{" "}
-              {props.website}
-            </p>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="button-close_bottom"
-              data-dismiss="modal"
-              onClick={() => props.setActive(false)}
-            >
+    <div className="modal" onClick={onClose}>
+      <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h3 className="modal-title">{title}</h3>
+          <span className="modal-close" onClick={onClose}>
+            &times;
+          </span>
+        </div>
+        <div className="modal-body">
+          <div className="modal-content">{content}</div>
+        </div>
+        <div className="modal-footer">
+          {
+            <button className="modal-button" onClick={onClose}>
               Close
             </button>
-          </div>
+          }
         </div>
       </div>
     </div>
