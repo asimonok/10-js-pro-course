@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react';
 import './App.css';
 import Button from './components/Button'
-import {ThemeContext, ThemeProvider }from './components/ThemeProvider'
+import {ThemeContext}from './components/ThemeProvider'
 import {ProgressBar} from './components/ProgresBar'
 import {User, Post} from 'types/types'
 import PostItem from './components/PostItem'
@@ -45,25 +45,21 @@ function App() {
 
     
   return (
-    <ThemeProvider>
-      
-      
-
+    <>
       {isloaded ? <>
-      <Button />
+        <Button />
 
-      <div className="CardRow">
-        {posts.slice(0,numberOfPost).map(post =>
-          <PostItem key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
-        )}
-      </div>
+        <div className="CardRow">
+          {posts.slice(0,numberOfPost).map(post =>
+            <PostItem key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
+          )}
+        </div>
 
-      <button className="show-more" onClick={handleNumberOfPost}>Show more</button>
+        <button className={theme} onClick={handleNumberOfPost}>Show more</button>
       </>
       : <Loading isActive={isloaded}/> }
-   
-    </ThemeProvider>
-    
+   </>
+     
   );
 }
 

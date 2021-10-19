@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {User, Post} from 'types/types'
+import {ThemeContext} from 'components/ThemeProvider'
 import './PostItem.css'
 import Modal from '../Modal'
 
@@ -11,6 +12,7 @@ interface MyPostListProps {
 const PostItem: React.FC<MyPostListProps> = (props) => {
     const {post, user} = props;
     const [modalState, setModalState] = useState(true);
+    const [theme, setTheme]= useContext(ThemeContext);
 
     const handleModal = () => {
         setModalState(modalState ? false : true)
@@ -18,7 +20,7 @@ const PostItem: React.FC<MyPostListProps> = (props) => {
 
     return (
         <div className="post-item">
-            <h2>{post.title}</h2>
+            <h2 className={theme}>{post.title}</h2>
             <p className="post-body">{post.body}</p>
             <div className="post-author" onClick={handleModal}>
                 Author: {user.name}
