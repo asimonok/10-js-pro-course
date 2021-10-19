@@ -30,20 +30,10 @@
   font-size: 40px;
   color: gray;
   cursor: pointer;
+  margin-left: 93%;
 }
 
-.modal__title {
-  text-align: left;
-  display: inline;
-  margin: 20px 10px;
-}
-
-.modal__header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.modal__button {
+.button {
   background-color: rgb(112, 112, 112);
   color: rgb(255, 255, 255);
   padding: 10px;
@@ -53,20 +43,4 @@
   font-family: 'Open sans', sans-serif;
   cursor: pointer;
   margin-left: 87%;
-}
-
-.modal__span {
-  display: block;
-}
-
-.modal__text {
-  border-top: 2px solid rgb(212, 209, 209);
-  border-bottom: 2px solid rgb(212, 209, 209);
-  padding: 10px;
-  line-height: 50px;
-}
-
-.email,
-.phone {
-  color: rgb(23, 110, 160);
 }

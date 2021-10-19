@@ -1,10 +1,14 @@
 import React, { FC, useState, useEffect, useContext, useCallback } from 'react';
-import './ArticleCard.css';
+import styles from './ArticleCard.module.css';
 import { Article } from 'types/Article';
 import { Author } from 'types/Author';
-import AuthorInfoModal from '../AuthorInfoModal';
+import Modal from '../Modal';
+import AuthorInfo from '../AuthorInfo';
 import { ThemeContext } from '../ThemeContext';
 import { THEMES } from 'constants/THEMES';
+import classNames from 'classnames/bind';
+
+let cx = classNames.bind(styles);
 
 interface IProps {
   article: Article;
@@ -32,32 +36,31 @@ const ArticleCard: FC<IProps> = (props) => {
   return (
     <>
       <div
-        className={`article-card ${
-          theme === THEMES.LIGHT ? `` : `article-card--dark`
-        }`}
+        className={cx({
+          article: true,
+          article_dark: theme === THEMES.DARK,
+        })}
       >
-        <div className="article-card__content">
-          <h3 className="subtitle article-card__subtitle">{article.title}</h3>
-          <p className="article-text">{article.body}</p>
+        <div className={styles['article__content']}>
+          <h3>{article.title}</h3>
+          <p className={styles['article__text']}>{article.body}</p>
         </div>
         <div
-          className={`article-card__author ${
-            theme === THEMES.LIGHT ? `` : `article-card__author--dark`
-          }`}
+          className={cx({
+            article__author: true,
+            article__author_dark: theme === THEMES.DARK,
+          })}
         >
           <span>Autor: </span>
-          <span className="author-name" onClick={toggleModal}>
+          <span className={styles['author-name']} onClick={toggleModal}>
             {author?.name}
           </span>
         </div>
       </div>
       {author && (
-        <AuthorInfoModal
-          author={author}
-          isOpened={modal}
-          onModalClose={toggleModal}
-          key={author?.id}
-        />
+        <Modal isOpened={modal} onModalClose={toggleModal} key={author?.id}>
+          <AuthorInfo author={author} />
+        </Modal>
       )}
     </>
   );

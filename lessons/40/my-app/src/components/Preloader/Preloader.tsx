@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import './Preloader.css';
+import styles from './Preloader.module.css';
 
 const Preloader: FC<{}> = (props) => {
-  return <div className="preloader"></div>;
+  return <div className={styles.preloader}></div>;
 };
 
 export default Preloader;

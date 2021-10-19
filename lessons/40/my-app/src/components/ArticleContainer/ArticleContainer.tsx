@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import './ArticleContainer.css';
+import styles from './ArticleContainer.module.css';
 import ArticleCard from '../ArticleCard';
 import { Article } from 'types/Article';
 import { Author } from 'types/Author';
@@ -50,7 +50,7 @@ const ArticleContainer: FC<IProps> = (props) => {
       {!isArticlesLoaded && !isAuthorsLoaded ? (
         <Preloader />
       ) : (
-        <div className="article-card__list">
+        <div className={styles['article-card__list']}>
           {articles.slice(0, displayLimit).map((article) => {
             return (
               <ArticleCard

@@ -11,8 +11,3 @@
   opacity: 1;
   visibility: visible;
 }
-
-.preloader--done {
-  opacity: 0;
-  visibility: hidden;
-}

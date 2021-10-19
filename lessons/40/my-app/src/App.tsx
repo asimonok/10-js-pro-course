@@ -1,10 +1,12 @@
 import React, { FC, useState, useContext, useCallback } from 'react';
-import './App.css';
+import styles from './App.module.css';
 import ArticleContainer from './components/ArticleContainer';
 import Button from './components/Button';
 import { ThemeContext } from './components/ThemeContext';
-
 import { THEMES } from 'constants/THEMES';
+import classNames from 'classnames/bind';
+
+let cx = classNames.bind(styles);
 
 const App: FC<{}> = (props) => {
   const [displayLimit, setDisplayLimit] = useState(5);
@@ -23,8 +25,13 @@ const App: FC<{}> = (props) => {
     : (document.body.style.background = 'white');
 
   return (
-    <div className="App">
-      <h1 className={`title ${theme === THEMES.LIGHT ? `` : `title--dark`}`}>
+    <div className={styles.App}>
+      <h1
+        className={cx({
+          title: true,
+          title_dark: theme === THEMES.DARK,
+        })}
+      >
         My Site {theme}
       </h1>
       <ArticleContainer displayLimit={displayLimit} />
