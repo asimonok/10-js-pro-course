@@ -7,6 +7,7 @@ import {
 } from "../../myContext";
 import { Author } from "../../types";
 import "./Row.css";
+import logo from "./yy3.gif";
 
 interface Props {
   active: boolean;
@@ -24,8 +25,8 @@ const Row: React.FC<Props> = (props) => {
   const userList: Users[] = [];
   const [users, setUsers] = useState(userList);
   const [value, setValue] = useContext(VarContext);
-  const [theme, setTheme] = useContext(ThemeContext);
-  const [loading, setLoading] = useContext(LoadedContext);
+  const [theme] = useContext(ThemeContext);
+  const [loaded, setLoaded] = useContext(LoadedContext);
   const [authorId, setAuthorId] = useContext(AuthorIdContext);
 
   const loadFunction = async () => {
@@ -35,7 +36,7 @@ const Row: React.FC<Props> = (props) => {
           return res.json();
         })
         .then((userList) => {
-          return setUsers(userList);
+          return setUsers(userList), setLoaded(() => true);
         })
         .catch((error) => console.log(error));
     } catch (err) {
@@ -64,54 +65,71 @@ const Row: React.FC<Props> = (props) => {
   //   setAuthorId((prevValue) => (prevValue = el.userId));
   // }, []);
 
-  return (
-    <>
-      <ul className={theme === "dark" ? "usersList__dark" : "usersList__light"}>
-        {filteredUsers.map((el) => {
-          return (
-            <li
-              className={theme === "dark" ? "card__dark" : "card__light"}
-              key={el.id}
-            >
-              <h2
-                className={
-                  theme === "dark" ? "card__title__dark" : "card__title__light"
-                }
+  if (loaded === true) {
+    return (
+      <>
+        <ul
+          className={theme === "dark" ? "usersList__dark" : "usersList__light"}
+        >
+          {filteredUsers.map((el) => {
+            return (
+              <li
+                className={theme === "dark" ? "card__dark" : "card__light"}
+                key={el.id}
               >
-                {el.title}
-              </h2>
-              <p
-                className={
-                  theme === "dark" ? "card__body__dark" : "card__body__light"
-                }
-              >
-                {el.body}
-              </p>
-              <p
-                className={
-                  theme === "dark"
-                    ? "card__author__dark"
-                    : "card__author__light"
-                }
-              >
-                Author:{" "}
-                <button
-                  className="card__button"
-                  onClick={() => {
-                    props.setActive(true);
-                    setAuthorId(() => el.userId);
-                  }}
+                <h2
+                  className={
+                    theme === "dark"
+                      ? "card__title__dark"
+                      : "card__title__light"
+                  }
                 >
-                  {findAuthorName[el.userId - 1]}
-                  {theme}
-                </button>
-              </p>
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
+                  {el.title}
+                </h2>
+                <p
+                  className={
+                    theme === "dark" ? "card__body__dark" : "card__body__light"
+                  }
+                >
+                  {el.body}
+                </p>
+                <p
+                  className={
+                    theme === "dark"
+                      ? "card__author__dark"
+                      : "card__author__light"
+                  }
+                >
+                  Author:{" "}
+                  <button
+                    className="card__button"
+                    onClick={() => {
+                      props.setActive(true);
+                      setAuthorId(() => el.userId);
+                    }}
+                  >
+                    {findAuthorName[el.userId - 1]}
+                    {theme}
+                  </button>
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    );
+  } else {
+    return (
+      <div className="loading">
+        <img
+          // src="https://www.icegif.com/wp-content/uploads/loading-icegif-1.gif"
+          // src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b6e0b072897469.5bf6e79950d23.gif"
+          src={logo}
+          alt="loading..."
+        />
+      </div>
+    );
+  }
 };
 
 export default Row;

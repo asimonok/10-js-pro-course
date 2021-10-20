@@ -10,11 +10,8 @@ import { Author } from "./types";
 function App() {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [theme] = useContext(ThemeContext);
-  // const [loading1, setLoading1] = useContext(LoadingContext);
   const [loading, setLoading] = useState(false);
-  // const authorList: Author[] = [];
-  const [author, setAuthor] = React.useState<Author[]>([]);
-  const [reqAuthor, setReqAuthor] = React.useState<Author | null>(null);
+  const [author, setAuthor] = useState<Author[]>([]);
 
   const loadFunction = async () => {
     try {
@@ -44,7 +41,6 @@ function App() {
     <>
       <VarProvider>
         <AuthorIdProvider>
-          {/* {loading1 ? ( */}
           <div className={theme === "dark" ? "App__dark" : "App__light"}>
             <ThemeButton />
             <Row active setActive={setModalActive} author={author} />
@@ -55,18 +51,6 @@ function App() {
               author={author}
             />
           </div>
-          <button onClick={() => console.log()}>test</button>
-          {/* ) : ( */}
-          {/* <div className="loading">
-          <img
-            src="https://www.icegif.com/wp-content/uploads/loading-icegif-1.gif"
-            alt="loading..."
-          />
-        </div> */}
-          {/* )} */}
-          {/* {loading ? "true" : "false"} */}
-          {/* <button onClick={() => setLoading(true)}>check</button> */}
-          {/* <button onClick={() => console.log(loading)}>check</button> */}
         </AuthorIdProvider>
       </VarProvider>
     </>
