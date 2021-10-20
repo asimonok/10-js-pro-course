@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthorIdContext } from "../../myContext";
+import { AuthorIdContext, ThemeContext, ThemeProvider } from "../../myContext";
 import { Author } from "../../types";
 import styles from "./Modal.module.css";
 import classNames from "classnames/bind";
@@ -13,6 +13,8 @@ interface Props {
 }
 
 const Modal: React.FC<Props> = (props) => {
+  const [theme, setTheme] = useContext(ThemeContext);
+
   const [authorId] = useContext(AuthorIdContext);
   let newAuthor = props.author[authorId - 1];
   return (
@@ -21,6 +23,7 @@ const Modal: React.FC<Props> = (props) => {
       className={cx({
         modal: true,
         active: props.active,
+        modalDark: theme,
       })}
       onClick={() => props.setActive(false)}
     >
@@ -29,11 +32,26 @@ const Modal: React.FC<Props> = (props) => {
         className={cx({
           modal__content: true,
           active: props.active,
+          modalContentDark: theme,
         })}
         onClick={(e) => e.stopPropagation}
       >
-        <div className={styles.modal__title}>{newAuthor?.name}</div>
-        <div className={styles.modal__body}>
+        {/* <div className={styles.modal__title}>{newAuthor?.name}</div> */}
+        <div
+          className={cx({
+            modal__title: true,
+            modalTitleDark: theme,
+          })}
+        >
+          {newAuthor?.name}
+        </div>
+        {/* <div className={styles.modal__body}> */}
+        <div
+          className={cx({
+            modal__body: true,
+            modalBodyDark: theme,
+          })}
+        >
           <p>
             Adress: {newAuthor?.address.city}
             {newAuthor?.address.street}

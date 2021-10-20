@@ -50,7 +50,7 @@ function App() {
           <div
             className={cx({
               app: true,
-              app__dark: theme,
+              appDark: theme,
             })}
           >
             <ThemeButton />

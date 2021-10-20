@@ -2,6 +2,7 @@
   --darkColor: #121212;
   --whiteColor: white;
   --blueColor: rgb(53, 121, 246);
+  --borderColor: rgb(223, 223, 223);
 }
 body {
   margin: 0;
