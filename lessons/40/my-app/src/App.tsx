@@ -1,68 +1,75 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import style from "./App.module.css";
+import classNames from 'classnames/bind';
 import Container from './components/Container';
 import Preloader from './components/Preloader';
-import {Types} from './types/Types';
+import {PostTypes} from './types/PostTypes';
+import {AuthorTypes} from './types/AuthorTypes';
+import {ThemeContext}from './components/ThemeProvider';
 import './App.css';
 
-type Theme = 'white' | 'black'; 
+const cx = classNames.bind(style);
 
-function App() {
-  const [posts, setPosts] = useState<Types[]>([]);
+enum Themes{
+  white = 'white',
+  black = 'black',
+}
+
+const App =(): JSX.Element => {
+  const [posts, setPosts] = useState<PostTypes[]>([]);
   const [rowNumber, setRowNumber] = useState(5);
-  const [author, setAuthor] = useState([]);
-  const [theme, setTheme] = useState<Theme>('white');
+  const [author, setAuthor] = useState<AuthorTypes[]>([]);
+  const [theme, setTheme]= useState<Themes>(Themes.white);
+  const [isloaded, setIsloaded] = useState(false);
 
-  useEffect( () => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then( res => {
-        if (!res.ok) {
-          throw new Error(`Could not fetch url, status: ${res.status}`);
-      }
-      return res.json();
-      } )
-      .then( (posts: Types[]) => {
-        setPosts(posts)
-        console.log(posts);
-      }  )
-      
-  }, [] );
+  const appClassNames = cx({
+    App: theme === 'white',
+    App__black: theme === 'black',
+  });
 
-  useEffect( () => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then( res => {
-        if (!res.ok) {
-          throw new Error(`Could not fetch url, status: ${res.status}`);
-      }
-      return res.json();
-      } )
-      .then( (authorData) => {
-        setAuthor(authorData)
-        console.log(authorData);
-      }  )
-      
-  }, [] );
+  useEffect(() => { 
+    Promise.all([
+      fetch(`https://jsonplaceholder.typicode.com/posts`)
+        .then((response):Promise<PostTypes[]> => response.json()),
+      fetch(`https://jsonplaceholder.typicode.com/users`)
+        .then((response):Promise<AuthorTypes[]> => response.json()), 
+    ]).then(([posts, users]) => {
+      setPosts(posts);
+      setAuthor(users);
+      setIsloaded(true);
+    }).catch(error => console.log(error))
+  }, []);
 
- const changeTheme = () => theme === 'white' ? 'black' : 'white';
+  //const changeTheme = theme === 'white' ? style.black : style.white;
 
   return (
-  <ThemeContext.Provider value={theme}>
-      <div className={`App App__${theme}`}>
-
-        <input 
-            type="submit"
-            className="theme" 
-            onClick={ () => setTheme(theme => 'white' ? 'black' : 'white') }
-            value={`${changeTheme()} theme`}/> 
-      
-        {posts.length === 0 ? <Preloader/> : <Container posts={posts} author={author} rowNumber={rowNumber}/>}
-
-        <button className="btn" onClick={() =>  setRowNumber(prevState => prevState + 5)}>Show more</button>
-          
-    </div>
-  
-  </ThemeContext.Provider>
+    
+    <div className={appClassNames}>
+      {isloaded ? 
+      <div className="container">
+           <button
+            className={
+              cx({
+                btn:true,
+                white: theme === 'white',
+                black: theme === 'black',
+            })}
+            onClick={() => setTheme(theme === Themes.white ? Themes.black : Themes.white)} 
+          >change theme</button> 
+          <Container posts={posts} author={author} rowNumber={rowNumber}/>
+         
+          <button className={
+            cx({
+              btn:true,
+              white: theme === 'white',
+              black: theme === 'black',
+          })
+          } onClick={() =>  setRowNumber(prevState => prevState + 5)}>Show more</button>
+      </div>
+      :  <Preloader isActive={isloaded}/> }
+    </div> 
+    
   );
 }
 
 export default App;
-export const ThemeContext = React.createContext<Theme>('white');

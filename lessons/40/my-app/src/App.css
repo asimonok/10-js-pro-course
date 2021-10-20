@@ -1,4 +1,4 @@
-.App, .App__white {
+.App, .App.white {
   text-align: center;
   width: 1170px;
   height: 100%;
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.App__black{
+.App.black{
   background-color: #535050;
 }
 

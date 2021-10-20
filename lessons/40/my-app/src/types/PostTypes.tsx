@@ -1,5 +1,5 @@
 
-export type Types = {
+export type PostTypes = {
     userId: number;
     id: number;
     title: string;
