@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext, useCallback} from 'react';
 import './App.css';
 import Button from './components/Button'
 import {ThemeContext}from './components/ThemeProvider'
-import {ProgressBar} from './components/ProgresBar'
+
 import {User, Post} from 'types/types'
 import PostItem from './components/PostItem'
 import Loading from './components/Loading'
@@ -14,6 +14,11 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
   const [numberOfPost, setNumberOfPost] = useState(5);
   const [isloaded, setIsloaded] = useState(false);
+
+  const color = theme === "light" ? '#333333' : '#ffffff';
+  const backgroundColor = theme === "light" ? "#ffffff" : "#333333";
+  document.body.style.color = color;
+  document.body.style.backgroundColor = backgroundColor;
 
   useEffect(() => { 
     Promise.all([
@@ -28,20 +33,15 @@ function App() {
     }).catch(error => console.log(error))
   }, []);
 
-
   const handleNumberOfPost = useCallback(
     () => {
       setNumberOfPost(numberOfPost => numberOfPost + 5)
     },
     [setNumberOfPost],
   );
-  console.log('posts: ', posts);
-  console.log('users: ', users);
-  const userArr = users;
-  let firstuser = userArr.filter(user => user.id === 1);
-  console.log('firstUser: ', firstuser[0])
-
   console.log('render app')
+
+
 
     
   return (

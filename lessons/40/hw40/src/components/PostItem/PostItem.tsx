@@ -15,15 +15,15 @@ const PostItem: React.FC<MyPostListProps> = (props) => {
     const [theme, setTheme]= useContext(ThemeContext);
 
     const handleModal = () => {
-        setModalState(modalState ? false : true)
+        setModalState(!modalState)
     } 
 
     return (
         <div className="post-item">
             <h2 className={theme}>{post.title}</h2>
-            <p className="post-body">{post.body}</p>
+            <p className={`post-body ${theme}`}>{post.body}</p>
             <div className="post-author" onClick={handleModal}>
-                Author: {user.name}
+                <span>Author:</span> {user.name}
             </div>
             <Modal user={user} isHidden={modalState} handleModal={handleModal}/>
         </div>

@@ -9,11 +9,22 @@
     text-align: center;
 
 }
+h2.dark {
+    color: #383535;
+    background-color: inherit;
+    display: block;
+    border-radius: inherit;
+}
 
-
-.post-body {
+.post-body.light {
     margin-top: 20px;
 }
+.post-body.dark {
+    margin-top: 20px;
+    color: #383535;
+    background-color: inherit;
+}
+
 
 .post-author {
     position: absolute;
@@ -21,10 +32,14 @@
     bottom: 0;
     width: 100%;
     margin-top: 20px;
+    color: blue;
     line-height: 50px;
     background-color: #aca6a6;
     border-radius: 0 0 10px 10px;
     cursor: pointer;
+}
+.post-author span {
+    color: black;
 }
 
 .email-phone {
