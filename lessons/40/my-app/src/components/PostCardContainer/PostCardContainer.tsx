@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useContext } from "react";
 import styles from "./PostCardContainer.module.css";
 import PostCard from "../PostCard";
 import BeatLoader from "react-spinners/BeatLoader";
+import { ThemeContext } from "../ThemeContext";
+import classNames from "classnames/bind";
 
 interface Post {
   id: any;
@@ -10,10 +12,13 @@ interface Post {
   userId: any;
 }
 
+const cx = classNames.bind(styles);
+
 const PostCardContainer = () => {
   const [posts, setPosts] = useState([]);
   const [authors, setAuthors] = useState([]);
   const [postsLimit, setPostsLimit] = useState(5);
+  const [theme] = useContext(ThemeContext);
 
   useEffect(() => {
     const postsPromise = fetch(
@@ -42,20 +47,25 @@ const PostCardContainer = () => {
   return (
     <div className={styles.component}>
       <div className={styles.row}>
-        {posts
-          .map((post: Post) => {
-            return (
-              <PostCard
-                key={post.id}
-                title={post.title}
-                content={post.body}
-                {...authors[post.userId - 1]}
-              />
-            );
-          })
-          .slice(0, postsLimit)}
+        {posts.slice(0, postsLimit).map((post: Post) => {
+          return (
+            <PostCard
+              key={post.id}
+              title={post.title}
+              content={post.body}
+              {...authors[post.userId - 1]}
+            />
+          );
+        })}
       </div>
-      <button className={styles.button} onClick={setNewPostsLimits}>
+      <button
+        className={cx({
+          button: true,
+          light: theme === "light",
+          dark: theme === "dark",
+        })}
+        onClick={setNewPostsLimits}
+      >
         Show more
       </button>
     </div>

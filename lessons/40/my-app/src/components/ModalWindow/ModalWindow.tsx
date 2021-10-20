@@ -1,5 +1,8 @@
 import React, { ReactElement, useEffect } from "react";
 import styles from "./ModalWindow.module.css";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 interface ModalProps {
   visible: boolean;
@@ -30,8 +33,20 @@ const ModalWindow = ({
   if (!visible) return null;
 
   return (
-    <div className={styles.modal} onClick={onClose}>
-      <div className={styles.dialog} onClick={(e) => e.stopPropagation()}>
+    <div
+      className={cx({
+        modal: true,
+        visible: visible,
+      })}
+      onClick={onClose}
+    >
+      <div
+        className={cx({
+          dialog: true,
+          visible: visible,
+        })}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.header}>
           <h3 className={styles.title}>{title}</h3>
           <span className={styles.close} onClick={onClose}>
@@ -42,7 +57,13 @@ const ModalWindow = ({
           <div className={styles.content}>{content}</div>
         </div>
         <div className={styles.footer}>
-          <button className={styles.button} onClick={onClose}>
+          <button
+            className={cx({
+              button: true,
+              visible: visible,
+            })}
+            onClick={onClose}
+          >
             Close
           </button>
         </div>

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./PostCard.module.css";
 import ModalWindow from "../ModalWindow";
-// import classNames from "classames/bind";
-
-// const cx = classNames.bind(styles);
+import { ThemeContext } from "../ThemeContext";
+import classNames from "classnames/bind";
 
 interface Props {
   title: string;
@@ -19,7 +18,10 @@ interface Props {
   };
 }
 
+const cx = classNames.bind(styles);
+
 const PostCard: React.FC<Props> = (props) => {
+  const [theme] = useContext(ThemeContext);
   const [isModal, setModal] = useState(false);
   const onClose = () => setModal(false);
   return (
@@ -30,7 +32,14 @@ const PostCard: React.FC<Props> = (props) => {
           <p className={styles.text}>{props.content}</p>
         </div>
         <div className={styles.footer}>
-          <button className={styles.button} onClick={() => setModal(true)}>
+          <button
+            className={cx({
+              button: true,
+              light: theme === "light",
+              dark: theme === "dark",
+            })}
+            onClick={() => setModal(true)}
+          >
             Author: <span className={styles.bluetext}>{props.name}</span>
           </button>
         </div>

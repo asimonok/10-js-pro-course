@@ -29,6 +29,15 @@
   cursor: pointer;
 }
 
+.button.dark {
+  background-color: rgb(24, 23, 23);
+  color: white;
+}
+
+.button.light {
+  background-color: rgb(212, 208, 208);
+}
+
 .bluetext {
   color: blue;
 }
