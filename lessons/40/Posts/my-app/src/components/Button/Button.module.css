@@ -1,0 +1,39 @@
+.button {
+  color: rgba(255, 255, 255, 1);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*.primary {
+  background-color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+.secondary {
+  background-color: #dbdbdb;
+  color: rgba(255, 255, 255, 1);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}*/
+
+.dark {
+  background-color: var(--color-accent);
+}
+
+.light {
+  background-color: var(--color-secondary);
+}
+
+.name {
+  font-family: var(--font-default);
+}

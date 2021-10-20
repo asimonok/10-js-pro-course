@@ -1,0 +1,24 @@
+:root {
+  --font-default: Arial, Helvetica, sans-serif;
+  /*font-family: "Georama", sans-serif;
+  or
+  font-family: 'Italianno', cursive;*/
+  --color-primary: #dbd0c0;
+  --color-secondary: #78dec7;
+  --color-accent: rgb(44, 34, 46);
+  --color-text: #440a67;
+  --color-area: #faf1e6;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-default);
+  background-color: var(--color-area);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
