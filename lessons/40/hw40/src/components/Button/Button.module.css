@@ -15,11 +15,14 @@
     transform: scale(1.05);
 }
 .btn.dark {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    background-color: var(--bright-color);
+
     
 }
 .btn.light {
     background-color: #333333;
     color: #ffffff;
 }
+
 

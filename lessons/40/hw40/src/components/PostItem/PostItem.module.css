@@ -2,6 +2,7 @@
     position: relative;
     width: 18%;
     height: auto;
+    padding: 0 10px;
     padding-bottom: 60px;
     border: 1px solid grey;
     border-radius: 10px;
@@ -55,3 +56,19 @@ h2.dark {
     margin-top: 20px;
     color: blue;
 }
+
+.calm {
+    background-color: #c8e6c8;
+}
+.bright {
+    background-color: #dd1cad;
+}
+
+.dashed {
+    border:  3px dashed;
+}
+.solid {
+    border-style: solid;
+}
+
+

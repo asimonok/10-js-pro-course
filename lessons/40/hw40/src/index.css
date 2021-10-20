@@ -1,7 +1,9 @@
 :root {
-  --dark-bg: '#333333';
-  --light-bg: '#ffffff';
+  --dark-bg: #333333;
+  --light-bg: #ffffff;
+  --bright-color: #dd1cad;
 }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,3 +17,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

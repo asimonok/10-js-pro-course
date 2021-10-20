@@ -1,16 +1,24 @@
 import React, {useContext} from 'react'
-import {ThemeContext} from '../ThemeProvider'   
+import {ThemeContext} from '../ThemeProvider' 
+import classNames from 'classnames/bind'  
 import style from './Button.module.css';
 
-console.log(style)
- 
+const cx = classNames.bind(style);
+
 
 export const Button = () => {
     const [theme, setTheme]= useContext(ThemeContext);
-    const styleType = theme === 'light' ? style.light : style.dark;
 
     return (
-        <button className={style.btn + ' ' + styleType}  onClick={() => {setTheme( theme === 'dark'? 'light': 'dark')}}>Change mode {theme}</button>
+        <button 
+            className={cx({
+                btn:true,
+                light: theme === 'light',
+                dark: theme === 'dark',
+            })}  
+            onClick={() => {setTheme( theme === 'dark'? 'light': 'dark')}}>
+            Change mode {theme}
+        </button>
     )
 
 }

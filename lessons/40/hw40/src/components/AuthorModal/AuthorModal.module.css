@@ -14,8 +14,8 @@
     display: none;
 }
 
-.modal.opened {
-    display: flex;
+.modal.dark {
+    color: #363535;
 }
 
 .modal-info {
@@ -47,4 +47,16 @@
     background-color: #b4acac;
     cursor: pointer;
 
+}
+
+.small {
+    font-size: 1rem;
+}
+
+.medium {
+    font-size: 1.5rem;
+}
+
+.big {
+    font-size: 2rem;
 }

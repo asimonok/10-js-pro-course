@@ -1,18 +1,31 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {User} from 'types/types';
+import classNames from 'classnames/bind'
 import style from './AuthorModal.module.css'
+
+// enum Size {
+//     small = 'small',
+//     medium = 'medium',
+//     big = 'big',
+// }
 interface MyModalProps {
     user: User;
     isHidden: boolean;
     handleModal: () => void;
+    theme: string;
+    size?: "small" | "medium" | "big";
 }
 
-const AuthorModal: React.FC<MyModalProps>= ({user, isHidden, handleModal}) => {
+const AuthorModal: React.FC<MyModalProps>= ({user, isHidden, handleModal, theme, size}) => {
 
-    const styleType = isHidden ? style.hidden: style.opened;
+    const cx = classNames.bind(style);
 
     return (
-        <div className={style.modal + " " + styleType}>
+        <div   className={cx({
+            modal:true,
+            hidden: isHidden,
+            dark: theme === 'dark',
+            }, size)}>
             <div className={style["modal-info"]}>
                 <span className={style.close} onClick={handleModal}>X</span>
                 <h2>{user.name}</h2>
