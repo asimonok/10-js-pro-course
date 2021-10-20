@@ -1,15 +1,18 @@
 import React from 'react';
-import './Loading.css';
+import style from './Loading.module.css';
 interface MyLoadingProps {
     isActive: boolean;
 }
 
 const Loading: React.FC<MyLoadingProps> = ({isActive}) => {
+   
+    const styleType = isActive ? style.main: `${style.main} ${style.active}`;
+
     return (
-        <div className={`main ${isActive ? '' : 'active'}`}>
-            <div className="one"></div>
-            <div className="two"></div>
-            <div className="three"></div>
+        <div className={styleType}>
+            <div className={`${style.one} ${style.block}`}></div>
+            <div className={`${style.two} ${style.block}`}></div>
+            <div className={`${style.three} ${style.block}`}></div>
     </div>
     );
 };

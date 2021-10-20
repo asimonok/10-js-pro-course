@@ -1,8 +1,8 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useCallback} from 'react';
 import {User, Post} from 'types/types'
 import {ThemeContext} from 'components/ThemeProvider'
-import './PostItem.css'
-import Modal from '../Modal'
+import style from './PostItem.module.css'
+import AuthorModal from '../AuthorModal'
 
 interface MyPostListProps {
     post: Post;
@@ -11,21 +11,24 @@ interface MyPostListProps {
 
 const PostItem: React.FC<MyPostListProps> = (props) => {
     const {post, user} = props;
-    const [modalState, setModalState] = useState(true);
+    const [isOpened, setIsOpened] = useState(true);
     const [theme, setTheme]= useContext(ThemeContext);
 
-    const handleModal = () => {
-        setModalState(!modalState)
-    } 
+    const handleModal = useCallback(() => {
+        setIsOpened(!isOpened)
+    }, [isOpened, setIsOpened] )
+
+    const styleType = theme === 'light' ? style.dark : style.light;
+    
 
     return (
-        <div className="post-item">
+        <div className={style.postItem + " " + styleType}>
             <h2 className={theme}>{post.title}</h2>
-            <p className={`post-body ${theme}`}>{post.body}</p>
-            <div className="post-author" onClick={handleModal}>
+            <p className={`${style["post-body"]} ${theme}`}>{post.body}</p>
+            <div className={style["post-author"]} onClick={handleModal}>
                 <span>Author:</span> {user.name}
             </div>
-            <Modal user={user} isHidden={modalState} handleModal={handleModal}/>
+            <AuthorModal user={user} isHidden={isOpened} handleModal={handleModal}/>
         </div>
 
     );

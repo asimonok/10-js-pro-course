@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react';
-import './App.css';
+import style from './App.module.css';
 import Button from './components/Button'
 import {ThemeContext}from './components/ThemeProvider'
 
@@ -15,10 +15,10 @@ function App() {
   const [numberOfPost, setNumberOfPost] = useState(5);
   const [isloaded, setIsloaded] = useState(false);
 
-  const color = theme === "light" ? '#333333' : '#ffffff';
-  const backgroundColor = theme === "light" ? "#ffffff" : "#333333";
-  document.body.style.color = color;
-  document.body.style.backgroundColor = backgroundColor;
+ 
+  document.body.style.color = theme === "light" ? '#333333' : '#ffffff';
+  document.body.style.backgroundColor = theme === "light" ?  '#ffffff' : '#333333';
+  
 
   useEffect(() => { 
     Promise.all([
@@ -39,23 +39,22 @@ function App() {
     },
     [setNumberOfPost],
   );
-  console.log('render app')
 
+  const styleType = theme === 'light' ? style.light : style.dark;
 
-
-    
+   
   return (
     <>
       {isloaded ? <>
         <Button />
 
-        <div className="CardRow">
+        <div className={style.CardRow}>
           {posts.slice(0,numberOfPost).map(post =>
             <PostItem key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
           )}
         </div>
 
-        <button className={theme} onClick={handleNumberOfPost}>Show more</button>
+        <button className={style.btn + " " + styleType} onClick={handleNumberOfPost}>Show more</button>
       </>
       : <Loading isActive={isloaded}/> }
    </>
