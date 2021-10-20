@@ -48,7 +48,7 @@ const ArticleCard: FC<IProps> = (props) => {
         <div
           className={cx({
             article__author: true,
-            article__author_dark: theme === THEMES.DARK,
+            dark: theme === THEMES.DARK,
           })}
         >
           <span>Autor: </span>

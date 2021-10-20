@@ -12,14 +12,8 @@
 }
 
 .article_dark {
-  max-width: 18%;
-  margin: 0 5px 15px;
-  text-align: center;
   color: var(--color-light);
   border: 2px solid var(--color-light);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .article__content {
@@ -32,9 +26,7 @@
   background-color: rgb(245, 244, 244);
 }
 
-.article__author_dark {
-  border-top: 1px solid var(--color-light);
-  padding: 15px 0px;
+.dark {
   background-color: rgb(34, 34, 34);
 }
 
