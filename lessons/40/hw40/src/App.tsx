@@ -16,8 +16,8 @@ function App() {
   const [isloaded, setIsloaded] = useState(false);
 
  
-  document.body.style.color = theme === "light" ? '#333333' : '#ffffff';
-  document.body.style.backgroundColor = theme === "light" ?  '#ffffff' : '#333333';
+  document.body.style.color = theme === "light" ? 'var(--dark-bg)' : "var(--light-bg)";
+  document.body.style.backgroundColor = theme === "light" ?  "var(--light-bg)" : 'var(--dark-bg)';
   
 
   useEffect(() => { 

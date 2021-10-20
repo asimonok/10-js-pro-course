@@ -67,8 +67,8 @@ h2.dark {
 .dashed {
     border:  3px dashed;
 }
-.solid {
-    border-style: solid;
+.none {
+    border-style: none;
 }
 
 

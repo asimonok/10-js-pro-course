@@ -9,7 +9,7 @@ interface MyPostListProps {
     post: Post;
     user: User;
     bgColor?: "calm" | "bright";
-    border?: "dashed" | "solid"
+    border?: "dashed" | "none";
 }
 
 const cx = classNames.bind(style);
@@ -24,11 +24,8 @@ const PostItem: React.FC<MyPostListProps> = (props) => {
         setIsOpened(!isOpened)
     }, [isOpened, setIsOpened] )
 
-    // const styleType = theme === 'light' ? style.dark : style.light;
-    
 
     return (
-        // <div className={style.postItem + " " + styleType}>
         <div className={cx({
             postItem: true,
             dark: theme === "light",
