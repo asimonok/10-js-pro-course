@@ -1,22 +1,21 @@
 import React, { Dispatch, SetStateAction, useContext } from "react";
 import { LoadedContext, VarContext } from "../../myContext";
-import "./ButtonShowMore.css";
-interface Props {}
+import styles from "./ButtonShowMore.module.css";
 
-const ButtonShowMore: React.FC<Props> = (props) => {
+const ButtonShowMore: React.FC = () => {
   const [value, setValue] = useContext(VarContext);
   const [loaded, setLoaded] = useContext(LoadedContext);
   if (loaded === true) {
     return (
       <>
         <button
-          className="buttonShowMore"
+          className={styles.buttonShowMore}
           onClick={() => setValue((prevValue: number) => prevValue + 5)}
         >
           Show More
         </button>
         <button
-          className="buttonShowMore"
+          className={styles.buttonShowMore}
           onClick={() => setValue((prevValue: number) => (prevValue = 5))}
         >
           Reset

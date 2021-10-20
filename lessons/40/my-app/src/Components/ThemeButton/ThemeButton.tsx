@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../myContext";
-import "./ThemeButton.css";
+import styles from "./ThemeButton.module.css";
 
 const ThemeButton: React.FC = () => {
   const [theme, setTheme] = useContext(ThemeContext);
@@ -10,8 +10,8 @@ const ThemeButton: React.FC = () => {
         <input
           type="checkbox"
           id="toggle-button"
-          className="toggle-button"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className={styles.toggle__button}
+          onClick={() => setTheme(theme ? false : true)}
         />
       </div>
     </>

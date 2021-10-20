@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./App.css";
+import styles from "./app.module.css";
 import ButtonShowMore from "./Components/ButtonShowMore";
 import Modal from "./Components/Modal";
 import Row from "./Components/Row";
 import ThemeButton from "./Components/ThemeButton";
 import { AuthorIdProvider, ThemeContext, VarProvider } from "./myContext";
 import { Author } from "./types";
+import classNames from "classnames/bind";
+
+let cx = classNames.bind(styles);
 
 function App() {
   const [modalActive, setModalActive] = useState<boolean>(false);
@@ -37,11 +40,19 @@ function App() {
   //   setModalActive((wasModalActive) => !wasModalActive);
   // };
 
+  // let className = cx({ theme: "app__dark" });
+
   return (
     <>
       <VarProvider>
         <AuthorIdProvider>
-          <div className={theme === "dark" ? "App__dark" : "App__light"}>
+          {/* <div className={theme === "dark" ? "app__dark" : "app__light"}> */}
+          <div
+            className={cx({
+              app: true,
+              app__dark: theme,
+            })}
+          >
             <ThemeButton />
             <Row active setActive={setModalActive} author={author} />
             <ButtonShowMore />

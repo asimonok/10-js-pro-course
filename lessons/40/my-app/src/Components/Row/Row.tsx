@@ -6,8 +6,11 @@ import {
   VarContext,
 } from "../../myContext";
 import { Author } from "../../types";
-import "./Row.css";
+import styles from "./Row.module.css";
 import logo from "./yy3.gif";
+import classNames from "classnames/bind";
+
+let cx = classNames.bind(styles);
 
 interface Props {
   active: boolean;
@@ -59,9 +62,6 @@ const Row: React.FC<Props> = (props) => {
 
   // const buttonHandler = useCallback((el) => {
   //   props.setActive(true);
-  //   if (el.id === undefined) {
-  //     setAuthorId(1);
-  //   }
   //   setAuthorId((prevValue) => (prevValue = el.userId));
   // }, []);
 
@@ -69,40 +69,61 @@ const Row: React.FC<Props> = (props) => {
     return (
       <>
         <ul
-          className={theme === "dark" ? "usersList__dark" : "usersList__light"}
+          // className={theme === "dark" ? "usersList__dark" : "usersList__light"}
+          className={cx({
+            list: true,
+            usersList__dark: !!theme,
+          })}
         >
           {filteredUsers.map((el) => {
             return (
               <li
-                className={theme === "dark" ? "card__dark" : "card__light"}
+                // className={theme === "dark" ? "card__dark" : "card__light"}
+                className={cx({
+                  card: true,
+                  card__dark: theme,
+                })}
                 key={el.id}
               >
                 <h2
-                  className={
-                    theme === "dark"
-                      ? "card__title__dark"
-                      : "card__title__light"
-                  }
+                  // className={
+                  //   theme === "dark"
+                  //     ? "card__title__dark"
+                  //     : "card__title__light"
+                  // }
+                  className={cx({
+                    card__title: true,
+                    card__title__dark: theme,
+                  })}
                 >
                   {el.title}
                 </h2>
                 <p
-                  className={
-                    theme === "dark" ? "card__body__dark" : "card__body__light"
-                  }
+                  // className={
+                  //   theme === "dark" ? "card__body__dark" : "card__body__light"
+                  // }
+                  className={cx({
+                    card__body: true,
+                    card__body__dark: theme,
+                  })}
                 >
                   {el.body}
                 </p>
                 <p
-                  className={
-                    theme === "dark"
-                      ? "card__author__dark"
-                      : "card__author__light"
-                  }
+                  // className={
+                  //   theme === "dark"
+                  //     ? "card__author__dark"
+                  //     : "card__author__light"
+                  // }
+                  className={cx({
+                    card__author: true,
+                    card__author__dark: theme,
+                  })}
                 >
                   Author:{" "}
                   <button
-                    className="card__button"
+                    // className="card__button"
+                    className={styles.card__button}
                     onClick={() => {
                       props.setActive(true);
                       setAuthorId(() => el.userId);
