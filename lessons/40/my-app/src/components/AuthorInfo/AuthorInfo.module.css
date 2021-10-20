@@ -1,3 +1,5 @@
+@import '../../index.css';
+
 .title {
   text-align: left;
   margin: 0;
@@ -14,14 +16,14 @@
 }
 
 .text {
-  border-top: 2px solid rgb(212, 209, 209);
-  border-bottom: 2px solid rgb(212, 209, 209);
+  border-top: 2px solid var(--color-light);
+  border-bottom: 2px solid var(--color-light);
   padding: 10px;
   line-height: 50px;
 }
 
 .email,
 .phone {
-  color: rgb(23, 110, 160);
+  color: var(--color-blue);
   display: block;
 }

@@ -1,3 +1,5 @@
+@import '../../index.css';
+
 .modal__wrapper {
   position: fixed;
   bottom: 0;
@@ -28,13 +30,13 @@
 .modal__close {
   margin-right: 10px;
   font-size: 40px;
-  color: gray;
+  color: var(--color-gray);
   cursor: pointer;
   margin-left: 93%;
 }
 
 .button {
-  background-color: rgb(112, 112, 112);
+  background-color: var(--color-gray);
   color: rgb(255, 255, 255);
   padding: 10px;
   border: none;

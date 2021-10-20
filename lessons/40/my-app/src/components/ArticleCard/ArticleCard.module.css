@@ -1,9 +1,11 @@
+@import '../../index.css';
+
 .article {
   max-width: 18%;
   margin: 0 5px 15px;
   text-align: center;
-  color: rgb(63, 62, 62);
-  border: 2px solid rgb(212, 209, 209);
+  color: var(--color-dark);
+  border: 2px solid var(--color-light);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,8 +15,8 @@
   max-width: 18%;
   margin: 0 5px 15px;
   text-align: center;
-  color: rgb(212, 209, 209);
-  border: 2px solid rgb(212, 209, 209);
+  color: var(--color-light);
+  border: 2px solid var(--color-light);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,19 +27,19 @@
 }
 
 .article__author {
-  border-top: 1px solid rgb(212, 209, 209);
+  border-top: 1px solid var(--color-light);
   padding: 15px 0px;
   background-color: rgb(245, 244, 244);
 }
 
 .article__author_dark {
-  border-top: 1px solid rgb(212, 209, 209);
+  border-top: 1px solid var(--color-light);
   padding: 15px 0px;
   background-color: rgb(34, 34, 34);
 }
 
 .author-name {
-  color: rgb(23, 110, 160);
+  color: var(--color-blue);
 }
 
 .author-name:hover {

@@ -29,7 +29,7 @@ const App: FC<{}> = (props) => {
       <h1
         className={cx({
           title: true,
-          title_dark: theme === THEMES.DARK,
+          light: theme === THEMES.DARK,
         })}
       >
         My Site {theme}

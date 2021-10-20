@@ -2,10 +2,16 @@
 
 :root {
   --font-default: 'Inconsolata', monospace;
+  --color-dark: rgb(63, 62, 62);
+  --color-light: rgb(212, 209, 209);
+  --color-blue: rgb(23, 110, 160);
+  --color-gray: rgb(112, 112, 112);
 }
 
 body {
   font-family: var(--font-default);
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
