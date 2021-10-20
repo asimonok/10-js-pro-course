@@ -1,27 +1,31 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import ButtonShowMore from "./Components/ButtonShowMore";
 import Modal from "./Components/Modal";
 import Row from "./Components/Row";
 import ThemeButton from "./Components/ThemeButton";
-
-import { LoadingContext, ThemeContext, VarProvider } from "./myContext";
+import { AuthorIdProvider, ThemeContext, VarProvider } from "./myContext";
+import { Author } from "./types";
 
 function App() {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [theme] = useContext(ThemeContext);
-  const [loading1, setLoading1] = useContext(LoadingContext);
+  // const [loading1, setLoading1] = useContext(LoadingContext);
   const [loading, setLoading] = useState(false);
+  // const authorList: Author[] = [];
+  const [author, setAuthor] = React.useState<Author[]>([]);
+  const [reqAuthor, setReqAuthor] = React.useState<Author | null>(null);
 
   const loadFunction = async () => {
     try {
-      const data = await axios
-        .get(`https://jsonplaceholder.typicode.com/posts`)
-        .then((res: any) => {
-          console.log(res);
-          setLoading(true);
-        });
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((res): Promise<Author[]> => {
+          return res.json();
+        })
+        .then((authorList) => {
+          return setAuthor(authorList);
+        })
+        .catch((error) => console.log(error));
     } catch (err) {
       console.log(err);
     }
@@ -29,33 +33,41 @@ function App() {
 
   useEffect(() => {
     loadFunction();
+    setLoading(() => true);
   }, []);
 
-  const toggleModal = () => {
-    setModalActive((wasModalActive) => !wasModalActive);
-  };
+  // const toggleModal = () => {
+  //   setModalActive((wasModalActive) => !wasModalActive);
+  // };
 
   return (
     <>
       <VarProvider>
-        {loading ? (
+        <AuthorIdProvider>
+          {/* {loading1 ? ( */}
           <div className={theme === "dark" ? "App__dark" : "App__light"}>
             <ThemeButton />
-            <Row active setActive={setModalActive} />
+            <Row active setActive={setModalActive} author={author} />
             <ButtonShowMore />
-            <Modal active={modalActive} setActive={setModalActive} />
-          </div>
-        ) : (
-          <div className="loading">
-            <img
-              src="https://www.icegif.com/wp-content/uploads/loading-icegif-1.gif"
-              alt="loading..."
+            <Modal
+              active={modalActive}
+              setActive={setModalActive}
+              author={author}
             />
           </div>
-        )}
-        {/* {loading ? "true" : "false"} */}
-        {/* <button onClick={() => setLoading(true)}>check</button> */}
-        {/* <button onClick={() => console.log(loading)}>check</button> */}
+          <button onClick={() => console.log()}>test</button>
+          {/* ) : ( */}
+          {/* <div className="loading">
+          <img
+            src="https://www.icegif.com/wp-content/uploads/loading-icegif-1.gif"
+            alt="loading..."
+          />
+        </div> */}
+          {/* )} */}
+          {/* {loading ? "true" : "false"} */}
+          {/* <button onClick={() => setLoading(true)}>check</button> */}
+          {/* <button onClick={() => console.log(loading)}>check</button> */}
+        </AuthorIdProvider>
       </VarProvider>
     </>
   );

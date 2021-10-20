@@ -1,10 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
-import { LoadingContext, ThemeContext, VarContext } from "../../myContext";
+import React, { useState, useEffect, useContext, useCallback } from "react";
+import {
+  AuthorIdContext,
+  LoadedContext,
+  ThemeContext,
+  VarContext,
+} from "../../myContext";
+import { Author } from "../../types";
 import "./Row.css";
 
 interface Props {
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
+  author: Author[];
 }
 interface Users {
   userId: number;
@@ -12,26 +19,14 @@ interface Users {
   title: string;
   body: string;
 }
-interface Author {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  address: {
-    city: string;
-    street: string;
-    suite: string;
-  };
-}
 
 const Row: React.FC<Props> = (props) => {
   const userList: Users[] = [];
   const [users, setUsers] = useState(userList);
-  const authorList: Author[] = [];
-  const [author, setAuthor] = useState(authorList);
   const [value, setValue] = useContext(VarContext);
   const [theme, setTheme] = useContext(ThemeContext);
-  const [loading, setLoading] = useContext(LoadingContext);
+  const [loading, setLoading] = useContext(LoadedContext);
+  const [authorId, setAuthorId] = useContext(AuthorIdContext);
 
   const loadFunction = async () => {
     try {
@@ -43,14 +38,6 @@ const Row: React.FC<Props> = (props) => {
           return setUsers(userList);
         })
         .catch((error) => console.log(error));
-      fetch("https://jsonplaceholder.typicode.com/users")
-        .then((res): Promise<Author[]> => {
-          return res.json();
-        })
-        .then((authorList) => {
-          return setAuthor(authorList), setLoading(() => true);
-        })
-        .catch((error) => console.log(error));
     } catch (err) {
       console.log(err);
     }
@@ -59,15 +46,23 @@ const Row: React.FC<Props> = (props) => {
   useEffect(() => {
     setValue(5); // change list number to 5 when loaded
     loadFunction();
-  }, [setTheme]);
+  }, []);
 
   const filteredUsers = users.filter((user) => {
     return user.id <= value;
   });
 
-  const findAuthorName = author.map((author) => {
+  const findAuthorName = props.author.map((author) => {
     return author.name;
   });
+
+  // const buttonHandler = useCallback((el) => {
+  //   props.setActive(true);
+  //   if (el.id === undefined) {
+  //     setAuthorId(1);
+  //   }
+  //   setAuthorId((prevValue) => (prevValue = el.userId));
+  // }, []);
 
   return (
     <>
@@ -102,7 +97,10 @@ const Row: React.FC<Props> = (props) => {
                 Author:{" "}
                 <button
                   className="card__button"
-                  onClick={() => props.setActive(true)}
+                  onClick={() => {
+                    props.setActive(true);
+                    setAuthorId(() => el.userId);
+                  }}
                 >
                   {findAuthorName[el.userId - 1]}
                   {theme}

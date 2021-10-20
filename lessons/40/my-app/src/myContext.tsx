@@ -33,17 +33,32 @@ export const VarProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export let LoadingContext = React.createContext<
+export let LoadedContext = React.createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>]
 >([true, () => {}]);
 
-export let LoadingProvider: React.FC<{ children: React.ReactNode }> = ({
+export let LoadedProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   let [loading, setLoading] = useState(true);
   return (
-    <LoadingContext.Provider value={[loading, setLoading]}>
+    <LoadedContext.Provider value={[loading, setLoading]}>
       {children}
-    </LoadingContext.Provider>
+    </LoadedContext.Provider>
+  );
+};
+
+export const AuthorIdContext = React.createContext<
+  [number, React.Dispatch<React.SetStateAction<number>>]
+>([0, () => {}]);
+
+export const AuthorIdProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [authorId, setAuthorId] = useState(0);
+  return (
+    <AuthorIdContext.Provider value={[authorId, setAuthorId]}>
+      {children}
+    </AuthorIdContext.Provider>
   );
 };

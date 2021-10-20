@@ -1,10 +1,7 @@
 import React, { Dispatch, SetStateAction, useContext } from "react";
-import { LoadingContext, VarContext } from "../../myContext";
+import { VarContext } from "../../myContext";
 import "./ButtonShowMore.css";
-interface Props {
-  //   loading: boolean;
-  //   setLoading: Dispatch<SetStateAction<boolean>>;
-}
+interface Props {}
 
 const ButtonShowMore: React.FC<Props> = (props) => {
   const [value, setValue] = useContext(VarContext);
@@ -24,7 +21,6 @@ const ButtonShowMore: React.FC<Props> = (props) => {
       >
         Reset
       </button>
-      {/* <button onClick={() => setLoading(false)}> TEST </button> */}
     </>
   );
 };
