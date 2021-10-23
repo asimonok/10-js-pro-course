@@ -12,6 +12,7 @@ import {
   Switch,
   Route,
   NavLink,
+  Redirect,
 } from 'react-router-dom';
 
 let cx = classNames.bind(styles);
@@ -25,7 +26,7 @@ const App: FC<{}> = (props) => {
   }, [theme, setTheme]);
 
   theme === THEMES.DARK
-    ? (document.body.style.background = 'black')
+    ? (document.body.style.background = '#121212')
     : (document.body.style.background = 'white');
 
   const changeDisplayLimit = useCallback(() => {
@@ -41,13 +42,23 @@ const App: FC<{}> = (props) => {
               <NavLink
                 to="/posts"
                 className={styles.link}
-                activeClassName="selected"
+                activeStyle={{
+                  fontWeight: 'bold',
+                  fontSize: '20px',
+                }}
               >
                 Posts
               </NavLink>
             </li>
             <li className={styles.headerListItem}>
-              <NavLink to="/users" className={styles.link}>
+              <NavLink
+                to="/users"
+                className={styles.link}
+                activeStyle={{
+                  fontWeight: 'bold',
+                  fontSize: '20px',
+                }}
+              >
                 Users
               </NavLink>
             </li>
@@ -87,6 +98,7 @@ const App: FC<{}> = (props) => {
             </h2>
             <AuthorList />
           </Route>
+          <Redirect from="/" to="/posts" />
         </Switch>
       </div>
     </Router>

@@ -5,4 +5,5 @@
   display: flex;
   justify-content: space-between;
   background-color: var(--color-light);
+  z-index: 999;
 }
