@@ -50,7 +50,7 @@ const ArticleContainer: FC<IProps> = (props) => {
       {!isArticlesLoaded && !isAuthorsLoaded ? (
         <Preloader />
       ) : (
-        <div className={styles['article-card__list']}>
+        <div className={styles.articleCardList}>
           {articles.slice(0, displayLimit).map((article) => {
             return (
               <ArticleCard

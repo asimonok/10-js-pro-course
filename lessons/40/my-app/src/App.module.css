@@ -1,7 +1,6 @@
 /* @import './index.css'; */
 
 .App {
-  padding: 1% 10%;
   height: 100%;
   margin: 0;
 }
@@ -11,6 +10,26 @@
   color: var(--color-dark);
 }
 
+.subTitle {
+  text-align: center;
+  color: var(--color-dark);
+}
+
 .light {
   color: var(--color-light);
+}
+
+.headerList {
+  list-style: none;
+  display: flex;
+  margin-right: 20px;
+}
+
+.headerListItem {
+  margin: auto 20px auto 0;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-dark);
 }

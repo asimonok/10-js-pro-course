@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Modal.module.css';
 import classNames from 'classnames/bind';
+import Button from '../Button';
 
 let cx = classNames.bind(styles);
 
@@ -16,19 +17,17 @@ const Modal: FC<IProps> = (props) => {
   return (
     <div
       className={cx({
-        modal__wrapper: true,
+        modalWrapper: true,
         open: isOpened === true,
         close: isOpened === false,
       })}
     >
-      <div className={styles['modal__body']}>
-        <span className={styles['modal__close']} onClick={onModalClose}>
+      <div className={styles.modalBody}>
+        <span className={styles.modalClose} onClick={onModalClose}>
           ×
         </span>
         {children}
-        <button className={styles.button} onClick={onModalClose}>
-          Close
-        </button>
+        <Button text="Close" onClick={onModalClose} modalButton />
       </div>
     </div>
   );

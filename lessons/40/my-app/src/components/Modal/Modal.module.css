@@ -1,6 +1,6 @@
 @import '../../index.css';
 
-.modal__wrapper {
+.modalWrapper {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -8,17 +8,17 @@
   backdrop-filter: blur(10px);
 }
 
-.modal__wrapper.open {
+.open {
   height: 100%;
   display: block;
 }
 
-.modal__wrapper.close {
+.close {
   height: 0;
   display: none;
 }
 
-.modal__body {
+.modalBody {
   max-width: 500px;
   margin: auto;
   background-color: white;
@@ -27,22 +27,10 @@
   padding-bottom: 10px;
 }
 
-.modal__close {
+.modalClose {
   margin-right: 10px;
   font-size: 40px;
   color: var(--color-gray);
   cursor: pointer;
   margin-left: 93%;
-}
-
-.button {
-  background-color: var(--color-gray);
-  color: rgb(255, 255, 255);
-  padding: 10px;
-  border: none;
-  border-radius: 3px;
-  margin-top: 10px;
-  font-family: 'Open sans', sans-serif;
-  cursor: pointer;
-  margin-left: 87%;
 }

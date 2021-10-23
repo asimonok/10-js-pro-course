@@ -1,0 +1,11 @@
+.authorList {
+  text-align: center;
+}
+
+.authorName {
+  margin: 20px 0;
+}
+
+.light {
+  color: var(--color-light);
+}

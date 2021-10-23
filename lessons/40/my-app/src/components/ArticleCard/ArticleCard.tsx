@@ -38,21 +38,21 @@ const ArticleCard: FC<IProps> = (props) => {
       <div
         className={cx({
           article: true,
-          article_dark: theme === THEMES.DARK,
+          articleDark: theme === THEMES.DARK,
         })}
       >
-        <div className={styles['article__content']}>
+        <div className={styles.articleContent}>
           <h3>{article.title}</h3>
-          <p className={styles['article__text']}>{article.body}</p>
+          <p className={styles.articleText}>{article.body}</p>
         </div>
         <div
           className={cx({
-            article__author: true,
+            articleAuthor: true,
             dark: theme === THEMES.DARK,
           })}
         >
           <span>Autor: </span>
-          <span className={styles['author-name']} onClick={toggleModal}>
+          <span className={styles.authorName} onClick={toggleModal}>
             {author?.name}
           </span>
         </div>
