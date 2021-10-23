@@ -30,7 +30,7 @@
 .modalClose {
   margin-right: 10px;
   font-size: 40px;
-  color: var(--color-gray);
+  color: #7f5539;
   cursor: pointer;
   margin-left: 93%;
 }
