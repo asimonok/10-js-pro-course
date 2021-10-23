@@ -26,8 +26,8 @@ const App: FC<{}> = (props) => {
   }, [theme, setTheme]);
 
   theme === THEMES.DARK
-    ? (document.body.style.background = '#121212')
-    : (document.body.style.background = 'white');
+    ? (document.body.style.background = '#272727')
+    : (document.body.style.background = '#ede0d4');
 
   const changeDisplayLimit = useCallback(() => {
     setDisplayLimit(displayLimit + 5);
@@ -43,8 +43,7 @@ const App: FC<{}> = (props) => {
                 to="/posts"
                 className={styles.link}
                 activeStyle={{
-                  fontWeight: 'bold',
-                  fontSize: '20px',
+                  textDecoration: 'underline',
                 }}
               >
                 Posts
@@ -55,8 +54,7 @@ const App: FC<{}> = (props) => {
                 to="/users"
                 className={styles.link}
                 activeStyle={{
-                  fontWeight: 'bold',
-                  fontSize: '20px',
+                  textDecoration: 'underline',
                 }}
               >
                 Users

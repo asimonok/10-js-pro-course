@@ -2,9 +2,9 @@
 
 :root {
   --font-default: 'Inconsolata', monospace;
-  --color-dark: rgb(63, 62, 62);
+  --color-dark: #7f5539;
   --color-light: rgb(212, 209, 209);
-  --color-blue: rgb(23, 110, 160);
+  --color-blue: rgb(13, 80, 119);
   --color-gray: rgb(112, 112, 112);
 }
 

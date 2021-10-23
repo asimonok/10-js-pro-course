@@ -27,9 +27,11 @@
 
 .headerListItem {
   margin: auto 20px auto 0;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .link {
   text-decoration: none;
-  color: var(--color-dark);
+  color: #ede0d4;
 }

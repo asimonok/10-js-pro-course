@@ -16,8 +16,8 @@
 }
 
 .text {
-  border-top: 2px solid var(--color-light);
-  border-bottom: 2px solid var(--color-light);
+  border-top: 2px solid #b08968;
+  border-bottom: 2px solid #b08968;
   padding: 10px;
   line-height: 50px;
 }

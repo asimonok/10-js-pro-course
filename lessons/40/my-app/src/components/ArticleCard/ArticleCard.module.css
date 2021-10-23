@@ -3,7 +3,7 @@
   margin: 0 5px 15px;
   text-align: center;
   color: var(--color-dark);
-  border: 2px solid var(--color-light);
+  border: 2px solid #ddb892;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,9 +19,9 @@
 }
 
 .articleAuthor {
-  border-top: 1px solid var(--color-light);
+  border-top: 1px solid #ddb892;
   padding: 15px 0px;
-  background-color: rgb(245, 244, 244);
+  background-color: #e6ccb2;
 }
 
 .dark {

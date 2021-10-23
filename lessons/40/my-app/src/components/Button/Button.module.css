@@ -1,6 +1,8 @@
 .button {
-  background-color: rgb(56, 56, 56);
-  color: rgb(255, 255, 255);
+  background-color: #7f5539;
+  color: #ede0d4;
+  font-weight: bold;
+  font-size: 18px;
   padding: 10px;
   border: none;
   border-radius: 3px;
@@ -12,9 +14,11 @@
 
 .themeButton {
   margin: 0;
+  background-color: #b08968;
+  font-size: 14px;
+  padding: 5px;
 }
 
 .modalButton {
-  background-color: var(--color-gray);
-  margin-left: 87%;
+  margin-left: 82%;
 }
