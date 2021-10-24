@@ -7,6 +7,7 @@ import AuthorInfo from '../AuthorInfo';
 import { ThemeContext } from '../ThemeContext';
 import { THEMES } from 'constants/THEMES';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 
 let cx = classNames.bind(styles);
 
@@ -34,17 +35,17 @@ const ArticleCard: FC<IProps> = (props) => {
   }, [authors, article]);
 
   return (
-    <>
-      <div
-        className={cx({
-          article: true,
-          articleDark: theme === THEMES.DARK,
-        })}
-      >
-        <div className={styles.articleContent}>
-          <h3>{article.title}</h3>
-          <p className={styles.articleText}>{article.body}</p>
-        </div>
+    <div
+      className={cx({
+        article: true,
+        articleDark: theme === THEMES.DARK,
+      })}
+    >
+      <div className={styles.articleContent}>
+        <h3>{article.title}</h3>
+        <p className={styles.articleText}>{article.body}</p>
+      </div>
+      <div className={styles.articleInfo}>
         <div
           className={cx({
             articleAuthor: true,
@@ -56,13 +57,16 @@ const ArticleCard: FC<IProps> = (props) => {
             {author?.name}
           </span>
         </div>
+        <Link to="/posts/:postId" className={styles.link}>
+          Post details
+        </Link>
       </div>
       {author && (
         <Modal isOpened={modal} onModalClose={toggleModal} key={author?.id}>
           <AuthorInfo author={author} />
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 

@@ -18,10 +18,11 @@
   margin: 15px;
 }
 
-.articleAuthor {
+.articleInfo {
   border-top: 1px solid #ddb892;
-  padding: 15px 0px;
   background-color: #e6ccb2;
+  padding: 15px;
+  line-height: 30px;
 }
 
 .dark {
@@ -33,6 +34,16 @@
 }
 
 .authorName:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-blue);
+}
+
+.link:hover {
   cursor: pointer;
   text-decoration: underline;
 }

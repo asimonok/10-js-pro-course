@@ -35,3 +35,7 @@
   text-decoration: none;
   color: #ede0d4;
 }
+
+.activeLink {
+  text-decoration: underline;
+}

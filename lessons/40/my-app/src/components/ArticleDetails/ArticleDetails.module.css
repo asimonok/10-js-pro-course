@@ -1,0 +1,8 @@
+.article {
+  color: var(--color-dark);
+  margin: 15px;
+}
+
+.pageTitle {
+  text-align: center;
+}

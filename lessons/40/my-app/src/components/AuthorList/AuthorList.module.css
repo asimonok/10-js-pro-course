@@ -4,6 +4,7 @@
 
 .authorName {
   margin: 20px 0;
+  color: var(--color-dark);
 }
 
 .light {
