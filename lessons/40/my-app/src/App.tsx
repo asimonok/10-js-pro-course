@@ -13,6 +13,7 @@ import {
   Route,
   Link,
   Redirect,
+  NavLink,
 } from "react-router-dom";
 
 let cx = classNames.bind(styles);
@@ -47,19 +48,20 @@ function App() {
     <Router>
       <VarProvider>
         <AuthorIdProvider>
-          <div>
-            <ul>
+          <header>
+            <ul className={styles.navigationBar}>
               <li>
-                <Link to="/">Home</Link>
+                <NavLink to="/posts" activeClassName={styles.activeLink}>
+                  <p>Posts </p>
+                </NavLink>
               </li>
               <li>
-                <Link to="/posts">Posts</Link>
-              </li>
-              <li>
-                <Link to="/users">Users</Link>
+                <NavLink to="/users" activeClassName={styles.activeLink}>
+                  <p> Users</p>
+                </NavLink>
               </li>
             </ul>
-          </div>
+          </header>
           {/* <div className={theme === "dark" ? "app__dark" : "app__light"}> */}
           <div
             className={cx({
@@ -81,7 +83,7 @@ function App() {
               <Route path="/users">
                 <h1>Users</h1>
               </Route>
-              <Redirect from="/" to="/posts" />
+              <Redirect to="/posts" />
             </Switch>
           </div>
         </AuthorIdProvider>
