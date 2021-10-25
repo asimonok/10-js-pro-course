@@ -7,6 +7,13 @@ import ThemeButton from "./Components/ThemeButton";
 import { AuthorIdProvider, ThemeContext, VarProvider } from "./myContext";
 import { Author } from "./types";
 import classNames from "classnames/bind";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 
 let cx = classNames.bind(styles);
 
@@ -36,16 +43,23 @@ function App() {
     setLoading(() => true);
   }, []);
 
-  // const toggleModal = () => {
-  //   setModalActive((wasModalActive) => !wasModalActive);
-  // };
-
-  // let className = cx({ theme: "app__dark" });
-
   return (
-    <>
+    <Router>
       <VarProvider>
         <AuthorIdProvider>
+          <div>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/posts">Posts</Link>
+              </li>
+              <li>
+                <Link to="/users">Users</Link>
+              </li>
+            </ul>
+          </div>
           {/* <div className={theme === "dark" ? "app__dark" : "app__light"}> */}
           <div
             className={cx({
@@ -53,18 +67,26 @@ function App() {
               appDark: theme,
             })}
           >
-            <ThemeButton />
-            <Row active setActive={setModalActive} author={author} />
-            <ButtonShowMore />
-            <Modal
-              active={modalActive}
-              setActive={setModalActive}
-              author={author}
-            />
+            <Switch>
+              <Route path="/posts">
+                <ThemeButton />
+                <Row active setActive={setModalActive} author={author} />
+                <ButtonShowMore />
+                <Modal
+                  active={modalActive}
+                  setActive={setModalActive}
+                  author={author}
+                />
+              </Route>
+              <Route path="/users">
+                <h1>Users</h1>
+              </Route>
+              <Redirect from="/" to="/posts" />
+            </Switch>
           </div>
         </AuthorIdProvider>
       </VarProvider>
-    </>
+    </Router>
   );
 }
 
