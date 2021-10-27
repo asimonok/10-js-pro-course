@@ -14,7 +14,20 @@ import {
   Link,
   Redirect,
   NavLink,
+  useParams,
 } from "react-router-dom";
+import Users from "./Components/Users";
+import PostDetails from "./Components/postDetails";
+
+// const PostDetails = () => {
+//   let params = useParams<{ postId: string }>();
+//   console.log("params", params);
+//   return (
+//     <div>
+//       <h1>now showing {params.postId}</h1>{" "}
+//     </div>
+//   );
+// };
 
 let cx = classNames.bind(styles);
 
@@ -61,6 +74,7 @@ function App() {
                 </NavLink>
               </li>
             </ul>
+            {/* <button onClick={() => console.log(params)}>test</button> */}
           </header>
           {/* <div className={theme === "dark" ? "app__dark" : "app__light"}> */}
           <div
@@ -81,9 +95,12 @@ function App() {
                 />
               </Route>
               <Route path="/users">
-                <h1>Users</h1>
+                <Users />
               </Route>
-              <Redirect to="/posts" />
+              <Route path="/postDetails/:postId">
+                <PostDetails />
+              </Route>
+              {/* <Redirect to="/posts" /> */}
             </Switch>
           </div>
         </AuthorIdProvider>
