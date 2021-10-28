@@ -36,7 +36,7 @@ const PostItem: React.FC<MyPostListProps> = (props) => {
             <div className={style["post-author"]} onClick={handleModal}>
                 <span>Author:</span> {user.name}
             </div>
-            <AuthorModal user={user} isHidden={isOpened} handleModal={handleModal} theme={theme} size="small" />
+            <AuthorModal user={user} isHidden={isOpened} handleModal={handleModal} theme={theme} size="big" />
         </div>
 
     );

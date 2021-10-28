@@ -50,7 +50,7 @@ function App() {
 
         <div className={style.CardRow}>
           {posts.slice(0,numberOfPost).map(post =>
-            <PostItem bgColor="bright" border="dashed" key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
+            <PostItem bgColor="bright" border="none" key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
           )}
         </div>
 

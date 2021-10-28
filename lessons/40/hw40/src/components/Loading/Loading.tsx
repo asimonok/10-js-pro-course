@@ -1,5 +1,9 @@
 import React from 'react';
 import style from './Loading.module.css';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(style);
+
 interface MyLoadingProps {
     isActive: boolean;
 }
@@ -10,9 +14,9 @@ const Loading: React.FC<MyLoadingProps> = ({isActive}) => {
 
     return (
         <div className={styleType}>
-            <div className={`${style.one} ${style.block}`}></div>
-            <div className={`${style.two} ${style.block}`}></div>
-            <div className={`${style.three} ${style.block}`}></div>
+            <div className={cx('one', 'block')}></div>
+            <div className={cx('two', 'block')}></div>
+            <div className={cx('three', 'block')}></div>
     </div>
     );
 };
