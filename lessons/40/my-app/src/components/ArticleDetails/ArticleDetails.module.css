@@ -1,8 +1,18 @@
 .article {
-  color: var(--color-dark);
-  margin: 15px;
+  color: var(--color-text);
+  margin: 20px;
 }
 
 .pageTitle {
   text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-accent);
+}
+
+.link:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

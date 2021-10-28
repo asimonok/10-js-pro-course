@@ -7,7 +7,7 @@ import AuthorInfo from '../AuthorInfo';
 import { ThemeContext } from '../ThemeContext';
 import { THEMES } from 'constants/THEMES';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 let cx = classNames.bind(styles);
 
@@ -21,10 +21,16 @@ const ArticleCard: FC<IProps> = (props) => {
   const [modal, setModal] = useState(false);
   const [theme] = useContext(ThemeContext);
   const [author, setAuthor] = useState<Author>();
+  const { postId } = useParams<{ postId: string }>();
 
   const toggleModal = useCallback(() => {
     setModal(modal === false ? true : false);
   }, [modal, setModal]);
+
+  //const history = useHistory();
+  /* const onClick = useCallback(() => {
+    postId = `/posts/${article?.id}`;
+  }, [history, article.id]); */
 
   useEffect(() => {
     setAuthor(
@@ -35,24 +41,26 @@ const ArticleCard: FC<IProps> = (props) => {
   }, [authors, article]);
 
   return (
-    <div
-      className={cx({
-        article: true,
-        articleDark: theme === THEMES.DARK,
-      })}
-    >
+    <div className={styles.article}>
       <div className={styles.articleContent}>
         <h3>{article.title}</h3>
         <p className={styles.articleText}>{article.body}</p>
       </div>
-      <div className={styles.articleInfo}>
-        <div
-          className={cx({
-            articleAuthor: true,
-            dark: theme === THEMES.DARK,
-          })}
-        >
-          <span>Autor: </span>
+      <div
+        className={cx({
+          articleInfo: true,
+          articleInfoDark: theme === THEMES.DARK,
+        })}
+      >
+        <div className={styles.articleAuthor}>
+          <span
+            className={cx({
+              author: true,
+              authorDark: theme === THEMES.DARK,
+            })}
+          >
+            Autor:{' '}
+          </span>
           <span className={styles.authorName} onClick={toggleModal}>
             {author?.name}
           </span>

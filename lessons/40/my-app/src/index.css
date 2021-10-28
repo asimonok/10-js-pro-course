@@ -2,17 +2,25 @@
 
 :root {
   --font-default: 'Inconsolata', monospace;
-  --color-dark: #7f5539;
-  --color-light: rgb(212, 209, 209);
-  --color-blue: rgb(13, 80, 119);
-  --color-gray: rgb(112, 112, 112);
+  --color-primery: #434343;
+  --color-secondary: #d2d2d2;
+  --color-accent: #4885f5;
+  --color-background: #fff;
+  --color-text: #434343;
+}
+
+:root[theme='dark'] {
+  --color-primery: #e9e9e9;
+  --color-secondary: #434343;
+  --color-background: #272727;
+  --color-text: #e9e9e9;
 }
 
 body {
   font-family: var(--font-default);
   margin: 0;
   padding: 0;
-  background: #fff;
+  background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

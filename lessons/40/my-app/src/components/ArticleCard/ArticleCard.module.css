@@ -2,16 +2,11 @@
   max-width: 18%;
   margin: 0 5px 15px;
   text-align: center;
-  color: var(--color-dark);
-  border: 2px solid #ddb892;
+  color: var(--color-text);
+  border: 2px solid var(--color-primery);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.articleDark {
-  color: var(--color-light);
-  border: 2px solid var(--color-light);
 }
 
 .articleContent {
@@ -19,18 +14,14 @@
 }
 
 .articleInfo {
-  border-top: 1px solid #ddb892;
-  background-color: #e6ccb2;
+  border-top: 1px solid var(--color-primery);
+  background-color: #f9f7f7;
   padding: 15px;
   line-height: 30px;
 }
 
-.dark {
-  background-color: rgb(34, 34, 34);
-}
-
 .authorName {
-  color: var(--color-blue);
+  color: var(--color-accent);
 }
 
 .authorName:hover {
@@ -40,10 +31,18 @@
 
 .link {
   text-decoration: none;
-  color: var(--color-blue);
+  color: var(--color-accent);
 }
 
 .link:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.authorDark {
+  color: var(--color-background);
+}
+
+.articleInfoDark {
+  background-color: #dbdbdb;
 }

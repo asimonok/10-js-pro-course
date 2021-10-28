@@ -20,13 +20,7 @@ const AuthorList: FC<IProps> = (props) => {
       <div className={styles.authorList}>
         {authors.map((author) => {
           return (
-            <div
-              className={cx({
-                authorName: true,
-                light: theme === THEMES.DARK,
-              })}
-              key={author.id}
-            >
+            <div className={styles.authorName} key={author.id}>
               {author.name}
             </div>
           );

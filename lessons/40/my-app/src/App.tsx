@@ -5,6 +5,7 @@ import AuthorList from './components/AuthorList';
 import Button from './components/Button';
 import Header from './components/Header';
 import ArticleDetails from './components/ArticleDetails';
+import CommentsPage from './components/CommentsPage';
 import { Article } from 'types/Article';
 import { Author } from 'types/Author';
 import Preloader from 'components/Preloader';
@@ -59,12 +60,14 @@ const App: FC<{}> = (props) => {
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setTheme(theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT);
+    if (theme === THEMES.LIGHT) {
+      setTheme(THEMES.DARK);
+      document.documentElement.setAttribute('theme', 'dark');
+    } else {
+      setTheme(THEMES.LIGHT);
+      document.documentElement.removeAttribute('theme');
+    }
   }, [theme, setTheme]);
-
-  theme === THEMES.DARK
-    ? (document.body.style.background = '#272727')
-    : (document.body.style.background = '#ede0d4');
 
   const changeDisplayLimit = useCallback(() => {
     setDisplayLimit(displayLimit + 5);
@@ -101,22 +104,8 @@ const App: FC<{}> = (props) => {
 
         <Switch>
           <Route path="/posts" exact>
-            <h1
-              className={cx({
-                title: true,
-                light: theme === THEMES.DARK,
-              })}
-            >
-              My Site {theme}
-            </h1>
-            <h2
-              className={cx({
-                subTitle: true,
-                light: theme === THEMES.DARK,
-              })}
-            >
-              Posts
-            </h2>
+            <h1 className={styles.title}>My Site {theme}</h1>
+            <h2 className={styles.subTitle}>Posts</h2>
             {!isArticlesLoaded && !isAuthorsLoaded ? (
               <Preloader />
             ) : (
@@ -129,14 +118,7 @@ const App: FC<{}> = (props) => {
             <Button text="Show more" onClick={changeDisplayLimit} />
           </Route>
           <Route path="/users" exact>
-            <h2
-              className={cx({
-                subTitle: true,
-                light: theme === THEMES.DARK,
-              })}
-            >
-              Users
-            </h2>
+            <h2 className={styles.subTitle}>Users</h2>
             {!isAuthorsLoaded ? (
               <Preloader />
             ) : (
@@ -145,6 +127,9 @@ const App: FC<{}> = (props) => {
           </Route>
           <Route path="/posts/:postId" exact>
             <ArticleDetails articles={articles} />
+          </Route>
+          <Route path="/posts/:postId/comments" exact>
+            <CommentsPage />
           </Route>
           <Redirect from="/" to="/posts" />
         </Switch>

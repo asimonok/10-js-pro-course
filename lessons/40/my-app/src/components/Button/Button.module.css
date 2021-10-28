@@ -1,6 +1,6 @@
 .button {
-  background-color: #7f5539;
-  color: #ede0d4;
+  background-color: var(--color-secondary);
+  color: var(--color-text);
   font-weight: bold;
   font-size: 18px;
   padding: 10px;
@@ -14,7 +14,7 @@
 
 .themeButton {
   margin: 0;
-  background-color: #b08968;
+  background-color: var(--color-secondary);
   font-size: 14px;
   padding: 5px;
 }

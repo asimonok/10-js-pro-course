@@ -1,10 +1,8 @@
-/* @import '../../index.css'; */
-
 .title {
   text-align: left;
   margin: 0;
   padding: 0 0 10px 10px;
-  color: #7f5539;
+  color: var(--color-text);
 }
 
 .header {
@@ -17,15 +15,15 @@
 }
 
 .text {
-  border-top: 2px solid #ddb892;
-  border-bottom: 2px solid #ddb892;
+  border-top: 2px solid var(--color-secondary);
+  border-bottom: 2px solid var(--color-secondary);
   padding: 10px;
   line-height: 50px;
-  color: #7f5539;
+  color: var(--color-text);
 }
 
 .email,
 .phone {
-  color: var(--color-blue);
+  color: var(--color-accent);
   display: block;
 }
