@@ -11,8 +11,9 @@ import {
   Redirect,
   NavLink
 } from 'react-router-dom'
-import PostsPage from './components/PostsPage'
-import UsersPage from './components/UsersPage'
+import PostsPage from './components/PostsPage';
+import UsersPage from './components/UsersPage';
+import PostDetailsPage from './components/PostDetailsPage'
 
 
 function App() {
@@ -61,6 +62,9 @@ function App() {
           </Route>
           <Route path="/posts" exact>
             <PostsPage/>
+          </Route>
+          <Route path="/posts/:postId" exact>
+            <PostDetailsPage/>
           </Route>
           <Route path="/home/about"  >
             <About />

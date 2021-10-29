@@ -10,13 +10,14 @@ interface MyPostListProps {
     user: User;
     bgColor?: "calm" | "bright";
     border?: "dashed" | "none";
+    onClick: () => void;
 }
 
 const cx = classNames.bind(style);
 
 
 const PostItem: React.FC<MyPostListProps> = (props) => {
-    const {post, user, bgColor = 'calm', border = 'none'} = props;
+    const {post, user, bgColor = 'calm', border = 'none', onClick} = props;
     const [isOpened, setIsOpened] = useState(true);
     const [theme, setTheme]= useContext(ThemeContext);
 
@@ -32,8 +33,12 @@ const PostItem: React.FC<MyPostListProps> = (props) => {
            }, bgColor, border)}>
             <h2 className={cx({title: true, titleDark: theme === 'dark'})}>{post.title}</h2>
             <p className={style.postBody}>{post.body}</p>
+            <div></div>
             <div className={style.postAuthor} onClick={handleModal}>
                 <span>Author:</span> {user.name}
+            </div>
+            <div className={style.details} onClick={onClick}>
+                <div>Post details...</div>
             </div>
             <AuthorModal user={user} isHidden={isOpened} handleModal={handleModal} theme={theme} size={Size.medium} />
         </div>

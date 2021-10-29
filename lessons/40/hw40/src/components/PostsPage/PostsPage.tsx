@@ -4,12 +4,15 @@ import style from './PostsPage.module.css';
 import PostItem from 'components/PostItem';
 import Button from 'components/Button';
 import Loading from 'components/Loading';
+import { useHistory } from 'react-router-dom';
 
 const PostsPage: FC = () => {
     const [posts, setPosts] = useState<Post[]>([]);
     const [users, setUsers] = useState<User[]>([]);
     const [numberOfPost, setNumberOfPost] = useState(5);
     const [isloaded, setIsloaded] = useState(false);
+    const history = useHistory();
+    console.log('history: ',history)
 
     useEffect(() => { 
         Promise.all([
@@ -30,8 +33,8 @@ const PostsPage: FC = () => {
                 <>
                 <div className={style.CardRow}>
                 {posts.slice(0,numberOfPost).map(post =>
-                <PostItem key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
-                )}
+                <PostItem onClick={() => {history.push(`posts/${post.id}`)} } key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
+              )}
             </div>
             <Button 
              name="Show more"

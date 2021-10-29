@@ -1,0 +1,10 @@
+.postDetails {
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 10px;
+    width: 60%;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: var(--color-auxiliary) ;
+    text-align: center;
+}
