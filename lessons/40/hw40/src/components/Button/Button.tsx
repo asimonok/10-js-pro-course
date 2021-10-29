@@ -1,25 +1,33 @@
-import React, {useContext} from 'react'
-import {ThemeContext} from '../ThemeProvider' 
-import classNames from 'classnames/bind'  
+import React, {FC, useContext} from 'react';
+import { ThemeContext } from 'components/ThemeProvider';
 import style from './Button.module.css';
+import className from 'classnames/bind'
 
-const cx = classNames.bind(style);
+const cx = className.bind(style);
 
-
-export const Button = () => {
-    const [theme, setTheme]= useContext(ThemeContext);
-
-    return (
-        <button 
-            className={cx({
-                btn:true,
-                light: theme === 'light',
-                dark: theme === 'dark',
-            })}  
-            onClick={() => {setTheme( theme === 'dark'? 'light': 'dark')}}>
-            Change mode {theme}
-        </button>
-    )
-
+export enum BtnPosition {
+    bottom = 'bottom',
+    top = 'top',
 }
 
+interface MyButtonProps {
+    name: string;
+    handleClick: () => void;
+    position?: BtnPosition | null ;
+}
+
+const Button:FC<MyButtonProps>  = ({name, position = BtnPosition.top, handleClick}) => {
+    const [theme, setTheme] = useContext(ThemeContext);
+    return (
+        <button
+            className={cx({
+                btn: true,
+                dark: theme === 'dark',
+            }, position)
+           }
+            onClick={handleClick}
+        >{name}</button>
+    );
+};
+
+export default Button;

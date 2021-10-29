@@ -18,7 +18,7 @@
 }
 
 
-.btn {
+/* .btn {
   margin-left: 10px;
   font-size: 18px;
   line-height: 30px;
@@ -33,7 +33,7 @@
   cursor: pointer;
   opacity: 0.9;
   transform: scale(1.05);
-}
+} */
 .btn.dark {
   background-color: var(--light-bg);
   

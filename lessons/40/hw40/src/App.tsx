@@ -1,11 +1,10 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react';
 import style from './App.module.css';
-import Button from './components/Button'
-import {ThemeContext}from './components/ThemeProvider'
-
-import {User, Post} from 'types/types'
-import PostItem from './components/PostItem'
-import Loading from './components/Loading'
+import {ThemeContext} from './components/ThemeProvider';
+import {User, Post} from 'types/types';
+import PostItem from './components/PostItem';
+import Loading from './components/Loading';
+import Button from './components/Button';
 
 
 function App() {
@@ -16,8 +15,8 @@ function App() {
   const [isloaded, setIsloaded] = useState(false);
 
  
-  document.body.style.color = theme === "light" ? 'var(--dark-bg)' : "var(--light-bg)";
-  document.body.style.backgroundColor = theme === "light" ?  "var(--light-bg)" : 'var(--dark-bg)';
+  document.body.style.color = theme === "light" ? 'var(--bg-color)' : "var(--bg-primery)";
+  document.body.style.backgroundColor = theme === "light" ?  "var(--bg-primery)" : 'var(--bg-color)';
   
 
   useEffect(() => { 
@@ -46,15 +45,21 @@ function App() {
   return (
     <>
       {isloaded ? <>
-        <Button />
-
+        <Button
+          name="Change mode"
+          handleClick={ () => {setTheme(theme === 'dark' ? 'light' : 'dark')}}
+        />
         <div className={style.CardRow}>
           {posts.slice(0,numberOfPost).map(post =>
             <PostItem bgColor="bright" border="none" key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
           )}
         </div>
 
-        <button className={style.btn + " " + styleType} onClick={handleNumberOfPost}>Show more</button>
+        {/* <button className={style.btn + " " + styleType} onClick={handleNumberOfPost}>Show more</button> */}
+        <Button 
+          name="Show more"
+          handleClick={handleNumberOfPost}
+          />
       </>
       : <Loading isActive={isloaded}/> }
    </>

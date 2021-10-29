@@ -1,26 +1,31 @@
 .btn {
-    margin-left: 10px;
-    font-size: 18px;
-    line-height: 30px;
-    padding: 4px 8px;
-    border: none;
-    border-radius: 5px;
-    transition: 0.4s ease all;
-    display: block;
-    margin: 0 auto;
+  margin-left: 10px;
+  font-size: 18px;
+  line-height: 30px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 5px;
+  transition: 0.4s ease all;
+  display: block;
+  margin: 0 auto;
+  background-color: var(--bg-color);
+  color: var(--bg-primery);
 }
 .btn:hover {
-    cursor: pointer;
-    opacity: 0.9;
-    transform: scale(1.05);
+  cursor: pointer;
+  opacity: 0.9;
+  transform: scale(1.05);
 }
-.btn.dark {
-    background-color: var(--light-bg);
-   
+
+.dark {
+  background-color: var(--bg-primery);
+  color: var(--bg-color);
 }
-.btn.light {
-    background-color: var(--dark-bg);
-    color: var(--light-bg);
+
+.bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: 45%;
 }
 
 

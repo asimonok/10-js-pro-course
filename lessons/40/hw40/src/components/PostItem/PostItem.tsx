@@ -3,7 +3,7 @@ import {User, Post} from 'types/types'
 import {ThemeContext} from 'components/ThemeProvider'
 import classNames from 'classnames/bind'
 import style from './PostItem.module.css'
-import AuthorModal from '../AuthorModal'
+import {AuthorModal, Size} from '../AuthorModal'
 
 interface MyPostListProps {
     post: Post;
@@ -36,7 +36,7 @@ const PostItem: React.FC<MyPostListProps> = (props) => {
             <div className={style["post-author"]} onClick={handleModal}>
                 <span>Author:</span> {user.name}
             </div>
-            <AuthorModal user={user} isHidden={isOpened} handleModal={handleModal} theme={theme} size="big" />
+            <AuthorModal user={user} isHidden={isOpened} handleModal={handleModal} theme={theme} size={Size.medium} />
         </div>
 
     );

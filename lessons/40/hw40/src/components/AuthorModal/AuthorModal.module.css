@@ -40,14 +40,6 @@
     transform: scale(1.2);
 
 }
-.closeBtn {
-    position: absolute;
-    bottom: 10px;
-    left: 45%;
-    background-color: #b4acac;
-    cursor: pointer;
-
-}
 
 .small {
     font-size: 1rem;

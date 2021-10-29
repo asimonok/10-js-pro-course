@@ -2,18 +2,20 @@ import React, {useContext} from 'react';
 import {User} from 'types/types';
 import classNames from 'classnames/bind'
 import style from './AuthorModal.module.css'
+import Button from 'components/Button';
+import { BtnPosition } from 'components/Button/Button';
 
-// enum Size {
-//     small = 'small',
-//     medium = 'medium',
-//     big = 'big',
-// }
+enum Size {
+    small = 'small',
+    medium = 'medium',
+    big = 'big',
+}
 interface MyModalProps {
     user: User;
     isHidden: boolean;
     handleModal: () => void;
     theme: string;
-    size?: "small" | "medium" | "big";
+    size?: Size;
 }
 
 const AuthorModal: React.FC<MyModalProps>= ({user, isHidden, handleModal, theme, size}) => {
@@ -31,10 +33,15 @@ const AuthorModal: React.FC<MyModalProps>= ({user, isHidden, handleModal, theme,
                 <h2>{user.name}</h2>
                 <p>Adress: {user.address.city}, {user.address.street}, {user.address.suite}</p>
                 <p className={style["email-phone"]}>Email: {user.email} &nbsp;&nbsp; Phone: {user.phone}</p>
-                <button className={style.closeBtn} onClick={handleModal}>Close</button>
+                {/* <button className={style.closeBtn} onClick={handleModal}>Close</button> */}
+                <Button 
+                    name="Close"
+                    handleClick={handleModal}
+                    position={BtnPosition.bottom}
+                    />
             </div>
         </div>
     );
 };
 
-export default AuthorModal;
+export {AuthorModal, Size};

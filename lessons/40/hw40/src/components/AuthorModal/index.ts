@@ -1,3 +1,3 @@
-import AuthorModal from './AuthorModal'
+import {AuthorModal, Size} from './AuthorModal'
 
-export default AuthorModal
+export { AuthorModal, Size}
