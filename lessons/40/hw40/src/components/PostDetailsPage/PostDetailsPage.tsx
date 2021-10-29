@@ -1,8 +1,9 @@
 import React, {FC, useState, useEffect} from 'react';
 import {Post, Comment} from 'types/types'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import style from './PostDetailsPage.module.css';
-import CommentItem from 'components/CommentItem'
+import CommentItem from 'components/CommentItem';
+import Button from 'components/Button'
 
 // interface MyPostDetailsProps {
 //     post: Post;
@@ -16,6 +17,8 @@ const PostDetailsPage:FC =  () => {
     const [post, setPost] = useState<Post | null>();
     const [comments, setComments] = useState<Comment[]>();
     const params = useParams<PostDetailsPageParams>();
+    const history = useHistory();
+    const [isValid, setIsValid] = useState(false);
     console.log(params);
 
     useEffect(() => {
@@ -28,50 +31,24 @@ const PostDetailsPage:FC =  () => {
           .then( ([post, comments])=> {
             setPost(post);
             setComments(comments); 
+            setIsValid(false);
         }).catch(error => console.log(error))
     }, [params.postId]);
 
     return (
-        <div className={style.postDetails}>
-            <h3>Post {post?.id}. {post?.title}</h3>
-            <p> {post?.body}</p>
-            <div>Comments
-               { comments?.map( comment => <CommentItem key={comment.id} comment={comment}/>)}
+            <div className={style.postDetails}>
+                <h3>Post {post?.id}. {post?.title}</h3>
+                <p> {post?.body}</p>
+                <div>Comments
+                   { comments?.map( comment => <CommentItem key={comment.id} comment={comment}/>)}
+                </div>
+                <Button 
+                    name="Back to posts"
+                    handleClick={() => {history.push(`/posts`)}}
+                />
+                {/* <div>This post not founded</div> */}
             </div>
-
-            
-
-
-        </div>
     );
 };
 
 export default PostDetailsPage;
-
-/* 
-const UserItemPage: FC = () => {
-    const [user, setUser] = useState<User | null>(null);
-    const history = useHistory();
-    const params = useParams<UserItemPageParams>();
-
-    useEffect(() => { 
-        fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`)
-          .then((response):Promise<User> => response.json())
-          .then(user => {
-            setUser(user);  
-        }).catch(error => console.log(error))
-    }, [user, params.id]);
-    
-    return (
-        <div>
-            <button onClick={() => history.push('/users')}>Back</button>
-            <h1>Page of user {user?.name}</h1>
-            <div>
-                {user?.email}
-            </div>
-            <div>
-                {user?.address.city} {user?.address.street} {user?.address.zipcode}
-            </div>
-            
-        </div>
-    ); */
