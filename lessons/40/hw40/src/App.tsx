@@ -46,16 +46,14 @@ function App() {
     <>
       {isloaded ? <>
         <Button
-          name="Change mode"
+          name={`Change mode ${theme}`}
           handleClick={ () => {setTheme(theme === 'dark' ? 'light' : 'dark')}}
         />
         <div className={style.CardRow}>
           {posts.slice(0,numberOfPost).map(post =>
-            <PostItem bgColor="bright" border="none" key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
+            <PostItem key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
           )}
         </div>
-
-        {/* <button className={style.btn + " " + styleType} onClick={handleNumberOfPost}>Show more</button> */}
         <Button 
           name="Show more"
           handleClick={handleNumberOfPost}

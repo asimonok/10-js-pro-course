@@ -33,7 +33,6 @@ const AuthorModal: React.FC<MyModalProps>= ({user, isHidden, handleModal, theme,
                 <h2>{user.name}</h2>
                 <p>Adress: {user.address.city}, {user.address.street}, {user.address.suite}</p>
                 <p className={style["email-phone"]}>Email: {user.email} &nbsp;&nbsp; Phone: {user.phone}</p>
-                {/* <button className={style.closeBtn} onClick={handleModal}>Close</button> */}
                 <Button 
                     name="Close"
                     handleClick={handleModal}

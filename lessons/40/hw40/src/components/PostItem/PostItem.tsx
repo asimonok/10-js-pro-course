@@ -16,7 +16,7 @@ const cx = classNames.bind(style);
 
 
 const PostItem: React.FC<MyPostListProps> = (props) => {
-    const {post, user, bgColor, border} = props;
+    const {post, user, bgColor = 'calm', border = 'none'} = props;
     const [isOpened, setIsOpened] = useState(true);
     const [theme, setTheme]= useContext(ThemeContext);
 
@@ -28,12 +28,11 @@ const PostItem: React.FC<MyPostListProps> = (props) => {
     return (
         <div className={cx({
             postItem: true,
-            dark: theme === "light",
-            light: theme === "dark",
+            dark: theme === "dark",
            }, bgColor, border)}>
-            <h2 className={theme}>{post.title}</h2>
-            <p className={`${style["post-body"]} ${theme}`}>{post.body}</p>
-            <div className={style["post-author"]} onClick={handleModal}>
+            <h2 className={cx({title: true, titleDark: theme === 'dark'})}>{post.title}</h2>
+            <p className={style.postBody}>{post.body}</p>
+            <div className={style.postAuthor} onClick={handleModal}>
                 <span>Author:</span> {user.name}
             </div>
             <AuthorModal user={user} isHidden={isOpened} handleModal={handleModal} theme={theme} size={Size.medium} />
