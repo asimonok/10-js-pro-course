@@ -28,7 +28,7 @@ const AuthorModal: React.FC<MyModalProps>= ({user, isHidden, handleModal, theme,
             hidden: isHidden,
             dark: theme === 'dark',
             }, size)}>
-            <div className={style["modal-info"]}>
+            <div className={style.modalInfo}>
                 <span className={style.close} onClick={handleModal}>X</span>
                 <h2>{user.name}</h2>
                 <p>Adress: {user.address.city}, {user.address.street}, {user.address.suite}</p>
