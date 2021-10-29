@@ -31,13 +31,13 @@ function App() {
                 <NavLink to="/home" exact activeClassName={style.activeLink}>Home</NavLink>
               </li>
               <li>
-                <Link to="/home/about">About</Link>
+                <NavLink to="/home/about" exact  activeClassName={style.activeLink}>About</NavLink>
               </li>
               <li>
-                <Link to="/users">Users</Link>
+                <NavLink to="/users" exact activeClassName={style.activeLink}>Users</NavLink>
               </li>
               <li>
-                <Link to="/posts">Posts</Link>
+                <NavLink to="/posts" exact activeClassName={style.activeLink}>Posts</NavLink>
               </li>
             </ul>
             <Button
