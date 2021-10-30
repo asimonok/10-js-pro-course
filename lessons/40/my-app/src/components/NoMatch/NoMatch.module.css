@@ -1,0 +1,16 @@
+.pageTitle {
+  color: var(--color-text);
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-accent);
+  display: block;
+  text-align: center;
+}
+
+.link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

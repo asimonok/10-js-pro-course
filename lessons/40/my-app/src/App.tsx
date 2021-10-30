@@ -17,10 +17,11 @@ import {
   Route,
   NavLink,
   Redirect,
+  useLocation,
+  useHistory,
 } from 'react-router-dom';
 
 const App: FC<{}> = (props) => {
-  const [displayLimit, setDisplayLimit] = useState(5);
   const [theme, setTheme] = useContext(ThemeContext);
   const [articles, setArticles] = useState<Article[]>([]);
   const [authors, setAuthors] = useState<Author[]>([]);
@@ -66,10 +67,6 @@ const App: FC<{}> = (props) => {
     }
   }, [theme, setTheme]);
 
-  const changeDisplayLimit = useCallback(() => {
-    setDisplayLimit(displayLimit + 5);
-  }, [displayLimit, setDisplayLimit]);
-
   return (
     <Router>
       <div className={styles.App}>
@@ -107,12 +104,11 @@ const App: FC<{}> = (props) => {
               <Preloader />
             ) : (
               <ArticleContainer
-                displayLimit={displayLimit}
+                /* displayLimit={displayLimit} */
                 articles={articles}
                 authors={authors}
               />
             )}
-            <Button text="Show more" onClick={changeDisplayLimit} />
           </Route>
           <Route path="/users" exact>
             <h2 className={styles.subTitle}>Users</h2>
