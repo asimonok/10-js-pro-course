@@ -1,8 +1,8 @@
-.authorList {
+.userList {
   text-align: center;
 }
 
-.authorName {
+.userName {
   margin: 20px 0;
   color: var(--color-text);
 }

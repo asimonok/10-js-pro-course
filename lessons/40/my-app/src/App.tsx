@@ -1,13 +1,13 @@
 import React, { FC, useState, useContext, useCallback, useEffect } from 'react';
 import styles from './App.module.css';
-import ArticleContainer from './components/ArticleContainer';
-import AuthorList from './components/AuthorList';
+import PostContainer from './pages/PostContainer';
+import UserList from './pages/UserList';
 import Button from './components/Button';
 import Header from './components/Header';
-import ArticleDetails from './components/ArticleDetails';
-import CommentsPage from './components/CommentsPage';
-import { Article } from 'types/Article';
-import { Author } from 'types/Author';
+import PostDetails from './pages/PostDetails';
+import CommentsPage from './pages/CommentsPage';
+import { Post } from 'types/Post';
+import { User } from 'types/User';
 import Preloader from 'components/Preloader';
 import { ThemeContext } from './components/ThemeContext';
 import { THEMES } from 'constants/THEMES';
@@ -17,44 +17,42 @@ import {
   Route,
   NavLink,
   Redirect,
-  useLocation,
-  useHistory,
 } from 'react-router-dom';
 
 const App: FC<{}> = (props) => {
   const [theme, setTheme] = useContext(ThemeContext);
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [authors, setAuthors] = useState<Author[]>([]);
-  const [isArticlesLoaded, setIsArticlesLoaded] = useState(false);
-  const [isAuthorsLoaded, setIsAuthorsLoaded] = useState(false);
+  const [posts, setposts] = useState<Post[]>([]);
+  const [users, setusers] = useState<User[]>([]);
+  const [ispostsLoaded, setIspostsLoaded] = useState(false);
+  const [isusersLoaded, setIsusersLoaded] = useState(false);
 
-  const getArticles = () => {
+  const getposts = () => {
     fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((response): Promise<Article[]> => {
+      .then((response): Promise<Post[]> => {
         return response.json();
       })
       .then((data) => {
-        setArticles(data);
-        setIsArticlesLoaded(true);
+        setposts(data);
+        setIspostsLoaded(true);
       })
       .catch((e) => console.error(e));
   };
 
-  const getAuthors = () => {
+  const getusers = () => {
     fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response): Promise<Author[]> => {
+      .then((response): Promise<User[]> => {
         return response.json();
       })
       .then((data) => {
-        setAuthors(data);
-        setIsAuthorsLoaded(true);
+        setusers(data);
+        setIsusersLoaded(true);
       })
       .catch((e) => console.error(e));
   };
 
   useEffect(() => {
-    getArticles();
-    getAuthors();
+    getposts();
+    getusers();
   }, []);
 
   const toggleTheme = useCallback(() => {
@@ -100,26 +98,22 @@ const App: FC<{}> = (props) => {
           <Route path="/posts" exact>
             <h1 className={styles.title}>My Site {theme}</h1>
             <h2 className={styles.subTitle}>Posts</h2>
-            {!isArticlesLoaded && !isAuthorsLoaded ? (
+            {!ispostsLoaded && !isusersLoaded ? (
               <Preloader />
             ) : (
-              <ArticleContainer
+              <PostContainer
                 /* displayLimit={displayLimit} */
-                articles={articles}
-                authors={authors}
+                posts={posts}
+                users={users}
               />
             )}
           </Route>
           <Route path="/users" exact>
             <h2 className={styles.subTitle}>Users</h2>
-            {!isAuthorsLoaded ? (
-              <Preloader />
-            ) : (
-              <AuthorList authors={authors} />
-            )}
+            {!isusersLoaded ? <Preloader /> : <UserList users={users} />}
           </Route>
           <Route path="/posts/:postId" exact>
-            <ArticleDetails articles={articles} />
+            <PostDetails posts={posts} />
           </Route>
           <Route path="/posts/:postId/comments" exact>
             <CommentsPage />

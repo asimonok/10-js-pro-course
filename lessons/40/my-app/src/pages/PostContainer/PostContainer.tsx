@@ -1,18 +1,18 @@
 import React, { FC, useState, useCallback } from 'react';
-import styles from './ArticleContainer.module.css';
-import ArticleCard from '../ArticleCard';
-import { Article } from 'types/Article';
-import { Author } from 'types/Author';
-import Button from '../Button';
+import styles from './PostContainer.module.css';
+import PostCard from '../../components/PostCard';
+import { Post } from 'types/Post';
+import { User } from 'types/User';
+import Button from '../../components/Button';
 import { useLocation, useHistory } from 'react-router-dom';
 
 interface IProps {
-  articles: Article[];
-  authors: Author[];
+  posts: Post[];
+  users: User[];
 }
 
-const ArticleContainer: FC<IProps> = (props) => {
-  const { articles, authors } = props;
+const PostContainer: FC<IProps> = (props) => {
+  const { posts, users } = props;
   const [displayLimit, setDisplayLimit] = useState(5);
   const location = useLocation();
   const history = useHistory();
@@ -35,11 +35,9 @@ const ArticleContainer: FC<IProps> = (props) => {
 
   return (
     <>
-      <div className={styles.articleCardList}>
-        {articles.slice(0, displayLimit).map((article) => {
-          return (
-            <ArticleCard article={article} authors={authors} key={article.id} />
-          );
+      <div className={styles.postCardList}>
+        {posts.slice(0, displayLimit).map((post) => {
+          return <PostCard post={post} users={users} key={post.id} />;
         })}
       </div>
       <Button text="Show more" onClick={onShowMore} />
@@ -47,4 +45,4 @@ const ArticleContainer: FC<IProps> = (props) => {
   );
 };
 
-export default ArticleContainer;
+export default PostContainer;

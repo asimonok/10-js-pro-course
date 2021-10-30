@@ -1,4 +1,4 @@
-.article {
+.post {
   max-width: 18%;
   margin: 0 5px 15px;
   text-align: center;
@@ -9,22 +9,22 @@
   justify-content: space-between;
 }
 
-.articleContent {
+.postContent {
   margin: 15px;
 }
 
-.articleInfo {
+.postInfo {
   border-top: 1px solid var(--color-primery);
   background-color: #f9f7f7;
   padding: 15px;
   line-height: 30px;
 }
 
-.authorName {
+.userName {
   color: var(--color-accent);
 }
 
-.authorName:hover {
+.userName:hover {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -39,10 +39,10 @@
   text-decoration: underline;
 }
 
-.authorDark {
+.userDark {
   color: var(--color-background);
 }
 
-.articleInfoDark {
+.postInfoDark {
   background-color: #dbdbdb;
 }
