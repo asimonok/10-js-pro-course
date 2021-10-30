@@ -7,7 +7,8 @@ import AuthorInfo from '../AuthorInfo';
 import { ThemeContext } from '../ThemeContext';
 import { THEMES } from 'constants/THEMES';
 import classNames from 'classnames/bind';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
+//import queryString from "query-string";
 
 let cx = classNames.bind(styles);
 
@@ -16,21 +17,19 @@ interface IProps {
   authors: Author[];
 }
 
+enum RoutePath {
+  postDetails = '/posts/:postId',
+}
+
 const ArticleCard: FC<IProps> = (props) => {
   const { article, authors } = props;
   const [modal, setModal] = useState(false);
   const [theme] = useContext(ThemeContext);
   const [author, setAuthor] = useState<Author>();
-  const { postId } = useParams<{ postId: string }>();
 
   const toggleModal = useCallback(() => {
     setModal(modal === false ? true : false);
   }, [modal, setModal]);
-
-  //const history = useHistory();
-  /* const onClick = useCallback(() => {
-    postId = `/posts/${article?.id}`;
-  }, [history, article.id]); */
 
   useEffect(() => {
     setAuthor(
@@ -65,7 +64,12 @@ const ArticleCard: FC<IProps> = (props) => {
             {author?.name}
           </span>
         </div>
-        <Link to="/posts/:postId" className={styles.link}>
+        <Link
+          to={generatePath(RoutePath.postDetails, {
+            postId: article.id,
+          })}
+          className={styles.link}
+        >
           Post details
         </Link>
       </div>

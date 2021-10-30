@@ -11,7 +11,6 @@ import { Author } from 'types/Author';
 import Preloader from 'components/Preloader';
 import { ThemeContext } from './components/ThemeContext';
 import { THEMES } from 'constants/THEMES';
-import classNames from 'classnames/bind';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,8 +18,6 @@ import {
   NavLink,
   Redirect,
 } from 'react-router-dom';
-
-let cx = classNames.bind(styles);
 
 const App: FC<{}> = (props) => {
   const [displayLimit, setDisplayLimit] = useState(5);

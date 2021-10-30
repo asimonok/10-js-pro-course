@@ -1,11 +1,6 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import styles from './AuthorList.module.css';
 import { Author } from 'types/Author';
-import { THEMES } from 'constants/THEMES';
-import { ThemeContext } from '../ThemeContext';
-import classNames from 'classnames/bind';
-
-let cx = classNames.bind(styles);
 
 interface IProps {
   authors: Author[];
@@ -13,7 +8,6 @@ interface IProps {
 
 const AuthorList: FC<IProps> = (props) => {
   const { authors } = props;
-  const [theme] = useContext(ThemeContext);
 
   return (
     <>
