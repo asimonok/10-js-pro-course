@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+// import { NavLink } from "react-router-dom";
 import styles from "./PostCard.module.css";
 import ModalWindow from "../ModalWindow";
 import { ThemeContext } from "../ThemeContext";
@@ -26,10 +27,19 @@ const PostCard: React.FC<Props> = (props) => {
   const onClose = () => setModal(false);
   return (
     <>
-      <div className={styles.component}>
+      <div
+        className={cx({
+          component: true,
+          light: theme === "light",
+          dark: theme === "dark",
+        })}
+      >
         <div className={styles.body}>
           <h4 className={styles.title}>{props.title}</h4>
           <p className={styles.text}>{props.content}</p>
+          {/* <NavLink to="/posts/:postId" exact className={styles.link}>
+            Post Details
+          </NavLink> */}
         </div>
         <div className={styles.footer}>
           <button

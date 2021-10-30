@@ -9,9 +9,9 @@ const Button = () => {
   const [theme, setTheme] = useContext(ThemeContext);
 
   if (theme === "light") {
-    document.body.style.background = "white";
+    document.body.style.background = "var(--color-primary)";
   } else {
-    document.body.style.background = "grey";
+    document.body.style.background = "var(--themecolor-primary)";
   }
 
   return (
@@ -23,7 +23,7 @@ const Button = () => {
       })}
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
-      theme {theme}
+      Theme {theme}
     </button>
   );
 };
