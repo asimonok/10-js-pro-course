@@ -8,17 +8,13 @@ import { ThemeContext } from '../ThemeContext';
 import { THEMES } from 'constants/THEMES';
 import classNames from 'classnames/bind';
 import { Link, generatePath } from 'react-router-dom';
-//import queryString from "query-string";
+import { RoutePath } from 'constants/RoutePath';
 
 let cx = classNames.bind(styles);
 
 interface IProps {
   article: Article;
   authors: Author[];
-}
-
-enum RoutePath {
-  postDetails = '/posts/:postId',
 }
 
 const ArticleCard: FC<IProps> = (props) => {
