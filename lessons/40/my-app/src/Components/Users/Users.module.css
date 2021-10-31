@@ -1,6 +1,14 @@
 .users {
+  padding-top: 10px;
   margin: auto;
 }
-li {
+.usersList {
   list-style: none;
+}
+.usersLists {
+  padding: 0;
+  padding-bottom: 20px;
+}
+.usersParag {
+  margin: auto;
 }

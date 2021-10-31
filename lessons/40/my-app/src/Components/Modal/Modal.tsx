@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthorIdContext, ThemeContext, ThemeProvider } from "../../myContext";
-import { Author } from "../../types";
+import { UsersT } from "../../types";
 import styles from "./Modal.module.css";
 import classNames from "classnames/bind";
 
@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 interface Props {
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
-  author: Author[];
+  author: UsersT[];
 }
 
 const Modal: React.FC<Props> = (props) => {
@@ -61,10 +61,7 @@ const Modal: React.FC<Props> = (props) => {
           <p></p>
           <a href="#">Phone: {newAuthor?.phone}</a>
         </div>
-        <button
-          className={styles.modal_button}
-          onClick={() => console.log(newAuthor)}
-        >
+        <button className={styles.modal_button} onClick={() => console.log(newAuthor)}>
           Close
         </button>
       </div>

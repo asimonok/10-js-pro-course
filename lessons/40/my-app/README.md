@@ -14,15 +14,15 @@
 
 # Задание 2 - route params
 
-Добавить ссылку на страницу postDetails для каждого поста
+Добавить ссылку на страницу postDetails для каждого поста --done
 
-Создать страницу для просмотра postDetails
+Создать страницу для просмотра postDetails --done
 
-Страница postDetails должна открываться по отдельному адресу
+Страница postDetails должна открываться по отдельному адресу --done
 
-Адрес для каждой страницы postDetails должен быть свой
+Адрес для каждой страницы postDetails должен быть свой --done
 
-На странице postDetails должны выводиться title, body из запроса GET /posts/:postId
+На странице postDetails должны выводиться title, body из запроса GET /posts/:postId --done
 
 На странице postDetails должны выводиться комментарии к текущему посту из запроса GET /posts/:postId/comments
 
