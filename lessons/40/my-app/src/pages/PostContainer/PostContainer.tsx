@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback } from 'react';
+import React, { FC, useCallback } from 'react';
 import styles from './PostContainer.module.css';
 import PostCard from '../../components/PostCard';
 import { Post } from 'types/Post';
@@ -13,30 +13,25 @@ interface IProps {
 
 const PostContainer: FC<IProps> = (props) => {
   const { posts, users } = props;
-  const [displayLimit, setDisplayLimit] = useState(5);
   const location = useLocation();
   const history = useHistory();
 
   const onShowMore = useCallback(() => {
-    /* const query = new URLSearchParams(location.search);
-    const totalPosts = query.get('totalPosts') || '5';
+    const query = new URLSearchParams(location.search);
+    const totalPosts = query.get('totalPosts') || '0';
     const newTotalPosts = parseInt(totalPosts, 10) + 5;
     query.set('totalPosts', newTotalPosts.toString());
 
-    history.replace(`${location.pathname}?${query.toString()}`); */
-    setDisplayLimit(displayLimit + 5);
-  }, [
-    displayLimit,
-    setDisplayLimit,
-    /* history,
-    location.pathname,
-    location.search, */
-  ]);
+    history.push(`${location.pathname}?${query.toString()}`);
+  }, [history, location.pathname, location.search]);
+
+  const displayLimit = location.search.split('=');
+  console.log(displayLimit);
 
   return (
     <>
       <div className={styles.postCardList}>
-        {posts.slice(0, displayLimit).map((post) => {
+        {posts.slice(0, parseInt(displayLimit[1])).map((post) => {
           return <PostCard post={post} users={users} key={post.id} />;
         })}
       </div>
