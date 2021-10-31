@@ -1,39 +1,33 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect, FC} from 'react';
 import {PostTypes} from '../../types/PostTypes';
 import {AuthorTypes} from '../../types/AuthorTypes';
 import Card from '../Card/Card';
-import Modal from '../Modal/Modal';
 
 import './Container.css';
 
 type Props = {
+    openAuthorInfoModal: (requestedUserID: number) => void;
     posts: PostTypes[],
     rowNumber: number,
-    author: AuthorTypes[]
+    authors: AuthorTypes[]
 }
 
-const Container = (props: Props) =>{
+const Container = ({openAuthorInfoModal, posts, rowNumber, authors}: Props): JSX.Element =>{
     
-    const [modal, setModal] = useState(false);
-    const toggleModal = useCallback(() => {
-        setModal(modal === false ? true : false);
-      }, [modal, setModal]);
-
     return (
         <>
         <div className="container">
-            {props.posts.slice(0, props.rowNumber).map( elem => {
+            {posts.slice(0, rowNumber).map( elem => {
                 return <Card
-                    post={elem}
-                    author={props.author}
-                    />    
+                        openAuthorInfoModal={(requestedUserId) => openAuthorInfoModal(requestedUserId)} 
+                        post={elem}
+                        authors={authors}
+                        />    
                           
             } )}
         </div>
-        <Modal  author={props.author}
-                active={modal}
-                onActive={toggleModal}/>    
-        </> 
+        </>
     )
 }
+
 export default Container;

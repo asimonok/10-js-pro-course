@@ -1,11 +1,14 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import style from "./App.module.css";
 import classNames from 'classnames/bind';
 import Container from './components/Container';
 import Preloader from './components/Preloader';
 import {PostTypes} from './types/PostTypes';
 import {AuthorTypes} from './types/AuthorTypes';
-import {ThemeContext}from './components/ThemeProvider';
+import Button from './components/Button';
+import Modal from './components/Modal';
+import AuthorInfo from './components/AuthorInfo';
+//import {ThemeContext}from './components/ThemeProvider';
 import './App.css';
 
 const cx = classNames.bind(style);
@@ -19,6 +22,7 @@ const App =(): JSX.Element => {
   const [posts, setPosts] = useState<PostTypes[]>([]);
   const [rowNumber, setRowNumber] = useState(5);
   const [author, setAuthor] = useState<AuthorTypes[]>([]);
+  const [requestedAuthor, setRequestedAuthor] = useState<AuthorTypes | null>(null);
   const [theme, setTheme]= useState<Themes>(Themes.white);
   const [isloaded, setIsloaded] = useState(false);
 
@@ -40,31 +44,44 @@ const App =(): JSX.Element => {
     }).catch(error => console.log(error))
   }, []);
 
-  //const changeTheme = theme === 'white' ? style.black : style.white;
+  const openAuthorInfoModal = useCallback((requestedAuthorId: number): void => {
+    const requestedAuthor = author.find((author) => author.id === requestedAuthorId);
+
+    if (requestedAuthor === undefined) {
+      throw new Error('Author not found!');
+    }
+
+    setRequestedAuthor(requestedAuthor);
+  },
+  [author]
+);
 
   return (
     
     <div className={appClassNames}>
       {isloaded ? 
       <div className="container">
-           <button
-            className={
-              cx({
-                btn:true,
-                white: theme === 'white',
-                black: theme === 'black',
-            })}
+           <Button
+            text='change theme'
             onClick={() => setTheme(theme === Themes.white ? Themes.black : Themes.white)} 
-          >change theme</button> 
-          <Container posts={posts} author={author} rowNumber={rowNumber}/>
+          /> 
+          <Container 
+            openAuthorInfoModal={(requestedUserId) => openAuthorInfoModal(requestedUserId)} 
+            posts={posts} 
+            authors={author} 
+            rowNumber={rowNumber}/>
+
+          {requestedAuthor && (
+            <Modal 
+                close={() => setRequestedAuthor(null)}
+            > 
+                <AuthorInfo authorInfo={requestedAuthor}></AuthorInfo>
+            </Modal>
+          )}
          
-          <button className={
-            cx({
-              btn:true,
-              white: theme === 'white',
-              black: theme === 'black',
-          })
-          } onClick={() =>  setRowNumber(prevState => prevState + 5)}>Show more</button>
+          <Button 
+            text='Show more' 
+            onClick={() =>  setRowNumber(prevState => prevState + 5)}/>
       </div>
       :  <Preloader isActive={isloaded}/> }
     </div> 
