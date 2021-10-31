@@ -25,13 +25,12 @@ const PostContainer: FC<IProps> = (props) => {
     history.push(`${location.pathname}?${query.toString()}`);
   }, [history, location.pathname, location.search]);
 
-  const displayLimit = location.search.split('=');
-  console.log(displayLimit);
+  const displayLimit = location.search.split('=')[1];
 
   return (
     <>
       <div className={styles.postCardList}>
-        {posts.slice(0, parseInt(displayLimit[1])).map((post) => {
+        {posts.slice(0, parseInt(displayLimit)).map((post) => {
           return <PostCard post={post} users={users} key={post.id} />;
         })}
       </div>
