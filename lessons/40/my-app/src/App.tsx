@@ -101,11 +101,7 @@ const App: FC<{}> = (props) => {
             {!ispostsLoaded && !isusersLoaded ? (
               <Preloader />
             ) : (
-              <PostContainer
-                /* displayLimit={displayLimit} */
-                posts={posts}
-                users={users}
-              />
+              <PostContainer posts={posts} users={users} />
             )}
           </Route>
           <Route path="/users" exact>
