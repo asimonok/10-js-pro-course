@@ -60,11 +60,6 @@ const Row: React.FC<Props> = (props) => {
     return author.name;
   });
 
-  // const buttonHandler = useCallback((el) => {
-  //   props.setActive(true);
-  //   setAuthorId((prevValue) => (prevValue = el.userId));
-  // }, []);
-
   if (loaded === true) {
     return (
       <>

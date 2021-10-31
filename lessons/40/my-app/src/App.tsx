@@ -84,7 +84,7 @@ function App() {
             })}
           >
             <Switch>
-              <Route path="/posts">
+              <Route path="/posts" strict>
                 <ThemeButton />
                 <Row active setActive={setModalActive} author={author} />
                 <ButtonShowMore />
@@ -95,12 +95,13 @@ function App() {
                 />
               </Route>
               <Route path="/users">
-                <Users />
+                <ThemeButton />
+                <Users author={author} />
               </Route>
-              <Route path="/postDetails/:postId">
+              <Route path="/posts/:postId">
                 <PostDetails />
               </Route>
-              {/* <Redirect to="/posts" /> */}
+              <Redirect from="/" to="/posts" />
             </Switch>
           </div>
         </AuthorIdProvider>
