@@ -14,10 +14,6 @@ interface Props {
   posts: Posts[];
 }
 
-enum RoutePath {
-  postDetails = "/posts/:postId",
-}
-
 const Row: React.FC<Props> = (props) => {
   const [value, setValue] = useContext(VarContext);
   const [theme] = useContext(ThemeContext);
