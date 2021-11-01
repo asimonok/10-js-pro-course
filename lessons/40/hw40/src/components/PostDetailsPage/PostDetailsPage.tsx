@@ -18,7 +18,6 @@ const PostDetailsPage:FC =  () => {
     const [comments, setComments] = useState<Comment[]>();
     const params = useParams<PostDetailsPageParams>();
     const history = useHistory();
-    // const [isValid, setIsValid] = useState(false);
 
     useEffect(() => {
         Promise.all([
@@ -32,10 +31,33 @@ const PostDetailsPage:FC =  () => {
             setComments(comments); 
         }).catch(error => {
             history.replace('/posts');
-            // console.log(error);
 
-           })
+        })
     }, [params.postId, history]);
+
+    // useEffect(() => {
+    //     debugger;
+    //     Promise.all([
+    //         fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
+    //          .then((response):Promise<Post> => {
+    //              if(response.ok) {
+    //                 response.json()
+    //              }
+    //              throw new Error('error ...') }),
+    //         fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}/comments`)
+    //          .then((response):Promise<Comment[]> => {
+    //             if(response.ok) {
+    //                 response.json()
+    //             }
+    //             throw new Error('error ...') }),
+    //     ]).then( ([post, comments])=> {
+    //         setPost(post);
+    //         setComments(comments); 
+    //     }).catch(error => {
+    //         history.replace('/notfound');
+
+    //     })
+    // }, [params.postId, history]);
 
     return (
             <div className={style.postDetails}>
