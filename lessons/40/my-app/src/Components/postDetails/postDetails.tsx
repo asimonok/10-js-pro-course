@@ -1,5 +1,6 @@
 import React from "react";
-import { useParams } from "react-router";
+import { generatePath, useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { Comments, Posts } from "../../types";
 import styles from "./postDetails.module.css";
 
@@ -23,10 +24,11 @@ const PostDetails: React.FC<Props> = (props) => {
           <h2 className={styles.post_title}>{post?.title}</h2>
           <p>{post?.body}</p>
           <div>
-            <h2 className={styles.post_comment}>Comment</h2>
+            <Link to={generatePath("/posts/:postId/comments", { postId: post.id })}>Comment</Link>
+            {/* <h2 className={styles.post_comment}>Comment</h2>
             <p>Name: {comment?.name}</p>
             <p>Email: {comment?.email}</p>
-            <p>{comment?.body}</p>
+            <p>{comment?.body}</p> */}
           </div>
         </div>
       </>

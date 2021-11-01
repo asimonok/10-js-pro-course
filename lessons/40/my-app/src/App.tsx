@@ -18,6 +18,7 @@ import {
 import Users from "./Components/Users";
 import PostDetails from "./Components/postDetails";
 import logo from "./yy3.gif";
+import Comment from "./Components/Comments";
 
 let cx = classNames.bind(styles);
 
@@ -111,14 +112,15 @@ function App() {
             >
               <Switch>
                 <Route path="/users" exact>
-                  {/* <ThemeButton /> */}
                   <Users author={author} />
                 </Route>
                 <Route path="/posts/:postId" exact>
                   <PostDetails posts={users} comments={comments} />
                 </Route>
+                <Route path="/posts/:postId/comments" exact>
+                  <Comment comments={comments} />
+                </Route>
                 <Route path="/posts" strict>
-                  {/* <ThemeButton /> */}
                   <Row active setActive={setModalActive} author={author} posts={users} />
                   <ButtonShowMore />
                   <Modal active={modalActive} setActive={setModalActive} author={author} />
