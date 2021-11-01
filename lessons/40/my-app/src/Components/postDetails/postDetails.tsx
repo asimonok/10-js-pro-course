@@ -23,7 +23,7 @@ const PostDetails: React.FC<Props> = (props) => {
           <h2 className={styles.post_title}>{post?.title}</h2>
           <p>{post?.body}</p>
           <div>
-            <h2>Comment</h2>
+            <h2 className={styles.post_comment}>Comment</h2>
             <p>Name: {comment?.name}</p>
             <p>Email: {comment?.email}</p>
             <p>{comment?.body}</p>
@@ -34,7 +34,7 @@ const PostDetails: React.FC<Props> = (props) => {
   }
   return (
     <>
-      <h1>404 Page not found</h1>
+      <h1 className={styles.pagenotfound}>404 Page not found</h1>
     </>
   );
 };

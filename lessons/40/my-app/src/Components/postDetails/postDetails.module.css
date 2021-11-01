@@ -1,7 +1,18 @@
 .post {
   margin: auto;
   padding-bottom: 30px;
+  height: 88.1vh;
 }
 .post_title {
+  margin: auto;
+}
+.post_comment {
+  border-top: 1px solid var(--borderColor);
+  padding-top: 50px;
+}
+.pagenotfound {
+  padding-top: 15rem;
+  font-size: 10rem;
+  padding-bottom: 23.5rem;
   margin: auto;
 }

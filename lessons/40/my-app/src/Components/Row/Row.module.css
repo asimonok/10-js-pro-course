@@ -63,15 +63,15 @@
   padding-top: 30px;
   text-align: center;
   border-top: 1px solid var(--borderColor);
-  height: 60px;
-  margin-bottom: 0px;
+  /* height: 60px; */
+  margin-bottom: 20px;
 }
 .card__author__dark {
   padding-top: 30px;
   text-align: center;
   border-top: 1px solid var(--borderColor);
-  height: 60px;
-  margin-bottom: 0px;
+  /* height: 60px; */
+  margin-bottom: 20px;
   background-color: var(--darkColor);
   color: var(--whiteColor);
 }

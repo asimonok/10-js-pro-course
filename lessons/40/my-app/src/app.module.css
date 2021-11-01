@@ -1,0 +1,40 @@
+.app {
+  text-align: center;
+  color: var(--darkColor);
+  padding-top: 5px;
+  /* height: 100vh; */
+}
+
+.appDark {
+  text-align: center;
+  background-color: var(--darkColor);
+  color: var(--whiteColor);
+  padding-top: 5px;
+  /* height: 100vh; */
+}
+.app__light {
+  text-align: center;
+  background-color: var(--whiteColor);
+  color: var(--darkColor);
+  padding-top: 5px;
+  /* height: 100vh; */
+}
+
+.activeLink {
+  font-weight: bold;
+  color: var(--blueColor);
+}
+
+.navigationBar {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: var(--darkColor);
+  margin: 0px;
+  padding: 10px;
+}
+.nav {
+  text-decoration: none;
+  color: var(--whiteColor);
+}
