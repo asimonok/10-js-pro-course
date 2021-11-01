@@ -41,12 +41,17 @@ function App() {
             handleClick={ () => {setTheme(theme === 'dark' ? 'light' : 'dark')}}
           />
           </nav>
+          
+          
         </header>
+      
 
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
         <Switch>
           
-          <Route path="/notfound" exact>
-            <NotFoundPage/>
+          <Route path="/users" exact>
+            <UsersPage/>
           </Route>
           <Route path="/posts" exact>
             <PostsPage/>
@@ -61,9 +66,10 @@ function App() {
   );
 }
 
-
-
 export default App;
+
+
+
 
 
 
