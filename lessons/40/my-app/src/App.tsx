@@ -1,14 +1,25 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import style from "./App.module.css";
-import classNames from 'classnames/bind';
-import Container from './components/Container';
-import Preloader from './components/Preloader';
-import {PostTypes} from './types/PostTypes';
-import {AuthorTypes} from './types/AuthorTypes';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+  Redirect,
+} from 'react-router-dom';
+
+import Header from './components/Header';
 import Button from './components/Button';
 import Modal from './components/Modal';
 import AuthorInfo from './components/AuthorInfo';
-//import {ThemeContext}from './components/ThemeProvider';
+import Container from './Pages/Posts';
+import Preloader from './components/Preloader';
+import Authors from './Pages/Authors/Authors';
+
+import {PostTypes} from './types/PostTypes';
+import {AuthorTypes} from './types/AuthorTypes';
+
+import style from "./App.module.css";
+import classNames from 'classnames/bind';
 import './App.css';
 
 const cx = classNames.bind(style);
@@ -56,37 +67,67 @@ const App =(): JSX.Element => {
   [author]
 );
 
-  return (
-    
+return (
+  <Router>
     <div className={appClassNames}>
-      {isloaded ? 
-      <div className="container">
-           <Button
+      <Header>
+        <ul className={style.headerList}>
+          <li className={style.headerListItem}>
+            <NavLink
+              to="/posts"
+              className={style.link}
+              activeClassName={style.activeLink}
+              exact>
+              Posts
+            </NavLink>
+          </li>
+          <li className={style.headerListItem}>
+            <NavLink
+              to="/users"
+              className={style.link}
+              activeClassName={style.activeLink}
+              exact>
+              Users
+            </NavLink>
+          </li>
+        </ul>
+        <Button
             text='change theme'
             onClick={() => setTheme(theme === Themes.white ? Themes.black : Themes.white)} 
           /> 
-          <Container 
-            openAuthorInfoModal={(requestedUserId) => openAuthorInfoModal(requestedUserId)} 
-            posts={posts} 
-            authors={author} 
-            rowNumber={rowNumber}/>
+      </Header>
 
-          {requestedAuthor && (
-            <Modal 
-                close={() => setRequestedAuthor(null)}
-            > 
-                <AuthorInfo authorInfo={requestedAuthor}></AuthorInfo>
+      <Switch>
+        <div className="container">
+          <Route path="/posts" exact>
+            {isloaded ? 
+            <Container 
+              openAuthorInfoModal={(requestedUserId) => openAuthorInfoModal(requestedUserId)} 
+              posts={posts} 
+              authors={author} 
+              rowNumber={rowNumber}/>
+                :  <Preloader isActive={isloaded}/> }
+
+            <Button 
+              text='Show more' 
+              onClick={() =>  setRowNumber(prevState => prevState + 5)}/>
+            
+            {requestedAuthor && (
+            <Modal close={() => setRequestedAuthor(null)}> 
+              <AuthorInfo authorInfo={requestedAuthor}></AuthorInfo>
             </Modal>
-          )}
-         
-          <Button 
-            text='Show more' 
-            onClick={() =>  setRowNumber(prevState => prevState + 5)}/>
-      </div>
-      :  <Preloader isActive={isloaded}/> }
+              )}
+          </Route>
+
+          <Route path="/users" exact>
+            {isloaded ? <Authors authors={author}/> : <Preloader isActive={isloaded}/>}
+          </Route>
+        </div>
+        <Redirect from="/" to="/posts" />
+      </Switch>
     </div> 
-    
-  );
+  </Router>    
+);
 }
 
 export default App;

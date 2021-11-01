@@ -1,20 +1,19 @@
-// import { useContext, useMemo } from 'react';
-//import { NavLink } from 'react-router-dom';
-// import { ThemeContext } from 'ThemeContext';
-import styles from './Header.module.css';
+import React  from 'react';
+import style from './Header.module.css';
 import classNames from 'classnames/bind';
-// import Button from 'components/Button';
 
-//const cx = classNames.bind(styles);
+let cx = classNames.bind(style);
 
-const Header = () => {
+interface Props {
+    children: React.ReactNode;
+  }
 
-//     return (
-//         // <header>
-//         //     <NavLink>Posts</NavLink>
-//         //     <NavLink>Users</NavLink>
-//         // </header>
-//     )
+const Header = (props: Props) => {
+        const { children } = props;
+      
+        return (
+            <div className={style.header}>{children}</div>
+        )
 }
 
 export default Header;
