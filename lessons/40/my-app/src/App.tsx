@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,7 +13,47 @@ import UsersContainer from "./components/UsersContainer";
 import PostDetails from "./components/PostDetails";
 import NotFound from "./components/NotFound";
 
-function App() {
+interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
+interface Comment {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}
+
+const App: React.FC<{}> = (props) => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [comments, setComments] = useState<Comment[]>([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response): Promise<Post[]> => {
+        return response.json();
+      })
+      .then((data) => {
+        setPosts(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/comments")
+      .then((response): Promise<Comment[]> => {
+        return response.json();
+      })
+      .then((data) => {
+        setComments(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <Router>
       <ThemeProvider>
@@ -21,34 +61,34 @@ function App() {
           <Header />
           <Switch>
             <Route path="/posts" exact>
-              <div className={styles.postcard__container}>
+              <div className={styles.container}>
                 <h1>Posts</h1>
                 <PostCardContainer />
               </div>
             </Route>
             <Route path="/users" exact>
-              <div className={styles.postcard__container}>
+              <div className={styles.container}>
                 <h1>Users</h1>
                 <UsersContainer />
               </div>
             </Route>
             <Route path="/posts/:postId" exact>
-              <div className={styles.postcard__container}>
-                <PostDetails />
+              <div className={styles.container}>
+                <PostDetails posts={posts} comments={comments} />
               </div>
             </Route>
-            <Route path="/notfound" exact>
-              <div className={styles.postcard__container}>
+            <Route path="/not-found" exact>
+              <div className={styles.container}>
                 <NotFound />
               </div>
             </Route>
             <Redirect from="/" to="/posts" exact />
-            <Redirect to="/notfound" />
+            <Redirect to="/not-found" />
           </Switch>
         </div>
       </ThemeProvider>
     </Router>
   );
-}
+};
 
 export default App;

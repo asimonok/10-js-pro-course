@@ -1,5 +1,6 @@
 .component {
-  margin: 25px;
+  margin: 25px auto;
+  width: 70%;
   padding: 15px;
   border: 1px solid var(--color-border);
   border-radius: 8px;

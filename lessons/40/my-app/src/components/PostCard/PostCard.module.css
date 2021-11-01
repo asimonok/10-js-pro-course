@@ -1,6 +1,6 @@
 .component {
   margin: 25px;
-  width: 330px;
+  width: 345px;
   height: 630px;
   border: 1px solid var(--color-border);
   display: flex;
@@ -28,6 +28,10 @@
 
 .text {
   font-size: 24px;
+}
+
+.link {
+  color: blue;
 }
 
 .button {

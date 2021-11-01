@@ -6,10 +6,10 @@ import { ThemeContext } from "../ThemeContext";
 import classNames from "classnames/bind";
 
 interface Post {
-  id: any;
+  id: number;
   title: string;
   body: string;
-  userId: any;
+  userId: number;
 }
 
 const cx = classNames.bind(styles);
@@ -52,7 +52,7 @@ const PostCardContainer = () => {
             <PostCard
               key={post.id}
               title={post.title}
-              content={post.body}
+              body={post.body}
               {...authors[post.userId - 1]}
             />
           );
