@@ -7,7 +7,14 @@ import ThemeButton from "./Components/ThemeButton";
 import { AuthorIdProvider, LoadedContext, ThemeContext, VarProvider } from "./myContext";
 import { Comments, Posts, UsersT } from "./types";
 import classNames from "classnames/bind";
-import { BrowserRouter as Router, Switch, Route, Redirect, NavLink } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  NavLink,
+  useHistory,
+} from "react-router-dom";
 import Users from "./Components/Users";
 import PostDetails from "./Components/postDetails";
 import logo from "./yy3.gif";
@@ -21,6 +28,7 @@ function App() {
   const [users, setUsers] = useState<Posts[]>([]);
   const [comments, setComments] = useState<Comments[]>([]);
   const [loaded, setLoaded] = useContext(LoadedContext);
+  const history = useHistory();
 
   const loadAuthors = async () => {
     try {
@@ -31,7 +39,8 @@ function App() {
         .then((authorList) => {
           return setAuthor(authorList);
         })
-        .catch((error) => console.log(error));
+        // .catch((error) => console.log(error));
+        .catch(() => history.replace("/posts"));
     } catch (err) {
       console.log(err);
     }
@@ -46,7 +55,8 @@ function App() {
         .then((userList) => {
           return setUsers(userList), setLoaded(() => true);
         })
-        .catch((error) => console.log(error));
+        // .catch((error) => console.log(error));
+        .catch(() => history.replace("/posts"));
     } catch (err) {
       console.log(err);
     }
@@ -61,7 +71,8 @@ function App() {
         .then((comments) => {
           return setComments(comments);
         })
-        .catch((e) => console.log(e));
+        // .catch((e) => console.log(e));
+        .catch(() => history.replace("/posts"));
     } catch (err) {
       console.log(err);
     }
