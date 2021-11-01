@@ -24,7 +24,12 @@ const PostDetails: React.FC<Props> = (props) => {
           <h2 className={styles.post_title}>{post?.title}</h2>
           <p>{post?.body}</p>
           <div>
-            <Link to={generatePath("/posts/:postId/comments", { postId: post.id })}>Comment</Link>
+            <Link
+              className={styles.commentLink}
+              to={generatePath("/posts/:postId/comments", { postId: post.id })}
+            >
+              Comment
+            </Link>
             {/* <h2 className={styles.post_comment}>Comment</h2>
             <p>Name: {comment?.name}</p>
             <p>Email: {comment?.email}</p>
