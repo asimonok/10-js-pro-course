@@ -1,10 +1,10 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import React, { useContext } from "react";
 import { LoadedContext, VarContext } from "../../myContext";
 import styles from "./ButtonShowMore.module.css";
 
 const ButtonShowMore: React.FC = () => {
   const [value, setValue] = useContext(VarContext);
-  const [loaded, setLoaded] = useContext(LoadedContext);
+  const [loaded] = useContext(LoadedContext);
   if (loaded === true) {
     return (
       <>
@@ -25,12 +25,7 @@ const ButtonShowMore: React.FC = () => {
   } else {
     return (
       <div className="loading">
-        <img
-          // src="https://www.icegif.com/wp-content/uploads/loading-icegif-1.gif"
-          src="https://i.gifer.com/yy3.gif"
-          // src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b6e0b072897469.5bf6e79950d23.gif"
-          alt="loading..."
-        />
+        <img src="https://i.gifer.com/yy3.gif" alt="loading..." />
       </div>
     );
   }

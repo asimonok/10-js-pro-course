@@ -7,24 +7,16 @@ import ThemeButton from "./Components/ThemeButton";
 import { AuthorIdProvider, LoadedContext, ThemeContext, VarProvider } from "./myContext";
 import { Comments, Posts, UsersT } from "./types";
 import classNames from "classnames/bind";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  NavLink,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, NavLink } from "react-router-dom";
 import Users from "./Components/Users";
 import PostDetails from "./Components/postDetails";
+import logo from "./yy3.gif";
 
 let cx = classNames.bind(styles);
 
 function App() {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [theme] = useContext(ThemeContext);
-  const [loading, setLoading] = useState(false);
   const [author, setAuthor] = useState<UsersT[]>([]);
   const [users, setUsers] = useState<Posts[]>([]);
   const [comments, setComments] = useState<Comments[]>([]);
@@ -79,54 +71,61 @@ function App() {
     loadAuthors();
     loadPosts();
     loadComments();
-    setLoading(() => true);
   }, []);
-
-  return (
-    <Router>
-      <VarProvider>
-        <AuthorIdProvider>
-          <header>
-            <ul className={styles.navigationBar}>
-              <li>
-                <NavLink to="/posts" activeClassName={styles.activeLink}>
-                  <p className={styles.nav}>Posts </p>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/users" activeClassName={styles.activeLink}>
-                  <p className={styles.nav}> Users</p>
-                </NavLink>
-              </li>
-            </ul>
-          </header>
-          <div
-            className={cx({
-              app: true,
-              appDark: theme,
-            })}
-          >
-            <Switch>
-              <Route path="/users" exact>
+  if (loaded === true) {
+    return (
+      <Router>
+        <VarProvider>
+          <AuthorIdProvider>
+            <header>
+              <ul className={styles.navigationBar}>
+                <li>
+                  <NavLink to="/posts" activeClassName={styles.activeLink}>
+                    <p className={styles.nav}>Posts </p>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/users" activeClassName={styles.activeLink}>
+                    <p className={styles.nav}> Users</p>
+                  </NavLink>
+                </li>
                 <ThemeButton />
-                <Users author={author} />
-              </Route>
-              <Route path="/posts/:postId" exact>
-                <PostDetails posts={users} comments={comments} />
-              </Route>
-              <Route path="/posts" strict>
-                <ThemeButton />
-                <Row active setActive={setModalActive} author={author} posts={users} />
-                <ButtonShowMore />
-                <Modal active={modalActive} setActive={setModalActive} author={author} />
-              </Route>
-              <Redirect from="/" to="/posts" />
-            </Switch>
-          </div>
-        </AuthorIdProvider>
-      </VarProvider>
-    </Router>
-  );
+              </ul>
+            </header>
+            <div
+              className={cx({
+                app: true,
+                appDark: theme,
+              })}
+            >
+              <Switch>
+                <Route path="/users" exact>
+                  {/* <ThemeButton /> */}
+                  <Users author={author} />
+                </Route>
+                <Route path="/posts/:postId" exact>
+                  <PostDetails posts={users} comments={comments} />
+                </Route>
+                <Route path="/posts" strict>
+                  {/* <ThemeButton /> */}
+                  <Row active setActive={setModalActive} author={author} posts={users} />
+                  <ButtonShowMore />
+                  <Modal active={modalActive} setActive={setModalActive} author={author} />
+                </Route>
+                <Redirect from="/" to="/posts" />
+              </Switch>
+            </div>
+          </AuthorIdProvider>
+        </VarProvider>
+      </Router>
+    );
+  } else {
+    return (
+      <div className="loading">
+        <img src={logo} alt="loading..." />
+      </div>
+    );
+  }
 }
 
 export default App;

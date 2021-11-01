@@ -24,10 +24,14 @@
 
 На странице postDetails должны выводиться title, body из запроса GET /posts/:postId --done
 
-На странице postDetails должны выводиться комментарии к текущему посту из запроса GET /posts/:postId/comments
+На странице postDetails должны выводиться комментарии к текущему посту из запроса GET /posts/:postId/comments --done
 
 # Задание 3 - no match
 
 Добавить страницу not-found, если запрашиваемой страницы не существует
 
 Сделать редирект на страницу not-found, если данных не существует. Например, указан не валидный postID
+
+# Questions
+
+1. /posts и /posts/:postId если поменять местами не работает

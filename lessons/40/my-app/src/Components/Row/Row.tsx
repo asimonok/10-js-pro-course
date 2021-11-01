@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
-import { AuthorIdContext, LoadedContext, ThemeContext, VarContext } from "../../myContext";
+import React, { useEffect, useContext } from "react";
+import { AuthorIdContext, ThemeContext, VarContext } from "../../myContext";
 import { Posts, UsersT } from "../../types";
 import styles from "./Row.module.css";
-import logo from "./yy3.gif";
 import classNames from "classnames/bind";
 import { Link, generatePath } from "react-router-dom";
 
@@ -20,36 +19,14 @@ enum RoutePath {
 }
 
 const Row: React.FC<Props> = (props) => {
-  // const userList: Users[] = [];
-  // const [users, setUsers] = useState(userList);
   const [value, setValue] = useContext(VarContext);
   const [theme] = useContext(ThemeContext);
-  const [loaded, setLoaded] = useContext(LoadedContext);
   const [authorId, setAuthorId] = useContext(AuthorIdContext);
-
-  // const loadFunction = async () => {
-  //   try {
-  //     fetch("https://jsonplaceholder.typicode.com/posts")
-  //       .then((res): Promise<Users[]> => {
-  //         return res.json();
-  //       })
-  //       .then((userList) => {
-  //         return setUsers(userList), setLoaded(() => true);
-  //       })
-  //       .catch((error) => console.log(error));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   useEffect(() => {
     setValue(5); // change list number to 5 when loaded
-    // loadFunction();
   }, []);
 
-  // const filteredUsers = users.filter((user) => {
-  //   return user.id <= value;
-  // });
   const filteredUsers = props.posts.filter((post) => {
     return post.id <= value;
   });
@@ -58,7 +35,6 @@ const Row: React.FC<Props> = (props) => {
     return author.name;
   });
 
-  // if (loaded === true) {
   return (
     <>
       <ul
@@ -100,7 +76,6 @@ const Row: React.FC<Props> = (props) => {
               >
                 Author:{" "}
                 <button
-                  // className="card__button"
                   className={styles.card__button}
                   onClick={() => {
                     props.setActive(true);
@@ -112,7 +87,8 @@ const Row: React.FC<Props> = (props) => {
                 </button>
               </p>
               <Link
-                to={generatePath(RoutePath.postDetails, {
+                className={styles.post_details}
+                to={generatePath("/posts/:postId", {
                   postId: el.id,
                 })}
               >
@@ -124,18 +100,6 @@ const Row: React.FC<Props> = (props) => {
       </ul>
     </>
   );
-  //   } else {
-  //     return (
-  //       <div className="loading">
-  //         <img
-  //           // src="https://www.icegif.com/wp-content/uploads/loading-icegif-1.gif"
-  //           // src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b6e0b072897469.5bf6e79950d23.gif"
-  //           src={logo}
-  //           alt="loading..."
-  //         />
-  //       </div>
-  // );
-  // }
 };
 
 export default Row;

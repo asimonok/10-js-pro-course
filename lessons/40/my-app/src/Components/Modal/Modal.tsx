@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthorIdContext, ThemeContext, ThemeProvider } from "../../myContext";
+import { AuthorIdContext, ThemeContext } from "../../myContext";
 import { UsersT } from "../../types";
 import styles from "./Modal.module.css";
 import classNames from "classnames/bind";
@@ -13,13 +13,12 @@ interface Props {
 }
 
 const Modal: React.FC<Props> = (props) => {
-  const [theme, setTheme] = useContext(ThemeContext);
+  const [theme] = useContext(ThemeContext);
 
   const [authorId] = useContext(AuthorIdContext);
   let newAuthor = props.author[authorId - 1];
   return (
     <div
-      // className={props.active ? "modal active" : "modal"}
       className={cx({
         modal: true,
         active: props.active,
@@ -28,7 +27,6 @@ const Modal: React.FC<Props> = (props) => {
       onClick={() => props.setActive(false)}
     >
       <div
-        // className={props.active ? "modal__content active" : "modal__content "}
         className={cx({
           modal__content: true,
           active: props.active,
@@ -36,7 +34,6 @@ const Modal: React.FC<Props> = (props) => {
         })}
         onClick={(e) => e.stopPropagation}
       >
-        {/* <div className={styles.modal__title}>{newAuthor?.name}</div> */}
         <div
           className={cx({
             modal__title: true,
@@ -45,7 +42,6 @@ const Modal: React.FC<Props> = (props) => {
         >
           {newAuthor?.name}
         </div>
-        {/* <div className={styles.modal__body}> */}
         <div
           className={cx({
             modal__body: true,
@@ -57,11 +53,17 @@ const Modal: React.FC<Props> = (props) => {
             {newAuthor?.address.street}
             {newAuthor?.address.suite}
           </p>
-          <a href="#">Email: {newAuthor?.email}</a>
+          <p>Email: {newAuthor?.email}</p>
           <p></p>
-          <a href="#">Phone: {newAuthor?.phone}</a>
+          <p>Phone: {newAuthor?.phone}</p>
         </div>
-        <button className={styles.modal_button} onClick={() => console.log(newAuthor)}>
+        {/* <button className={styles.modal_button}>Close</button> */}
+        <button
+          className={cx({
+            modal_Button: true,
+            modal_ButtonDark: theme,
+          })}
+        >
           Close
         </button>
       </div>
