@@ -15,6 +15,10 @@
   background-color: var(--color-additional);
 }
 
+.comments {
+  font-size: 26px;
+}
+
 .title {
   font-size: 26px;
 }

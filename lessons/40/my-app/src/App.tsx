@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,47 +13,7 @@ import UsersContainer from "./components/UsersContainer";
 import PostDetails from "./components/PostDetails";
 import NotFound from "./components/NotFound";
 
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-interface Comment {
-  postId: number;
-  id: number;
-  name: string;
-  email: string;
-  body: string;
-}
-
-const App: React.FC<{}> = (props) => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [comments, setComments] = useState<Comment[]>([]);
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response): Promise<Post[]> => {
-        return response.json();
-      })
-      .then((data) => {
-        setPosts(data);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/comments")
-      .then((response): Promise<Comment[]> => {
-        return response.json();
-      })
-      .then((data) => {
-        setComments(data);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
+function App() {
   return (
     <Router>
       <ThemeProvider>
@@ -74,7 +34,7 @@ const App: React.FC<{}> = (props) => {
             </Route>
             <Route path="/posts/:postId" exact>
               <div className={styles.container}>
-                <PostDetails posts={posts} comments={comments} />
+                <PostDetails />
               </div>
             </Route>
             <Route path="/not-found" exact>
@@ -89,6 +49,6 @@ const App: React.FC<{}> = (props) => {
       </ThemeProvider>
     </Router>
   );
-};
+}
 
 export default App;

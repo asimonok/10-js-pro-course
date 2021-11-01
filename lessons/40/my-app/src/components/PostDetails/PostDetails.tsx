@@ -1,25 +1,20 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ThemeContext } from "../ThemeContext";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import styles from "./PostDetails.module.css";
 import classNames from "classnames/bind";
-import NotFound from "../NotFound";
-
-interface Props {
-  posts: Post[];
-  comments: Comment[];
-}
+import Comment from "../Comment";
 
 interface Post {
-  userId: number;
-  id: number;
+  userId?: number;
+  id?: number;
   title: string;
   body: string;
 }
 
-interface Comment {
-  postId: number;
-  id: number;
+interface CommentUser {
+  postId?: number;
+  id?: number;
   name: string;
   email: string;
   body: string;
@@ -27,45 +22,52 @@ interface Comment {
 
 const cx = classNames.bind(styles);
 
-const PostDetails: React.FC<Props> = (props) => {
+const PostDetails: React.FC<{}> = (props) => {
   const [theme] = useContext(ThemeContext);
+  const [post, setPost] = useState<Post>();
+  const [comments, setComments] = useState<CommentUser[]>();
   const params = useParams<{ postId: string }>();
+  const history = useHistory();
 
-  const post = props.posts.find((post) => {
-    return post.id === parseInt(params.postId);
-  });
+  useEffect(() => {
+    Promise.all([
+      fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`).then(
+        (response): Promise<Post> => response.json()
+      ),
+      fetch(
+        `https://jsonplaceholder.typicode.com/posts/${params.postId}/comments`
+      ).then((response): Promise<CommentUser[]> => response.json()),
+    ])
+      .then(([post, comments]) => {
+        setPost(post);
+        setComments(comments);
+      })
+      .catch(() => {
+        history.replace("/posts");
+      });
+  }, [params.postId, history]);
 
-  const comment = props.comments.find((comment) => {
-    return comment.id === parseInt(params.postId);
-  });
-  if (post && comment) {
-    return (
-      <div
-        className={cx({
-          component: true,
-          light: theme === "light",
-          dark: theme === "dark",
-        })}
-      >
-        <h1>Post details {params.postId}</h1>
-        <div>
-          <h2 className={styles.title}>{post.title}</h2>
-          <p className={styles.text}>{post.body}</p>
-        </div>
-
-        <div>
-          <h2 className={styles.title}>Comment</h2>
-          <p className={styles.text}>Name: {comment.name}</p>
-          <p className={styles.text}>Email: {comment.email}</p>
-          <p className={styles.text}>{comment.body}</p>
-        </div>
-      </div>
-    );
-  }
   return (
-    <>
-      <NotFound />
-    </>
+    <div
+      className={cx({
+        component: true,
+        light: theme === "light",
+        dark: theme === "dark",
+      })}
+    >
+      <h1>Post details (postId: {params.postId})</h1>
+      <div>
+        <h2 className={styles.title}>{post?.title}</h2>
+        <p className={styles.text}>{post?.body}</p>
+      </div>
+      <div>
+        <h2 className={styles.title}>Comments</h2>
+        {comments?.map((comment) => (
+          <Comment key={comment.id} comment={comment} />
+        ))}
+      </div>
+    </div>
   );
 };
+
 export default PostDetails;
