@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import styles from "./PostDetails.module.css";
 import classNames from "classnames/bind";
 import Comment from "../Comment";
+import NotFound from "../NotFound";
 
 interface Post {
   userId?: number;
@@ -47,7 +48,7 @@ const PostDetails: React.FC<{}> = (props) => {
       });
   }, [params.postId, history]);
 
-  return (
+  return post ? (
     <div
       className={cx({
         component: true,
@@ -67,6 +68,8 @@ const PostDetails: React.FC<{}> = (props) => {
         ))}
       </div>
     </div>
+  ) : (
+    <NotFound />
   );
 };
 
