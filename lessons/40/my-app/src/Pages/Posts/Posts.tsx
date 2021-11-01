@@ -4,6 +4,7 @@ import { PostTypes } from '../../types/PostTypes';
 import { AuthorTypes } from '../../types/AuthorTypes';
 import Button from '../../components/Button';
 import { useLocation, useHistory } from 'react-router-dom';
+import './Posts.css';
 
 type Props = {
   openAuthorInfoModal: (requestedUserID: number) => void;
@@ -39,7 +40,6 @@ const Container = (props: Props) => {
              } )}
         </div>
       </div>
-      <Button text="Show more" onClick={onShowMore} />
     </>
   );
 };

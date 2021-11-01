@@ -102,16 +102,19 @@ return (
         <div className="container">
           <Route path="/posts" exact>
             {isloaded ? 
-            <Container 
+           <>
+             <Container 
               openAuthorInfoModal={(requestedUserId) => openAuthorInfoModal(requestedUserId)} 
               posts={posts} 
               authors={author} 
               rowNumber={rowNumber}/>
-                :  <Preloader isActive={isloaded}/> }
-
-            <Button 
+              <Button 
               text='Show more' 
               onClick={() =>  setRowNumber(prevState => prevState + 5)}/>
+           </>
+                :  <Preloader isActive={isloaded}/> }
+
+            
             
             {requestedAuthor && (
             <Modal close={() => setRequestedAuthor(null)}> 
