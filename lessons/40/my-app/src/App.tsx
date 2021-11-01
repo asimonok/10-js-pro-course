@@ -11,9 +11,10 @@ import Header from './components/Header';
 import Button from './components/Button';
 import Modal from './components/Modal';
 import AuthorInfo from './components/AuthorInfo';
-import Container from './Pages/Posts';
 import Preloader from './components/Preloader';
+import Container from './Pages/Posts';
 import Authors from './Pages/Authors/Authors';
+import PostDetails from './Pages/PostDetails';
 
 import {PostTypes} from './types/PostTypes';
 import {AuthorTypes} from './types/AuthorTypes';
@@ -122,6 +123,11 @@ return (
           <Route path="/users" exact>
             {isloaded ? <Authors authors={author}/> : <Preloader isActive={isloaded}/>}
           </Route>
+
+          <Route path="/posts/:postId" exact>
+            <PostDetails/>
+          </Route>
+
         </div>
         <Redirect from="/" to="/posts" />
       </Switch>
