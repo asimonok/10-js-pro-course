@@ -44,10 +44,6 @@ function App() {
           
           
         </header>
-      
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           
           <Route path="/users" exact>
@@ -58,6 +54,9 @@ function App() {
           </Route>
           <Route path="/posts/:postId" exact>
             <PostDetailsPage/>
+          </Route>
+          <Route path="/notfound" exact>
+            <NotFoundPage/>
           </Route>
           <Redirect to="/posts"/>
         </Switch>
