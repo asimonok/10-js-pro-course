@@ -21,6 +21,7 @@ const Container = (props: Props) => {
     const query = new URLSearchParams(location.search);
     const totalPosts = query.get('totalPosts') || '5';
     const displayLimit = parseInt(totalPosts, 10) + 5;
+    query.set('totalPosts', displayLimit.toString());
 
     history.push(`${location.pathname}?${query.toString()}`);
   }, [history, location.pathname, location.search]);
@@ -29,7 +30,7 @@ const Container = (props: Props) => {
     <>
       <div>
       <div className="container">
-            {posts.slice(0, parseInt(displayLimit)).map( elem => {
+            {posts.slice(0, rowNumber).map( elem => {
                 return <Card
                     openAuthorInfoModal={(requestedUserId) => openAuthorInfoModal(requestedUserId)} 
                     post={elem}
