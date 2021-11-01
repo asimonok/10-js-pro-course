@@ -1,4 +1,9 @@
 .header {
+    width: 1170px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin: 20px;
     width: 100%;
     display: flex;

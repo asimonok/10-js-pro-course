@@ -114,8 +114,6 @@ return (
            </>
                 :  <Preloader isActive={isloaded}/> }
 
-            
-            
             {requestedAuthor && (
             <Modal close={() => setRequestedAuthor(null)}> 
               <AuthorInfo authorInfo={requestedAuthor}></AuthorInfo>
@@ -128,7 +126,7 @@ return (
           </Route>
 
           <Route path="/posts/:postId" exact>
-            <PostDetails/>
+            <PostDetails posts={posts}/>
           </Route>
 
         </div>
