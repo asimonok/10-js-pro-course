@@ -34,11 +34,11 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 40%;
   margin: 0 auto;
 }
 .navList {
-  width: 70%;
+  width: 40%;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -12,7 +12,6 @@ const PostsPage: FC = () => {
     const [numberOfPost, setNumberOfPost] = useState(5);
     const [isloaded, setIsloaded] = useState(false);
     const history = useHistory();
-    console.log('history: ',history)
 
     useEffect(() => { 
         Promise.all([

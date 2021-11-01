@@ -14,6 +14,7 @@ import {
 import PostsPage from './components/PostsPage';
 import UsersPage from './components/UsersPage';
 import PostDetailsPage from './components/PostDetailsPage'
+import NotFoundPage from './components/NotFoundPage';
 
 
 function App() {
@@ -29,12 +30,6 @@ function App() {
           <nav className={style.nav}>
             <ul className={style.navList}>
               <li>
-                <NavLink to="/home" exact activeClassName={style.activeLink}>Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/home/about" exact  activeClassName={style.activeLink}>About</NavLink>
-              </li>
-              <li>
                 <NavLink to="/users" exact activeClassName={style.activeLink}>Users</NavLink>
               </li>
               <li>
@@ -46,19 +41,14 @@ function App() {
             handleClick={ () => {setTheme(theme === 'dark' ? 'light' : 'dark')}}
           />
           </nav>
-          
         </header>
-      
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
           
-          <Route path="/users" exact>
-            <UsersPage/>
-          </Route>
-          <Route path="/home" exact>
-            <Home />
+          <Route path="/notfound" exact>
+            <NotFoundPage/>
           </Route>
           <Route path="/posts" exact>
             <PostsPage/>

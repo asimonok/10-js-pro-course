@@ -1,6 +1,6 @@
 import React, {FC, useState, useEffect} from 'react';
 import {Post, Comment} from 'types/types'
-import {useParams, useHistory} from 'react-router-dom'
+import {useParams, useHistory, useLocation} from 'react-router-dom'
 import style from './PostDetailsPage.module.css';
 import CommentItem from 'components/CommentItem';
 import Button from 'components/Button'
@@ -18,8 +18,7 @@ const PostDetailsPage:FC =  () => {
     const [comments, setComments] = useState<Comment[]>();
     const params = useParams<PostDetailsPageParams>();
     const history = useHistory();
-    const [isValid, setIsValid] = useState(false);
-    console.log(params);
+    // const [isValid, setIsValid] = useState(false);
 
     useEffect(() => {
         Promise.all([
@@ -31,9 +30,12 @@ const PostDetailsPage:FC =  () => {
           .then( ([post, comments])=> {
             setPost(post);
             setComments(comments); 
-            setIsValid(false);
-        }).catch(error => console.log(error))
-    }, [params.postId]);
+        }).catch(error => {
+            history.replace('/posts');
+            // console.log(error);
+
+           })
+    }, [params.postId, history]);
 
     return (
             <div className={style.postDetails}>
