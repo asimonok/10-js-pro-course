@@ -65,6 +65,10 @@ const App: FC<{}> = (props) => {
     }
   }, [theme, setTheme]);
 
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   return (
     <Router>
       <div className={styles.App}>
