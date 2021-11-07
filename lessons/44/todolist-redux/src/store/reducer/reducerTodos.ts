@@ -17,6 +17,8 @@ const todoSlice = createSlice({
           id: uuidv4(),
           description,
           completed: false,
+          doneList: false,
+          todolist: false,
         } as Todo,
       }),
     },
@@ -28,9 +30,6 @@ const todoSlice = createSlice({
       const index = state.findIndex((todo) => todo.id === action.payload.id);
       state[index].completed = action.payload.completed;
     },
-    // removeAllTodos(state,action:PayloadAction<string>){
-    //  state
-    // }
     removeAllTodos: (state) => {
       state.splice(0, state.length);
     },
@@ -40,6 +39,14 @@ const todoSlice = createSlice({
           state.splice(index, 1);
         }
       }
+    },
+    filterDoneTasks: (state) => {
+      //   let newState = Object.assign({}, state);
+      //   for (let index = 0; index < state.length; index++) {
+      //     if (state[index].completed === true) {
+      //     }
+      //   }
+      //   return newState;
     },
   },
 });

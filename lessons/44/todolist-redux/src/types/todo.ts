@@ -8,6 +8,8 @@ export interface Todo {
   id: string;
   description: string;
   completed: boolean;
+  doneList: boolean;
+  todolist: boolean;
 }
 export enum TaskActionTypes {
   ADD_TASK = "ADD_TASK",

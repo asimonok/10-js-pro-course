@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import React, { MouseEvent, useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { AppDispatch, RootState } from "./store";
@@ -25,17 +25,7 @@ import {
   removeTodo,
   setTodoStatus,
 } from "./store/reducer/reducerTodos";
-
-//TODO
-// add new task -- button adding task in list
-//input that will be pushed to arr with tasks
-//display tasks
-//each has button that deletes
-//each has button that allows edit
-//each has checkbox
-//filter tasks -- all --done --ToDo
-//button Delete done tasks -- so flag done boolean true(mb false)
-//button Delete All tasks -- so empty state with tasks
+import ToDoList from "./components";
 
 const App = () => {
   const todoList = useSelector((state: RootState) => state);
@@ -44,16 +34,20 @@ const App = () => {
   const inputRef = useRef(null);
 
   const [alignment, setAlignment] = React.useState("web");
+  const [filterList, setFilterList] = React.useState(0);
 
   const handleChange = (event: any, newAlignment: string) => {
     setAlignment(newAlignment);
   };
 
-  // dispatch()
+  // console.log(todoList);
+  // console.log(filterDoneTasks);
+
   // const handler = useCallback(() => {
   //   addMessage(inputRef.current.value);
   //   inputRef.current.value = '';
   // }, [inputRef, addMessage]);
+
   return (
     <Container maxWidth="xs">
       <Typography style={{ textAlign: "center" }} variant="h3">
@@ -84,11 +78,18 @@ const App = () => {
         exclusive
         onChange={handleChange}
       >
-        <ToggleButton value="all">All</ToggleButton>
-        <ToggleButton value="done">Done</ToggleButton>
-        <ToggleButton value="todo">Todo</ToggleButton>
+        <ToggleButton value="all" onClick={() => setFilterList(0)}>
+          All
+        </ToggleButton>
+        <ToggleButton value="done" onClick={() => setFilterList(1)}>
+          Done
+        </ToggleButton>
+        <ToggleButton value="todo" onClick={() => setFilterList(2)}>
+          Todo
+        </ToggleButton>
       </ToggleButtonGroup>
-      <List>
+      <ToDoList filterList={filterList} />
+      {/* <List>
         {todoList.map((todo) => (
           <ListItem key={todo.id}>
             <ListItemText
@@ -116,7 +117,7 @@ const App = () => {
             </ListItemSecondaryAction>
           </ListItem>
         ))}
-      </List>
+      </List> */}
       <ButtonGroup fullWidth disableElevation variant="contained">
         <Button
           onClick={() => {
