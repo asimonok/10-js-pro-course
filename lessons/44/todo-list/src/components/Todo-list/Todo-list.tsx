@@ -1,14 +1,32 @@
 import React from 'react';
 
 import ListItem from '../Todo-list-item';
+import {Data} from '../../types/Data';
 
-const List = () => {
+import './Todo-list.css';
+
+type Props = {
+    data: Data[]
+}
+
+const List = ({data}: Props) => {
+
+    const elems = data.map( (item) => {
+        const {id, ...itemProps} = item;
+        return (
+        <ListItem 
+            id={id} 
+            {...itemProps}
+            //onDelete={() => onDelete(id)}
+            //onToggleProp={ (e) =>  onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))} 
+            />
+        )
+    } );
 
     return (
-        <>
-            <h3>List</h3>
-            <ListItem/>
-        </>
+        <ul className="list list__group">
+            {elems}
+        </ul>
     )
 }
 

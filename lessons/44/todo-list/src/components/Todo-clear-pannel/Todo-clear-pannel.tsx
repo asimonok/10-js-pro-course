@@ -1,9 +1,16 @@
 import React from 'react';
 
+import Button from '../Button';
+
+import './Todo-clear-pannel.css';
+
 const ClearPannel = () => {
 
     return (
-        <h3>ClearPannel</h3>
+        <div className="wrapper">
+            <Button text={'Delete done tasks'}/>
+            <Button text={'Delete all tasks'}/>
+        </div>
     )
 }
 

@@ -1,9 +1,19 @@
 import React from 'react';
 
+import Button from '../Button'; 
+
+import './Todo-add-form.css';
+
 const AddForm = () => {
 
     return (
-        <h3>AddForm</h3>
+        <>
+            <h2>TodoInput</h2>
+            <form className="form">
+                <input className="input" placeholder="New Todo"/>
+                <Button text={'Add new task'}/>
+            </form>
+        </>
     )
 }
 

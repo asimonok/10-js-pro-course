@@ -1,9 +1,19 @@
 import React from 'react';
+import Button from '../Button';
+
+import './Todo-filter-pannel.css';
 
 const FilterPannel = () => {
 
     return (
-        <h3>FilterPannel</h3>
+        <>
+            <h2>TodoList</h2>
+            <div className="wrapper">
+                <Button text={'All'}/>
+                <Button text={'Done'}/>
+                <Button text={'Todo'}/>
+            </div>
+        </>
     )
 }
 
