@@ -1,11 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import AddForm from './components/Todo-add-form';
+import FilterPannel from './components/Todo-filter-pannel';
+import List from './components/Todo-list';
+import ClearPannel from './components/Todo-clear-pannel';
 
 function App() {
   return (
     <div className="App">
-      <h1>ToDo List</h1>
+      <AddForm/>
+      <FilterPannel/>
+      <List/>
+      <ClearPannel/>
     </div>
   );
 }
