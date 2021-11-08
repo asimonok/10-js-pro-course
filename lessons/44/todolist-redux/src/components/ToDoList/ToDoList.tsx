@@ -10,8 +10,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CreateIcon from "@mui/icons-material/Create";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
 import { editTodo, removeTodo, setTodoStatus } from "../../store/reducer/reducerTodos";
+import { AppDispatch, RootState } from "../../store/store";
 
 interface Props {
   filterList: number;

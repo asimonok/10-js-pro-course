@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store";
 import { addTodo } from "../../store/reducer/reducerTodos";
+import { AppDispatch } from "../../store/store";
 
 const AddTodos = () => {
   const [todoDescription, setTodoDescription] = useState("");
@@ -15,7 +15,7 @@ const AddTodos = () => {
       </Typography>
       <TextField
         variant="outlined"
-        label="To Do Item"
+        label="Write todo"
         fullWidth
         onChange={(e) => setTodoDescription(e.target.value)} // bad bad bad
         value={todoDescription}

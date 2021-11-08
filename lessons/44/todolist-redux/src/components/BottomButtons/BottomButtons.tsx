@@ -1,8 +1,8 @@
 import { Button, ButtonGroup } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store";
 import { deleteDoneTasks, removeAllTodos } from "../../store/reducer/reducerTodos";
+import { AppDispatch } from "../../store/store";
 
 const BottomButtons = () => {
   const dispatch = useDispatch<AppDispatch>();
