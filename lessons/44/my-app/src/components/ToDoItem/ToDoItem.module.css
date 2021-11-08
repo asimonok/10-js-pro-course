@@ -10,6 +10,11 @@
 }
 
 .input {
+  text-align: left;
   width: 20px;
   height: 20px;
+}
+
+.content {
+  text-align: left;
 }
