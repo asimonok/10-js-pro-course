@@ -20,7 +20,7 @@ const todoSlice = createSlice({
           id: uuidv4(), // or Date.now()
           description,
           completed: false,
-          doneList: false, // not used
+          edit: false, // not used
           todolist: false, // not used
         } as Todo,
       }),
@@ -40,6 +40,10 @@ const todoSlice = createSlice({
       const index = state.findIndex((todo) => todo.id === action.payload.id);
       state[index].description = action.payload.description;
     },
+    toggleEdit(state, action: PayloadAction<{ edit: boolean; id: string }>) {
+      const index = state.findIndex((todo) => todo.id === action.payload.id);
+      state[index].edit = action.payload.edit;
+    },
     removeAllTodos: (state) => {
       state.splice(0, state.length);
     },
@@ -50,18 +54,16 @@ const todoSlice = createSlice({
         }
       }
     },
-    //didnt work know
-    filterDoneTasks: (state) => {
-      //   let newState = Object.assign({}, state);
-      //   for (let index = 0; index < state.length; index++) {
-      //     if (state[index].completed === true) {
-      //     }
-      //   }
-      //   return newState;
-    },
   },
 });
 
-export const { addTodo, removeTodo, setTodoStatus, editTodo, removeAllTodos, deleteDoneTasks } =
-  todoSlice.actions;
+export const {
+  addTodo,
+  removeTodo,
+  setTodoStatus,
+  editTodo,
+  removeAllTodos,
+  deleteDoneTasks,
+  toggleEdit,
+} = todoSlice.actions;
 export default todoSlice.reducer;

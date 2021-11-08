@@ -3,7 +3,7 @@ export interface Todo {
   id: string;
   description: string;
   completed: boolean;
-  doneList: boolean;
+  edit: boolean;
   todolist: boolean;
 }
 

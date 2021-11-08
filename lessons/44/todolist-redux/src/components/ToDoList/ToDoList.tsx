@@ -1,6 +1,7 @@
 import {
   Checkbox,
   IconButton,
+  Input,
   List,
   ListItem,
   ListItemSecondaryAction,
@@ -10,7 +11,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CreateIcon from "@mui/icons-material/Create";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editTodo, removeTodo, setTodoStatus } from "../../store/reducer/reducerTodos";
+import { editTodo, removeTodo, setTodoStatus, toggleEdit } from "../../store/reducer/reducerTodos";
 import { AppDispatch, RootState } from "../../store/store";
 
 interface Props {
@@ -41,7 +42,14 @@ const ToDoList: React.FC<Props> = (props) => {
                 textDecoration: todo.completed ? "line-through" : "none",
               }}
             >
-              {todo.description}
+              {todo.edit ? null : todo.description}
+              {todo.edit && (
+                <Input
+                  type="text"
+                  value={todo.description}
+                  onChange={(e) => dispatch(editTodo({ id: todo.id, description: e.target.value }))}
+                />
+              )}
             </ListItemText>
             <ListItemSecondaryAction>
               <IconButton
@@ -54,7 +62,10 @@ const ToDoList: React.FC<Props> = (props) => {
               <IconButton
                 onClick={() => {
                   dispatch(
-                    editTodo({ id: todo.id, description: prompt("Edit task", todo.description) })
+                    toggleEdit({
+                      id: todo.id,
+                      edit: !todo.edit,
+                    })
                   );
                 }}
               >
