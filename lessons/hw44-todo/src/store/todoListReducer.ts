@@ -1,4 +1,4 @@
-import {todoListActionTypes, TaskList, todoListAction} from 'types/types';
+import {TaskActionTypes, TaskList, taskAction} from 'types/types';
 
 
 const initialState: TaskList = {
@@ -6,13 +6,19 @@ const initialState: TaskList = {
 }
 
 
-export const todoListReducer = (state = initialState, action: todoListAction): TaskList => {
+export const todoListReducer = (state = initialState, action: taskAction): TaskList => {
     switch (action.type) {
-        case todoListActionTypes.ADD_TODO: 
+        case TaskActionTypes.ADD_TASK: 
             return {
                 ...state,
                 todoList: [...state.todoList, action.payload]
             }
+            
+        case TaskActionTypes.DANE_TASK: 
+            return {
+            ...state,
+            todoList: [...state.todoList, action.payload]
+        }    
         default: 
             return state;    
     }

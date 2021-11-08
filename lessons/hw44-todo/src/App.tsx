@@ -10,8 +10,8 @@ import {RootState} from './store'
 function App() {
   
   const dispatch = useDispatch();
-    // const task = useSelector((state: RootState) => state.taskReducer);
-    // console.log('task: ',task)
+    const task = useSelector((state: RootState) => state.taskReducer);
+    console.log('task: ',task)
     const todoList = useSelector((state: RootState) => state.todoListReducer.todoList)
     console.log(todoList);
 
@@ -31,8 +31,8 @@ function App() {
       console.log('addtask clicked')
       if( inputValue) {
         const newTask  = {taskName: inputValue, isActive: true, isDone: false} 
-         dispatch({type: todoListActionTypes.ADD_TODO, payload: newTask})
-         setInputValue('');
+        dispatch({type: todoListActionTypes.ADD_TODO, payload: newTask})
+        setInputValue('');
       }
     }
 

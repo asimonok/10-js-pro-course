@@ -24,22 +24,21 @@ export type taskAction = AddTodoAction | DaneTodoAction;
 
 
 
+export enum todoListActionTypes {
+    ADD_TODO = 'ADD_TODO',
+    DELETE_TODO = 'DELETE_TODO'
+}
 
-// export enum todoListActionTypes {
-//     ADD_TODO = 'ADD_TODO',
-//     DELETE_TODO = 'DELETE_TODO'
-// }
+interface  ADDtodoListAction {
+    type: todoListActionTypes.ADD_TODO;
+    payload?: any; 
+}
+interface  DeletetodoListAction {
+    type: todoListActionTypes.DELETE_TODO;
+    payload?: any; 
+}
 
-// interface  ADDtodoListAction {
-//     type: todoListActionTypes.ADD_TODO;
-//     payload?: any; 
-// }
-// interface  DeletetodoListAction {
-//     type: todoListActionTypes.DELETE_TODO;
-//     payload?: any; 
-// }
-
-// export type todoListAction = ADDtodoListAction | DeletetodoListAction;
+export type todoListAction = ADDtodoListAction | DeletetodoListAction;
 
 
 
