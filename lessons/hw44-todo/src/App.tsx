@@ -3,12 +3,14 @@ import './App.css';
 import{Task} from 'types/types'
 import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 function App() {
-    const state = useSelector(state => state);
-    console.log(state);
-    
+    const todo = useSelector<Task, Task['taskName'] >(state => state.taskName);
+    console.log(todo);
+
+    const dispatch = useDispatch();
+
     const [task, setTask] = useState<string>('');
     const [todoList, setTodoList] = useState<Task[]>([]);
 
@@ -16,10 +18,15 @@ function App() {
         setTask(event.target.value);
     }
 
+    // const addTask = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    //     const newTask  = {taskName: task, isActive: true, isDone: false}
+    //     setTodoList([...todoList, newTask]);
+    //     setTask('');
+    // }
+
     const addTask = (event: React.MouseEvent<HTMLButtonElement>): void => {
         const newTask  = {taskName: task, isActive: true, isDone: false}
-        setTodoList([...todoList, newTask]);
-        setTask('');
+        dispatch({type: 'ADD_NOTE', payload: newTask})
     }
 
     const handleEdit = () => {
