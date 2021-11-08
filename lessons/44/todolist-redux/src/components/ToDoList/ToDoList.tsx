@@ -30,11 +30,6 @@ const ToDoList: React.FC<Props> = (props) => {
     return todo.completed === false;
   });
 
-  // const HandleEdit = (todo<Todo>) => {
-  //   const editText = prompt("Edit task", todo.description);
-  //   dispatch(editTodo(todo.id, editText));
-  // };
-
   if (props.filterList === 0) {
     //ALL TASKS
     return (

@@ -1,22 +1,11 @@
-import {
-  Button,
-  Container,
-  TextField,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from "@mui/material";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { Container, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import React from "react";
 import "./App.css";
+import AddTodos from "./components/AddTodos";
 import BottomButtons from "./components/BottomButtons";
 import ToDoList from "./components/ToDoList";
-import { AppDispatch } from "./store";
-import { addTodo } from "./store/reducer/reducerTodos";
 
 const App = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const [todoDescription, setTodoDescription] = useState("");
   //mui alignment
   const [alignment, setAlignment] = React.useState("web");
   const [filterList, setFilterList] = React.useState(0);
@@ -28,27 +17,8 @@ const App = () => {
 
   return (
     <Container maxWidth="xs">
-      <Typography style={{ textAlign: "center" }} variant="h3">
-        Redux ToDo List
-      </Typography>
-      <TextField
-        variant="outlined"
-        label="To Do Item"
-        fullWidth
-        onChange={(e) => setTodoDescription(e.target.value)} // bad bad bad
-        value={todoDescription}
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        fullWidth
-        onClick={() => {
-          dispatch(addTodo(todoDescription));
-          setTodoDescription("");
-        }}
-      >
-        Add Item
-      </Button>
+      <AddTodos />
+
       <ToggleButtonGroup
         color="primary"
         value={alignment}

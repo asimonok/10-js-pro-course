@@ -17,11 +17,11 @@ const todoSlice = createSlice({
       },
       prepare: (description: string) => ({
         payload: {
-          id: uuidv4(),
+          id: uuidv4(), // or Date.now()
           description,
           completed: false,
-          doneList: false,
-          todolist: false,
+          doneList: false, // not used
+          todolist: false, // not used
         } as Todo,
       }),
     },
@@ -50,6 +50,7 @@ const todoSlice = createSlice({
         }
       }
     },
+    //didnt work know
     filterDoneTasks: (state) => {
       //   let newState = Object.assign({}, state);
       //   for (let index = 0; index < state.length; index++) {
