@@ -2,29 +2,30 @@ import {Task, TaskActionTypes, taskAction  } from '../types/types'
 
 
 const initialState: Task = {
-    taskName: ' ',
+    taskName: '',
     isDone: false,
     isActive: true,
 }
 
+
 export const taskReducer = (state = initialState, action: taskAction): Task => {
     switch (action.type) {
-        case TaskActionTypes.ADD_TODO: 
+        case TaskActionTypes.ADD_TASK: 
             return {
                 ...state,
-                taskName: '',
-                isDone: false,
+                taskName: action.payload.taskName,
                 isActive: true,
             }
-        case TaskActionTypes.DANE_TODO: 
+        case TaskActionTypes.DANE_TASK: 
             return {
                 ...state,
-                taskName: '',
                 isDone: true,
-                isActive: false,
+                isActive: false
             }    
         default: 
             return state;    
     }
 }
+
   
+

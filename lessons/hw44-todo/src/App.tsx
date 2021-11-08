@@ -1,52 +1,71 @@
 import React, {useState} from 'react';
 import './App.css';
-import{Task} from 'types/types'
+import{TaskActionTypes, todoListActionTypes} from 'types/types'
 import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
 import {useDispatch, useSelector} from 'react-redux'
+import {RootState} from './store'
+
 
 function App() {
-    const todo = useSelector<Task, Task['taskName'] >(state => state.taskName);
-    console.log(todo);
+  
+  const dispatch = useDispatch();
+    // const task = useSelector((state: RootState) => state.taskReducer);
+    // console.log('task: ',task)
+    const todoList = useSelector((state: RootState) => state.todoListReducer.todoList)
+    console.log(todoList);
 
-    const dispatch = useDispatch();
-
-    const [task, setTask] = useState<string>('');
-    const [todoList, setTodoList] = useState<Task[]>([]);
+    const [inputValue, setInputValue] = useState<string>('');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setTask(event.target.value);
+      setInputValue(event.target.value);
     }
-
-    // const addTask = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    //     const newTask  = {taskName: task, isActive: true, isDone: false}
-    //     setTodoList([...todoList, newTask]);
-    //     setTask('');
-    // }
+    const handleCheckbox = (event:React.ChangeEvent<HTMLInputElement>): void =>  {
+      if(event.target.checked) {
+        dispatch({type: TaskActionTypes.DANE_TASK})
+        dispatch({type: TaskActionTypes.DANE_TASK})
+      }
+    };
 
     const addTask = (event: React.MouseEvent<HTMLButtonElement>): void => {
-        const newTask  = {taskName: task, isActive: true, isDone: false}
-        dispatch({type: 'ADD_NOTE', payload: newTask})
+      console.log('addtask clicked')
+      if( inputValue) {
+        const newTask  = {taskName: inputValue, isActive: true, isDone: false} 
+         dispatch({type: todoListActionTypes.ADD_TODO, payload: newTask})
+         setInputValue('');
+      }
     }
 
     const handleEdit = () => {
       console.log('handleEdit')
-      
     }
+    
     const handleDelete = (taskNameToDelete: string): void => {
       console.log('handleDelete is clicked')
-      const updatedTodoList= todoList.filter(task => task.taskName !== taskNameToDelete)
-      setTodoList(updatedTodoList)
+      // const updatedTodoList= todoList.filter(task => task.taskName !== taskNameToDelete)
+      // setTodoList(updatedTodoList)
     }
 
   return (
     <div className='App-container'>
-      <TodoInput 
-        task={task}
+      <TodoInput
+        task = {inputValue} 
         onChange={handleChange}
         onClick={addTask}
       />
-      <TodoList handleEdit={handleEdit} handleDelete={handleDelete} tasks={todoList}/>
+
+      {todoList.length > 0 ? 
+        <div>
+          <TodoList 
+            handleEdit={handleEdit} 
+            handleDelete={handleDelete} 
+            handleCheckbox={handleCheckbox}
+            tasks={todoList}/>
+        </div>
+        :
+        <div>There are no tasks so far!</div>
+      }
+      
     </div>
   );
 }
