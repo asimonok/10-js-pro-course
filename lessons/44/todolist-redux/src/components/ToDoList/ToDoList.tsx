@@ -20,7 +20,7 @@ interface Props {
 const ToDoList: React.FC<Props> = (props) => {
   const todoList = useSelector((state: RootState) => state);
   const dispatch = useDispatch<AppDispatch>();
-  console.log(todoList);
+
   //bad filter
   const filterDoneTasks = todoList.filter((todo) => {
     return todo.completed === true;
