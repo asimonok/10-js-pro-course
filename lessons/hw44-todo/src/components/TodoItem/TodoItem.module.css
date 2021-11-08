@@ -1,0 +1,35 @@
+.TodoItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.TodoItemBtns {
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primery-color);
+    border:none;
+    mask-size: cover;
+    transform: 0.4s ease all;
+    
+}
+.button:hover {
+    background-color: var(--auxiliary-color);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.edit{
+    mask-image: url('../../svg/pen.svg');
+}
+
+.delete{
+    mask-image: url('../../svg/bin.svg');
+}

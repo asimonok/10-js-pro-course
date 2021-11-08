@@ -1,0 +1,18 @@
+.btn {
+    font-size: 18px;
+    line-height: 30px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.4s ease all;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: var(--primery-color);
+    color: #ffffff;
+  }
+  .btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
