@@ -5,7 +5,6 @@ import { createStore } from "redux";
 import App from "./App";
 import "./index.css";
 import rootReducer from "./redux/rootReducer";
-// import "./tailwind.output.css";
 
 const store = createStore(rootReducer);
 ReactDOM.render(
