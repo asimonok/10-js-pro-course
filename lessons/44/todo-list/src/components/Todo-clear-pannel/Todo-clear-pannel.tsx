@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../Button';
+import MyButton from '../Button';
 
 import './Todo-clear-pannel.css';
 
@@ -8,8 +8,14 @@ const ClearPannel = () => {
 
     return (
         <div className="wrapper">
-            <Button text={'Delete done tasks'}/>
-            <Button text={'Delete all tasks'}/>
+            <MyButton 
+                text={'Delete done tasks'} 
+                //onClick={() => console.log('click')}
+                />
+            <MyButton 
+                text={'Delete all tasks'} 
+                //onClick={() => console.log('click')}
+                />
         </div>
     )
 }

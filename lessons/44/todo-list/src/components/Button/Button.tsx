@@ -4,13 +4,17 @@ import './Button.css';
 
 interface Props {
     text: string,
+    //onClick: () => void
 }
 
-const Button = (props: Props) => {
+const MyButton = (props: Props) => {
 
     return (
-    <button className="btn">{props.text}</button>
+    <button 
+        className="btn" 
+        //onClick={props.onClick}
+        >{props.text}</button>
     )
 }
 
-export default Button;
+export default MyButton;
