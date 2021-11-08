@@ -1,7 +1,7 @@
-import { createStore } from "redux";
+// import { createStore } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { reducer } from "./reducer/reducer";
+// import { composeWithDevTools } from "redux-devtools-extension";
+// import { reducer } from "./reducer/reducer";
 import reducerTodos from "./reducer/reducerTodos";
 
 //first try

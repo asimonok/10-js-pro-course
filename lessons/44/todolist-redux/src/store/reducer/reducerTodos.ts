@@ -10,6 +10,9 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: {
       reducer: (state, action: PayloadAction<Todo>) => {
+        if (action.payload.description === "") {
+          return state;
+        }
         state.push(action.payload);
       },
       prepare: (description: string) => ({
@@ -29,6 +32,13 @@ const todoSlice = createSlice({
     setTodoStatus(state, action: PayloadAction<{ completed: boolean; id: string }>) {
       const index = state.findIndex((todo) => todo.id === action.payload.id);
       state[index].completed = action.payload.completed;
+    },
+    editTodo(state, action: PayloadAction<{ id: string; description: string | null }>) {
+      if (action.payload.description === null) {
+        return state;
+      }
+      const index = state.findIndex((todo) => todo.id === action.payload.id);
+      state[index].description = action.payload.description;
     },
     removeAllTodos: (state) => {
       state.splice(0, state.length);
@@ -51,6 +61,6 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, removeTodo, setTodoStatus, removeAllTodos, deleteDoneTasks } =
+export const { addTodo, removeTodo, setTodoStatus, editTodo, removeAllTodos, deleteDoneTasks } =
   todoSlice.actions;
 export default todoSlice.reducer;

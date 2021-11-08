@@ -10,11 +10,16 @@ const defaultState: TaskState = {
 export const reducer = (state = defaultState, action: TaskAction): TaskState => {
   switch (action.type) {
     case TaskActionTypes.ADD_TASK:
-      return { ...state, task: action.payload };
+      return { ...state, task: state + action.payload };
     case TaskActionTypes.REMOVE_TASK:
-      return { ...state };
+      return {
+        ...state,
+        // task: state.task.filter((task) => {
+        //   task.id !== action.payload.id;
+        // }),
+      };
     case TaskActionTypes.EDIT_TASK:
-      return { ...state };
+
     default:
       return state;
   }

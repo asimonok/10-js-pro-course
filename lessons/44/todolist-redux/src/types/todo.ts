@@ -1,15 +1,18 @@
-export interface TaskState {
-  id: string;
-  task: [string];
-  done: boolean;
-  edit: boolean;
-}
+// for reducerTODOS
 export interface Todo {
   id: string;
   description: string;
   completed: boolean;
   doneList: boolean;
   todolist: boolean;
+}
+
+//for reducer
+export interface TaskState {
+  id: string;
+  task: [string];
+  done: boolean;
+  edit: boolean;
 }
 export enum TaskActionTypes {
   ADD_TASK = "ADD_TASK",
@@ -29,10 +32,12 @@ interface AddTask {
 
 interface RemoveTask {
   type: TaskActionTypes.REMOVE_TASK;
+  payload?: any;
 }
 
 interface EditTask {
   type: TaskActionTypes.EDIT_TASK;
+  payload?: any;
 }
 
 export type TaskAction = AddTask | RemoveTask | EditTask;
