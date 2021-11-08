@@ -1,6 +1,5 @@
 import {
   Button,
-  ButtonGroup,
   Container,
   TextField,
   ToggleButton,
@@ -10,17 +9,19 @@ import {
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./App.css";
+import BottomButtons from "./components/BottomButtons";
 import ToDoList from "./components/ToDoList";
 import { AppDispatch } from "./store";
-import { addTodo, deleteDoneTasks, removeAllTodos } from "./store/reducer/reducerTodos";
+import { addTodo } from "./store/reducer/reducerTodos";
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [todoDescription, setTodoDescription] = useState("");
-
+  //mui alignment
   const [alignment, setAlignment] = React.useState("web");
   const [filterList, setFilterList] = React.useState(0);
 
+  //mui function
   const handleChange = (event: any, newAlignment: string) => {
     setAlignment(newAlignment);
   };
@@ -34,7 +35,7 @@ const App = () => {
         variant="outlined"
         label="To Do Item"
         fullWidth
-        onChange={(e) => setTodoDescription(e.target.value)}
+        onChange={(e) => setTodoDescription(e.target.value)} // bad bad bad
         value={todoDescription}
       />
       <Button
@@ -65,24 +66,10 @@ const App = () => {
           Todo
         </ToggleButton>
       </ToggleButtonGroup>
+
       <ToDoList filterList={filterList} />
 
-      <ButtonGroup fullWidth disableElevation variant="contained">
-        <Button
-          onClick={() => {
-            dispatch(removeAllTodos());
-          }}
-        >
-          Delete All tasks
-        </Button>
-        <Button
-          onClick={() => {
-            dispatch(deleteDoneTasks());
-          }}
-        >
-          Delete done tasks
-        </Button>
-      </ButtonGroup>
+      <BottomButtons />
     </Container>
   );
 };
