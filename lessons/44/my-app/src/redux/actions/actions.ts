@@ -1,6 +1,7 @@
 import { Action } from 'redux';
 import { ActionPayload } from 'redux/models/ActionPayload';
 import { ActionType } from './actionType';
+import { FilterType } from './filterType';
 import { Todo } from 'constants/Todo';
 
 export type AddTodoAction = ActionPayload<ActionType.ADD_TODO, Todo>;
@@ -15,6 +16,7 @@ export type EditTodoAction = ActionPayload<
 export type DeleteTodoAction = ActionPayload<ActionType.DELETE_TODO, number>;
 export type DeleteDoneTodosAction = Action<ActionType.DELETE_DONE_TODOS>;
 export type DeleteAllTodosAction = Action<ActionType.DELETE_ALL_TODOS>;
+export type SetFilterAction = ActionPayload<ActionType.SET_FILTER, FilterType>;
 
 export const addTodo = (title: string): AddTodoAction => ({
   type: ActionType.ADD_TODO,
@@ -51,7 +53,7 @@ export const deleteAllTodos = (): DeleteAllTodosAction => ({
   type: ActionType.DELETE_ALL_TODOS,
 });
 
-/* export const setFilter = (filter: any) => ({
+export const setFilter = (filter: FilterType): SetFilterAction => ({
   type: ActionType.SET_FILTER,
-  payload: { filter },
-}); */
+  payload: filter,
+});

@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styles from './Button.module.css';
-import { useDispatch } from 'react-redux';
 
 interface IProps {
   text: string;

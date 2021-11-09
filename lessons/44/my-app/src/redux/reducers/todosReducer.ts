@@ -8,14 +8,18 @@ import {
   DeleteTodoAction,
   DeleteDoneTodosAction,
   DeleteAllTodosAction,
+  SetFilterAction,
 } from 'redux/actions/actions';
+import { FilterType } from 'redux/actions/filterType';
 
 export type TodosState = {
   items: Array<Todo>;
+  filter: FilterType;
 };
 
 const initialState: TodosState = {
   items: [],
+  filter: FilterType.ALL,
 };
 
 type ActionTypes =
@@ -24,7 +28,8 @@ type ActionTypes =
   | EditTodoAction
   | DeleteTodoAction
   | DeleteDoneTodosAction
-  | DeleteAllTodosAction;
+  | DeleteAllTodosAction
+  | SetFilterAction;
 
 export const todosReducer: Reducer<TodosState, Action> = (
   state: TodosState = initialState,
@@ -86,6 +91,13 @@ export const todosReducer: Reducer<TodosState, Action> = (
       return {
         ...state,
         items: [],
+      };
+    }
+
+    case ActionType.SET_FILTER: {
+      return {
+        ...state,
+        filter: action.payload,
       };
     }
 
