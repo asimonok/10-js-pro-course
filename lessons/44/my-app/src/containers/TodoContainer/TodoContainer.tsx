@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
-import TodoListItem from 'components/TodoListItem';
+import TodoItem from 'components/TodoItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'redux/store/store';
 import Button from 'components/Button';
+import TodoInput from 'components/TodoInput';
 import { FilterType } from 'redux/actions/filterType';
 import {
   deleteAllTodos,
@@ -10,7 +11,7 @@ import {
   setFilter,
 } from 'redux/actions/actions';
 
-const TodoList = () => {
+const TodoContainer = () => {
   const todoList = useSelector((state: RootState) => {
     return state.todos.items;
   });
@@ -39,13 +40,15 @@ const TodoList = () => {
 
   return (
     <>
+      <TodoInput />
+      <hr />
       {Object.values(FilterType).map((filter, index) => (
         <Button text={filter} key={index} onClick={() => onSetFilter(filter)} />
       ))}
 
       <div className="todo-list">
         {filteredTodoList.map((item) => {
-          return <TodoListItem key={item.id} item={item} />;
+          return <TodoItem key={item.id} item={item} />;
         })}
       </div>
       <Button text="Delete done tasks" onClick={deleteDoneOnClick} />
@@ -54,4 +57,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default TodoContainer;

@@ -9,7 +9,7 @@ interface IProps {
   item: Todo;
 }
 
-const TodoListItem: FC<IProps> = (props) => {
+const TodoItem: FC<IProps> = (props) => {
   const { item } = props;
   const [isEdit, setIsEdit] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState(item.title);
@@ -65,4 +65,4 @@ const TodoListItem: FC<IProps> = (props) => {
   );
 };
 
-export default TodoListItem;
+export default TodoItem;
