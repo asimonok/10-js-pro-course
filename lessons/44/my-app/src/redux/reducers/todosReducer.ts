@@ -17,8 +17,15 @@ export type TodosState = {
   filter: FilterType;
 };
 
+const persistedItems = localStorage.getItem('items');
+let items: Array<Todo> = [];
+
+if (persistedItems !== null) {
+  items = JSON.parse(persistedItems);
+}
+
 const initialState: TodosState = {
-  items: [],
+  items: items,
   filter: FilterType.ALL,
 };
 

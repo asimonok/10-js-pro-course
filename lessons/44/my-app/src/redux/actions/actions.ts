@@ -3,17 +3,18 @@ import { ActionPayload } from 'redux/models/ActionPayload';
 import { ActionType } from './actionType';
 import { FilterType } from './filterType';
 import { Todo } from 'constants/Todo';
+import { v4 as uuid } from 'uuid';
 
 export type AddTodoAction = ActionPayload<ActionType.ADD_TODO, Todo>;
 export type CompleteTodoAction = ActionPayload<
   ActionType.COMPLETE_TODO,
-  number
+  string
 >;
 export type EditTodoAction = ActionPayload<
   ActionType.EDIT_TODO,
-  { id: number; title: string }
+  { id: string; title: string }
 >;
-export type DeleteTodoAction = ActionPayload<ActionType.DELETE_TODO, number>;
+export type DeleteTodoAction = ActionPayload<ActionType.DELETE_TODO, string>;
 export type DeleteDoneTodosAction = Action<ActionType.DELETE_DONE_TODOS>;
 export type DeleteAllTodosAction = Action<ActionType.DELETE_ALL_TODOS>;
 export type SetFilterAction = ActionPayload<ActionType.SET_FILTER, FilterType>;
@@ -21,18 +22,18 @@ export type SetFilterAction = ActionPayload<ActionType.SET_FILTER, FilterType>;
 export const addTodo = (title: string): AddTodoAction => ({
   type: ActionType.ADD_TODO,
   payload: {
-    id: Date.now(),
+    id: uuid(),
     title,
     isDone: false,
   },
 });
 
-export const completeTodo = (id: number): CompleteTodoAction => ({
+export const completeTodo = (id: string): CompleteTodoAction => ({
   type: ActionType.COMPLETE_TODO,
   payload: id,
 });
 
-export const editTodo = (id: number, title: string): EditTodoAction => ({
+export const editTodo = (id: string, title: string): EditTodoAction => ({
   type: ActionType.EDIT_TODO,
   payload: {
     id,
@@ -40,7 +41,7 @@ export const editTodo = (id: number, title: string): EditTodoAction => ({
   },
 });
 
-export const deleteTodo = (id: number): DeleteTodoAction => ({
+export const deleteTodo = (id: string): DeleteTodoAction => ({
   type: ActionType.DELETE_TODO,
   payload: id,
 });
