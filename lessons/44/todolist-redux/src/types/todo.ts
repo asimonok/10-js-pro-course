@@ -4,40 +4,29 @@ export interface Todo {
   description: string;
   completed: boolean;
   edit: boolean;
-  todolist: boolean;
 }
 
 //for reducer
 export interface TaskState {
   id: string;
-  task: [string];
-  done: boolean;
+  items: string[];
+  isDone: boolean;
   edit: boolean;
 }
-export enum TaskActionTypes {
+export enum TodoAction {
   ADD_TASK = "ADD_TASK",
-  REMOVE_TASK = "REMOVE_TASK",
-  EDIT_TASK = "EDIT_TASK",
+  //   REMOVE_TASK = "REMOVE_TASK",
+  //   EDIT_TASK = "EDIT_TASK",
 }
 
-// interface TaskAction {
-//   type: string;
+export type ActionPayload<TType, PType> = {
+  type: TType;
+  payload: PType;
+};
+
+// interface AddTask {
+//   type: TodoAction.ADD_TASK;
 //   payload?: any;
 // }
 
-interface AddTask {
-  type: TaskActionTypes.ADD_TASK;
-  payload?: any;
-}
-
-interface RemoveTask {
-  type: TaskActionTypes.REMOVE_TASK;
-  payload?: any;
-}
-
-interface EditTask {
-  type: TaskActionTypes.EDIT_TASK;
-  payload?: any;
-}
-
-export type TaskAction = AddTask | RemoveTask | EditTask;
+// export type TodoActions = ActionPayload<TodoAction.ADD_TASK, string>

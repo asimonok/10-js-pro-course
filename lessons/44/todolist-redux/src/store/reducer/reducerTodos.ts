@@ -20,8 +20,7 @@ const todoSlice = createSlice({
           id: uuidv4(), // or Date.now()
           description,
           completed: false,
-          edit: false, // not used
-          todolist: false, // not used
+          edit: false,
         } as Todo,
       }),
     },
@@ -48,11 +47,12 @@ const todoSlice = createSlice({
       state.splice(0, state.length);
     },
     deleteDoneTasks: (state) => {
-      for (let index = 0; index < state.length; index++) {
-        if (state[index].completed === true) {
-          state.splice(index, 1);
-        }
-      }
+      //   for (let index = 0; index <= state.length; index++) {
+      //     if (state[index].completed === true) {
+      //       state.splice(index);
+      //     }
+      //   }
+      return state.filter((todo) => todo.completed === false);
     },
   },
 });

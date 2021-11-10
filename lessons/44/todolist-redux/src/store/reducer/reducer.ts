@@ -1,24 +1,37 @@
-import { TaskAction, TaskActionTypes, TaskState } from "../../types/todo";
+import { ActionPayload, TodoAction } from "../../types/todo";
 import { v4 as uuidv4, v4 } from "uuid";
 
-const initialState: TaskState = {
-  task: [""],
-  done: false,
-  edit: false,
-  id: uuidv4(),
+interface TodoItem {
+  id: string;
+  title: string;
+  isDone: boolean;
+}
+
+type AddTodoAction = ActionPayload<TodoAction.ADD_TASK, TodoItem>;
+
+export const addTodo = (title: string): AddTodoAction => ({
+  type: TodoAction.ADD_TASK,
+  payload: {
+    id: v4(),
+    title,
+    isDone: false,
+  },
+});
+
+type State = {
+  items: TodoItem[];
 };
-export const reducer = (state = initialState, action: TaskAction): TaskState => {
+const initialState = {
+  items: [],
+};
+type TodoActions = AddTodoAction;
+export const reducer = (state: State = initialState, action: TodoActions) => {
   switch (action.type) {
-    case TaskActionTypes.ADD_TASK:
-      return { ...state, task: state + action.payload };
-    case TaskActionTypes.REMOVE_TASK:
+    case TodoAction.ADD_TASK:
       return {
         ...state,
-        // task: state.task.filter((task) => {
-        //   task.id !== action.payload.id;
-        // }),
+        items: state.items.concat(action.payload),
       };
-    case TaskActionTypes.EDIT_TASK:
 
     default:
       return state;

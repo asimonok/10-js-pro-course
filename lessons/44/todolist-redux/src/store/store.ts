@@ -1,11 +1,13 @@
-// import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-// import { composeWithDevTools } from "redux-devtools-extension";
+import { reducer } from "./reducer/reducer";
+import { composeWithDevTools } from "redux-devtools-extension";
 // import { reducer } from "./reducer/reducer";
 import reducerTodos from "./reducer/reducerTodos";
 
 //first try
-// export const store = createStore(reducer, composeWithDevTools());
+const rootReducer = combineReducers({ todos: reducer });
+export const storeCasual = createStore(rootReducer, composeWithDevTools());
 
 //second try
 export const store = configureStore({

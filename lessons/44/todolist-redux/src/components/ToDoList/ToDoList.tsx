@@ -15,7 +15,7 @@ import { editTodo, removeTodo, setTodoStatus, toggleEdit } from "../../store/red
 import { AppDispatch, RootState } from "../../store/store";
 
 interface Props {
-  filterList: number;
+  filterList: string;
 }
 
 const ToDoList: React.FC<Props> = (props) => {
@@ -31,8 +31,7 @@ const ToDoList: React.FC<Props> = (props) => {
     return todo.completed === false;
   });
 
-  if (props.filterList === 0) {
-    //ALL TASKS
+  if (props.filterList === "All") {
     return (
       <List>
         {todoList.map((todo) => (
@@ -84,8 +83,7 @@ const ToDoList: React.FC<Props> = (props) => {
         ))}
       </List>
     );
-  } else if (props.filterList === 1) {
-    // DONE TASKS
+  } else if (props.filterList === "Done") {
     return (
       <List>
         {filterDoneTasks.map((todo) => (
@@ -95,7 +93,14 @@ const ToDoList: React.FC<Props> = (props) => {
                 textDecoration: todo.completed ? "line-through" : "none",
               }}
             >
-              {todo.description}
+              {todo.edit ? null : todo.description}
+              {todo.edit && (
+                <Input
+                  type="text"
+                  value={todo.description}
+                  onChange={(e) => dispatch(editTodo({ id: todo.id, description: e.target.value }))}
+                />
+              )}
             </ListItemText>
             <ListItemSecondaryAction>
               <IconButton
@@ -104,6 +109,18 @@ const ToDoList: React.FC<Props> = (props) => {
                 }}
               >
                 <DeleteIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  dispatch(
+                    toggleEdit({
+                      id: todo.id,
+                      edit: !todo.edit,
+                    })
+                  );
+                }}
+              >
+                <CreateIcon />
               </IconButton>
               <Checkbox
                 edge="end"
@@ -118,8 +135,7 @@ const ToDoList: React.FC<Props> = (props) => {
         ))}
       </List>
     );
-  } else if (props.filterList === 2) {
-    // TODO TASKS
+  } else if (props.filterList === "Todo") {
     return (
       <List>
         {filterTodoTasks.map((todo) => (
@@ -129,7 +145,14 @@ const ToDoList: React.FC<Props> = (props) => {
                 textDecoration: todo.completed ? "line-through" : "none",
               }}
             >
-              {todo.description}
+              {todo.edit ? null : todo.description}
+              {todo.edit && (
+                <Input
+                  type="text"
+                  value={todo.description}
+                  onChange={(e) => dispatch(editTodo({ id: todo.id, description: e.target.value }))}
+                />
+              )}
             </ListItemText>
             <ListItemSecondaryAction>
               <IconButton
@@ -138,6 +161,18 @@ const ToDoList: React.FC<Props> = (props) => {
                 }}
               >
                 <DeleteIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  dispatch(
+                    toggleEdit({
+                      id: todo.id,
+                      edit: !todo.edit,
+                    })
+                  );
+                }}
+              >
+                <CreateIcon />
               </IconButton>
               <Checkbox
                 edge="end"
