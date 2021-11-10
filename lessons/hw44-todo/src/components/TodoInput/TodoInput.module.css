@@ -1,0 +1,15 @@
+.TodoInput {
+    padding: 10px 4px;
+    width: 100%;
+    font-size: 1.2rem;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+
+}
+.TodoInputWrapper {
+    position: relative;
+    width: 100%;
+    padding: 8px 4px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}

@@ -59,6 +59,17 @@ export const tasksReducer = (state: State = initialState, action: taskActions ) 
                 filter: action.payload
             };
         }
+        case TaskActionTypes.DELETEALL: {
+            return {
+                ...state,
+                items: []
+            }
+        }
+        case TaskActionTypes.DELETEDONE: {
+            return {
+                ...state,
+                items: state.items.filter(item => !item.isDone)            }
+        }
         default:
             return state;
     }

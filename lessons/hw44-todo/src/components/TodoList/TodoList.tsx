@@ -5,7 +5,7 @@ import { RootState } from 'store/index';
 import TodoItem from 'components/TodoItem'
 import Button from 'components/Button';
 import { TaskFilter } from 'types/types';
-import {filterTodo} from 'store/actions';
+import {filterTodo, deleteAllTodo, deleteDoneTodo} from 'store/actions';
 
 
 const TodoList = () => {
@@ -21,7 +21,6 @@ const TodoList = () => {
         }
     })
 
-
     const dispatch = useDispatch();
 
     return (
@@ -34,17 +33,26 @@ const TodoList = () => {
                         name={filter} 
                         handleClick={() => { dispatch( filterTodo(filter)) }}/>
                 )}
-
             </div>
+            
           {items.length > 0 ? 
+          <>
             <div >{
                 filteredItems.map(item => <TodoItem key={item.id} task={item}/>)
             }</div>
+            <div className={style.TodoListDelete}>
+                <Button  name="Delete done tasks" handleClick={() => {dispatch(deleteDoneTodo())}} bgColor="delete"/>
+                <Button name="Delete all tasks" handleClick={() => {dispatch(deleteAllTodo())}} bgColor="delete" />
+            </div>
+           </>
             :
-            <div>There are no tasks so far!</div>
+            <div className={style.noTasks}>There are no tasks so far!</div>
             }
-         </div>
-    );
+
+            
+        </div>
+    )
+         
 };
 
 export default TodoList;

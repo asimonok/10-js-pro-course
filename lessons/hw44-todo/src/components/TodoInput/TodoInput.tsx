@@ -3,6 +3,7 @@ import Button from '../Button';
 import {useDispatch, useSelector} from 'react-redux';
 import {TaskActionTypes} from 'types/types'
 import {addTodo} from 'store/actions';
+import style from './TodoInput.module.css'
 
 interface Props {
     // task: string;
@@ -25,8 +26,8 @@ const TodoInput: FC<Props> = () => {
     }, [dispatch, newTask ])    
 
     return (
-        <div>
-            <input type="text" onChange={onChangeName} placeholder="Add a task"  value={newTask}></input>
+        <div className={style.TodoInputWrapper}>
+            <input className={style.TodoInput} type="text" onChange={onChangeName} placeholder="Add a task"  value={newTask}></input>
             <Button
               name="Add new task"
               handleClick={onAddTask}

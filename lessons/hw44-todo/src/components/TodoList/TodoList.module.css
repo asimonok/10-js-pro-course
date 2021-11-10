@@ -1,6 +1,7 @@
 .TodoList {
     width: 600px;
     text-align: center;
+    border-top: 1px solid lightgray;
 }
 
 .TodoListBtn {
@@ -8,4 +9,14 @@
     justify-self: space-between;
     width: 100%;
     
+}
+
+.TodoListDelete {
+    display: flex;
+    justify-content:center;
+}
+
+.noTasks {
+    margin-top: 20px;
+    font-size: 1.5rem;
 }

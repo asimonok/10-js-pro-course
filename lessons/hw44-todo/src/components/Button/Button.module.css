@@ -1,6 +1,6 @@
 .btn {
     display: block;
-    width: 150px;
+    width: 180px;
     margin: 0 auto;
     margin-top: 20px;
     padding: 4px 8px;
@@ -12,6 +12,11 @@
     background-color: var(--primery-color);
     color: #ffffff;
   }
+ .delete {
+   background-color: #64081f;
+ }
+
+
   .btn:hover {
     cursor: pointer;
     opacity: 0.9;

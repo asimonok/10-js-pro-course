@@ -2,6 +2,10 @@
   --primery-color: #4f4f69;
   --auxiliary-color: #1717b4; 
 }
+
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
