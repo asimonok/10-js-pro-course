@@ -39,6 +39,10 @@ const ListItem = (props: Props) => {
       setItems(newList);
     }
 
+    // const startEdit = useCallback( () => {
+    //   setIsEdit(true);
+    // }, [setIsEdit] );
+
     return (
       <Container style={{ marginTop: '2rem', marginLeft: '30px' }}>
         <ListGroup style={{ marginBottom: '1rem' }}>
@@ -52,6 +56,26 @@ const ListItem = (props: Props) => {
                 <ListGroup.Item>
                   <label className="list-group-item-label">
                     {title}
+                    {/* {!isEdit && (
+                      <>
+                        {title}
+                        <button type="button"
+                          className="btn-pen btn-sm "
+                          onclick={startEdit}>
+                          <i className="fas fa-pen"></i>
+                        </button>
+                      <>
+                    )} */}
+                    {/* {!isEdit && (
+                      <>
+                        <input />
+                        <button type="button"
+                          className="btn-pen btn-sm "
+                          onclick={startEdit}>
+                         Save</i>
+                        </button>
+                      <>
+                    )} */}
                   </label>
                   <div className='bnt__block'>
                     <input 
