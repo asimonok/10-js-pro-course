@@ -1,51 +1,53 @@
-import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React, {useState, useCallback, ChangeEvent} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import MyButton from '../Button'; 
-import {Data} from'../../types/Data';
-
+import {addTodo} from'../../store/reducer';
+import ListItem from '../Todo-list-item';
+import FilterPannel from '../Todo-filter-pannel';
 import './Todo-add-form.css';
 
-interface Props {
-    id: number,
-    task: string,
-    data: Data[],
-    //onClick: () => void
-}
+const AddForm = () => {
 
-const AddForm = (props: Props) => {
+    const [newTodo, setNewTodo] = useState('');
+    const onChangeName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+        setNewTodo(event.target.value);
+    }, [setNewTodo]);
 
-    const [task, setTask] = useState('');
-    const [data, setData] = useState<Data[]>([]);
-    const [value1, setValue1] = useState('');
+    const dispatch = useDispatch();
 
-    let maxId = 4;
+    const onAdd = useCallback(() => {
+        dispatch( addTodo(newTodo) )
+        setNewTodo('')
+    }, [newTodo, dispatch]);
 
-     const addTask = (): void => {
-        const newTask  = {task: task, id: maxId++, isActive: true, isDone: false}
-        setData([...data, newTask]);
-        setTask('');
+    const hanleClack = () => {
+        console.log('click');
     }
-
-    // const dispatch = useDispatch();
-
-    // const addTask = (): void => {
-    //     const newTask  = {task: task, id: maxId++, isActive: true, isDone: false}
-    //     dispatch({type: 'ADD_TASK', payload: newTask})
-    // }
 
     return (
         <>
             <h2>TodoInput</h2>
             <form className="form">
                 <input 
+                    type="text"
                     className="input" 
                     placeholder="New Todo" 
-                    value={task} 
-                    onChange={event => setValue1(event.target.value)}/>
+                    value={newTodo} 
+                    onChange={onChangeName}/>
                 <MyButton text="Add new task"
-                         // onClick={addItem}
+                          onClick={onAdd}
                           />
+                {/* {items.map( (todo) => (
+                     <ListItem 
+                     id={todo.id}
+                     title={todo.title} 
+                     isDone={todo.isDone}/>
+                ) )} */}
             </form>
+            <FilterPannel
+                onClick={hanleClack}
+                />
+            <ListItem />
         </>
     )
 }

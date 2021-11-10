@@ -10,11 +10,11 @@ const ClearPannel = () => {
         <div className="wrapper">
             <MyButton 
                 text={'Delete done tasks'} 
-                //onClick={() => console.log('click')}
+                onClick={() => console.log('click')}
                 />
             <MyButton 
                 text={'Delete all tasks'} 
-                //onClick={() => console.log('click')}
+                onClick={() => console.log('click')}
                 />
         </div>
     )

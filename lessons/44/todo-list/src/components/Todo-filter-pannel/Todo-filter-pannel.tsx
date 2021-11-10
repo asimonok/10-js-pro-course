@@ -4,8 +4,8 @@ import MyButton from '../Button';
 import './Todo-filter-pannel.css';
 
 interface Props {
-    text: string,
-    // onClick: () => void
+    //text: string,
+    onClick: () => void
 }
 
 const FilterPannel = (props: Props) => {
@@ -15,27 +15,32 @@ const FilterPannel = (props: Props) => {
     //     {name: 'done', label: 'Done-'},
     //     {name: 'todo', label: 'Todo'}
     // ];
-    //const [filter, setFilter] = useState('all');
+    // const [filter, setFilter] = useState('all');
 
     // const buttons = buttonsData.map( ({name, label}) => {
        
     //     return( 
     //     <MyButton 
-    //         className={`btn ${clazz}`}
-    //         name={name}
-    //         onClick={() => props.onFilterSelect(name)}>
+    //         text={text}
+    //        // onClick={() => props.onFilterSelect(name)}
+    //        >
     //         {label}
     //     </MyButton>
     //    )
     // } )
+    const hanleClack = () => {
+        console.log('click');
+    }
 
     return (
         <>
             <h2>TodoList</h2>
             {/* {buttons} */}
-            <MyButton text="All" />
-            <MyButton text="Done" />
-            <MyButton text="Todo" />
+           <div className="wrapper">
+           <MyButton text="All" onClick={hanleClack}/>
+            <MyButton text="Done" onClick={hanleClack}/>
+            <MyButton text="Todo" onClick={hanleClack}/>
+           </div>
         </>
     )
 }

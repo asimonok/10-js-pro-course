@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import { taskReducer } from './reducer';
+import { todosReducer } from './reducer';
 
-export const store = createStore(taskReducer, (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
+export const store = createStore(todosReducer, (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
 (window as any).__REDUX_DEVTOOLS_EXTENSION__());

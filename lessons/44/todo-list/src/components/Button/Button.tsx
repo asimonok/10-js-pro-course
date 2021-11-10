@@ -4,7 +4,7 @@ import './Button.css';
 
 interface Props {
     text: string,
-    //onClick: () => void
+    onClick: () => void
 }
 
 const MyButton = (props: Props) => {
@@ -12,7 +12,7 @@ const MyButton = (props: Props) => {
     return (
     <button 
         className="btn" 
-        //onClick={props.onClick}
+        onClick={props.onClick}
         >{props.text}</button>
     )
 }
