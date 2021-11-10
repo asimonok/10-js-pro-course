@@ -49,14 +49,14 @@ const Todos = () => {
             return <Todo key={todo.id} todo={todo} />;
           })}
         </div>
-        <div className={styles.flexbox}>
+        {/* <div className={styles.flexbox}>
           <button className={styles.button} onClick={onDeleteDoneTodos}>
             Delete done todos
           </button>
           <button className={styles.button} onClick={onDeleteAllTodos}>
             Delete all todos
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );

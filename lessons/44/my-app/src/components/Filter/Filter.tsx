@@ -1,11 +1,9 @@
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "store/store";
+import { useDispatch } from "react-redux";
 import { TodoAction } from "store/types";
 import styles from "./Filter.module.css";
 
 const Filter = () => {
-  const filter = useSelector((state: RootState) => state.todos.todos);
   const dispatch = useDispatch();
 
   const toShowAll = useCallback(() => {
