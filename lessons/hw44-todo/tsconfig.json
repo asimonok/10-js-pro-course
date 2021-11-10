@@ -23,5 +23,5 @@
   },
   "include": [
     "src"
-  ]
+, "../../../../React/app-2/TodoItem"  ]
 }

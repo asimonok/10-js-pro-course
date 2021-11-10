@@ -1,19 +1,35 @@
-import React, {FC} from 'react';
+import React, {FC, useState, useCallback} from 'react';
 import Button from '../Button';
+import {useDispatch, useSelector} from 'react-redux';
+import {TaskActionTypes} from 'types/types'
+import {addTodo} from 'store/actions';
 
 interface Props {
-    task: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    // task: string;
+    // onChangeName: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    // onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const TodoInput: FC<Props> = ({task, onChange, onClick}) => {
+const TodoInput: FC<Props> = () => {
+    const [newTask, setNewTask] = useState('');
+
+    const dispatch = useDispatch();
+
+    const onChangeName = useCallback( (event: React.ChangeEvent<HTMLInputElement>): void => {
+            setNewTask(event.target.value);
+        }, [setNewTask])
+
+    const onAddTask = useCallback(()=>{
+        dispatch(addTodo(newTask))
+        setNewTask('');
+    }, [dispatch, newTask ])    
+
     return (
         <div>
-            <input type="text" onChange={onChange} placeholder="Add a task"  value={task}></input>
+            <input type="text" onChange={onChangeName} placeholder="Add a task"  value={newTask}></input>
             <Button
               name="Add new task"
-              handleClick={onClick}
+              handleClick={onAddTask}
             />
         </div>
     );
