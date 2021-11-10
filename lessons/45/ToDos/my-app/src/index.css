@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+:root {
+  --font-default: Arial;
+  /*font-family: "Georama", sans-serif;
+  Arial, Helvetica, sans-serif
+  or
+  font-family: 'Italianno', cursive;*/
+  --color-primary: #fffde1;
+  --color-accent: #bad7df;
+  --color-text: #161616;
+  --color-button: mediumturquoise;
+  --color-secondary: #f7f7ee;
+
+  /*--color-area: #faf1e6;*/
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-default);
+  background-color: var(--color-area);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
