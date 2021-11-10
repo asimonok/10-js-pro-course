@@ -1,6 +1,7 @@
-import {Task, AddTodoActions, TaskActionTypes} from 'types/types';
+import {Task, TaskActionTypes, taskActions} from 'types/types';
 import {Reducer} from 'redux' 
 import {RootState} from 'store';
+import { strictEqual } from 'assert';
 
 export type State = {
     items: Task[];
@@ -13,7 +14,7 @@ const initialState:State = {
 
 // Reducer<TodosState, ReducerAction> = (state: TodosState = initialState, action: ReducerAction)
 
-export const tasksReducer = (state: State = initialState, action: AddTodoActions ) => {
+export const tasksReducer = (state: State = initialState, action: taskActions ) => {
     switch(action.type) {
         case TaskActionTypes.ADD: {
             return {
@@ -21,26 +22,45 @@ export const tasksReducer = (state: State = initialState, action: AddTodoActions
                 items: [ ...state.items, action.payload ]
             };
         }
+        case TaskActionTypes.TOGGLE: {
+            return {
+                ...state,
+                items: state.items.map(item => {
+                    if( item.id === action.payload) {
+                        return {
+                            ...item,
+                            isDone: !item.isDone,
+                        }
+                    }
+                    return item
+                } )
+            }
+        }
+        case TaskActionTypes.EDIT: {
+            return {
+                ...state,
+                items: state.items.map(item => {
+                    if(item.id === action.payload.id) {
+                        return {
+                            ...item,
+                            title: action.payload.title
+                        }
+                    }
+                    return item
+                })
+                
+            }
+        }
+        case TaskActionTypes.REMOVE: {
+            return {
+                ...state,
+                items: state.items.filter(item => item.id !== action.payload)
+            }
+        }
+        
         default:
             return state;
     }
 }
 
 
-
-// export const todoListReducer = (state = initialState, action: todoListAction): TaskList => {
-//     switch (action.type) {
-//         case todoListActionTypes.ADD_TODO: 
-//             return { ...state, todoList: [...state.todoList, action.payload]
-//             }
-            
-//         case todoListActionTypes.DELETE_TODO: 
-//             return { ...state, todoList: state.todoList.filter(todo => todo.taskName !== action.payload)};
-//         }    
-//         default: 
-//             return state;    
-//     }
-// }
-
-
-// todos: state.todos.filter(todo => todo.id !== action.payload)

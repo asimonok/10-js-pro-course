@@ -11,31 +11,25 @@ export interface TaskList {
 
 export enum TaskActionTypes {
     ADD = 'ADD_TASK',
-    EDIT = 'EDIT_TASK'
+    TOGGLE = 'TOGGLE_TASK',
+    EDIT = 'EDIT_TASK',
+    REMOVE = 'REMOVE_TASK',
 }
-
-
-// export type ActionPayload <TypeAction, TypePayload> = {
-//     type: TaskActionTypes.ADD;
-//     payload?:any;
-// }
 
 export type ActionPayload <TypeAction, TypePayload> = {
 type: TypeAction;
 payload: TypePayload;
 }
 
-// interface AddTodoAction {
-// type: TaskActionTypes.ADD;
-// payload?: Task; 
-// }
-// export type taskActions = AddTodoActions;
-
-// the same in one string
-// type TodoActions = ActionPayload<TaskActionTypes.ADD, string>
-
 export type AddTodoActions = ActionPayload<TaskActionTypes.ADD, Task>
+export type ToogleTodoActions = ActionPayload<TaskActionTypes.TOGGLE, string>
+export type EditTodoActions = ActionPayload<TaskActionTypes.EDIT, {id: string, title: string}>
+export type RemoveTodoActions = ActionPayload<TaskActionTypes.REMOVE, string>
 
+export type taskActions = AddTodoActions 
+                        | ToogleTodoActions
+                        | EditTodoActions
+                        | RemoveTodoActions;
 
 // interface DaneTodoAction {
 //     type: TaskActionTypes.DANE_TASK;

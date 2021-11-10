@@ -18,8 +18,6 @@ const TodoList = () => {
     // const todos = useSelector((state: RootState) => state.todos.todos);
 
     // useSelector((state: RootState) => state.todos.todos
-
-    console.log(items)
     return (
         // <h3>Task list is here</h3>
         <div>

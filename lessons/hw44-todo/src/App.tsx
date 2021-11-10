@@ -9,7 +9,6 @@ import {RootState} from 'store'
 
 
 function App() {
-  const items = useSelector((state:RootState) => state.tasks);
 
   return (
 

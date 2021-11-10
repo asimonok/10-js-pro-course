@@ -1,8 +1,15 @@
 .TodoItem {
     display: flex;
     justify-content: space-between;
-    padding: 5px;
-    width: 500px;
+    padding: 8px 4px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+.TodoTitle {
+    width: 60%;
+    text-align-last: left;
 }
 
 .TodoItemBtns {
@@ -29,6 +36,9 @@
 
 .edit{
     mask-image: url('../../svg/pen.svg');
+}
+.editSave{
+    mask-image: url('../../svg/save-changes.svg');
 }
 
 .delete{
