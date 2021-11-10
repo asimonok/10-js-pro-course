@@ -10,6 +10,10 @@ function App() {
         'items',
         JSON.stringify(store.getState().todos.items)
       );
+      localStorage.setItem(
+        'filter',
+        JSON.stringify(store.getState().todos.filter)
+      );
     });
   }, []);
 

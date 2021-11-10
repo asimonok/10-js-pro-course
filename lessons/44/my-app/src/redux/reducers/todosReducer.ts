@@ -24,9 +24,16 @@ if (persistedItems !== null) {
   items = JSON.parse(persistedItems);
 }
 
+const persistedFilter = localStorage.getItem('filter');
+let filter: FilterType = FilterType.ALL;
+
+if (persistedFilter !== null) {
+  filter = JSON.parse(persistedFilter);
+}
+
 const initialState: TodosState = {
   items: items,
-  filter: FilterType.ALL,
+  filter: filter,
 };
 
 type ActionTypes =

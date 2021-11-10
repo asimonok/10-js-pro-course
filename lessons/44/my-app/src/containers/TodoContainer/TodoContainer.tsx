@@ -53,6 +53,7 @@ const TodoContainer = () => {
           />
         ))}
       </div>
+      <p>{activeFilter} tasks:</p>
 
       <div className={styles.container}>
         {filteredTodoList.map((item) => {

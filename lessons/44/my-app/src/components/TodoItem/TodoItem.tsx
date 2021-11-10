@@ -42,13 +42,13 @@ const TodoItem: FC<IProps> = (props) => {
     <div className={styles.toDoItem}>
       {!isEdit && (
         <>
-          {item.title}
+          <div className={item.isDone ? styles.done : ``}>{item.title}</div>
           <div className={styles.toDoItemIcons}>
             <input
               type="checkbox"
               checked={item.isDone}
               onChange={completeOnChange}
-              className={styles.toDoCheck}
+              className={styles.checkbox}
             />
             <div className={styles.iconButton} onClick={editOnClick}>
               <img className={styles.editIconItem} src={editIcon} alt="edit" />

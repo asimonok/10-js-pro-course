@@ -18,7 +18,7 @@
 }
 
 .deleteButton:hover {
-  background-color: var(--color-primary-hovered);
+  background-color: var(--color-secondary-hovered);
 }
 
 .filterButton {

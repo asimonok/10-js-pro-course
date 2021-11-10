@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import styles from './TodoInput.module.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Button from 'components/Button';
 import { addTodo } from 'redux/actions/actions';
 import InputIcon from 'img/InputIcon.svg';
