@@ -1,12 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
-import{TaskActionTypes, todoListActionTypes} from 'types/types'
 import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
-import {useDispatch, useSelector} from 'react-redux'
-import {RootState} from 'store'
-
-
 
 function App() {
 
@@ -14,8 +9,8 @@ function App() {
 
     <div className='App-container'>
       <h1>Todo Input</h1>
-
       <TodoInput/>
+      <h2>Todo List </h2>
       <TodoList/>
 
       

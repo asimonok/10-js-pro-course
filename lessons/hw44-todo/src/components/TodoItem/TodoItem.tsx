@@ -1,11 +1,9 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useCallback, useState} from 'react';
 import {Task } from 'types/types';
 import style from './TodoItem.module.css'
 import className from 'classnames/bind'
 import { useDispatch} from 'react-redux';
-import {toggleTodo, addTodo, editTodo, removeTodo} from 'store/actions'
-import TodoInput from 'components/TodoInput'
-
+import {toggleTodo, editTodo, removeTodo} from 'store/actions'
 
 const cx = className.bind(style);
 
@@ -19,40 +17,37 @@ const TodoItem: FC<Props> = ({task}) => {
     const [updatedTitle, setUpdatedTitle] = useState(task.title);
 
 
-    const handleEdit = () => {
+    const handleEdit = useCallback(() => {
         setIsEdit(true);
-    }
+    }, [setIsEdit])
 
-    const handleDelete = () => {
-        console.log('handleEdit')
+    const handleDelete = useCallback(() => {
         dispatch(removeTodo(task.id));
-    }
+    }, [dispatch, task])
 
-    const handleCheckbox = () => {
-        console.log('handleCheckbox')
+    const handleCheckbox = useCallback(() => {
         dispatch(toggleTodo(task.id))
-    }
+    }, [dispatch, task])
 
-    const handleUpdatedTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleUpdatedTitle = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setUpdatedTitle(event.target.value);
-    }
+    }, [setUpdatedTitle])
 
-    const saveNewTask = () =>  {
-        console.log('saveNewTask');
+    const saveNewTask = useCallback(() =>  {
         dispatch(editTodo(task.id, updatedTitle));
         setIsEdit(false);
-    }
+    }, [dispatch, task, updatedTitle])
 
 
     return (
         <div className={style.TodoItem}>
+
             {!isEdit && (<>
                 <div className={style.TodoTitle}>{task.title}</div>
             </>) }
 
             {isEdit && (
                 <>
-                {/* <input type='text' value={task.title}></input> */}
                 <input type="text" onChange={handleUpdatedTitle} value={updatedTitle}></input>
                 </>
             )}
@@ -75,3 +70,4 @@ const TodoItem: FC<Props> = ({task}) => {
 };
 
 export default TodoItem;
+ 

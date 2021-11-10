@@ -1,13 +1,14 @@
 .btn {
-    font-size: 18px;
-    line-height: 30px;
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 20px;
     padding: 4px 8px;
     border: none;
     border-radius: 5px;
     transition: 0.4s ease all;
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
+    font-size: 18px;
+    line-height: 30px;
     background-color: var(--primery-color);
     color: #ffffff;
   }
@@ -15,4 +16,12 @@
     cursor: pointer;
     opacity: 0.9;
     transform: scale(1.05);
+  }
+  .btn:disabled {
+    background-color: #a0a0ac;
+  }
+  .btn:disabled:hover {
+    pointer-events: none;
+    opacity: 1;
+    transform: unset;
   }

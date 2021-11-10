@@ -1,18 +1,14 @@
-import {Task, TaskActionTypes, taskActions} from 'types/types';
-import {Reducer} from 'redux' 
-import {RootState} from 'store';
-import { strictEqual } from 'assert';
+import {Task, TaskActionTypes, taskActions, TaskFilter} from 'types/types';
 
 export type State = {
     items: Task[];
+    filter: TaskFilter;
 }
 
 const initialState:State = {
-    items: []
-    // todoList: [{taskName: 'hohoho', isActive: true, isDone: false}, {taskName: 'ohohoh', isActive: true, isDone: false}]
+    items: [],
+    filter: TaskFilter.ALL,
 }
-
-// Reducer<TodosState, ReducerAction> = (state: TodosState = initialState, action: ReducerAction)
 
 export const tasksReducer = (state: State = initialState, action: taskActions ) => {
     switch(action.type) {
@@ -57,7 +53,12 @@ export const tasksReducer = (state: State = initialState, action: taskActions ) 
                 items: state.items.filter(item => item.id !== action.payload)
             }
         }
-        
+        case TaskActionTypes.FILTER: {
+            return {
+                ...state,
+                filter: action.payload
+            };
+        }
         default:
             return state;
     }

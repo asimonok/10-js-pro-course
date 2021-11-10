@@ -2,7 +2,9 @@ import {TaskActionTypes,
         AddTodoActions,
         ToogleTodoActions,
         EditTodoActions,
-        RemoveTodoActions
+        RemoveTodoActions,
+        SetFilterAction,
+        TaskFilter
      } from 'types/types'
 import {v4} from 'uuid'
 
@@ -33,4 +35,9 @@ export const removeTodo = (id: string): RemoveTodoActions=> ({
     type: TaskActionTypes.REMOVE,
     payload: id
 
+})
+
+export const filterTodo = (filter: TaskFilter): SetFilterAction=> ({
+    type: TaskActionTypes.FILTER,
+    payload: filter
 })
