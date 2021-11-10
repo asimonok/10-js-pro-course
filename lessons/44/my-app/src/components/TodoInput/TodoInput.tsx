@@ -3,6 +3,7 @@ import styles from './TodoInput.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from 'components/Button';
 import { addTodo } from 'redux/actions/actions';
+import InputIcon from 'img/InputIcon.svg';
 
 const TodoInput: React.FC = () => {
   const [input, setInput] = useState('');
@@ -14,17 +15,30 @@ const TodoInput: React.FC = () => {
   }, [dispatch, input]);
 
   return (
-    <>
-      <input
-        type="text"
-        className={styles.searchInput}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setInput(e.target.value)
-        }
-        value={input}
-      />
-      <Button text="Add" onClick={addOnClick} />
-    </>
+    <div className={styles.todoInputComponent}>
+      <h2 className={styles.title}>TodoInput</h2>
+      <div className={styles.inputWrapper}>
+        <div className={styles.inputContainer}>
+          <div className={styles.inputIcon}>
+            <img
+              className={styles.inputIconItem}
+              src={InputIcon}
+              alt="input-icon"
+            />
+          </div>
+          <input
+            type="text"
+            className={styles.input}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setInput(e.target.value)
+            }
+            placeholder="New Todo"
+            value={input}
+          />
+        </div>
+        <Button text="Add" onClick={addOnClick} />
+      </div>
+    </div>
   );
 };
 

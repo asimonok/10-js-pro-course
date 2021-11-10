@@ -1,9 +1,12 @@
 import React, { ChangeEvent, FC, useCallback, useState } from 'react';
+import styles from './TodoItem.module.css';
 import { Todo } from '../../constants/Todo';
 import Button from 'components/Button';
 import { useDispatch } from 'react-redux';
 import { deleteTodo } from 'redux/actions/actions';
 import { completeTodo, editTodo } from 'redux/actions/actions';
+import editIcon from 'img/EditIcon.svg';
+import deleteIcon from 'img/DeleteIcon.svg';
 
 interface IProps {
   item: Todo;
@@ -36,31 +39,46 @@ const TodoItem: FC<IProps> = (props) => {
   );
 
   return (
-    <div>
-      <input
-        type="checkbox"
-        checked={item.isDone}
-        onChange={completeOnChange}
-      />
+    <div className={styles.toDoItem}>
       {!isEdit && (
         <>
           {item.title}
-          <Button text="Edit" onClick={editOnClick} />
+          <div className={styles.toDoItemIcons}>
+            <input
+              type="checkbox"
+              checked={item.isDone}
+              onChange={completeOnChange}
+              className={styles.toDoCheck}
+            />
+            <div className={styles.iconButton} onClick={editOnClick}>
+              <img className={styles.editIconItem} src={editIcon} alt="edit" />
+            </div>
+            <div
+              className={styles.iconButton}
+              onClick={() => {
+                dispatch(deleteTodo(item.id));
+              }}
+            >
+              <img
+                className={styles.deleteIconItem}
+                src={deleteIcon}
+                alt="delete"
+              />
+            </div>
+          </div>
         </>
       )}
       {isEdit && (
         <>
-          <input type="text" value={updatedTitle} onChange={onChangeTitle} />
-          <Button text="Save" onClick={saveOnClick} />
+          <input
+            type="text"
+            value={updatedTitle}
+            onChange={onChangeTitle}
+            className={styles.editTaskInput}
+          />
+          <Button text="Save" onClick={saveOnClick} saveButton />
         </>
       )}
-      <span
-        onClick={() => {
-          dispatch(deleteTodo(item.id));
-        }}
-      >
-        ×
-      </span>
     </div>
   );
 };

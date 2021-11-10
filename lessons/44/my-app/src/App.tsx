@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './App.css';
+import styles from './App.module.css';
 import TodoContainer from 'containers/TodoContainer';
 import { store } from 'redux/store';
 
@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <TodoContainer />
     </div>
   );

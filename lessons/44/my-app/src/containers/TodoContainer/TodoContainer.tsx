@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import styles from './TodoContainer.module.css';
 import TodoItem from 'components/TodoItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'redux/store/store';
@@ -41,18 +42,35 @@ const TodoContainer = () => {
   return (
     <>
       <TodoInput />
-      <hr />
-      {Object.values(FilterType).map((filter, index) => (
-        <Button text={filter} key={index} onClick={() => onSetFilter(filter)} />
-      ))}
+      <h2 className={styles.title}>TodoList</h2>
+      <div className={styles.filterButtons}>
+        {Object.values(FilterType).map((filter, index) => (
+          <Button
+            text={filter}
+            key={index}
+            onClick={() => onSetFilter(filter)}
+            filterButton
+          />
+        ))}
+      </div>
 
-      <div className="todo-list">
+      <div className={styles.container}>
         {filteredTodoList.map((item) => {
           return <TodoItem key={item.id} item={item} />;
         })}
       </div>
-      <Button text="Delete done tasks" onClick={deleteDoneOnClick} />
-      <Button text="Delete all tasks" onClick={deleteAllOnClick} />
+      <div className={styles.deleteButtons}>
+        <Button
+          text="Delete done tasks"
+          onClick={deleteDoneOnClick}
+          deleteButton
+        />
+        <Button
+          text="Delete all tasks"
+          onClick={deleteAllOnClick}
+          deleteButton
+        />
+      </div>
     </>
   );
 };

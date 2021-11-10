@@ -2,8 +2,6 @@ import { createStore } from 'redux';
 import { combineReducers } from 'redux';
 import { todosReducer } from '../reducers/todosReducer';
 
-import { Todo } from '../../constants/Todo';
-
 const rootReducer = combineReducers({
   todos: todosReducer,
 });
