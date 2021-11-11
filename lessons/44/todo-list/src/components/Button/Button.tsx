@@ -3,8 +3,11 @@ import React from 'react';
 import './Button.css';
 
 interface Props {
-    text: string,
-    onClick: () => void
+    text: string;
+    onClick?: () => void;
+    deleteButton?: boolean;
+    filterButton?: boolean;
+    saveButton?: boolean;
 }
 
 const MyButton = (props: Props) => {

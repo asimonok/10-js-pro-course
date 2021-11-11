@@ -5,7 +5,7 @@ import './Todo-filter-pannel.css';
 
 interface Props {
     //text: string,
-    onClick: () => void
+    onClick?: () => void
 }
 
 const FilterPannel = (props: Props) => {

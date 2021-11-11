@@ -18,13 +18,7 @@ function App() {
     
     <div className="App">
       <div className="container">
-        <AddForm
-          // task={task}
-          // id={id}
-          // data={data}
-         // onChange={onChange}
-          />      
-        <ClearPannel/>
+        <AddForm/> 
       </div>
     </div>
   );

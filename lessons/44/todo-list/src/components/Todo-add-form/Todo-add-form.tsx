@@ -4,50 +4,44 @@ import MyButton from '../Button';
 import {addTodo} from'../../store/reducer';
 import ListItem from '../Todo-list-item';
 import FilterPannel from '../Todo-filter-pannel';
+import {RootState} from '../../store/store';
 import './Todo-add-form.css';
 
 const AddForm = () => {
 
     const [newTodo, setNewTodo] = useState('');
+
+    const dispatch = useDispatch();
+
     const onChangeName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         setNewTodo(event.target.value);
     }, [setNewTodo]);
 
-    const dispatch = useDispatch();
-
-    const onAdd = useCallback(() => {
+    const items = useSelector((state: RootState) => state.todos.items);
+    
+    const onAdd = useCallback((e) => {
+        e.preventDefault();
         dispatch( addTodo(newTodo) )
         setNewTodo('')
     }, [newTodo, dispatch]);
 
-    const hanleClack = () => {
-        console.log('click');
-    }
-
     return (
         <>
             <h2>TodoInput</h2>
-            <form className="form">
+            <form className="form"
+                  onSubmit={onAdd}>
                 <input 
                     type="text"
                     className="input" 
                     placeholder="New Todo" 
                     value={newTodo} 
                     onChange={onChangeName}/>
-                <MyButton text="Add new task"
-                          onClick={onAdd}
-                          />
-                {/* {items.map( (todo) => (
-                     <ListItem 
-                     id={todo.id}
-                     title={todo.title} 
-                     isDone={todo.isDone}/>
-                ) )} */}
+                <MyButton text="Add new task"/>
             </form>
-            <FilterPannel
-                onClick={hanleClack}
-                />
-            <ListItem />
+            {items.map( (todo) => {
+                <ListItem key={todo.id} title={todo.title} id={todo.id} isDone={todo.isDone}/>
+            } )}
+            
         </>
     )
 }
