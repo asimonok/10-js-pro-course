@@ -23,7 +23,7 @@ export type State = {
     filter: TaskFilter;
 }
 
-const initialState:State = {
+export const initialState:State = {
     items: [],
     filter: TaskFilter.ALL,
 }

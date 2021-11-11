@@ -1,6 +1,10 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { tasksReducer } from './tasksReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import {logger} from 'store/middleware/logger'
+import {permanent} from 'store/middleware/permanent'
+import { initialState } from './tasksReducer';
+import { TaskFilter } from './actions';
 
 const rootReducer = combineReducers({
     tasks: tasksReducer
@@ -8,8 +12,19 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>
 
-// export const store = createStore(rootReducer, (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-// (window as any).__REDUX_DEVTOOLS_EXTENSION__());
+const preloadedState = JSON.parse(localStorage.getItem('state') || '') ;
 
-// export const store = createStore(rootReducer, (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
-export const store = createStore(rootReducer, composeWithDevTools());
+export const store = createStore(
+    rootReducer,
+    preloadedState,
+     composeWithDevTools(applyMiddleware(logger, permanent)));
+
+
+
+    //  { 
+    //     tasks: {
+    //         items: [{id: '123', title: 'text', isDone: true}],
+    //         filter: TaskFilter.DONE
+    //     }
+
+    // }
