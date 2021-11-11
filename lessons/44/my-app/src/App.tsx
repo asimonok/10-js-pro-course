@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './App.module.css';
-import TodoContainer from 'containers/TodoContainer';
+import TodoContainer from 'components/TodoContainer';
 import { store } from 'redux/store';
 
 function App() {

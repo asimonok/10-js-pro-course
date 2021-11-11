@@ -1,6 +1,6 @@
 import { Action, Reducer } from 'redux';
-import { ActionType } from 'redux/actions/actionType';
-import { Todo } from '../../constants/Todo';
+import { ActionType } from 'redux/actions/todoActions';
+import { Todo } from '../models/Todo';
 import {
   AddTodoAction,
   CompleteTodoAction,
@@ -9,8 +9,8 @@ import {
   DeleteDoneTodosAction,
   DeleteAllTodosAction,
   SetFilterAction,
-} from 'redux/actions/actions';
-import { FilterType } from 'redux/actions/filterType';
+} from 'redux/actions/todoActions';
+import { FilterType } from 'redux/models/filterType';
 
 export type TodosState = {
   items: Array<Todo>;

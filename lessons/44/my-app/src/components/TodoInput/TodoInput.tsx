@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import styles from './TodoInput.module.css';
 import { useDispatch } from 'react-redux';
 import Button from 'components/Button';
-import { addTodo } from 'redux/actions/actions';
+import { addTodo } from 'redux/actions/todoActions';
 import InputIcon from 'img/InputIcon.svg';
 
 const TodoInput: React.FC = () => {

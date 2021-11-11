@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FC, useCallback, useState } from 'react';
 import styles from './TodoItem.module.css';
-import { Todo } from '../../constants/Todo';
+import { Todo } from '../../redux/models/Todo';
 import Button from 'components/Button';
 import { useDispatch } from 'react-redux';
-import { deleteTodo } from 'redux/actions/actions';
-import { completeTodo, editTodo } from 'redux/actions/actions';
+import { deleteTodo } from 'redux/actions/todoActions';
+import { completeTodo, editTodo } from 'redux/actions/todoActions';
 import editIcon from 'img/EditIcon.svg';
 import deleteIcon from 'img/DeleteIcon.svg';
 

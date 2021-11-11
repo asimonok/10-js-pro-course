@@ -5,12 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'redux/store/store';
 import Button from 'components/Button';
 import TodoInput from 'components/TodoInput';
-import { FilterType } from 'redux/actions/filterType';
+import { FilterType } from 'redux/models/filterType';
 import {
   deleteAllTodos,
   deleteDoneTodos,
   setFilter,
-} from 'redux/actions/actions';
+} from 'redux/actions/todoActions';
 
 const TodoContainer = () => {
   const todoList = useSelector((state: RootState) => {
@@ -43,35 +43,41 @@ const TodoContainer = () => {
     <>
       <TodoInput />
       <h2 className={styles.title}>TodoList</h2>
-      <div className={styles.filterButtons}>
-        {Object.values(FilterType).map((filter, index) => (
-          <Button
-            text={filter}
-            key={index}
-            onClick={() => onSetFilter(filter)}
-            filterButton
-          />
-        ))}
-      </div>
-      <p>{activeFilter} tasks:</p>
+      {filteredTodoList.length === 0 ? (
+        <p>There are no tasks yet.</p>
+      ) : (
+        <>
+          <div className={styles.filterButtons}>
+            {Object.values(FilterType).map((filter, index) => (
+              <Button
+                text={filter}
+                key={index}
+                onClick={() => onSetFilter(filter)}
+                filterButton
+              />
+            ))}
+          </div>
+          <p>{activeFilter} tasks:</p>
 
-      <div className={styles.container}>
-        {filteredTodoList.map((item) => {
-          return <TodoItem key={item.id} item={item} />;
-        })}
-      </div>
-      <div className={styles.deleteButtons}>
-        <Button
-          text="Delete done tasks"
-          onClick={deleteDoneOnClick}
-          deleteButton
-        />
-        <Button
-          text="Delete all tasks"
-          onClick={deleteAllOnClick}
-          deleteButton
-        />
-      </div>
+          <div className={styles.container}>
+            {filteredTodoList.map((item) => {
+              return <TodoItem key={item.id} item={item} />;
+            })}
+          </div>
+          <div className={styles.deleteButtons}>
+            <Button
+              text="Delete done tasks"
+              onClick={deleteDoneOnClick}
+              deleteButton
+            />
+            <Button
+              text="Delete all tasks"
+              onClick={deleteAllOnClick}
+              deleteButton
+            />
+          </div>
+        </>
+      )}
     </>
   );
 };

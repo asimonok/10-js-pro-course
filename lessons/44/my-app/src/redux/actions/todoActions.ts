@@ -1,9 +1,18 @@
 import { Action } from 'redux';
 import { ActionPayload } from 'redux/models/ActionPayload';
-import { ActionType } from './actionType';
-import { FilterType } from './filterType';
-import { Todo } from 'constants/Todo';
+import { FilterType } from '../models/filterType';
+import { Todo } from 'redux/models/Todo';
 import { v4 as uuid } from 'uuid';
+
+export enum ActionType {
+  ADD_TODO = 'ADD_TODO',
+  COMPLETE_TODO = 'COMPLETE_TODO',
+  EDIT_TODO = 'EDIT_TODO',
+  DELETE_TODO = 'DELETE_TODO',
+  DELETE_ALL_TODOS = 'DELETE_ALL_TODOS',
+  DELETE_DONE_TODOS = 'DELETE_DONE_TODOS',
+  SET_FILTER = 'SET_FILTER',
+}
 
 export type AddTodoAction = ActionPayload<ActionType.ADD_TODO, Todo>;
 export type CompleteTodoAction = ActionPayload<
