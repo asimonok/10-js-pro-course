@@ -4,20 +4,20 @@ import {ThemeContext} from 'components/ThemeProvider'
 import classNames from 'classnames/bind'
 import style from './PostItem.module.css'
 import {AuthorModal, Size} from '../AuthorModal'
+import {Link} from 'react-router-dom'
 
 interface MyPostListProps {
     post: Post;
     user: User;
     bgColor?: "calm" | "bright";
     border?: "dashed" | "none";
-    onClick: () => void;
 }
 
 const cx = classNames.bind(style);
 
 
 const PostItem: React.FC<MyPostListProps> = (props) => {
-    const {post, user, bgColor = 'calm', border = 'none', onClick} = props;
+    const {post, user, bgColor = 'calm', border = 'none'} = props;
     const [isOpened, setIsOpened] = useState(true);
     const [theme, setTheme]= useContext(ThemeContext);
 
@@ -37,8 +37,8 @@ const PostItem: React.FC<MyPostListProps> = (props) => {
             <div className={style.postAuthor} onClick={handleModal}>
                 <span>Author:</span> {user.name}
             </div>
-            <div className={style.details} onClick={onClick}>
-                <div>Post details...</div>
+            <div className={style.details} >
+                <Link to={`/posts/${post.id}`}>Post details...</Link>
             </div>
             <AuthorModal user={user} isHidden={isOpened} handleModal={handleModal} theme={theme} size={Size.medium} />
         </div>

@@ -32,7 +32,7 @@ const PostsPage: FC = () => {
                 <>
                 <div className={style.CardRow}>
                 {posts.slice(0,numberOfPost).map(post =>
-                <PostItem onClick={() => {history.push(`posts/${post.id}`)} } key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
+                <PostItem key={post.id} post={post} user={users.filter(user => user.id === post.userId)[0]}></PostItem>
               )}
             </div>
             <Button 
