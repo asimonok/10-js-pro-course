@@ -1,15 +1,38 @@
-import {TaskActionTypes,
-        AddTodoActions,
-        ToogleTodoActions,
-        EditTodoActions,
-        RemoveTodoActions,
-        SetFilterAction,
-        TaskFilter,
-        DeleteAllAction,
-        DeleteDoneAction
-     } from 'types/types'
+import {Task} from 'types/types'
 import {v4} from 'uuid'
 
+export enum TaskActionTypes {
+    ADD = 'ADD_TASK',
+    TOGGLE = 'TOGGLE_TASK',
+    EDIT = 'EDIT_TASK',
+    REMOVE = 'REMOVE_TASK',
+    FILTER = "FILTER_TASKS",
+    DELETE_ALL = "DELETE_ALL_TASKS",
+    DELETE_DONE = "DELETE_DONE_TASKS"
+}
+
+export enum TaskFilter {
+    ALL = "All",
+    DONE = "Done",
+    TODO = 'Todo',
+}
+
+export type ActionPayload <TypeAction, TypePayload> = {
+type: TypeAction;
+payload: TypePayload;
+}
+
+export type ActionDelete <TypeAction> = {
+type: TypeAction;
+}
+
+export type AddTodoActions = ActionPayload<TaskActionTypes.ADD, Task>
+export type ToogleTodoActions = ActionPayload<TaskActionTypes.TOGGLE, string>
+export type EditTodoActions = ActionPayload<TaskActionTypes.EDIT, {id: string, title: string}>
+export type RemoveTodoActions = ActionPayload<TaskActionTypes.REMOVE, string>
+export type SetFilterAction = ActionPayload<TaskActionTypes.FILTER, TaskFilter>
+export type DeleteAllAction = ActionDelete<TaskActionTypes.DELETE_ALL>
+export type DeleteDoneAction = ActionDelete<TaskActionTypes.DELETE_DONE>
 
 export const addTodo = (title: string): AddTodoActions => ({
     type: TaskActionTypes.ADD,
@@ -44,7 +67,7 @@ export const filterTodo = (filter: TaskFilter): SetFilterAction=> ({
     payload: filter
 })
 
-export const deleteAllTodo = (): DeleteAllAction=> ({ type: TaskActionTypes.DELETEALL });
+export const deleteAllTodo = (): DeleteAllAction=> ({ type: TaskActionTypes.DELETE_ALL });
 
-export const deleteDoneTodo = (): DeleteDoneAction=> ({ type: TaskActionTypes.DELETEDONE });
+export const deleteDoneTodo = (): DeleteDoneAction=> ({ type: TaskActionTypes.DELETE_DONE });
 

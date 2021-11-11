@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import style from './TodoList.module.css'
 import {useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store/index';
 import TodoItem from 'components/TodoItem'
 import Button from 'components/Button';
-import { TaskFilter } from 'types/types';
+import { TaskFilter } from 'store/actions';
 import {filterTodo, deleteAllTodo, deleteDoneTodo} from 'store/actions';
 
 
@@ -23,9 +23,20 @@ const TodoList = () => {
 
     const dispatch = useDispatch();
 
+    const handleDeletAll = useCallback(() => {
+        dispatch(deleteAllTodo());
+    },[dispatch])
+
+    const handleDeletDone = useCallback(() => {
+        dispatch(deleteDoneTodo());
+    },[dispatch])
+
     return (
         <div className={style.TodoList}>
-            <div className={style.TodoListBtn}>
+            
+          {items.length > 0 ? 
+          <>
+             <div className={style.TodoListBtn}>
                 {Object.values(TaskFilter).map(filter =>
                     <Button 
                         key={filter} 
@@ -34,15 +45,12 @@ const TodoList = () => {
                         handleClick={() => { dispatch( filterTodo(filter)) }}/>
                 )}
             </div>
-            
-          {items.length > 0 ? 
-          <>
             <div >{
                 filteredItems.map(item => <TodoItem key={item.id} task={item}/>)
             }</div>
             <div className={style.TodoListDelete}>
-                <Button  name="Delete done tasks" handleClick={() => {dispatch(deleteDoneTodo())}} bgColor="delete"/>
-                <Button name="Delete all tasks" handleClick={() => {dispatch(deleteAllTodo())}} bgColor="delete" />
+                <Button  name="Delete done tasks" handleClick={handleDeletDone} bgColor="delete"/>
+                <Button name="Delete all tasks" handleClick={handleDeletAll} bgColor="delete" />
             </div>
            </>
             :

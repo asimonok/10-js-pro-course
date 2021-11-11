@@ -1,4 +1,22 @@
-import {Task, TaskActionTypes, taskActions, TaskFilter} from 'types/types';
+import {Task} from 'types/types';
+import {TaskActionTypes, TaskFilter} from 'store/actions' 
+import {AddTodoActions,
+    ToogleTodoActions,
+    EditTodoActions,
+    RemoveTodoActions,
+    SetFilterAction,
+    DeleteAllAction,
+    DeleteDoneAction
+} from 'store/actions'
+
+type taskActions = AddTodoActions 
+    | ToogleTodoActions
+    | EditTodoActions
+    | RemoveTodoActions
+    | SetFilterAction
+    | DeleteAllAction
+    | DeleteDoneAction;
+
 
 export type State = {
     items: Task[];
@@ -59,13 +77,13 @@ export const tasksReducer = (state: State = initialState, action: taskActions ) 
                 filter: action.payload
             };
         }
-        case TaskActionTypes.DELETEALL: {
+        case TaskActionTypes.DELETE_ALL: {
             return {
                 ...state,
                 items: []
             }
         }
-        case TaskActionTypes.DELETEDONE: {
+        case TaskActionTypes.DELETE_DONE: {
             return {
                 ...state,
                 items: state.items.filter(item => !item.isDone)            }

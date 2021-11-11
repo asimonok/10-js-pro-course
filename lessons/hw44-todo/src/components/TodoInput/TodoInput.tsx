@@ -1,17 +1,10 @@
 import React, {FC, useState, useCallback} from 'react';
 import Button from '../Button';
 import {useDispatch, useSelector} from 'react-redux';
-import {TaskActionTypes} from 'types/types'
 import {addTodo} from 'store/actions';
 import style from './TodoInput.module.css'
 
-interface Props {
-    // task: string;
-    // onChangeName: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    // onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-const TodoInput: FC<Props> = () => {
+const TodoInput = () => {
     const [newTask, setNewTask] = useState('');
 
     const dispatch = useDispatch();
