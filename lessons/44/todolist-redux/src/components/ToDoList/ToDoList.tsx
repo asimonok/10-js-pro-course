@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CreateIcon from "@mui/icons-material/Create";
+import SaveIcon from "@mui/icons-material/Save";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editTodo, removeTodo, setTodoStatus, toggleEdit } from "../../store/reducer/reducerTodos";
@@ -68,7 +69,7 @@ const ToDoList: React.FC<Props> = (props) => {
                   );
                 }}
               >
-                <CreateIcon />
+                {todo.edit ? <SaveIcon /> : <CreateIcon />}
               </IconButton>
               <Checkbox
                 edge="end"
@@ -120,7 +121,7 @@ const ToDoList: React.FC<Props> = (props) => {
                   );
                 }}
               >
-                <CreateIcon />
+                {todo.edit ? <SaveIcon /> : <CreateIcon />}
               </IconButton>
               <Checkbox
                 edge="end"
@@ -172,7 +173,7 @@ const ToDoList: React.FC<Props> = (props) => {
                   );
                 }}
               >
-                <CreateIcon />
+                {todo.edit ? <SaveIcon /> : <CreateIcon />}
               </IconButton>
               <Checkbox
                 edge="end"

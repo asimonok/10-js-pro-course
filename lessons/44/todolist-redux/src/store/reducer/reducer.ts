@@ -1,5 +1,5 @@
 import { ActionPayload, TodoAction } from "../../types/todo";
-import { v4 as uuidv4, v4 } from "uuid";
+import { v4 } from "uuid";
 
 interface TodoItem {
   id: string;
