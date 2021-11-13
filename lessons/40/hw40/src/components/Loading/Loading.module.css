@@ -1,13 +1,9 @@
 .main {
     top: 30%;
     left: 50%;
-    display: none;
+    display: flex;
     transform: translate(-50%, -50%);
     position: absolute;
-}
-
-.main.active {
-    display: flex;
 }
 
 .block {

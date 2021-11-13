@@ -7,3 +7,9 @@
     gap: 20px;
     align-items: stretch;
   }
+
+@media (max-width: 1024px){
+  .CardRow {
+    justify-content: space-evenly;
+  }
+}

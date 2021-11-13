@@ -39,8 +39,7 @@ const PostsPage: FC = () => {
              name="Show more"
              handleClick={() => {setNumberOfPost(numberOfPost => numberOfPost + 5)}}
             />
-           </> ) : <Loading isActive={isloaded}/>
-            
+           </> ) : <Loading/>
          }</div>
     );
 };

@@ -77,3 +77,9 @@
 
 
 
+@media (max-width: 1024px){
+  .nav {
+    width: 90%;
+    justify-content: center;
+  }
+}

@@ -1,24 +1,29 @@
-import React, {FC, useState, useEffect}  from 'react';
-import {User} from 'types/types';
+import React, {FC, useEffect}  from 'react';
+import { useSelector, useDispatch} from 'react-redux';
 import UserItem  from 'components/UserItem';
-
+import { RootState } from 'store';
+import {fetchUsers} from 'store/actions/users'
+import Loading from 'components/Loading'
 
 const UsersPage: FC = () => {
-    const [users, setUsers] = useState<User[]>([]);
-    // const history = useHistory();
-  
+
+    const { users, loading }= useSelector((state: RootState) => state.user);
+
+    const dispatch = useDispatch();
     useEffect(() => { 
-        fetch(`https://jsonplaceholder.typicode.com/users`)
-          .then((response):Promise<User[]> => response.json())
-          .then(users => {
-            setUsers(users);  
-        }).catch(error => console.log(error))
-    }, []);
+        dispatch(fetchUsers())
+    }, [dispatch]);
 
     return (
-        <div>
-            {users.map (user => <UserItem key={user.id} user={user}/>)}
-        </div>
+        <div>{
+            !loading ? (
+                <div>
+                    {users.map (user => <UserItem key={user.id} user={user}/>)}
+                </div>
+            ) : <Loading/>
+            
+        }</div>
+        
     );
 };
 
