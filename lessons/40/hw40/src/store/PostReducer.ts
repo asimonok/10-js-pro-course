@@ -8,20 +8,23 @@ export type ActionPayload <TypeAction, TypePayload> = {
 }
 
 export type FetchPostAction = Action<PostActionType.FETCH_POSTS>
-export type FetchSuccessUserAction = ActionPayload<PostActionType.FETCH_POSTS_SUCCESS, Post[]>
+export type FetchSuccessPostAction = ActionPayload<PostActionType.FETCH_POSTS_SUCCESS, Post[]>
+export type FetchLimitPostAction = ActionPayload<PostActionType.FETCH_POSTS_LIMIT, number>
 
-export type PostAction = FetchPostAction | FetchSuccessUserAction;
+export type PostAction = FetchPostAction | FetchSuccessPostAction | FetchLimitPostAction;
 
 
 
 type State = {
     posts: Post[],
     loading: boolean,
+    limit: number
 }
 
 const initialState: State = {
     posts: [],
     loading: false,
+    limit: 5
 }
 
 export const PostReducer = (state: State = initialState, action: PostAction): State => {
@@ -38,6 +41,12 @@ export const PostReducer = (state: State = initialState, action: PostAction): St
                 ...state,
                 posts: [...state.posts, ...action.payload],
                 loading: false
+            }
+        } 
+        case PostActionType.FETCH_POSTS_LIMIT: {
+            return {
+                ...state,
+                limit: action.payload
             }
         }
     }
