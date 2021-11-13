@@ -1,0 +1,12 @@
+.UserPostsList {
+    width: 60%;
+    margin: 0 auto;
+    
+}
+.UserPostItem {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}

@@ -44,7 +44,7 @@ const PostDetailsPage:FC =  () => {
                      })}>
                 <h3>Post {post?.id}. {post?.title}</h3>
                 <p> {post?.body}</p>
-                <div className={style.comment}>Comments
+                <div className={style.comment}><span>Comments</span>
                     { comments?.map( comment => <CommentItem key={comment.id} comment={comment}/>)}
                 </div>
                 <Button 

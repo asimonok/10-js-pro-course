@@ -5,3 +5,7 @@
     margin-top: 5px;
     border: 1px solid lightgray;
 }
+
+.userItem:hover {
+    cursor: pointer;
+}

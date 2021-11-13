@@ -14,6 +14,7 @@ import PostsPage from './components/PostsPage';
 import UsersPage from './components/UsersPage';
 import PostDetailsPage from './components/PostDetailsPage'
 import NotFoundPage from './components/NotFoundPage';
+import UserPostsPage from './components/UserPostsPage'
 
 
 function App() {
@@ -53,6 +54,9 @@ function App() {
           </Route>
           <Route path="/posts/:postId" exact>
             <PostDetailsPage/>
+          </Route>
+          <Route path="/userPost/:userId" exact>
+            <UserPostsPage/>
           </Route>
           <Route path="/notfound" exact>
             <NotFoundPage/>

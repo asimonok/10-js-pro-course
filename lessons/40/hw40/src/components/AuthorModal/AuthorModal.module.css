@@ -36,9 +36,10 @@
     transition: 0.5s ease all;
 }
 .close:hover {
-
     transform: scale(1.2);
-
+}
+.emailPhone {
+    color: rgb(72, 89, 241);
 }
 
 .small {

@@ -16,3 +16,8 @@
 .comment {
     margin-top: 10px;
 }
+
+.comment span {
+    font-size: 1.2rem;
+    text-decoration: underline;
+}

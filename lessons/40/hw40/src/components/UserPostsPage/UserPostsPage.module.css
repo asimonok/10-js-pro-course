@@ -1,0 +1,17 @@
+.UserPostHeader {
+    margin: 20px auto;
+    text-align: center;
+
+}
+.UserPostHeader span {
+    font-size: 1.2rem;
+    text-decoration: underline;
+
+}
+
+.BackToUsers {
+    text-align: center;
+    font-style: 1.3rem;
+
+
+}

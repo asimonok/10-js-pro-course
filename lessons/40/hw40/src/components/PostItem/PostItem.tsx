@@ -19,7 +19,7 @@ const cx = classNames.bind(style);
 const PostItem: React.FC<MyPostListProps> = (props) => {
     const {post, user, bgColor = 'calm', border = 'none'} = props;
     const [isOpened, setIsOpened] = useState(true);
-    const [theme, setTheme]= useContext(ThemeContext);
+    const [theme]= useContext(ThemeContext);
 
     const handleModal = useCallback(() => {
         setIsOpened(!isOpened)
