@@ -7,17 +7,25 @@ export enum PostDetailsActionType {
     FETCH_POST_DETAILS_SUCCESS = 'FETCH_POSTS_DETAILS_SUCCESS',
     FETCH_POST_COMMENTS = 'FETCH_POST_COMMENTS',
     FETCH_POST_COMMENTS_SUCCESS = 'FETCH_POST_COMMENTS_SUCCESS',
+    FETCH_POST_ERROR = 'FETCH_POST_ERROR',
 }
 
 export const fetchPostDetails= (postId:string) => {
     return (dispatch: Dispatch<PostDetatilsAction>) => {
         dispatch({type: PostDetailsActionType.FETCH_POST_DETAILS})
         fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-        .then((response):Promise<Post> => response.json())
+        .then((response):Promise<Post> => {
+            if(response.ok) {
+                return response.json()
+            }
+            dispatch({type: PostDetailsActionType.FETCH_POST_ERROR, payload: true})
+            throw new Error('error ...')})
         .then(post => {
             dispatch({type: PostDetailsActionType.FETCH_POST_DETAILS_SUCCESS, payload: post})
         })
-        .catch(error => console.log(error));
+        .catch(error => { 
+            console.log(error)
+        });
     }
 }
 
@@ -32,3 +40,4 @@ export const fetchPostComments= (postId:string) => {
         .catch(error => console.log(error));
     }
 }
+

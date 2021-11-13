@@ -1,6 +1,5 @@
-import React, {FC, useState, useEffect, useContext} from 'react';
+import React, {FC, useEffect, useContext} from 'react';
 import {ThemeContext} from 'components/ThemeProvider';
-import {Post, Comment} from 'types/types';
 import Loading from 'components/Loading';
 import {useParams, useHistory} from 'react-router-dom';
 import style from './PostDetailsPage.module.css';
@@ -9,8 +8,7 @@ import CommentItem from 'components/CommentItem';
 import Button from 'components/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store';
-import {fetchPostDetails, fetchPostComments} from 'store/actions/postDetails'
-
+import {fetchPostDetails, fetchPostComments, PostDetailsActionType} from 'store/actions/postDetails'
 
 const cx = classNames.bind(style);
 
@@ -19,43 +17,18 @@ interface PostDetailsPageParams {
 }
 
 const PostDetailsPage:FC =  () => {
-    const [theme, setTheme]= useContext(ThemeContext);
+    const [theme]= useContext(ThemeContext);
 
-    const {post, comments, loadingComments, loadingPosts} = useSelector((state: RootState) => state.postDetails);
-    // console.log(comments)
-
+    const {post, comments, loadingComments, loadingPosts, error} = useSelector((state: RootState) => state.postDetails);
     const params = useParams<PostDetailsPageParams>();
     const history = useHistory();
 
     const dispatch = useDispatch();
 
-    // const [post, setPost] = useState<Post | null>(); 
-    // const [comments, setComments] = useState<Comment[]>();
-    
-
-    // useEffect(() => {
-    //     Promise.all([
-    //         fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
-    //          .then((response):Promise<Post> => {
-    //              if(response.ok) {
-    //                 return response.json()
-    //              }
-    //              throw new Error('error ...') }),
-    //         fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}/comments`)
-    //          .then((response):Promise<Comment[]> => {
-    //             if(response.ok) {
-    //                 return response.json()
-    //             }
-    //             throw new Error('error ...') }),
-    //     ]).then( ([post, comments])=> {
-    //         setPost(post);
-    //         setComments(comments); 
-    //     }).catch(error => {
-    //         history.replace('/notfound');
-
-    //     })
-    // }, [params.postId, history]);
-
+    if(error) {
+        history.replace('/notfound');
+        dispatch({type: PostDetailsActionType.FETCH_POST_ERROR, payload: false})
+    }
 
     useEffect(() => {
         dispatch(fetchPostDetails(params.postId))

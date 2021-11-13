@@ -11,12 +11,13 @@ export type FetchPostDetailsAction = Action<PostDetailsActionType.FETCH_POST_DET
 export type FetchPostDetailsSuccessAction = ActionPayload<PostDetailsActionType.FETCH_POST_DETAILS_SUCCESS, Post>
 export type FetchPostCommentsAction = Action<PostDetailsActionType.FETCH_POST_COMMENTS>
 export type FetchPostCommentsSuccessAction = ActionPayload<PostDetailsActionType.FETCH_POST_COMMENTS_SUCCESS, Comment[]>
-
+export type FetchPostError = ActionPayload<PostDetailsActionType.FETCH_POST_ERROR, boolean>
 
 export type PostDetatilsAction = FetchPostDetailsAction
                     | FetchPostDetailsSuccessAction
                     | FetchPostCommentsAction
-                    | FetchPostCommentsSuccessAction;
+                    | FetchPostCommentsSuccessAction
+                    | FetchPostError;
 
 type State = {
     post: Post,
@@ -24,6 +25,7 @@ type State = {
     loadingPosts: boolean,
     loadingComments: boolean,
     limit: number,
+    error: boolean,
 }
 
 const initialState: State = {
@@ -31,7 +33,8 @@ const initialState: State = {
     comments: [],
     loadingPosts: false,
     loadingComments: false,
-    limit: 5
+    limit: 5,
+    error: false
 }
 
 export const PostDetailsReducer = (state: State = initialState, action: PostDetatilsAction): State => {
@@ -47,6 +50,12 @@ export const PostDetailsReducer = (state: State = initialState, action: PostDeta
                 ...state,
                 post: {...state.post, ...action.payload},
                 loadingPosts: false
+            }
+        }
+        case PostDetailsActionType.FETCH_POST_ERROR: {
+            return {
+                ...state,
+                error: action.payload
             }
         }
         case PostDetailsActionType.FETCH_POST_COMMENTS: {
