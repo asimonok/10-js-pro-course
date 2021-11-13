@@ -15,11 +15,10 @@ const PostsPage: FC = () => {
   const [numberOfPost, setNumberOfPost] = useState(5);
   const dispatch = useDispatch();
 
-
     useEffect(() => { 
       dispatch(fetchPosts());
       dispatch(fetchUsers())
-      }, [dispatch]);
+    }, [dispatch]);
  
     return (
         <div>{
