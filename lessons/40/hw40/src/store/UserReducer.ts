@@ -16,17 +16,17 @@ export type UserAction = FetchUserAction
             |FetchSuccessUserAction;
 
 
-
 type State = {
     users: User[],
-    loading: boolean
+    loading: boolean,
+    error: string
 
 }
 
-
 const initialState: State = {
     users: [],
-    loading: false
+    loading: false,
+    error: ''
 }
 
 export const UserReducer = (state: State = initialState, action: UserAction): State => {

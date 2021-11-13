@@ -1,12 +1,10 @@
 import { Dispatch } from "react"
-import {UserAction, FetchUserAction, FetchSuccessUserAction} from 'store/UserReducer'
+import {UserAction} from 'store/UserReducer'
 import {User} from 'types/types'
-
-
 
 export enum UserActionType {
     FETCH_USERS = 'FETCH_USERS',
-    FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS'
+    FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS',
 }
 
 export const fetchUsers = () => {
@@ -15,9 +13,10 @@ export const fetchUsers = () => {
         fetch(`https://jsonplaceholder.typicode.com/users`)
           .then((response):Promise<User[]> => response.json())
           .then( users => {
-            // setUsers(users);  
             dispatch({type: UserActionType.FETCH_USERS_SUCCESS, payload: users})
-        }).catch(error => console.log(error))
+        }).catch(error => {
+            console.log(error);
+        })
     }
 }
 

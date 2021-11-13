@@ -1,34 +1,29 @@
 import React, {FC, useState, useEffect} from 'react';
-import {Post, User} from 'types/types';
 import style from './PostsPage.module.css';
 import PostItem from 'components/PostItem';
 import Button from 'components/Button';
 import Loading from 'components/Loading';
-import { useHistory } from 'react-router-dom';
+import {fetchPosts} from 'store/actions/posts';
+import {fetchUsers} from 'store/actions/users';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'store';
 
 const PostsPage: FC = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
-    const [users, setUsers] = useState<User[]>([]);
-    const [numberOfPost, setNumberOfPost] = useState(5);
-    const [isloaded, setIsloaded] = useState(false);
-    const history = useHistory();
+  const {posts, loading} = useSelector( (state: RootState) => state.posts);
+  const {users} = useSelector( (state:RootState) => state.users);
+  const userLoading = useSelector( (state:RootState) => state.users.loading);
+  const [numberOfPost, setNumberOfPost] = useState(5);
+  const dispatch = useDispatch();
+
 
     useEffect(() => { 
-        Promise.all([
-          fetch(`https://jsonplaceholder.typicode.com/posts`)
-            .then((response):Promise<Post[]> => response.json()),
-          fetch(`https://jsonplaceholder.typicode.com/users`)
-            .then((response):Promise<User[]> => response.json()), 
-        ]).then(([posts, users]) => {
-          setPosts(posts);
-          setUsers(users);
-          setIsloaded(true);
-        }).catch(error => console.log(error))
-      }, []);
+      dispatch(fetchPosts());
+      dispatch(fetchUsers())
+      }, [dispatch]);
  
     return (
         <div>{
-            isloaded ? (
+          !loading && !userLoading ? (
                 <>
                 <div className={style.CardRow}>
                 {posts.slice(0,numberOfPost).map(post =>

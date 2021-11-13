@@ -7,12 +7,13 @@ import Loading from 'components/Loading'
 
 const UsersPage: FC = () => {
 
-    const { users, loading }= useSelector((state: RootState) => state.user);
+    const { users, loading }= useSelector((state: RootState) => state.users);
 
     const dispatch = useDispatch();
     useEffect(() => { 
         dispatch(fetchUsers())
     }, [dispatch]);
+
 
     return (
         <div>{
