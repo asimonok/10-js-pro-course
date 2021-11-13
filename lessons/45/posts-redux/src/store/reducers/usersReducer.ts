@@ -1,4 +1,3 @@
-import { PostsAction, PostsActionTypes, PostsState } from "../../types/posts";
 import { UsersAction, UsersActionTypes, UsersState } from "../../types/users";
 
 const initialState: UsersState = {

@@ -1,7 +1,9 @@
 import * as PostsActionCreators from "./posts";
 import * as UsersActionCreators from "./users";
 
-export default {
+const ActionCreators = {
   ...PostsActionCreators,
   ...UsersActionCreators,
 };
+
+export default ActionCreators;

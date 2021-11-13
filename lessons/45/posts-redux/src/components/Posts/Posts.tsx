@@ -1,29 +1,59 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useTypedSelector from "../../hooks";
 import { useActions } from "../../hooks/useActions";
+import logo from "./yy3.gif";
 
 const Posts = () => {
-  const { posts, error, loading } = useTypedSelector((state) => state.posts);
+  //   const [postsNumber, setPostsnNumber] = useState(5);
+  const { posts, error, loading, postsNumber } = useTypedSelector((state) => state.posts);
   const { users } = useTypedSelector((state) => state.users);
-  const { fetchPosts, fetchUsers } = useActions();
+  const { theme } = useTypedSelector((state) => state.theme);
+  const { fetchPosts, fetchUsers, increasePosts, changeTheme } = useActions();
   useEffect(() => {
     fetchPosts();
     fetchUsers();
   }, []);
   if (loading) {
-    return <h1>Loading</h1>;
+    return <img src={logo} alt="loading..." />;
   }
   if (error) {
     return <h1>{error}</h1>;
   }
+
+  const filteredPosts = posts.filter((post) => {
+    return post.id <= postsNumber;
+  });
+
   return (
     <>
-      {users.map((user) => {
-        return <div key={user.id}>{user.name}</div>;
-      })}
-      {posts.map((post) => {
-        return <div key={post.id}>{post.title}</div>;
-      })}
+      <ul>
+        {filteredPosts.map((post) => {
+          return (
+            <li key={post.id}>
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+              <p>
+                Author:
+                <button
+                  onClick={() => {
+                    console.log(postsNumber);
+                  }}
+                >
+                  {users[post.userId - 1]?.name}
+                </button>
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+      <button onClick={() => increasePosts()}>show more</button>
+      <button
+        onClick={() => {
+          changeTheme();
+        }}
+      >
+        {theme}
+      </button>
     </>
   );
 };
