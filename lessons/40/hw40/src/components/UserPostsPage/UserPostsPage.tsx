@@ -1,52 +1,41 @@
 import React, {FC, useState, useEffect} from 'react';
 import UserPostsList from 'components/UserPostsList';
 import {Post, User} from 'types/types';
-import { useParams, useHistory } from 'react-router';
+import { useParams} from 'react-router';
 import style from './UserPostsPage.module.css';
 import Loading from 'components/Loading';
-import {Link} from 'react-router-dom'
-// import Button from 'components/Button'
+import {Link, useHistory} from 'react-router-dom'
+import {fetchUserPosts, fetchUser} from 'store/actions/userPosts'
+import {RootState} from 'store/index'
+import {useSelector, useDispatch} from 'react-redux'
+import {UserPostsActionType} from 'store/actions/userPosts'
 
 interface UserPostsPageParams {
     userId: string;
 }
 
 const UserPostsPage: FC = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
-    const [isloadedPost, setIsloadedPost] = useState(false);
-    const [isloadedUser, setIsloadedUser] = useState(false);
-    const [user, setUser] = useState<User>();
-    const params = useParams<UserPostsPageParams>();
+
+    const {posts, user, loadingPosts, loadingUser, error} = useSelector((state: RootState) => state.userPosts);
+    const dispatch = useDispatch();
     const history = useHistory();
 
+    const params = useParams<UserPostsPageParams>();
 
-    console.log(posts)
-    console.log(params)
+    useEffect(() => {
+        dispatch(fetchUserPosts(params.userId));
+        dispatch (fetchUser(params.userId))
 
+    },[dispatch, params])
 
-    useEffect(()=> {
-        fetch(`https://jsonplaceholder.typicode.com/posts?userId=${params.userId}`)
-        .then((response):Promise<Post[]> => response.json())
-        .then(posts => {
-            setPosts(posts);
-            setIsloadedPost(true);
-
-        })
-        .catch(err => console.log(err))
-        fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`)
-        .then((response):Promise<User> => response.json())
-        .then(user => {
-            setUser(user);
-            setIsloadedUser(true);
-
-        })
-        .catch(err => console.log(err))
-    }, [params])
-
+    if(error) {
+        history.replace('/notfound');
+        dispatch({type: UserPostsActionType.FETCH_USER_POSTS_ERROR, payload: false})
+    }
 
     return (
         <div>{
-            isloadedPost && isloadedUser ? (
+            !loadingPosts && !loadingUser ? (
                 <>
                 <div> 
                     <h3 className={style.UserPostHeader}>All posts of <span>{user?.name}</span></h3>

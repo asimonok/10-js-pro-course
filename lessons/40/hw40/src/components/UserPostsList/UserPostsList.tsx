@@ -5,7 +5,6 @@ import style from './UserPostsList.module.css'
 
 interface MyUserPostsListProps {
     posts: Post[]
-
 }
 
 const UserPostsList: FC<MyUserPostsListProps> = ({posts}) => {

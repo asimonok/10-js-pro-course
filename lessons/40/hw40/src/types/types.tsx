@@ -3,7 +3,6 @@ export interface Address {
     city: string;
     street: string;
     suite: string;
-
 }
 
 export interface User {
@@ -27,6 +26,5 @@ export interface Comment {
     name: string;
     email: string;
     body: string;
-
 }
 
