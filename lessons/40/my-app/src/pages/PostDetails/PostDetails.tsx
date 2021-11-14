@@ -4,16 +4,20 @@ import { Post } from 'types/Post';
 import { Link, generatePath, useParams } from 'react-router-dom';
 import { RoutePath } from 'constants/RoutePath';
 import NoMatch from '../../components/NoMatch';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/store/store';
 
-interface IProps {
-  posts: Post[];
-}
-
-const PostDetails: FC<IProps> = (props) => {
-  const { posts } = props;
+const PostDetails: FC = () => {
   const params = useParams<{ postId: string }>();
 
-  const post = posts.find((post) => {
+  const posts = useSelector((state: RootState) => {
+    if (state.data.Posts !== undefined) {
+      return state.data.Posts.value;
+    }
+    return [];
+  });
+
+  const post = posts.find((post: Post) => {
     return post.id === parseInt(params.postId);
   });
 

@@ -1,24 +1,44 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import styles from './UserList.module.css';
 import { User } from 'types/User';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'redux/store/store';
+import Preloader from 'components/Preloader';
+import { makeFetch, DataType } from 'redux/actions/dataActions';
 
-interface IProps {
-  users: User[];
-}
+const UserList: FC = () => {
+  const dispatch = useDispatch();
 
-const UserList: FC<IProps> = (props) => {
-  const { users } = props;
+  useEffect(() => {
+    dispatch(
+      makeFetch(
+        DataType.Users,
+        fetch('https://jsonplaceholder.typicode.com/users/')
+      )
+    );
+  }, [dispatch]);
+
+  const users: User[] = useSelector((state: RootState) => {
+    if (state.data.Users !== undefined) {
+      return state.data.Users.value;
+    }
+    return [];
+  });
 
   return (
     <>
       <div className={styles.userList}>
-        {users.map((user) => {
-          return (
-            <div className={styles.userName} key={user.id}>
-              {user.name}
-            </div>
-          );
-        })}
+        {!users ? (
+          <Preloader />
+        ) : (
+          users.map((user) => {
+            return (
+              <div className={styles.userName} key={user.id}>
+                {user.name}
+              </div>
+            );
+          })
+        )}
       </div>
     </>
   );

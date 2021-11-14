@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useContext, useCallback } from 'react';
+import React, { FC, useState, useContext, useCallback } from 'react';
 import styles from './PostCard.module.css';
 import { Post } from 'types/Post';
 import { User } from 'types/User';
@@ -9,31 +9,36 @@ import { THEMES } from 'constants/THEMES';
 import classNames from 'classnames/bind';
 import { Link, generatePath } from 'react-router-dom';
 import { RoutePath } from 'constants/RoutePath';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/store/store';
 
 let cx = classNames.bind(styles);
 
 interface IProps {
   post: Post;
-  users: User[];
 }
 
 const PostCard: FC<IProps> = (props) => {
-  const { post, users } = props;
+  const { post } = props;
   const [modal, setModal] = useState(false);
   const [theme] = useContext(ThemeContext);
-  const [user, setuser] = useState<User>();
 
   const toggleModal = useCallback(() => {
     setModal(modal === false ? true : false);
   }, [modal, setModal]);
 
-  useEffect(() => {
-    setuser(
-      users.find((user) => {
-        return user.id === post.userId;
-      })
-    );
-  }, [users, post]);
+  const users: User[] = useSelector((state: RootState) => {
+    if (state.data.Users !== undefined) {
+      return state.data.Users.value;
+    }
+    return [];
+  });
+
+  const user =
+    users &&
+    users.find((user) => {
+      return user.id === post.userId;
+    });
 
   return (
     <div className={styles.post}>

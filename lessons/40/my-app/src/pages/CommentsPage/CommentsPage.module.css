@@ -2,3 +2,7 @@
   color: var(--color-text);
   text-align: center;
 }
+
+.comments {
+  margin: 15px;
+}

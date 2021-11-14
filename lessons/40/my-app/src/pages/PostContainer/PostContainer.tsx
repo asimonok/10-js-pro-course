@@ -1,20 +1,40 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import styles from './PostContainer.module.css';
 import PostCard from '../../components/PostCard';
 import { Post } from 'types/Post';
-import { User } from 'types/User';
 import Button from '../../components/Button';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'redux/store/store';
+import Preloader from 'components/Preloader';
+import { makeFetch, DataType } from 'redux/actions/dataActions';
 
-interface IProps {
-  posts: Post[];
-  users: User[];
-}
-
-const PostContainer: FC<IProps> = (props) => {
-  const { posts, users } = props;
+const PostContainer: FC = () => {
   const location = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      makeFetch(
+        DataType.Posts,
+        fetch('https://jsonplaceholder.typicode.com/posts')
+      )
+    );
+    dispatch(
+      makeFetch(
+        DataType.Users,
+        fetch('https://jsonplaceholder.typicode.com/users')
+      )
+    );
+  }, [dispatch]);
+
+  const posts: Post[] = useSelector((state: RootState) => {
+    if (state.data.Posts !== undefined) {
+      return state.data.Posts.value;
+    }
+    return [];
+  });
 
   const onShowMore = useCallback(() => {
     const query = new URLSearchParams(location.search);
@@ -30,9 +50,13 @@ const PostContainer: FC<IProps> = (props) => {
   return (
     <>
       <div className={styles.postCardList}>
-        {posts.slice(0, parseInt(displayLimit)).map((post) => {
-          return <PostCard post={post} users={users} key={post.id} />;
-        })}
+        {!posts ? (
+          <Preloader />
+        ) : (
+          posts.slice(0, parseInt(displayLimit)).map((post: Post) => {
+            return <PostCard post={post} key={post.id} />;
+          })
+        )}
       </div>
       <Button text="Show more" onClick={onShowMore} />
     </>
