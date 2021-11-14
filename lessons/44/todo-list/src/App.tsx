@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
+
 import './App.css';
 import AddForm from './components/Todo-add-form';
-import FilterPannel from './components/Todo-filter-pannel';
-import { store } from './store/store';
-
 import ClearPannel from './components/Todo-clear-pannel';
 import {Data} from './types/Data';
 
@@ -19,6 +17,8 @@ function App() {
     <div className="App">
       <div className="container">
         <AddForm/> 
+        <ClearPannel />
+        
       </div>
     </div>
   );

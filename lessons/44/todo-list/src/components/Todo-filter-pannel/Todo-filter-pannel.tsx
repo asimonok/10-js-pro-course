@@ -1,46 +1,36 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {RootState} from '../../store/store';
 import MyButton from '../Button';
+import {TodoFilter, setFilter} from '../../store/reducer';
 
 import './Todo-filter-pannel.css';
 
 interface Props {
-    //text: string,
+    text?: string,
     onClick?: () => void
 }
 
 const FilterPannel = (props: Props) => {
 
-    // const buttonsData = [
-    //     {name: 'all', label: 'All-'},
-    //     {name: 'done', label: 'Done-'},
-    //     {name: 'todo', label: 'Todo'}
-    // ];
-    // const [filter, setFilter] = useState('all');
-
-    // const buttons = buttonsData.map( ({name, label}) => {
-       
-    //     return( 
-    //     <MyButton 
-    //         text={text}
-    //        // onClick={() => props.onFilterSelect(name)}
-    //        >
-    //         {label}
-    //     </MyButton>
-    //    )
-    // } )
-    const hanleClack = () => {
-        console.log('click');
-    }
+    const activeFilter = useSelector((state: RootState) => state.todos.filter);
+    const dispatch = useDispatch();
+    const onFilter = (filter: TodoFilter) => dispatch(setFilter(filter)); 
 
     return (
         <>
             <h2>TodoList</h2>
-            {/* {buttons} */}
-           <div className="wrapper">
-           <MyButton text="All" onClick={hanleClack}/>
-            <MyButton text="Done" onClick={hanleClack}/>
-            <MyButton text="Todo" onClick={hanleClack}/>
-           </div>
+            <div className="wrapper">
+            {Object.values(TodoFilter).map((filter, i) => {
+            return <MyButton 
+                    key={i}
+                    text={filter}
+                    disabled={filter === activeFilter}
+                    onClick={() => onFilter(filter)}
+                    />
+            })}
+
+            </div>  
         </>
     )
 }

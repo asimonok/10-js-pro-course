@@ -1,5 +1,22 @@
-.wrapper{
-    display: flex;
-    justify-content: space-between;
-    width: 1200px;
+.button {
+    width: 49%;
+  }
+  
+.btn__delete {
+background-color: var(--secondary-color);
+margin: 15px;
+display: block;
+height: 50px;
+width: 97%;
+font-size: 20px;
+color: var(--primary-text-color);
+border-radius: 8px;
+border: none;
+cursor: pointer;
+}
+.button__wrapper{
+margin-left: 15px;
+display: flex;
+justify-content: space-between;
+width: 1185px;
 }

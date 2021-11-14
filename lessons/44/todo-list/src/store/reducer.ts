@@ -3,10 +3,10 @@ import {v4} from 'uuid';
 
 enum TodoAction {
     Add = 'ADD_TASK',
-    Toggle = 'TOGGLE_TAsK',
+    Toggle = 'TOGGLE_TASK',
     Edit = 'EDIT_TASK',
     Remove = 'REMOVE_TASK',
-    Filter = "FILTER_TASKS",
+    SetFilter = "FILTER_TASKS",
     Delete_All = "DELETE_ALL_TASKS",
     Delete_Done = "DELETE_DONE_TASKS"
 }
@@ -18,6 +18,7 @@ export enum TodoFilter {
 }
 
 let items: Array<TodoItem> = [];
+
 interface TodoItem {
     id: string;
     title: string;
@@ -29,7 +30,6 @@ type State = {
     filter: TodoFilter;
 }
 
-
 const initialState: State = {
     items: items,
     filter: TodoFilter.All,
@@ -38,8 +38,8 @@ const initialState: State = {
 type AddTodoAction = ActionPayload<TodoAction.Add, TodoItem> 
 type ToggleTodoAction = ActionPayload<TodoAction.Toggle, string> 
 type EditTodoAction = ActionPayload<TodoAction.Edit, {id: string, title: string}> 
-type RemoveTodoActions = ActionPayload<TodoAction.Remove, string>
-type SetFilterAction = ActionPayload<TodoAction.Filter, TodoFilter>
+type RemoveTodoAction = ActionPayload<TodoAction.Remove, string>
+type SetFilterAction = ActionPayload<TodoAction.SetFilter, TodoFilter>
 type DeleteAllAction = ActionDelete<TodoAction.Delete_All>
 type DeleteDoneAction = ActionDelete<TodoAction.Delete_Done>
 
@@ -62,26 +62,29 @@ export const editTodo = (id: string, title: string): EditTodoAction => ({
     payload: { id, title },
 })
 
-export const filterTodo = (filter: TodoFilter): SetFilterAction=> ({
-    type: TodoAction.Filter,
-    payload: filter
-})
-
-export const deleteTodo = (id: string): RemoveTodoActions => ({
+export const removeTodo = (id: string): RemoveTodoAction => ({
     type: TodoAction.Remove,
     payload: id,
   });
-  
+ 
+export const setFilter = (filter: TodoFilter): SetFilterAction=> ({
+    type: TodoAction.SetFilter,
+    payload: filter
+}) 
 
-export const deleteAllTodo = (): DeleteAllAction=> ({ type: TodoAction.Delete_All });
+export const deleteAllTodo = (): DeleteAllAction=> ({ 
+    type: TodoAction.Delete_All 
+});
 
-export const deleteDoneTodo = (): DeleteDoneAction=> ({ type: TodoAction.Delete_Done });
+export const deleteDoneTodo = (): DeleteDoneAction=> ({ 
+    type: TodoAction.Delete_Done 
+});
 
 type ActionDelete <TypeAction> = {
     type: TypeAction;
 }
 
-type TodoActions = AddTodoAction | ToggleTodoAction | EditTodoAction | RemoveTodoActions | SetFilterAction | DeleteAllAction | DeleteDoneAction; 
+type TodoActions = AddTodoAction | ToggleTodoAction | EditTodoAction | RemoveTodoAction | SetFilterAction | DeleteAllAction | DeleteDoneAction; 
 
 export const todosReducer = (state: State = initialState, action: TodoActions) => {
      switch (action.type) {
@@ -125,7 +128,7 @@ export const todosReducer = (state: State = initialState, action: TodoActions) =
                 items: state.items.filter(item => item.id !== action.payload)
             }
         }
-        case TodoAction.Filter: {
+        case TodoAction.SetFilter: {
             return {
                 ...state,
                 filter: action.payload

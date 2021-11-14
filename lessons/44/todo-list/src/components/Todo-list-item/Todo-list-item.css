@@ -28,6 +28,11 @@
     transition: all 500ms ease-in;
   }
 
+.list-group {
+    margin: 30px;
+    width: 100%;
+}
+
 .list-group-item {
     padding: 15px 20px;
     border: 1px solid #bbb7b7;
@@ -49,11 +54,19 @@
     vertical-align: middle;
 }
 
-.fas {
+.fas, .far {
     background-color: #ffffff;
     font-size: 25px;
     vertical-align: middle;
     border: none;
+}
+
+.fa-save { 
+    color: #3737b3
+}
+
+.fa-pen {
+    color: #ffa600;
 }
 
 .btn-sm {

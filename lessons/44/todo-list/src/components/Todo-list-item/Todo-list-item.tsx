@@ -1,10 +1,7 @@
 import React, {useState, useCallback, ChangeEvent} from 'react';
-import { Container, ListGroup } from 'react-bootstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { useSelector, useDispatch } from 'react-redux';
-import {RootState} from '../../store/store';
-import {toggleTodo, editTodo, deleteTodo} from '../../store/reducer';
-import MyButton from '../Button'; 
+import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import {toggleTodo, editTodo, removeTodo} from '../../store/reducer';
 import './Todo-list-item.css';
 
 interface Props {
@@ -13,37 +10,87 @@ interface Props {
   isDone: boolean;
 }
 
-const ListItem: React.FC<Props> = () => {
+const ListItem: React.FC<Props> = ({isDone, title, id}) => {
 
-  // const { title, id, isDone } = props;
-  // const [isEdit, setIsEdit] = useState(false);
-  // const [updatedTitle, setUpdatedTitle] = useState(title);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [isEdit, setIsEdit] = useState(false);
+  const [correctedTitle, setCorrectedTitle] = useState(title);
 
-  // const completeOnChange = useCallback(() => {
-  //   dispatch(completeTodo(item.id));
-  // }, [dispatch, item.id]);
+  const onToogle = useCallback( () => {
+    dispatch(toggleTodo(id));
+  }, [dispatch, id, toggleTodo] );
 
-  // const editOnClick = useCallback(() => {
-  //   setIsEdit(true);
-  // }, [setIsEdit]);
+  const onEdit = useCallback( () => {
+    setIsEdit(true);
+  }, [setIsEdit] );
 
-  // const saveOnClick = useCallback(() => {
-  //   setIsEdit(false);
-  //   dispatch(editTodo(id, updatedTitle));
-  // }, [setIsEdit, dispatch, updatedTitle, id]);
+  const onSave = useCallback( () => {
+    setIsEdit(false);
+    dispatch(editTodo(id, correctedTitle))
+  }, [setIsEdit, dispatch, correctedTitle] );
 
-  // const onChangeTitle = useCallback(
-  //   (e: ChangeEvent<HTMLInputElement>) => {
-  //     setUpdatedTitle(e.target.value);
-  //   },
-  //   [setUpdatedTitle]
-  // );
+  const onCorrect = useCallback( (e: ChangeEvent<HTMLInputElement>) => {
+    setCorrectedTitle(e.target.value)
+  }, [setCorrectedTitle] )
+
+  const onRemove = useCallback( () => {
+    dispatch(removeTodo(id));
+  }, [dispatch, id, removeTodo] );
 
     return (
-      <div>
-
-      </div>
+      <div className="list-group">
+        {!isEdit && (
+            <div className="list-group-item">
+              {title}
+              <div className='bnt__block'>
+                <input 
+                  type="checkbox" 
+                  checked={isDone} 
+                  className="check"
+                  onChange={onToogle}/>
+                <button type="button"
+                    className="btn-pen btn-sm "
+                    onClick={onEdit}
+                    >
+                    <i className="fas fa-pen"></i>
+                </button>
+                <Button
+                  className="remove-btn"
+                  variant="danger"
+                  size="sm"
+                  onClick={onRemove}
+                  >
+                  <i className="fas fa-trash"></i>
+                </Button>
+              </div>
+            </div>
+        )}
+        {isEdit && (
+            <div className="list-group-item">
+              <input 
+                type="text" 
+                value={correctedTitle}
+                onChange={onCorrect}
+                />
+               <div className='bnt__block'>
+              <button type="button"
+              className="btn-save btn-sm "
+              onClick={onSave}
+              >
+              <i className="fas fa-save"></i>
+              </button>
+              <Button
+                  className="remove-btn"
+                  variant="danger"
+                  size="sm"
+                  onClick={onRemove}
+                  >
+                  <i className="fas fa-trash"></i>
+                </Button>
+              </div>
+            </div>
+        )}
+      </div>      
     )
   }
 

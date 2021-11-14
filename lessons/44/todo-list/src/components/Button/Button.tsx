@@ -8,6 +8,8 @@ interface Props {
     deleteButton?: boolean;
     filterButton?: boolean;
     saveButton?: boolean;
+    className?: string;
+    disabled?: boolean
 }
 
 const MyButton = (props: Props) => {
