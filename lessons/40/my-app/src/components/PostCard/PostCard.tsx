@@ -40,6 +40,17 @@ const PostCard: FC<IProps> = (props) => {
       return user.id === post.userId;
     });
 
+  /* const mapUsers =
+    users &&
+    users.reduce(
+      (acc, user) => ({
+        ...acc,
+        [user.id]: user,
+      }),
+      {}
+    );
+  console.log(mapUsers); */
+
   return (
     <div className={styles.post}>
       <div className={styles.postContent}>
@@ -52,7 +63,7 @@ const PostCard: FC<IProps> = (props) => {
           postInfoDark: theme === THEMES.DARK,
         })}
       >
-        <div className={styles.postuser}>
+        <div className={styles.postUser}>
           <span
             className={cx({
               user: true,

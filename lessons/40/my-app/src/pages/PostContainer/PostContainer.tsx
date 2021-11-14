@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import styles from './PostContainer.module.css';
 import PostCard from '../../components/PostCard';
 import { Post } from 'types/Post';
@@ -10,6 +10,7 @@ import Preloader from 'components/Preloader';
 import { makeFetch, DataType } from 'redux/actions/dataActions';
 
 const PostContainer: FC = () => {
+  const [displayLimit] = useState(5);
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -38,14 +39,13 @@ const PostContainer: FC = () => {
 
   const onShowMore = useCallback(() => {
     const query = new URLSearchParams(location.search);
-    const totalPosts = query.get('totalPosts') || '0';
+    const totalPosts = query.get('totalPosts') || '5';
     const newTotalPosts = parseInt(totalPosts, 10) + 5;
     query.set('totalPosts', newTotalPosts.toString());
-
     history.push(`${location.pathname}?${query.toString()}`);
   }, [history, location.pathname, location.search]);
 
-  const displayLimit = location.search.split('=')[1];
+  const newDisplayLimit = location.search.split('=')[1];
 
   return (
     <>
@@ -53,9 +53,14 @@ const PostContainer: FC = () => {
         {!posts ? (
           <Preloader />
         ) : (
-          posts.slice(0, parseInt(displayLimit)).map((post: Post) => {
-            return <PostCard post={post} key={post.id} />;
-          })
+          posts
+            .slice(
+              0,
+              !newDisplayLimit ? displayLimit : parseInt(newDisplayLimit)
+            )
+            .map((post: Post) => {
+              return <PostCard post={post} key={post.id} />;
+            })
         )}
       </div>
       <Button text="Show more" onClick={onShowMore} />

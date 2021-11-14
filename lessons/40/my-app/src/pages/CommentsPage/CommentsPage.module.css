@@ -5,4 +5,5 @@
 
 .comments {
   margin: 15px;
+  color: var(--color-text);
 }

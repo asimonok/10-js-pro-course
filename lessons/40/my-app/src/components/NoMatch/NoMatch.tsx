@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styles from './NoMatch.module.css';
 import { Link } from 'react-router-dom';
 
-const NoMatch: FC<{}> = (props) => {
+const NoMatch: FC = () => {
   return (
     <div>
       <h2 className={styles.pageTitle}>Post not found...</h2>

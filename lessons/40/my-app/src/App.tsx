@@ -16,18 +16,27 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-const App: FC<{}> = (props) => {
+const App: FC = () => {
   const [theme, setTheme] = useContext(ThemeContext);
+
+  let themeAtribute = localStorage.getItem('themeAtribute');
+  if (themeAtribute) {
+    document.documentElement.setAttribute('themeAtribute', themeAtribute);
+  }
 
   const toggleTheme = useCallback(() => {
     if (theme === THEMES.LIGHT) {
       setTheme(THEMES.DARK);
-      document.documentElement.setAttribute('theme', 'dark');
+      document.documentElement.setAttribute('themeAtribute', 'dark');
+      localStorage.setItem('themeAtribute', 'dark');
     } else {
       setTheme(THEMES.LIGHT);
-      document.documentElement.removeAttribute('theme');
+      document.documentElement.removeAttribute('themeAtribute');
+      localStorage.removeItem('themeAtribute');
     }
   }, [theme, setTheme]);
+
+  localStorage.setItem('theme', theme);
 
   return (
     <Router>

@@ -6,12 +6,14 @@ interface IProps {
 }
 
 const ThemeContext = React.createContext<[THEMES, Dispatch<THEMES>]>([
-  THEMES.LIGHT,
+  '' as THEMES,
   () => {},
 ]);
 
 const ThemeProvider: FC<IProps> = (props) => {
-  const [theme, setTheme] = useState(THEMES.LIGHT);
+  const [theme, setTheme] = useState(
+    (localStorage.getItem('theme') as THEMES) || THEMES.LIGHT
+  );
   const { children } = props;
 
   return (
