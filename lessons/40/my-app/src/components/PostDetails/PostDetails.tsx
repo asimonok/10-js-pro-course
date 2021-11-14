@@ -4,30 +4,39 @@ import { useParams, useHistory } from "react-router-dom";
 import styles from "./PostDetails.module.css";
 import classNames from "classnames/bind";
 import Comment from "../Comment";
-// import NotFound from "../NotFound";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setComments } from "store/reducers/posts";
+import { RootState } from "store/store";
 
 interface Post {
-  userId?: number;
-  id?: number;
+  userId: number;
+  id: number;
   title: string;
   body: string;
 }
 
 interface CommentUser {
-  postId?: number;
-  id?: number;
+  postId: number;
+  id: number;
   name: string;
   email: string;
   body: string;
 }
 
+type Params = {
+  postId: string;
+};
+
 const cx = classNames.bind(styles);
 
-const PostDetails: React.FC<{}> = (props) => {
+const PostDetails: React.FC<{}> = () => {
   const [theme] = useContext(ThemeContext);
   const [post, setPost] = useState<Post>();
-  const [comments, setComments] = useState<CommentUser[]>();
-  const params = useParams<{ postId: string }>();
+  const dispatch = useDispatch();
+  // const [comments, setComments] = useState<CommentUser[]>();
+  const comments = useSelector((state: RootState) => state.posts.comments);
+  const params = useParams<Params>();
   const history = useHistory();
 
   useEffect(() => {
@@ -41,12 +50,13 @@ const PostDetails: React.FC<{}> = (props) => {
     ])
       .then(([post, comments]) => {
         setPost(post);
-        setComments(comments);
+        // setComments(comments);
+        dispatch(setComments(comments));
       })
       .catch(() => {
         history.replace("/posts");
       });
-  }, [params.postId, history]);
+  }, [params, history, dispatch]);
 
   return (
     <div
@@ -56,14 +66,14 @@ const PostDetails: React.FC<{}> = (props) => {
         dark: theme === "dark",
       })}
     >
-      <h1>Post details (postId: {params.postId})</h1>
+      <h1>Post details</h1>
       <div>
         <h2 className={styles.title}>{post?.title}</h2>
         <p className={styles.text}>{post?.body}</p>
       </div>
       <div>
         <h2 className={styles.title}>Comments</h2>
-        {comments?.map((comment) => (
+        {comments?.map((comment: CommentUser) => (
           <Comment key={comment.id} comment={comment} />
         ))}
       </div>

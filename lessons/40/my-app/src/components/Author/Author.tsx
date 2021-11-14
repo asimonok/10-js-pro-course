@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styles from "./User.module.css";
+import styles from "./Author.module.css";
 import { ThemeContext } from "../ThemeContext";
 import classNames from "classnames/bind";
 
@@ -29,7 +29,7 @@ interface Props {
 
 const cx = classNames.bind(styles);
 
-const User: React.FC<Props> = (props) => {
+const Author: React.FC<Props> = (props) => {
   const [theme] = useContext(ThemeContext);
 
   return (
@@ -63,4 +63,4 @@ const User: React.FC<Props> = (props) => {
   );
 };
 
-export default User;
+export default Author;

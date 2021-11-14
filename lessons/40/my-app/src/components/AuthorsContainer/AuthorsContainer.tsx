@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from "react";
-import styles from "./UsersContainer.module.css";
-import User from "../User";
+import React, { useEffect } from "react";
+import styles from "./AuthorsContainer.module.css";
+import Author from "../Author";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setAuthors } from "store/reducers/posts";
+import { RootState } from "store/store";
 
 interface Props {
   id: any;
@@ -27,8 +31,10 @@ interface Props {
   };
 }
 
-const UsersContainer = () => {
-  const [users, setUsers] = useState([]);
+const AuthorsContainer = () => {
+  // const [users, setUsers] = useState([]);
+  const dispatch = useDispatch();
+  const authors = useSelector((state: RootState) => state.posts.authors);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -36,20 +42,21 @@ const UsersContainer = () => {
         return response.json();
       })
 
-      .then((data) => {
-        setUsers(data);
+      .then((authors) => {
+        dispatch(setAuthors(authors));
+        // setUsers(data);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.component}>
       <div className={styles.row}>
-        {users.map((user: Props) => {
+        {authors.map((user: Props) => {
           return (
-            <User
+            <Author
               key={user.id}
-              {...users[user.userId - 1]}
+              {...authors[user.userId - 1]}
               name={user.name}
               username={user.username}
               email={user.email}
@@ -65,4 +72,4 @@ const UsersContainer = () => {
   );
 };
 
-export default UsersContainer;
+export default AuthorsContainer;

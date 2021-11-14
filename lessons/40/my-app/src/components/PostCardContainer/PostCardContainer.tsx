@@ -5,6 +5,10 @@ import BeatLoader from "react-spinners/BeatLoader";
 import { ThemeContext } from "../ThemeContext";
 import classNames from "classnames/bind";
 
+import { useDispatch, useSelector } from "react-redux";
+import { setPosts, setAuthors } from "store/reducers/posts";
+import { RootState } from "store/store";
+
 interface Post {
   id: number;
   title: string;
@@ -15,10 +19,13 @@ interface Post {
 const cx = classNames.bind(styles);
 
 const PostCardContainer = () => {
-  const [posts, setPosts] = useState([]);
-  const [authors, setAuthors] = useState([]);
+  // const [posts, setPosts] = useState([]);
+  // const [authors, setAuthors] = useState([]);
   const [postsLimit, setPostsLimit] = useState(5);
   const [theme] = useContext(ThemeContext);
+  const dispatch = useDispatch();
+  const authors = useSelector((state: RootState) => state.posts.authors);
+  const posts = useSelector((state: RootState) => state.posts.posts);
 
   useEffect(() => {
     const postsPromise = fetch(
@@ -30,11 +37,13 @@ const PostCardContainer = () => {
 
     Promise.all([postsPromise, authorsPromise])
       .then(([posts, authors]) => {
-        setPosts(posts);
-        setAuthors(authors);
+        dispatch(setPosts(posts));
+        dispatch(setAuthors(authors));
+        // setPosts(posts);
+        // setAuthors(authors);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [dispatch]);
 
   const setNewPostsLimits = useCallback(() => {
     setPostsLimit(postsLimit + 5);

@@ -30,6 +30,7 @@
 }
 
 .list__item {
+  margin-right: 15px;
   list-style-type: none;
 }
 

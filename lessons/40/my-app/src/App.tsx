@@ -9,7 +9,7 @@ import styles from "./App.module.css";
 import PostCardContainer from "./components/PostCardContainer";
 import { ThemeProvider } from "./components/ThemeContext";
 import Header from "./components/Header";
-import UsersContainer from "./components/UsersContainer";
+import AuthorsContainer from "./components/AuthorsContainer";
 import PostDetails from "./components/PostDetails";
 import NotFound from "./components/NotFound";
 
@@ -29,7 +29,7 @@ function App() {
             <Route path="/users" exact>
               <div className={styles.container}>
                 <h1>Users</h1>
-                <UsersContainer />
+                <AuthorsContainer />
               </div>
             </Route>
             <Route path="/posts/:postId" exact>
