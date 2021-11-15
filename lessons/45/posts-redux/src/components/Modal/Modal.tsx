@@ -13,14 +13,16 @@ interface Props {
 
 const Modal: React.FC<Props> = (props) => {
   const { theme } = useTypedSelector((state) => state.theme);
-  const { posts, error, loading, postsNumber, postId } = useTypedSelector((state) => state.posts);
+  const { postId } = useTypedSelector((state) => state.posts);
   const { users } = useTypedSelector((state) => state.users);
   const { fetchUsers } = useActions();
 
   useEffect(() => {
     fetchUsers();
   }, []);
+
   let newUser = users.filter((user) => user.id === postId);
+
   return (
     <>
       {newUser.map((user) => {

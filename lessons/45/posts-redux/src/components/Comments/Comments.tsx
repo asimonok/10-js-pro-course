@@ -20,6 +20,7 @@ const Comments = () => {
   if (error) {
     return <h1>{error}</h1>;
   }
+
   return (
     <>
       {comments.map((comment) => {

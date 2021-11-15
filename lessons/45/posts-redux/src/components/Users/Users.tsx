@@ -11,12 +11,14 @@ const Users = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
+
   if (loading) {
     return <img src={logo} alt="loading..." />;
   }
   if (error) {
     return <h1>{error}</h1>;
   }
+
   return (
     <>
       <h1 className={styles.users}>Users</h1>

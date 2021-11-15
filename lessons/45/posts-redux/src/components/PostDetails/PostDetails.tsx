@@ -7,18 +7,22 @@ import { useActions } from "../../hooks/useActions";
 import { PostsType } from "../../types/posts";
 import logo from "../Posts/yy3.gif";
 
-interface PostDetailsFilter {
-  postDetailss: PostsType[];
-}
+// interface PostDetailsFilter {
+//   postDetailss: PostsType[];
+// }
+
 const PostDetails = () => {
   let params = useParams<{ postId: string }>();
   const { postDetails, loading, error } = useTypedSelector((state) => state.posts);
   const { fetchPostDetails } = useActions();
+
   useEffect(() => {
     fetchPostDetails(params.postId);
   }, []);
+
   const postDetailsfilter: any = [];
   postDetailsfilter.push(postDetails);
+
   if (loading) {
     return <img src={logo} alt="loading..." />;
   }
