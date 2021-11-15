@@ -9,6 +9,27 @@ export enum UserActionType {
     FETCHED_USERS = 'FETCHED_USERS',
 }
 
+type State = {
+    users: AuthorTypes[],
+    loading: boolean,
+    error: string
+}
+
+const initialState: State = {
+    users: [],
+    loading: false,
+    error: ''
+}
+
+export type ActionPayload <TypeAction, TypePayload> = {
+    type: TypeAction;
+    payload: TypePayload;
+}
+export type FetchUserAction = Action<UserActionType.FETCHING_USERS>
+export type FetchSuccessUserAction = ActionPayload<UserActionType.FETCHED_USERS, AuthorTypes[]>
+
+export type UserAction = FetchUserAction | FetchSuccessUserAction;
+
 export const fetchUsers = () => {
     return (dispatch: Dispatch<UserAction>) => {
         dispatch({type: UserActionType.FETCHING_USERS})
@@ -20,28 +41,6 @@ export const fetchUsers = () => {
             console.log(error);
         })
     }
-}
-
-export type ActionPayload <TypeAction, TypePayload> = {
-    type: TypeAction;
-    payload: TypePayload;
-}
-
-export type FetchUserAction = Action<UserActionType.FETCHING_USERS>
-export type FetchSuccessUserAction = ActionPayload<UserActionType.FETCHED_USERS, AuthorTypes[]>
-
-export type UserAction = FetchUserAction | FetchSuccessUserAction | FetchUserAction;
-
-type State = {
-    users: AuthorTypes[],
-    loading: boolean,
-    error: string
-}
-
-const initialState: State = {
-    users: [],
-    loading: false,
-    error: ''
 }
 
 export const UserReducer = (state: State = initialState, action: UserAction): State => {
