@@ -1,7 +1,7 @@
 import React, {useState, useCallback, useEffect, FC} from 'react';
 import {PostTypes} from '../../types/PostTypes';
 import {AuthorTypes} from '../../types/AuthorTypes';
-import Card from '../Card/Card';
+import Card from '../Card';
 
 import './Container.css';
 

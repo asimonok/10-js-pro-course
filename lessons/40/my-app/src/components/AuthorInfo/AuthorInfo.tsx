@@ -23,5 +23,3 @@ const AuthorInfo = ({authorInfo}: Props): JSX.Element => {
 }
 
 export default AuthorInfo;
-
-
