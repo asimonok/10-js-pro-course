@@ -2,15 +2,21 @@ import { useEffect } from "react";
 import useTypedSelector from "../../hooks";
 import { useActions } from "../../hooks/useActions";
 import styles from "./Users.module.css";
+import logo from "../Posts/yy3.gif";
 
 const Users = () => {
-  const { users } = useTypedSelector((state) => state.users);
+  const { users, error, loading } = useTypedSelector((state) => state.users);
   const { fetchUsers } = useActions();
 
   useEffect(() => {
     fetchUsers();
   }, []);
-
+  if (loading) {
+    return <img src={logo} alt="loading..." />;
+  }
+  if (error) {
+    return <h1>{error}</h1>;
+  }
   return (
     <>
       <h1 className={styles.users}>Users</h1>

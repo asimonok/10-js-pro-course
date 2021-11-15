@@ -7,12 +7,15 @@ import styles from "./Posts.module.css";
 import classNames from "classnames/bind";
 
 let cx = classNames.bind(styles);
-
-const Posts = () => {
+interface Props {
+  active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const Posts: React.FC<Props> = (props) => {
   const { posts, error, loading, postsNumber } = useTypedSelector((state) => state.posts);
   const { users } = useTypedSelector((state) => state.users);
   const { theme } = useTypedSelector((state) => state.theme);
-  const { fetchPosts, fetchUsers, increasePosts } = useActions();
+  const { fetchPosts, fetchUsers, increasePosts, findPostId } = useActions();
 
   useEffect(() => {
     fetchPosts();
@@ -69,11 +72,12 @@ const Posts = () => {
                   card__author__dark: theme,
                 })}
               >
-                Author:
+                Author:{" "}
                 <button
                   className={styles.card__button}
                   onClick={() => {
-                    console.log(postsNumber);
+                    props.setActive(true);
+                    findPostId(post.id);
                   }}
                 >
                   {users[post.userId - 1]?.name}

@@ -13,6 +13,7 @@ export enum PostsActionTypes {
   FETCH_POSTS_DETAILS = "FETCH_POSTS_DETAILS",
   FETCH_POSTS_DETAILS_SUCCESS = "FETCH_POSTS_DETAILS_SUCCESS",
   FETCH_POSTS_DETAILS_ERROR = "FETCH_POSTS_DETAILS_ERROR",
+  FIND_POST_ID = "FIND_POST_ID",
 }
 
 interface FetchPostsAction {
@@ -46,13 +47,17 @@ interface FetchPostsDetailsErrorAction {
   type: PostsActionTypes.FETCH_POSTS_DETAILS_ERROR;
   payload: string;
 }
-
+interface FindPostIdAction {
+  type: PostsActionTypes.FIND_POST_ID;
+  payload: number;
+}
 export interface PostsState {
   posts: PostsType[];
   postDetails: PostsType[];
   loading: boolean;
   error: null | string;
   postsNumber: number;
+  postId: number;
 }
 export type PostsAction =
   | FetchPostsAction
@@ -61,4 +66,5 @@ export type PostsAction =
   | IncreasePostsNumberAction
   | FetchPostsDetailsAction
   | FetchPostsDetailsSuccessAction
-  | FetchPostsDetailsErrorAction;
+  | FetchPostsDetailsErrorAction
+  | FindPostIdAction;

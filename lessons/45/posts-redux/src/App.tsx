@@ -1,14 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./app.module.css";
 import Posts from "./components/Posts";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-  NavLink,
-  // useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, NavLink } from "react-router-dom";
 import ThemeButton from "./components/ThemeButton";
 import classNames from "classnames/bind";
 import Users from "./components/Users";
@@ -16,11 +9,13 @@ import PostDetails from "./components/PostDetails";
 import Comments from "./components/Comments";
 import useTypedSelector from "./hooks";
 import { useActions } from "./hooks/useActions";
+import Modal from "./components/Modal";
 
 let cx = classNames.bind(styles);
 
 function App() {
   const { theme } = useTypedSelector((state) => state.theme);
+  const [modalActive, setModalActive] = useState<boolean>(false);
   const { fetchPosts, fetchUsers, fetchComments } = useActions();
 
   useEffect(() => {
@@ -55,25 +50,18 @@ function App() {
         >
           <Switch>
             <Route path="/posts" exact>
-              <Posts />
-
-              {/* <Row active setActive={setModalActive} author={author} posts={users} /> */}
-              {/* <ButtonShowMore /> */}
-              {/* <Modal active={modalActive} setActive={setModalActive} author={author} /> */}
+              <Posts active setActive={setModalActive} />
+              <Modal active={modalActive} setActive={setModalActive} />
             </Route>
             <Route path="/users" exact>
-              {/* <Users author={author} /> */}
               <Users />
             </Route>
             <Route path="/posts/:postId" exact>
-              {/* <PostDetails posts={users} comments={comments} /> */}
               <PostDetails />
             </Route>
             <Route path="/posts/:postId/comments" exact>
-              {/* <Comment comments={comments} /> */}
               <Comments />
             </Route>
-
             <Redirect from="/" to="/posts" />
           </Switch>
         </div>

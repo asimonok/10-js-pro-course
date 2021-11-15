@@ -8,7 +8,6 @@ export const fetchPosts = () => {
     try {
       dispatch({ type: PostsActionTypes.FETCH_POSTS });
       const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
-      console.log(response.data);
       dispatch({ type: PostsActionTypes.FETCH_POSTS_SUCCESS, payload: response.data });
     } catch (e) {
       dispatch({ type: PostsActionTypes.FETCH_POSTS_ERROR, payload: "error" });
@@ -20,10 +19,8 @@ export const fetchPostDetails = (postId: string) => {
   return async (dispatch: Dispatch<PostsAction>) => {
     try {
       const link = "https://jsonplaceholder.typicode.com/posts/" + postId;
-      console.log(link);
       dispatch({ type: PostsActionTypes.FETCH_POSTS_DETAILS });
       const response = await axios.get(link);
-      console.log(response.data);
       dispatch({ type: PostsActionTypes.FETCH_POSTS_DETAILS_SUCCESS, payload: response.data });
     } catch (e) {
       dispatch({ type: PostsActionTypes.FETCH_POSTS_DETAILS_ERROR, payload: "error" });
@@ -37,4 +34,8 @@ export const increasePosts = () => {
 
 export const changeTheme = () => {
   return { type: ThemeActionTypes.CHANGE_THEME };
+};
+
+export const findPostId = (postId: number) => {
+  return { type: PostsActionTypes.FIND_POST_ID, payload: postId };
 };
