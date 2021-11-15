@@ -36,7 +36,7 @@ const PostDetails = () => {
           <div className={styles.post} key={postDetail.id}>
             <h2 className={styles.post_title}>{postDetail.title}</h2>
             <p>{postDetail?.body}</p>
-            <h2>{params.postId}</h2>
+            {/* <h2>{params.postId}</h2> */}
             <div>
               <Link
                 className={styles.commentLink}
