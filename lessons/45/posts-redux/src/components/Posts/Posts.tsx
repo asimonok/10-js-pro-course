@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useTypedSelector from "../../hooks";
 import { useActions } from "../../hooks/useActions";
 import logo from "./yy3.gif";
+import { Link, generatePath } from "react-router-dom";
+import styles from "./Posts.module.css";
+import classNames from "classnames/bind";
+
+let cx = classNames.bind(styles);
 
 const Posts = () => {
-  //   const [postsNumber, setPostsnNumber] = useState(5);
   const { posts, error, loading, postsNumber } = useTypedSelector((state) => state.posts);
   const { users } = useTypedSelector((state) => state.users);
   const { theme } = useTypedSelector((state) => state.theme);
-  const { fetchPosts, fetchUsers, increasePosts, changeTheme } = useActions();
+  const { fetchPosts, fetchUsers, increasePosts } = useActions();
+
   useEffect(() => {
     fetchPosts();
     fetchUsers();
   }, []);
+
   if (loading) {
     return <img src={logo} alt="loading..." />;
   }
@@ -26,15 +32,46 @@ const Posts = () => {
 
   return (
     <>
-      <ul>
+      <ul
+        className={cx({
+          list: true,
+          usersList__dark: !!theme,
+        })}
+      >
         {filteredPosts.map((post) => {
           return (
-            <li key={post.id}>
-              <h2>{post.title}</h2>
-              <p>{post.body}</p>
-              <p>
+            <li
+              className={cx({
+                card: true,
+                card__dark: theme,
+              })}
+              key={post.id}
+            >
+              <h2
+                className={cx({
+                  card__title: true,
+                  card__title__dark: theme,
+                })}
+              >
+                {post.title}
+              </h2>
+              <p
+                className={cx({
+                  card__body: true,
+                  card__body__dark: theme,
+                })}
+              >
+                {post.body}
+              </p>
+              <p
+                className={cx({
+                  card__author: true,
+                  card__author__dark: theme,
+                })}
+              >
                 Author:
                 <button
+                  className={styles.card__button}
                   onClick={() => {
                     console.log(postsNumber);
                   }}
@@ -42,17 +79,20 @@ const Posts = () => {
                   {users[post.userId - 1]?.name}
                 </button>
               </p>
+              <Link
+                className={styles.post_details}
+                to={generatePath("/posts/:postId", {
+                  postId: post.id,
+                })}
+              >
+                Post Details
+              </Link>
             </li>
           );
         })}
       </ul>
-      <button onClick={() => increasePosts()}>show more</button>
-      <button
-        onClick={() => {
-          changeTheme();
-        }}
-      >
-        {theme}
+      <button className={styles.buttonShowMore} onClick={() => increasePosts()}>
+        show more
       </button>
     </>
   );

@@ -7,7 +7,7 @@ interface ChangeThemeAction {
 }
 
 export interface ThemeState {
-  theme: string;
+  theme: boolean;
 }
 
 export type ThemeAction = ChangeThemeAction;
