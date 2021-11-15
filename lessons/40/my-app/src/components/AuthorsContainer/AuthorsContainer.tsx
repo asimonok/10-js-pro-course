@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import styles from "./AuthorsContainer.module.css";
 import Author from "../Author";
-
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthors } from "store/reducers/posts";
-import { RootState } from "store/store";
+import { State as RootState } from "store";
 
 interface Props {
   id: any;
@@ -32,9 +31,8 @@ interface Props {
 }
 
 const AuthorsContainer = () => {
-  // const [users, setUsers] = useState([]);
-  const dispatch = useDispatch();
   const authors = useSelector((state: RootState) => state.posts.authors);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -44,7 +42,6 @@ const AuthorsContainer = () => {
 
       .then((authors) => {
         dispatch(setAuthors(authors));
-        // setUsers(data);
       })
       .catch((error) => console.error(error));
   }, [dispatch]);

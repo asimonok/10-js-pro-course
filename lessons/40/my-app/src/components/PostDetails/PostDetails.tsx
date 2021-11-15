@@ -4,10 +4,9 @@ import { useParams, useHistory } from "react-router-dom";
 import styles from "./PostDetails.module.css";
 import classNames from "classnames/bind";
 import Comment from "../Comment";
-
 import { useDispatch, useSelector } from "react-redux";
 import { setComments } from "store/reducers/posts";
-import { RootState } from "store/store";
+import { State as RootState } from "store";
 
 interface Post {
   userId: number;
@@ -33,11 +32,10 @@ const cx = classNames.bind(styles);
 const PostDetails: React.FC<{}> = () => {
   const [theme] = useContext(ThemeContext);
   const [post, setPost] = useState<Post>();
-  const dispatch = useDispatch();
-  // const [comments, setComments] = useState<CommentUser[]>();
-  const comments = useSelector((state: RootState) => state.posts.comments);
   const params = useParams<Params>();
+  const comments = useSelector((state: RootState) => state.posts.comments);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     Promise.all([
@@ -50,7 +48,6 @@ const PostDetails: React.FC<{}> = () => {
     ])
       .then(([post, comments]) => {
         setPost(post);
-        // setComments(comments);
         dispatch(setComments(comments));
       })
       .catch(() => {

@@ -1,11 +1,10 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { postsReducer } from "store/reducers/posts";
+import { rootReducer } from "./reducers";
+import { logger } from "./middleware/logger";
+import { thunk } from "./middleware/thunk";
 
-const rootReducer = combineReducers({
-  posts: postsReducer,
-});
-
-export type RootState = ReturnType<typeof rootReducer>;
-
-export const store = createStore(rootReducer, composeWithDevTools());
+export const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk, logger))
+);
