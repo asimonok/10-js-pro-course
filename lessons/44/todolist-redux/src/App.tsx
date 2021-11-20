@@ -3,7 +3,6 @@ import React from "react";
 import "./App.css";
 import AddTodos from "./components/AddTodos";
 import BottomButtons from "./components/BottomButtons";
-import ToDoCasual from "./components/ToDoCasual";
 import ToDoList from "./components/ToDoList";
 
 const App = () => {
@@ -18,7 +17,6 @@ const App = () => {
 
   return (
     <>
-      {/* <ToDoCasual /> */}
       <Container maxWidth="xs">
         <AddTodos />
 

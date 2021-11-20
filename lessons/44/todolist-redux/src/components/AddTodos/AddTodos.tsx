@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../store/reducer/reducerTodos";
@@ -10,20 +10,23 @@ const AddTodos = () => {
 
   return (
     <>
+      <div className="test">test</div>
       <Typography style={{ textAlign: "center" }} variant="h3">
-        Redux ToDo List
+        <span data-testid="title">Redux ToDo List</span>
       </Typography>
       <TextField
         variant="outlined"
         label="Write todo"
         fullWidth
-        onChange={(e) => setTodoDescription(e.target.value)} // bad bad bad
+        inputProps={{ "data-testid": "inputTodo" }}
+        onChange={(e) => setTodoDescription(e.target.value)}
         value={todoDescription}
       />
       <Button
         variant="contained"
         color="primary"
         fullWidth
+        data-testid="buttonAddTodo"
         onClick={() => {
           dispatch(addTodo(todoDescription));
           setTodoDescription("");

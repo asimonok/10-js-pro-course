@@ -10,6 +10,7 @@ const BottomButtons = () => {
   return (
     <ButtonGroup fullWidth disableElevation variant="contained">
       <Button
+        data-testid="buttonDeleteAllTasks"
         onClick={() => {
           dispatch(removeAllTodos());
         }}
@@ -17,6 +18,7 @@ const BottomButtons = () => {
         Delete All tasks
       </Button>
       <Button
+        data-testid="buttonDeleteDoneTasks"
         onClick={() => {
           dispatch(deleteDoneTasks());
         }}
