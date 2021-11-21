@@ -7,11 +7,11 @@ import ToDoList from "./components/ToDoList";
 
 const App = () => {
   //mui alignment
-  const [alignment, setAlignment] = React.useState("web");
+  const [alignment, setAlignment] = React.useState("all");
   const [filterList, setFilterList] = React.useState("All");
 
   //mui function
-  const handleChange = (event: any, newAlignment: string) => {
+  const handleChange = (event: React.SyntheticEvent, newAlignment: string) => {
     setAlignment(newAlignment);
   };
 
@@ -27,13 +27,13 @@ const App = () => {
           exclusive
           onChange={handleChange}
         >
-          <ToggleButton value="all" onClick={() => setFilterList("All")}>
+          <ToggleButton data-testid="buttonAll" value="all" onClick={() => setFilterList("All")}>
             All
           </ToggleButton>
-          <ToggleButton value="done" onClick={() => setFilterList("Done")}>
+          <ToggleButton data-testid="buttonDone" value="done" onClick={() => setFilterList("Done")}>
             Done
           </ToggleButton>
-          <ToggleButton value="todo" onClick={() => setFilterList("Todo")}>
+          <ToggleButton data-testid="buttonTodo" value="todo" onClick={() => setFilterList("Todo")}>
             Todo
           </ToggleButton>
         </ToggleButtonGroup>

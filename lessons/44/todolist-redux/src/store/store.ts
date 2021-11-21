@@ -1,21 +1,22 @@
-import { createStore, combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { reducer } from "./reducer/reducer";
-import { composeWithDevTools } from "redux-devtools-extension";
-// import { reducer } from "./reducer/reducer";
+import { Todo } from "../types/todo";
+import { perma } from "./middleware/perma";
 import reducerTodos from "./reducer/reducerTodos";
 
-//first try
-const rootReducer = combineReducers({ todos: reducer });
-export const storeCasual = createStore(rootReducer, composeWithDevTools());
+//for tests
+const preloadedState: Todo[] = [
+  { id: "string", description: "string", completed: false, edit: false },
+];
 
-//second try
+//localstorage
+// const preloadedState = JSON.parse(localStorage.getItem("state") || "");
+
 export const store = configureStore({
   reducer: reducerTodos,
+  preloadedState,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(perma),
   devTools: true,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-export type RootStateCasual = ReturnType<typeof storeCasual.getState>;
-
 export type AppDispatch = typeof store.dispatch;

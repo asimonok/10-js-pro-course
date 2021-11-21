@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../store/reducer/reducerTodos";
@@ -10,7 +10,6 @@ const AddTodos = () => {
 
   return (
     <>
-      <div className="test">test</div>
       <Typography style={{ textAlign: "center" }} variant="h3">
         <span data-testid="title">Redux ToDo List</span>
       </Typography>

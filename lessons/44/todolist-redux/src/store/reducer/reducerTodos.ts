@@ -47,11 +47,6 @@ const todoSlice = createSlice({
       state.splice(0, state.length);
     },
     deleteDoneTasks: (state) => {
-      //   for (let index = 0; index <= state.length; index++) {
-      //     if (state[index].completed === true) {
-      //       state.splice(index);
-      //     }
-      //   }
       return state.filter((todo) => todo.completed === false);
     },
   },
