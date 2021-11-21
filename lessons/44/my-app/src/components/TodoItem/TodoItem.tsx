@@ -1,6 +1,5 @@
 import React, { ChangeEvent, FC, useCallback, useState } from 'react';
 import styles from './TodoItem.module.css';
-import { Todo } from '../../redux/models/Todo';
 import Button from 'components/Button';
 import { useDispatch } from 'react-redux';
 import { deleteTodo } from 'redux/actions/todoActions';
@@ -8,19 +7,17 @@ import { completeTodo, editTodo } from 'redux/actions/todoActions';
 import editIcon from 'img/EditIcon.svg';
 import deleteIcon from 'img/DeleteIcon.svg';
 
-interface IProps {
-  item: Todo;
-}
-
-const TodoItem: FC<IProps> = (props) => {
-  const { item } = props;
+const TodoItem: FC<{ title: string; isDone: boolean; id: string }> = (
+  props
+) => {
+  const { title, isDone, id } = props;
   const [isEdit, setIsEdit] = useState(false);
-  const [updatedTitle, setUpdatedTitle] = useState(item.title);
+  const [updatedTitle, setUpdatedTitle] = useState(title);
   const dispatch = useDispatch();
 
   const completeOnChange = useCallback(() => {
-    dispatch(completeTodo(item.id));
-  }, [dispatch, item.id]);
+    dispatch(completeTodo(id));
+  }, [dispatch, id]);
 
   const editOnClick = useCallback(() => {
     setIsEdit(true);
@@ -28,8 +25,8 @@ const TodoItem: FC<IProps> = (props) => {
 
   const saveOnClick = useCallback(() => {
     setIsEdit(false);
-    dispatch(editTodo(item.id, updatedTitle));
-  }, [setIsEdit, dispatch, updatedTitle, item.id]);
+    dispatch(editTodo(id, updatedTitle));
+  }, [setIsEdit, dispatch, updatedTitle, id]);
 
   const onChangeTitle = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,22 +39,30 @@ const TodoItem: FC<IProps> = (props) => {
     <div className={styles.toDoItem}>
       {!isEdit && (
         <>
-          <div className={item.isDone ? styles.done : ``}>{item.title}</div>
+          <div className={isDone ? styles.done : ``} data-testid="todo-title">
+            {title}
+          </div>
           <div className={styles.toDoItemIcons}>
             <input
               type="checkbox"
-              checked={item.isDone}
+              checked={isDone}
               onChange={completeOnChange}
               className={styles.checkbox}
+              data-testid="todo-done"
             />
-            <div className={styles.iconButton} onClick={editOnClick}>
+            <div
+              className={styles.iconButton}
+              onClick={editOnClick}
+              data-testid="todo-start-edit"
+            >
               <img className={styles.editIconItem} src={editIcon} alt="edit" />
             </div>
             <div
               className={styles.iconButton}
               onClick={() => {
-                dispatch(deleteTodo(item.id));
+                dispatch(deleteTodo(id));
               }}
+              data-testid="todo-delete"
             >
               <img
                 className={styles.deleteIconItem}
@@ -75,6 +80,7 @@ const TodoItem: FC<IProps> = (props) => {
             value={updatedTitle}
             onChange={onChangeTitle}
             className={styles.editTaskInput}
+            data-testid="todo-changed-title"
           />
           <Button text="Save" onClick={saveOnClick} saveButton />
         </>

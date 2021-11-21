@@ -61,7 +61,14 @@ const TodoContainer = () => {
 
           <div className={styles.container}>
             {filteredTodoList.map((item) => {
-              return <TodoItem key={item.id} item={item} />;
+              return (
+                <TodoItem
+                  key={item.id}
+                  title={item.title}
+                  isDone={item.isDone}
+                  id={item.id}
+                />
+              );
             })}
           </div>
           <div className={styles.deleteButtons}>
