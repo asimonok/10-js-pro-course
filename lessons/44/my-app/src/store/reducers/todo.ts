@@ -49,6 +49,18 @@ export const deleteDoneTodos = (): DeleteDoneTodosAction => ({
   type: TodoAction.DELETE_DONE,
 });
 
+export const showAllFilterTodos = (): ShowAllFilterAction => ({
+  type: TodoAction.SHOW_ALL,
+});
+
+export const showDoneFilterTodos = (): ShowDoneFilterAction => ({
+  type: TodoAction.SHOW_DONE,
+});
+
+export const showTodoFilterTodos = (): ShowTodoFilterAction => ({
+  type: TodoAction.SHOW_TODO,
+});
+
 type ReducerAction =
   | AddTodoAction
   | EditTodoAction
