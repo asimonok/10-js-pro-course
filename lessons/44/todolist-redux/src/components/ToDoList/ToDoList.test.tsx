@@ -59,7 +59,6 @@ describe("TodoList", () => {
     expect(checkbox).not.toBeChecked();
     userEvent.click(checkbox);
     expect(checkbox).toBeChecked();
-    screen.debug();
 
     containerStyle = screen.getByTestId("todoTextDiv");
     styles = getComputedStyle(containerStyle);

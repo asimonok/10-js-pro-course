@@ -15,8 +15,8 @@ export interface TaskState {
 }
 export enum TodoAction {
   ADD_TASK = "ADD_TASK",
-  //   REMOVE_TASK = "REMOVE_TASK",
-  //   EDIT_TASK = "EDIT_TASK",
+  REMOVE_TASK = "REMOVE_TASK",
+  EDIT_TASK = "EDIT_TASK",
 }
 
 export type ActionPayload<TType, PType> = {

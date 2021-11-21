@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import { Todo } from "../../types/todo";
 
-const initialState = [] as Todo[];
+export const initialState = [] as Todo[];
 
 const todoSlice = createSlice({
   name: "todos",
