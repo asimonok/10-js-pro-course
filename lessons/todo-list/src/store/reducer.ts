@@ -25,7 +25,7 @@ interface TodoItem {
     isDone: boolean;
 }
 
-type State = {
+export type State = {
     items: Array<TodoItem>,
     filter: TodoFilter;
 }

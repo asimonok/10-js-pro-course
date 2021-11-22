@@ -41,20 +41,24 @@ const ListItem: React.FC<Props> = ({isDone, title, id}) => {
       <div className="list-group">
         {!isEdit && (
             <div className="list-group-item">
-              {title}
+              <span data-testid="title">{title}</span>
               <div className='bnt__block'>
                 <input 
+                  data-testid="isdone"
                   type="checkbox" 
                   checked={isDone} 
                   className="check"
                   onChange={onToogle}/>
-                <button type="button"
+                <button 
+                    data-testid="btn-edit"
+                    type="button"
                     className="btn-pen btn-sm "
                     onClick={onEdit}
                     >
                     <i className="fas fa-pen"></i>
                 </button>
                 <Button
+                  data-testid="btn-remove"
                   className="remove-btn"
                   variant="danger"
                   size="sm"
@@ -68,16 +72,19 @@ const ListItem: React.FC<Props> = ({isDone, title, id}) => {
         {isEdit && (
             <div className="list-group-item">
               <input 
+                data-testid="edit-value"
                 type="text" 
                 value={correctedTitle}
                 onChange={onCorrect}
                 />
                <div className='bnt__block'>
-              <button type="button"
-              className="btn-save btn-sm "
-              onClick={onSave}
-              >
-              <i className="fas fa-save"></i>
+              <button 
+                data-testid="btn-save"
+                type="button"
+                className="btn-save btn-sm "
+                onClick={onSave}
+                >
+                <i className="fas fa-save"></i>
               </button>
               <Button
                   className="remove-btn"
