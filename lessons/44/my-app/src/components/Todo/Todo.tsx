@@ -41,16 +41,21 @@ const Todo: React.FC<Props> = ({ todo }) => {
   return (
     <div className={styles.item}>
       <div>
-        {!isEdit && <span>{todo.title}</span>}
+        {!isEdit && <span data-testid="todo-title">{todo.title}</span>}
         {isEdit && (
           <>
             <input
+              data-testid="todo-changed-title"
               className={styles.input}
               type="text"
               value={editInput}
               onChange={onChangeTitle}
             ></input>
-            <button className={styles.button} onClick={onSave}>
+            <button
+              data-testid="todo-finish-edit"
+              className={styles.button}
+              onClick={onSave}
+            >
               Save
             </button>
           </>
@@ -58,15 +63,24 @@ const Todo: React.FC<Props> = ({ todo }) => {
       </div>
       <div className={styles.action}>
         <input
+          data-testid="todo-done"
           className={styles.checkbox}
           type="checkbox"
           checked={todo.isDone}
           onChange={onChangeTodo}
         ></input>
-        <button className={styles.button__action} onClick={onStartEdit}>
+        <button
+          data-testid="todo-start-edit"
+          className={styles.button__action}
+          onClick={onStartEdit}
+        >
           Edit
         </button>
-        <button className={styles.button__action} onClick={onRemove}>
+        <button
+          data-testid="todo-remove"
+          className={styles.button__action}
+          onClick={onRemove}
+        >
           Remove
         </button>
       </div>
