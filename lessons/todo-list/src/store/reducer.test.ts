@@ -96,4 +96,24 @@ describe ('tasksReducer', () => {
         expect(result.items.length).toEqual(1);
         expect(result.items[0].isDone).toBeFalsy();
     })
+
+    it('no action', () => {
+        const initialState: State = {
+            items: [],
+            filter: TodoFilter.All,
+        }
+        expect(todosReducer( initialState, {action: "test"} ) === initialState).toBeTruthy();
+    })
+
+    it('no state', () => {
+        const initialState: State = {
+            items: [],
+            filter: TodoFilter.All,
+        }
+        const result = todosReducer( undefined, {action: "test"} );
+        expect(result).toEqual( {
+            items: [],
+            filter: TodoFilter.All
+        });
+    })
 })
