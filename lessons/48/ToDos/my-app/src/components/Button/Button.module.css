@@ -1,0 +1,45 @@
+.button {
+  /*width: 380px;*/
+  /*padding: 5px;*/
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--color-button);
+  color: var(--color-secondary);
+  margin: 0 10px;
+}
+
+.button:first-child .medium:first-child {
+  margin: 0 10px 0 0;
+}
+
+.small:last-child .medium:last-child {
+  margin: 0 0 0 10px;
+}
+
+.button:active {
+  background-color: var(--color-button);
+}
+
+.small {
+  width: 130px;
+  padding: 10px;
+  font-size: 18px;
+  font-family: var(--font-default);
+}
+
+.medium {
+  width: 200px;
+  padding: 10px;
+  font-size: 18px;
+  font-family: var(--font-default);
+  background-color: red;
+}
+
+.large {
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+  font-size: 18px;
+  font-family: var(--font-default);
+}
