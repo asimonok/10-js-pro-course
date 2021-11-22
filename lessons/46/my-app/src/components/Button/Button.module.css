@@ -1,0 +1,31 @@
+.button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--font-default);
+}
+
+.light {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+.dark {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.small {
+  padding: 10px;
+  font-size: 10px;
+}
+
+.medium {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.large {
+  padding: 10px 30px;
+  font-size: 20px;
+}

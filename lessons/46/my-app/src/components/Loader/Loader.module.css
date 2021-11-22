@@ -1,0 +1,94 @@
+.loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  margin: 25px;
+  border-radius: 50%;
+  position: relative;
+  -webkit-animation: circle 1.5s infinite linear;
+  animation: circle 1.5s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.circle:nth-child(1) {
+  background: #26cf26;
+  /*  box-shadow: 1px 1px 2px rgba(43, 112, 78, 0.3);*/
+}
+.circle:nth-child(2) {
+  background: #ff615b;
+  /* box-shadow: 1px 1px 2px rgba(112, 59, 43, 0.3);*/
+}
+.circle:nth-child(3) {
+  background: #f7f328;
+  /*box-shadow: 1px 1px 2px rgba(129, 128, 45, 0.3);*/
+}
+.circle:nth-child(4) {
+  background: #2553e7;
+  /*box-shadow: 1px 1px 2px rgba(43, 59, 112, 0.3);*/
+}
+.circle:nth-child(5) {
+  background: #e8f3f1;
+  /*box-shadow: 1px 1px 2px rgba(43, 112, 103, 0.3);*/
+}
+.circle:nth-child(6) {
+  background: #010113;
+  /*box-shadow: 1px 1px 2px rgba(64, 43, 112, 0.3);*/
+}
+
+.circle:before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--color-secondary);
+  border-radius: 100% 0 0 0;
+}
+
+.circle:after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-area);
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@-webkit-keyframes circle {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circle {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

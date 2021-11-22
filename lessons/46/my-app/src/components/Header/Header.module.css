@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 15px;
+  background-color: var(--color-primary);
+  vertical-align: middle;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.link {
+  font-family: var(--font-default);
+  font-size: 16px;
+  color: var(--color-text);
+  margin-right: 16px;
+  list-style: none;
+}
+
+.activeLink {
+  font-weight: bold;
+  font-size: 1.2rem;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.dark {
+  background-color: var(color-background);
+  color: var(--color-primary);
+}
+
+.light {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}

@@ -1,0 +1,31 @@
+/*.noMatch {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  vertical-align: middle;
+}*/
+
+.title {
+  font-family: var(--font-default);
+  font-size: 20px;
+  color: var(--color-text);
+  margin: 25px;
+}
+
+.dark {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.light {
+  background-color: var(--color-secondary);
+}
+
+/*.link {
+  font-family: var(--font-default);
+  font-size: 16px;
+  color: var(--color-text);
+  margin-right: 16px;
+  list-style: none;
+}*/

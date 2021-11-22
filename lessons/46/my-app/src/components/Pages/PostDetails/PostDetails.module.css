@@ -1,0 +1,17 @@
+.body {
+  font-family: var(--font-default);
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 5px;
+  margin-bottom: 20px;
+}
+
+.light {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+.dark {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+}

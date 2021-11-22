@@ -1,0 +1,13 @@
+.comments {
+  color: var(--color-text);
+  text-align: center;
+}
+
+.light {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+.dark {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}

@@ -1,0 +1,28 @@
+:root {
+  --font-default: "Georama", sans-serif;
+  /*font-family: "Georama", sans-serif;
+  Arial, Helvetica, sans-serif
+  or
+  font-family: 'Italianno', cursive;*/
+  --color-primary: #dbd0c0;
+  --color-secondary: #78dec7;
+  --color-accent: rgb(44, 34, 46);
+  --color-text: #440a67;
+  --color-background: #faf1e6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: var(--font-default);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: var(--font-default);
+}

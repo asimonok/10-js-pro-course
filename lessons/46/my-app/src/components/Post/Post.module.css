@@ -1,0 +1,72 @@
+.item {
+  max-width: 18%;
+  margin: 15px 10px;
+  text-align: center;
+  border: 1px solid rgba(204, 209, 208, 1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-primary);
+}
+
+.title {
+  font-family: var(--font-default);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding: 0 5px;
+  color: var(--color-text);
+}
+
+.body {
+  font-family: var(--font-default);
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 5px;
+  margin-bottom: 20px;
+}
+
+.details {
+  font-size: 0.8rem;
+  cursor: pointer;
+  justify-content: end;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+  padding-right: 10px;
+}
+
+.author {
+  background-color: rgba(204, 209, 208, 1);
+  padding: 12px;
+  align-items: center;
+}
+
+.authorinfo {
+  color: blue;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-default);
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.light {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+.dark {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.darkUserInfo {
+  background-color: var(--color-accent);
+  color: var(--color-area);
+}
+
+.darkUser {
+  color: var(--color-secondary);
+}

@@ -1,0 +1,14 @@
+.users {
+  max-width: 1170px;
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+}
+
+.dark {
+  background-color: var(--color-accent);
+}
+
+.light {
+  background-color: var(--color-secondary);
+}
