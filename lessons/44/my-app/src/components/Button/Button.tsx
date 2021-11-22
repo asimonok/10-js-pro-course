@@ -24,7 +24,7 @@ const Button: FC<IProps> = (props) => {
         saveButton: saveButton,
       })}
       onClick={onClick}
-      data-testid={saveButton ? 'todo-stop-edit' : ''}
+      data-testid={saveButton ? 'todo-stop-edit' : 'button'}
     >
       {text}
     </button>

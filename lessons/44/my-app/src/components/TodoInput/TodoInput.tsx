@@ -15,7 +15,7 @@ const TodoInput: React.FC = () => {
   }, [dispatch, input]);
 
   return (
-    <div className={styles.todoInputComponent}>
+    <div className={styles.todoInputComponent} data-testid="todo-input">
       <h2 className={styles.title}>TodoInput</h2>
       <div className={styles.inputWrapper}>
         <div className={styles.inputContainer}>

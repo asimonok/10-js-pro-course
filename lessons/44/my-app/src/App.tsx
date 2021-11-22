@@ -18,7 +18,7 @@ function App() {
   }, []);
 
   return (
-    <div className={styles.App}>
+    <div className={styles.App} data-testid="App">
       <TodoContainer />
     </div>
   );

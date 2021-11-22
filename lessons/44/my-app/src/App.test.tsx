@@ -2,18 +2,18 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import TodoContainer from './TodoContainer';
+import App from './App';
 
-describe('TodoContainer', () => {
+describe('App', () => {
   const mockedStore = createStore((state) => state);
   const component = (
     <Provider store={mockedStore}>
-      <TodoContainer />
+      <App />
     </Provider>
   );
 
-  it('Render TodoContainer', () => {
+  it('Render component', () => {
     render(component);
-    expect(screen.getByTestId('todo-container')).toBeInTheDocument();
+    expect(screen.getByTestId('App')).toBeInTheDocument();
   });
 });
